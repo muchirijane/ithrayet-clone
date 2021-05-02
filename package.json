@@ -11,5 +11,9 @@
     "next": "10.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "http": "0.0.1-security",
+    "url": "^0.11.0"
   }
 }
