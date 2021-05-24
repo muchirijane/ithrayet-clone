@@ -1273,7 +1273,7 @@ body:not(.progress) .ed_sub_image {
 .sign line {
 	fill: none;
 	stroke: #fff;
-	stroke-width: 1;
+	strokeWidth: 1;
 	stroke-linecap: round;
 	stroke-linejoin: round;
 }

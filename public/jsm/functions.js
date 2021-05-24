@@ -368,7 +368,7 @@ preloadPictures = function(pictureUrls, callback) {
 
 				if(img){
 
-					$(this).find('i').append('<img src="'+img+'" alt="'+title+'">')
+					$(this).find('i').append('<img src="'+img+'" alt="'+title+'" crossorigin="anonymous">')
 
 					$(this).removeAttr('data-img')
 				}
@@ -376,9 +376,9 @@ preloadPictures = function(pictureUrls, callback) {
 			})
 
 		}
-
+		
 		img.onerror = function () {console.log('Imgages Loading Error')};
-
+		img.crossOrigin = "anonymous";
 		img.src = src;
 
 	} (new Image(), pictureUrls[i]));
