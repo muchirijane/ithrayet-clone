@@ -1,6 +1,8 @@
-import { useState, Fragment } from "react";
+import { Fragment } from "react";
+import useTranslation from "next-translate/useTranslation";
 
 const SiteLoader = ({ loaderImages }) => {
+  const { t } = useTranslation("common");
 
   const {images} = loaderImages;
 
@@ -13,10 +15,7 @@ const SiteLoader = ({ loaderImages }) => {
             visibility: "hidden",
           }}
         >
-          <p>
-            This Website contains music
-            <br /> click anywhere to enable media playback
-          </p>
+          <p dangerouslySetInnerHTML={{ __html: t("loader_musicwarn_text") }}/>
         </div>
         <div
           className="loader_wrap full_bg flex"

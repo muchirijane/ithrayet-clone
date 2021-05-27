@@ -1,25 +1,29 @@
-const NewsLetterBlock = () => {
+import useTranslation from "next-translate/useTranslation";
+
+const NewsLetterBlock = ({sectionData}) => {
+  const { t } = useTranslation("common");
+  const {title, description} = sectionData;
   return (
     <section id="newsletter">
       <div className="section_content flex full_bg">
         <div className="content_set no-padding">
-          <h3 className="_inOut">
-            Be part of The Ithraeyat Experience, <br />
-            join our Newsletter.
-          </h3>
-          <h6 className="_inOut">
-            Your email address will be kept confidential and only used <br />
-            to send our newsletter or respond to any queries
-          </h6>
+          <h3
+            className="_inOut"
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
+          <h6
+            className="_inOut"
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
           <div className="form_set">
             <form action="#">
               <div className="input_set buildup">
                 <input type="email" name="email" id="newsletter_email" />
                 <label for="newsletter_email" className="full_bg flex">
-                  Email Address
+                  {t("email_address")}
                 </label>
                 <div className="inline_submit flex _curTL2">
-                  <span>Subscribe</span>
+                  <span>{t("subscribe")}</span>
                   <i className="full_bg"></i>
                 </div>
                 <div className="input_border">
@@ -101,7 +105,7 @@ const NewsLetterBlock = () => {
           </div>
         </div>
         <p className="copyrights _inOut">
-          © 2021 Ithraeyat . All right reserved.
+          {t('copyrights')}
         </p>
       </div>
     </section>

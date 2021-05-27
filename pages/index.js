@@ -1,6 +1,3 @@
-// import Head from 'next/head'
-// import Image from 'next/image'
-// import styles from '../styles/Home.module.css'
 import SiteLoader from "../components/SiteLoader";
 import client from "../lib/apollo";
 import { GET_HOMEPAGE_DATA } from "../graphql/queries";
@@ -14,15 +11,17 @@ import JoinBlock from "../components/blocks/joinBlock";
 import NewsLetterBlock from "../components/blocks/newsletterBlock";
 
 const Home = (props) => {
-  const { loaderImages, editions, artists } = props;
+ 
+  const { loaderImages, editions, featuredEdition, artists, projects, sections } = props;
+ 
   return (
     <Layout>
-      <MainBlock editions={editions} />
-      <EditionBlock />
-      <CreativeBlock artists={artists} />
-      <StoryBlock />
-      <JoinBlock />
-      <NewsLetterBlock />
+      <MainBlock editions={editions} sectionData={sections.main_section} />
+      <EditionBlock featuredEdition={featuredEdition}/>
+      <CreativeBlock artists={artists} sectionData={sections.creatives} />
+      <StoryBlock sectionData={sections.our_story}/>
+      <JoinBlock projects={projects} sectionData={sections.join_exp}/>
+      <NewsLetterBlock sectionData={sections.news_letter} />
 
       <div
         className="indicator_set buildup _mainElement"
@@ -192,14 +191,19 @@ const Home = (props) => {
   );
 };
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async ({locale}) => {
+
   const { data } = await client.query({
     query: GET_HOMEPAGE_DATA,
+    variables: {
+      locale: locale,
+      editionLimit: 8
+    }
   });
 
   if (data) {
     let parsedData = JSON.parse(JSON.stringify(data));
-
+ 
     parsedData.loaderImage.images.map((img) => {
       img.url = AttachCMSPath(img.url);
       return img;
@@ -210,21 +214,44 @@ export const getServerSideProps = async () => {
       return edition;
     });
 
-    parsedData.artists.map((artist) =>{
+    parsedData.projects.map((project) => {
+      project.cover.url = AttachCMSPath(project.cover.url);
+      return project;
+    });
 
+    parsedData.artists.map((artist) => {
       artist.signature.url = AttachCMSPath(artist.signature.url);
       artist.profileImage.url = AttachCMSPath(artist.profileImage.url);
-    
+
       return artist;
     });
 
-    
+    parsedData.featuredEdition.map((edition) => {
+      edition.articles.map((article) =>{
+        article.cover.url = AttachCMSPath(article.cover.url);
+        article.images.map((image)=>{
+          image.url = AttachCMSPath(image.url);
+        })
+      })
+      return edition;
+    });
+
     return {
       props: {
         loaderImages: parsedData.loaderImage,
         editions: parsedData.editions,
-        artists: parsedData.artists
+        artists: parsedData.artists,
+        projects: parsedData.projects,
+        featuredEdition: parsedData.featuredEdition,
+        sections: {
+          main_section : parsedData.homepage.mainSection,
+          our_story : parsedData.homepage.ourStory,
+          join_exp : parsedData.homepage.joinExperience,
+          news_letter : parsedData.homepage.newsLetter,
+          creatives: parsedData.homepage.creatives
+        }
       },
+      revalidate: 60
     };
   }
 };

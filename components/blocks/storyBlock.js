@@ -1,9 +1,13 @@
+import useTranslation from "next-translate/useTranslation";
 
-const StoryBlock = () => {
+const StoryBlock = ({sectionData}) => {
+  const {t} = useTranslation('common');
+
+  const {mediaQuote, description} = sectionData;
   return (
     <section id="stories">
       <div className="story_wrap flex">
-        <h4 className="_inOut">Our Story</h4>
+        <h4 className="_inOut">{t('homepage.our_story')}</h4>
 
         <div className="story_head">
           <i
@@ -36,17 +40,12 @@ const StoryBlock = () => {
         </div>
 
         <p className="_lines">
-          There are so many forms of love, the love of a partner, a parent, a
-          sibling, a child, a pet, a book, a piece of music, a color, a
-          memory—the list of beloved things and persons are truly limitless.
-          Inside Ithraeyat’s pages
+          {description}
         </p>
       </div>
 
-      <div className="circle_set no-select buildup lower centered">
-        More About <br />
-        Ithraeyat
-      </div>
+      <div className="circle_set no-select buildup lower centered" dangerouslySetInnerHTML={{__html: t('more_about_ithraeyat')}}/>
+    
     </section>
   );
 };

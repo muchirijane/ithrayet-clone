@@ -1,24 +1,25 @@
 import Elements from "../elements";
+import useTranslation from "next-translate/useTranslation";
 
-const CreativeBlock = ({ artists }) => {
+
+const CreativeBlock = ({ artists, sectionData }) => {
+  const {t} = useTranslation('common');
+  const {title, quote} = sectionData;
   return (
     <section id="creatives">
       <div className="content_set">
         <div className="section_title flex">
-          <h4 className="_inOut">Creatives</h4>
+          <h4 className="_inOut">{t('homepage.creatives')}</h4>
           <a href="creatives_en.php" className="mobile_only _inOut">
-            All Creatives
+            {t('all_creatives')}
           </a>
         </div>
       </div>
 
       <div className="cr_text">
-        <p className="_inOut">Every artist was first an amateur</p>
-        <h6 className="_inOut">
-          A true artist is not one who <br />
-          is inspired, but one who <br />
-          inspires others
-        </h6>
+        <p className="_inOut">{title}</p>
+        <h6 className="_inOut" dangerouslySetInnerHTML={{__html: quote}}/>
+    
       </div>
 
       <div className="crv_wrap full_bg">
@@ -38,7 +39,7 @@ const CreativeBlock = ({ artists }) => {
             })}
           </div>
 
-          {/* <div className="circles_group full_bg">
+          <div className="circles_group full_bg">
             <div
               className="crv_circle _curTL2"
               data-name="Ivory Read"
@@ -663,7 +664,7 @@ const CreativeBlock = ({ artists }) => {
               </div>
             </div>
           </div>
-         */}
+        
         </div>
       </div>
 
@@ -672,7 +673,7 @@ const CreativeBlock = ({ artists }) => {
       </div>
 
       <div className="circle_set no-select buildup lower desktop_only">
-        All Creatives
+       {t('all_creatives')}
       </div>
 
       <div className="arrow_set prev static flex"></div>

@@ -1,4 +1,20 @@
 {
-    "homepage_title": "Blog in Next.js",
-    "homepage_description": "This example shows a multilingual blog built in Next.js with next-translate"
+  "email_address": "Email Address",
+  "subscribe": "Subscribe",
+
+  "copyrights": "© 2021 Ithraeyat . All right reserved.",
+
+  "loader_musicwarn_text": "This Website contains music<br /> click anywhere to enable media playback",
+
+  "more_about_ithraeyat": "More About <br />Ithraeyat",
+  "all_projects": "All Projects",
+  "all_editions": "All Editions",
+  "all_creatives": "All Creatives",
+
+  "homepage": {
+    "join_exp": "Join The experience",
+    "our_story": "Our Story",
+    "creatives": "Creatives",
+    "editions": "Editions"
   }
+}

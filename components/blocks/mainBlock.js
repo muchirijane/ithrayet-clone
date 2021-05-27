@@ -1,15 +1,14 @@
 import Elements from "../elements";
+import useTranslation from "next-translate/useTranslation";
 
-const MainBlock = ({ editions }) => {
+const MainBlock = ({ editions, sectionData }) => {
+  const { t } = useTranslation("mainblock");
+  const {title, quote} = sectionData;
   return (
     <section id="main">
       <div className="main_heading flex full_bg">
-        <p>Every artist was first an amateur</p>
-        <h3>
-          A true artist is not one who <br />
-          is inspired, but one who <br />
-          inspires others
-        </h3>
+        <p>{title}</p>
+        <h3 dangerouslySetInnerHTML={{__html: quote}}/>
       </div>
 
       <div id="container"></div>
@@ -30,10 +29,8 @@ const MainBlock = ({ editions }) => {
         </div>
       </div>
 
-      <div className="circle_set no-select buildup">
-        Hold here to <br />
-        Explore Editions
-      </div>
+      <div className="circle_set no-select buildup" dangerouslySetInnerHTML={{__html: t('explore_text')}}/>
+          
     </section>
   );
 };
