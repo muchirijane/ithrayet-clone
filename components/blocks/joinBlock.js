@@ -40,7 +40,7 @@ const JoinBlock = ({ projects, sectionData }) => {
                     key={key}
                     title={val.title}
                     url={val.cover.url}
-                    color={`#9cc0b6`}
+                    color={val.color}
                   />
                 );
               })}

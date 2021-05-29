@@ -1,13 +1,41 @@
 import useTranslation from "next-translate/useTranslation";
+import ReactHtmlParser from "react-html-parser";
+import { AttachCMSPath } from "../../helpers/imageCMSPath";
 
-const StoryBlock = ({sectionData}) => {
-  const {t} = useTranslation('common');
+const StoryBlock = ({ sectionData }) => {
+  const { t } = useTranslation("common");
 
-  const {mediaQuote, description} = sectionData;
+  const { mediaQuote, description } = sectionData;
+
+  const transform = (node) => {
+    if ((node.type = "tag")) {
+      switch (node.name) {
+        case "p":
+          return `${node.children[0].data} `;
+        case "img":
+          return (
+            <i
+              className="story_media img load_img _secEle prx"
+              data-src={AttachCMSPath(node.attribs.src)}
+            ></i>
+          );
+        case "video":
+          return (
+            <i className="story_media video _secEle prx">
+              <video preload="metadata" autoPlay loop muted playsInline>
+                {" "}
+                <source src={AttachCMSPath(node.attribs.src)} type="video/mp4" />{" "}
+              </video>
+            </i>
+          );
+        default:
+      }
+    }
+  };
   return (
     <section id="stories">
       <div className="story_wrap flex">
-        <h4 className="_inOut">{t('homepage.our_story')}</h4>
+        <h4 className="_inOut">{t("homepage.our_story")}</h4>
 
         <div className="story_head">
           <i
@@ -16,21 +44,9 @@ const StoryBlock = ({sectionData}) => {
           ></i>
 
           <h2 className="_lines">
-            An art{" "}
-            <i
-              className="story_media img load_img _secEle prx"
-              data-src="imgs/section4/1.jpg"
-            ></i>{" "}
-            is to must have his <br />
-            measuring tools{" "}
-            <i className="story_media video _secEle prx">
-              <video preload="metadata" autoPlay loop muted playsInline>
-                {" "}
-                <source src="imgs/section4/4.mp4" type="video/mp4" />{" "}
-              </video>
-            </i>{" "}
-            not in <br />
-            the hand, but in the eye.
+            {ReactHtmlParser(mediaQuote, {
+              transform: transform,
+            })}
           </h2>
 
           <i
@@ -39,16 +55,15 @@ const StoryBlock = ({sectionData}) => {
           ></i>
         </div>
 
-        <p className="_lines">
-          {description}
-        </p>
+        <p className="_lines">{description}</p>
       </div>
 
-      <div className="circle_set no-select buildup lower centered" dangerouslySetInnerHTML={{__html: t('more_about_ithraeyat')}}/>
-    
+      <div
+        className="circle_set no-select buildup lower centered"
+        dangerouslySetInnerHTML={{ __html: t("more_about_ithraeyat") }}
+      />
     </section>
   );
 };
-
 
 export default StoryBlock;

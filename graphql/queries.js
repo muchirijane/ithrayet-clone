@@ -68,7 +68,8 @@ query($locale: String!, $editionLimit: Int){
     title,
     cover{
       url
-    }
+    },
+    color
   }
 }
 `;
