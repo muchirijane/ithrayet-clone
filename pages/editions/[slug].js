@@ -58,7 +58,7 @@ const Edition = (props) => {
   const router = useRouter();
 
   return (
-    <Layout isInner>
+    <Layout isInner seo={edition && edition.seo}>
       {edition && (
         <div id="fixed-bar" className="fixed-bar">
           <PageBarArticle articles={edition.articles} />

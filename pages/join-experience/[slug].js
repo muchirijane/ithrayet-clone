@@ -55,7 +55,7 @@ export const getStaticProps = async (context) => {
 const Experience = (props) => {
   const { project } = props;
   return (
-    <Layout isInner>
+    <Layout isInner seo={project && project.seo}>
       {project && (
         <div id="fixed-bar" class="fixed-bar">
           <div

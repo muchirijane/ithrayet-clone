@@ -15,6 +15,19 @@ export const GET_CREATIVES_DATA = gql`
       }
       slug
     }
+    listCreative {
+      seo {
+        metaTitle
+        metaDescription
+        metaKeywords
+        metaImage {
+          width
+          height
+          alternativeText
+          url
+        }
+      }
+    }
   }
 `;
 

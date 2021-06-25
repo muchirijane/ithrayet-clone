@@ -55,9 +55,9 @@ export const getStaticProps = async (context) => {
 
 const Creative = (props) => {
   const { creative } = props;
- 
+
   return (
-    <Layout isInner>
+    <Layout isInner seo={creative && creative.seo}>
       {creative && (
         <div id="fixed-bar" className="fixed-bar">
           <div

@@ -10,5 +10,18 @@ export const GET_GALLERY_DATA = gql`
         alternativeText
       }
     }
+    listGallery {
+      seo {
+        metaTitle
+        metaDescription
+        metaKeywords
+        metaImage {
+          width
+          height
+          alternativeText
+          url
+        }
+      }
+    }
   }
 `;

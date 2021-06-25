@@ -28,7 +28,7 @@ const OurJourney = (props) => {
   const { journey, news_letter } = props;
 
   return (
-    <Layout isInner>
+    <Layout isInner seo={journey && journey.seo}>
       {journey && (
         <div className="page_head_set">
           <h1>{journey.title}</h1>

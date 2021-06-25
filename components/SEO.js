@@ -3,8 +3,11 @@ import { withRouter } from "next/router";
 
 import Head from "next/head";
 import { CMSPath } from "../helpers/imageCMSPath";
+import useTranslation from "next-translate/useTranslation";
 
 export const SEO = ({ seo }) => {
+  const { t } = useTranslation("common");
+
   return (
     <Head>
       <meta charSet="utf-8" />
@@ -30,8 +33,14 @@ export const SEO = ({ seo }) => {
         <>
           {seo.metaTitle && (
             <>
-              <meta property="og:title" content={seo.metaTitle} />
-              <meta name="twitter:title" content={seo.metaTitle} />
+              <meta
+                property="og:title"
+                content={`${t("title_prefix")} - ${seo.metaTitle}`}
+              />
+              <meta
+                name="twitter:title"
+                content={`${t("title_prefix")} - ${seo.metaTitle}`}
+              />
             </>
           )}
           {seo.metaDescription && (
@@ -56,7 +65,7 @@ export const SEO = ({ seo }) => {
               />
             </>
           )}
-          <title>{seo.metaTitle}</title>
+          <title>{`${t("title_prefix")} - ${seo.metaTitle}`}</title>
         </>
       )}
     </Head>

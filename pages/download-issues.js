@@ -18,6 +18,7 @@ export const getStaticProps = async ({ locale }) => {
       props: {
         editions: data.editions.length && data.editions,
         news_letter: data.newsLetterForm,
+        SEO: data.downloadIssue.seo,
       },
       revalidate: 60,
     };
@@ -25,11 +26,11 @@ export const getStaticProps = async ({ locale }) => {
 };
 
 const DonwloadIssues = (props) => {
-  const { editions, news_letter } = props;
+  const { editions, news_lette, SEO } = props;
   const [isListView, toggleView] = useState(true);
 
   return (
-    <Layout isInner isFilter isDownloadUI>
+    <Layout isInner isFilter isDownloadUI seo={SEO && SEO}>
       {editions && (
         <div id="fixed-bar" class="fixed-bar">
           <div class="content_a">

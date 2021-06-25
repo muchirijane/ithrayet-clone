@@ -17,6 +17,7 @@ export const getStaticProps = async ({ locale }) => {
     return {
       props: {
         symbols: data.symbols,
+        SEO: data.listSymbol.seo,
       },
       revalidate: 60,
     };
@@ -24,9 +25,9 @@ export const getStaticProps = async ({ locale }) => {
 };
 
 const Symbols = (props) => {
-  const { symbols } = props;
+  const { symbols, SEO } = props;
   return (
-    <Layout isInner>
+    <Layout isInner seo={SEO && SEO}>
       <div className="page_head_set">
         <h1>Symbols</h1>
       </div>

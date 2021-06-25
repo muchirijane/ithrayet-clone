@@ -17,25 +17,25 @@ export const getStaticProps = async ({ locale }) => {
     return {
       props: {
         articles: data.articles.length && ChunkArray(data.articles, 12),
+        SEO: data.listGallery.seo,
       },
       revalidate: 60,
     };
   }
 };
 const Gallery = (props) => {
-  const { articles } = props;
-    
+  const { articles, SEO } = props;
+
   return (
-    <Layout isInner>
+    <Layout isInner seo={SEO && SEO}>
       {articles && (
         <div id="sections">
           <section>
             <div className="gallery_set">
-              {articles.map((chunk, chunk_key) => {
-                   
+              {articles.map((chunk, chunk_key) => (
                 <div className="gallery_group" key={`g_pop-${chunk_key}`}>
                   <div className="gallery_items flex">
-                    {chunk.map((article, key) => {
+                    {chunk.map((article, key) => (
                       <Link
                         href={`/articles/${article.slug}`}
                         key={`g_item-${chunk_key}-${key}`}
@@ -56,11 +56,11 @@ const Gallery = (props) => {
                             </div>
                           </div>
                         </a>
-                      </Link>;
-                    })}
+                      </Link>
+                    ))}
                   </div>
-                </div>;
-              })}
+                </div>
+              ))}
             </div>
           </section>
         </div>

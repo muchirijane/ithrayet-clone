@@ -37,6 +37,19 @@ export const GET_EDITIONS_DATA = gql`
         }
       }
     }
+    listEdition {
+      seo {
+        metaTitle
+        metaDescription
+        metaKeywords
+        metaImage {
+          width
+          height
+          alternativeText
+          url
+        }
+      }
+    }
   }
 `;
 

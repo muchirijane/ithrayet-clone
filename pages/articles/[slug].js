@@ -57,7 +57,7 @@ const Article = (props) => {
   const { article } = props;
 
   return (
-    <Layout isInner>
+    <Layout isInner seo={article && article.seo}>
       {article && (
         <div id="fixed-bar" className="fixed-bar">
           <div

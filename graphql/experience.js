@@ -3,6 +3,17 @@ import { gql } from "@apollo/client";
 export const GET_EXPERIENCE_DATA = gql`
   query ($slug: String!, $locale: String!) {
     projects(where: { slug_eq: $slug }, locale: $locale) {
+      seo {
+        metaTitle
+        metaDescription
+        metaKeywords
+        metaImage {
+          width
+          height
+          alternativeText
+          url
+        }
+      }
       title
       color
       date
@@ -71,6 +82,17 @@ export const GET_EXPERIENCE_SLUGS = gql`
 export const GET_JOINEXPERIENCE_DATA = gql`
   query ($locale: String!) {
     joinExperience(locale: $locale) {
+      seo {
+        metaTitle
+        metaDescription
+        metaKeywords
+        metaImage {
+          width
+          height
+          alternativeText
+          url
+        }
+      }
       ProjectSections {
         ... on ComponentJoinExperienceBlocksCenterTextLayout {
           __typename

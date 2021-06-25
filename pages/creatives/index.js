@@ -17,6 +17,7 @@ export const getStaticProps = async ({ locale }) => {
     return {
       props: {
         creatives: data.artists,
+        SEO: data.listCreative.seo,
       },
       revalidate: 60,
     };
@@ -24,10 +25,10 @@ export const getStaticProps = async ({ locale }) => {
 };
 
 const Creatives = (props) => {
-  const { creatives } = props;
+  const { creatives, SEO } = props;
 
   return (
-    <Layout isInner isFilter>
+    <Layout isInner isFilter seo={SEO && SEO}>
       <div id="fixed-bar" className="fixed-bar">
         <div
           className="page_bar fixed_item forced-full-width"
@@ -95,7 +96,10 @@ const Creatives = (props) => {
                             <span className="f_120 alt">{`${creative.firstName} ${creative.lastName}`}</span>
                           </div>
                           <div className="table_col flex">
-                            <span className="f_120 alt">{`${padLeadingZeros(key + 1,2)}.`}</span>
+                            <span className="f_120 alt">{`${padLeadingZeros(
+                              key + 1,
+                              2
+                            )}.`}</span>
                             <span className="row_sign"></span>
                           </div>
                         </a>

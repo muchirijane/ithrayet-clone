@@ -1,9 +1,10 @@
 import Link from "next/link";
 import Layout from "../components/Layout";
+import { Page404_SEO } from "../constants/page_constants";
 
 export default function FourOhFour() {
   return (
-    <Layout isInner={true}>
+    <Layout isInner={true} seo={Page404_SEO}>
       <div className="full_bg nf_wrapper flex">
         <div className="nf_shape">
           <div className="nf_object">

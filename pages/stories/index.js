@@ -17,16 +17,17 @@ export const getStaticProps = async ({ locale }) => {
       props: {
         stories: data.stories,
         storiedCount: data.countStories,
+        SEO: data.listStory.seo,
       },
       revalidate: 60,
     };
   }
 };
 const Stories = (props) => {
-  const { stories, storiedCount } = props;
+  const { stories, storiedCount, SEO } = props;
 
   return (
-    <Layout isInner isFilter>
+    <Layout isInner isFilter seo={SEO && SEO}>
       <div className="page_head_set">
         <h1>Our Stories</h1>
       </div>

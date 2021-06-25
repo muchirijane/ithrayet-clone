@@ -28,7 +28,7 @@ export const getStaticProps = async ({ locale }) => {
 const JoinExperience = (props) => {
   const { joinExperience, news_letter } = props;
   return (
-    <Layout isInner isFilter>
+    <Layout isInner isFilter seo={joinExperience && joinExperience.seo}>
       <div className="page_head_set">
         <h1>Join The Experience</h1>
       </div>

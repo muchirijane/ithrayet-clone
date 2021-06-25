@@ -30,7 +30,7 @@ export const getStaticProps = async ({ locale }) => {
 const ContactUs = (props) => {
   const { contactData, news_letter, feedback } = props;
   return (
-    <Layout isInner>
+    <Layout isInner seo={contactData && contactData.seo}>
       {contactData && (
         <div className="page_head_set">
           <h1>Contact us</h1>

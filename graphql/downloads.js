@@ -21,5 +21,18 @@ export const GET_DOWNLOAD_ISSUES_DATA = gql`
       title
       description
     }
+    downloadIssue {
+      seo {
+        metaTitle
+        metaDescription
+        metaKeywords
+        metaImage {
+          width
+          height
+          alternativeText
+          url
+        }
+      }
+    }
   }
 `;

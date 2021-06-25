@@ -3,6 +3,17 @@ import { gql } from "@apollo/client";
 export const GET_JOURNEY_DATA = gql`
   query ($locale: String!) {
     journey(locale: $locale) {
+      seo {
+        metaTitle
+        metaDescription
+        metaKeywords
+        metaImage {
+          width
+          height
+          alternativeText
+          url
+        }
+      }
       title
       ourTeam {
         title
