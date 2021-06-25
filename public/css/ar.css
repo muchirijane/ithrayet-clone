@@ -1,0 +1,269 @@
+/*!
+	* Ithra - AR Stylesheet (c) 2021 <bahaasamir.me>
+*/
+@font-face {
+	font-family: 'ithra';
+	src: url('../fonts/ithra-bold.eot');
+	src: url('../fonts/ithra-bold.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/ithra-bold.woff2') format('woff2'),
+		url('../fonts/ithra-bold.woff') format('woff'),
+		url('../fonts/ithra-bold.ttf') format('truetype'),
+		url('../fonts/ithra-bold.svg#ithra-bold') format('svg');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'ithra';
+	src: url('../fonts/ithra-medium.eot');
+	src: url('../fonts/ithra-medium.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/ithra-medium.woff2') format('woff2'),
+		url('../fonts/ithra-medium.woff') format('woff'),
+		url('../fonts/ithra-medium.ttf') format('truetype'),
+		url('../fonts/ithra-medium.svg#ithra-medium') format('svg');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+header {
+	flex-direction: row;
+}
+
+.music_tip,
+footer {
+	font-family: Tahoma, sans-serif;
+}
+
+body {
+	direction: rtl;
+}
+
+body,
+input,
+textarea {
+	font-size: 16px;
+}
+
+body,
+input,
+textarea,
+strong {
+	font-family: ithra, sans-serif;
+	font-weight: 500;
+	font-style: normal;
+}
+
+.search_input input {
+	font-size: 18.75vw;
+	line-height: 15vw;
+}
+
+.article_title,
+h2,
+h3,
+h5,
+.ld_perc,
+.search_input input {
+	font-family: 'Scheherazade', serif;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.ld_perc {
+	font-size: 50px;
+}
+
+.article_title {
+	font-size: 40px;
+}
+
+h2 {
+	font-size: 9vw;
+	line-height: 11.5vw;
+}
+
+h3 {
+	font-size: 5.5vw;
+	line-height: 5.972vw;
+}
+
+/* Extras */
+body {
+	direction: rtl;
+}
+.animated_arrow svg {
+	transform: scaleX(-1);
+}
+.section_label {
+	margin-top: 4vw !important;
+}
+
+.section_label p {
+	margin-top: 3vw !important;
+}
+
+/* Margin */
+.circle_set:not(.lower):not(.static) {
+	margin-right: 21vw;
+}
+.section_head h1 span:last-child {
+	margin-right: -2vw;
+}
+.loader_select {
+	margin-right: -0.5vw;
+}
+
+/* Left & Right */
+.loader_select {
+	right: 50%;
+}
+.isDesktop .indicator_set {
+	right: 42px;
+}
+.view_btn {
+	right: 45px;
+}
+.arrow_set.prev.fluid {
+	right: 120px;
+}
+.story_media.left {
+	right: -1vw;
+}
+.arrow_set.next.fluid {
+	left: 120px;
+}
+section:not(#creatives) .circle_set.lower {
+	left: 250px;
+}
+#creatives .circle_set.lower {
+	right: 250px;
+}
+.arrow_set.prev.static {
+	left: 120px;
+}
+.arrow_set.next.static {
+	left: 45px;
+}
+.story_media.right {
+	left: -6.73vw;
+}
+.equalizer{
+	left: 135px;
+}
+
+
+/* Responsiveness */
+@media (max-width: 960px){
+	h3 {
+		font-size: 53px;
+		line-height: 58px;
+	}
+	.main_heading h3 {
+		letter-spacing: 19px;
+	}
+	.circle_set:not(.lower):not(.static) {
+		margin-right: 25vw;
+	}
+	.arrow_set.prev.fluid {
+		right: 80px;
+	}
+	.arrow_set.next.fluid {
+		left: 80px;
+	}
+	.loader_shapes {
+		right: -13vw;
+		left: -13vw;
+	}
+}
+
+@media (max-width: 800px){
+	.circle_set:not(.lower):not(.static),
+	.circle_set.centered {
+		margin-right: 0;
+	}
+	.isMobile .section-side .section_title {
+		padding-left: 10px;
+	}
+	section:not(#creatives) .circle_set.lower:not(.centered) {
+		left: auto;
+		right: 25px;
+	}
+	#creatives .circle_set.lower {
+		left: auto;
+		right: 25px;
+	}
+	.circle_set:not(.lower):not(.static),
+	.circle_set.centered {
+		right: 50%;
+		transform: translate(50%, 0);
+	}
+	.circle_set.static {
+		left: auto;
+		right: 25px;
+	}
+	.isDesktop .indicator_set {
+		right: 22px;
+	}
+	.view_btn {
+		right: 25px;
+	}
+	.arrow_set.prev.fluid,
+	.arrow_set.prev.static {
+		right: auto;
+		left: 110px;
+	}
+	.arrow_set.next.fluid,
+	.arrow_set.next.static {
+		left: 25px;
+	}
+	.story_media.left {
+		right: -14vw;
+	}
+	.circle_set.static {
+		left: auto;
+	}
+	.story_media.right {
+		left: -14vw;
+	}
+}
+
+@media (max-width: 640px){
+	h3 {
+		font-size: 43px;
+		line-height: 48px;
+	}
+	h2 {
+		font-size: 11vw;
+		line-height: 15.5vw;
+	}
+	p {
+		line-height: 20px;
+	}
+	body,
+	input,
+	textarea {
+		font-size: 13px;
+	}
+}
+
+@media (max-width: 500px){
+	.search_input input {
+		font-size: 23vw;
+		line-height: 19vw;
+	}
+	.section_label {
+		margin-top: 10vw !important;
+	}
+	.story_head br {
+		display: none;
+	}
+}
+
+@media (max-height: 600px){
+	.search_input input {
+		font-size: 10vw;
+		line-height: 8vw;
+	}
+}

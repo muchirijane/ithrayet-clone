@@ -1,11 +1,12 @@
 import useTranslation from "next-translate/useTranslation";
+import { CMSPath } from "../../helpers/imageCMSPath";
 import Elements from "../elements";
 
-const JoinBlock = ({ projects, sectionData }) => {
+const JoinBlock = ({ projects, sectionData, dataUrl }) => {
   const { t } = useTranslation("common");
   const { quote, title } = sectionData;
   return (
-    <section id="join">
+    <section id="join" style={{visibility: "hidden"}} data-url={dataUrl}>
       <div className="section-sides flex">
         <div className="section-side flex">
           <div className="content_set">
@@ -39,7 +40,7 @@ const JoinBlock = ({ projects, sectionData }) => {
                   <Elements.ProjectCircle
                     key={key}
                     title={val.title}
-                    url={val.cover.url}
+                    url={`${CMSPath}${val.cover.url}`}
                     color={val.color}
                   />
                 );

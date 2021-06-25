@@ -1,13 +1,14 @@
 import useTranslation from "next-translate/useTranslation";
+import { CMSPath } from "../../helpers/imageCMSPath";
 import Elements from "../elements";
 
-const EditionBlock = ({ featuredEdition }) => {
+const EditionBlock = ({ featuredEdition, dataUrl }) => {
   const { t } = useTranslation("common");
 
   const { title, type, articles } = featuredEdition[0];
 
   return (
-    <section id="editions">
+    <section id="editions" style={{ visibility: "hidden" }} data-url={dataUrl}>
       <div className="content_set">
         <div className="section_title flex">
           <h4 className="_inOut">{t("homepage.editions")}</h4>
@@ -45,14 +46,18 @@ const EditionBlock = ({ featuredEdition }) => {
           <p className="_fill_card _inOut"></p>
         </div>
         <div className="cards">
-          {articles.map((val, key) => {
+          {articles.map((article, key) => {
+         
+  
             return (
               <Elements.EditionCards
                 key={key}
-                title={val.title}
-                cover={val.cover.url}
-                img1={val.images[0].url}
-                img2={val.images[1].url}
+                title={article.title}
+                date={article.publishDate}
+                cover={`${CMSPath}${article.cover.url}`}
+                img1={article.Images[0] && `${CMSPath}${article.Images[0].image.url}`}
+                img2={article.Images[1] && `${CMSPath}${article.Images[1].image.url}`}
+                slug={article.slug}
               />
             );
           })}

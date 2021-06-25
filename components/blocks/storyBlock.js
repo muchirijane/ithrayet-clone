@@ -1,46 +1,57 @@
 import useTranslation from "next-translate/useTranslation";
 import ReactHtmlParser from "react-html-parser";
-import { AttachCMSPath } from "../../helpers/imageCMSPath";
+import { CMSPath } from "../../helpers/imageCMSPath";
 
-const StoryBlock = ({ sectionData }) => {
+const StoryBlock = ({ sectionData, dataUrl }) => {
   const { t } = useTranslation("common");
 
-  const { mediaQuote, description } = sectionData;
-
+  const { mediaQuote, description, rightImage, leftImage } = sectionData;
+ 
   const transform = (node) => {
     if ((node.type = "tag")) {
+   
       switch (node.name) {
-        case "p":
-          return `${node.children[0].data} `;
-        case "img":
+        case "div":
+ 
+          return node.children.map((tag,key)=>{
+            if(tag.type === 'text'){
+              return tag.data
+            }else if(tag.type === 'br'){
+              return (<br/>)
+            }
+          })
+        case "figure":
           return (
             <i
               className="story_media img load_img _secEle prx"
-              data-src={AttachCMSPath(node.attribs.src)}
+              data-src={`${CMSPath}${node.children[0].attribs.src}`}
             ></i>
           );
-        case "video":
-          return (
-            <i className="story_media video _secEle prx">
-              <video preload="metadata" autoPlay loop muted playsInline>
-                {" "}
-                <source src={AttachCMSPath(node.attribs.src)} type="video/mp4" />{" "}
-              </video>
-            </i>
-          );
-        default:
+   
+          
+        // case "video":
+        //   return <i className="story_media video _secEle prx">
+        //   <video preload="metadata" autoPlay loop muted playsInline>
+        //     {" "}
+        //     <source
+        //       src={`${CMSPath}${node.attribs.src}`}
+        //       type="video/mp4"
+        //     />{" "}
+        //   </video>
+        // </i>;
+        default: return node
       }
     }
   };
   return (
-    <section id="stories">
+    <section id="stories" style={{ visibility: "hidden" }} data-url={dataUrl}>
       <div className="story_wrap flex">
         <h4 className="_inOut">{t("homepage.our_story")}</h4>
 
         <div className="story_head">
           <i
             className="story_media img left load_img _secEle prx"
-            data-src="imgs/section4/2.jpg"
+            data-src={`${CMSPath}${leftImage.url}`}
           ></i>
 
           <h2 className="_lines">
@@ -51,7 +62,7 @@ const StoryBlock = ({ sectionData }) => {
 
           <i
             className="story_media img right load_img _secEle prx"
-            data-src="imgs/section4/3.jpg"
+            data-src={`${CMSPath}${rightImage.url}`}
           ></i>
         </div>
 

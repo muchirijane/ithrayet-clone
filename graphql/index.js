@@ -1,0 +1,40 @@
+import { GET_HOMEPAGE_DATA } from "./homepage";
+import {
+  GET_EDITIONS_DATA,
+  GET_EDITION_SLUGS,
+  GET_EDITION_DATA,
+} from "./editions";
+import { GET_STORIES_DATA } from "./stories";
+
+import { GET_ARTICLES_SLUGS, GET_ARTICLE_DATA } from "./article";
+import { GET_CREATIVES_DATA, GET_CREATIVES_SLUGS } from "./creatives";
+import {
+  GET_JOINEXPERIENCE_DATA,
+  GET_EXPERIENCE_SLUGS,
+  GET_EXPERIENCE_DATA,
+} from "./experience";
+import { GET_GALLERY_DATA } from "./gallery";
+import { GET_CONTACT_US_DATA } from "./contact-us";
+import { GET_DOWNLOAD_ISSUES_DATA } from "./downloads";
+import { GET_JOURNEY_DATA } from "./journey";
+import { GET_SYMBOLS_DATA } from "./symbols";
+
+export {
+  GET_HOMEPAGE_DATA,
+  GET_EDITIONS_DATA,
+  GET_EDITION_SLUGS,
+  GET_EDITION_DATA,
+  GET_ARTICLES_SLUGS,
+  GET_ARTICLE_DATA,
+  GET_STORIES_DATA,
+  GET_CREATIVES_DATA,
+  GET_CREATIVES_SLUGS,
+  GET_JOINEXPERIENCE_DATA,
+  GET_EXPERIENCE_DATA,
+  GET_EXPERIENCE_SLUGS,
+  GET_GALLERY_DATA,
+  GET_CONTACT_US_DATA,
+  GET_DOWNLOAD_ISSUES_DATA,
+  GET_JOURNEY_DATA,
+  GET_SYMBOLS_DATA
+};

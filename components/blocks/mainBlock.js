@@ -1,14 +1,15 @@
 import Elements from "../elements";
 import useTranslation from "next-translate/useTranslation";
+import { CMSPath } from "../../helpers/imageCMSPath";
 
-const MainBlock = ({ editions, sectionData }) => {
+const MainBlock = ({ editions, sectionData, dataUrl }) => {
   const { t } = useTranslation("mainblock");
-  const {title, quote} = sectionData;
+  const { title, quote } = sectionData;
   return (
-    <section id="main">
+    <section id="main" style={{ visibility: "hidden" }} data-url={dataUrl}>
       <div className="main_heading flex full_bg">
         <p>{title}</p>
-        <h3 dangerouslySetInnerHTML={{__html: quote}}/>
+        <h3 dangerouslySetInnerHTML={{ __html: quote }} />
       </div>
 
       <div id="container"></div>
@@ -20,7 +21,7 @@ const MainBlock = ({ editions, sectionData }) => {
               <Elements.EditionHomepage
                 key={key}
                 id={key}
-                imgUrl={val.cover.url}
+                imgUrl={`${CMSPath}${val.cover.url}`}
                 title={val.title}
                 subTitle={"Febuary 2021"}
               />
@@ -29,8 +30,10 @@ const MainBlock = ({ editions, sectionData }) => {
         </div>
       </div>
 
-      <div className="circle_set no-select buildup" dangerouslySetInnerHTML={{__html: t('explore_text')}}/>
-          
+      <div
+        className="circle_set no-select buildup"
+        dangerouslySetInnerHTML={{ __html: t("explore_text") }}
+      />
     </section>
   );
 };

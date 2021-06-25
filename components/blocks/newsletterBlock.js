@@ -1,16 +1,15 @@
 import useTranslation from "next-translate/useTranslation";
-
-const NewsLetterBlock = ({sectionData}) => {
+import Link from "next/link";
+import { NewsLetterNav } from "../../constants/nav_constants";
+const NewsLetterBlock = ({ sectionData }) => {
   const { t } = useTranslation("common");
-  const {title, description} = sectionData;
+  const { title, description } = sectionData;
+
   return (
-    <section id="newsletter">
+    <section id="newsletter" style={{ visibility: "hidden" }}>
       <div className="section_content flex full_bg">
         <div className="content_set no-padding">
-          <h3
-            className="_inOut"
-            dangerouslySetInnerHTML={{ __html: title }}
-          />
+          <h3 className="_inOut" dangerouslySetInnerHTML={{ __html: title }} />
           <h6
             className="_inOut"
             dangerouslySetInnerHTML={{ __html: description }}
@@ -76,37 +75,17 @@ const NewsLetterBlock = ({sectionData}) => {
           </div>
           <div className="sub_footer">
             <ul className="flex">
-              <li>
-                <a href="journey_en.php" className="_inOut">
-                  Our Journey
-                </a>
-              </li>
-              <li>
-                <a href="downloads_en.php" className="_inOut">
-                  Download Issues
-                </a>
-              </li>
-              <li>
-                <a href="static_en.php" className="_inOut">
-                  Terms &amp; Conditions
-                </a>
-              </li>
-              <li>
-                <a href="static_en.php" className="_inOut">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="contact_en.php" className="_inOut">
-                  Contact Us
-                </a>
-              </li>
+              {NewsLetterNav.map((link, key) => (
+                <li key={`link_nlf-${key}`}>
+                  <Link href={link.href}>
+                    <a className="_inOut">{link.name}</a>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
-        <p className="copyrights _inOut">
-          {t('copyrights')}
-        </p>
+        <p className="copyrights _inOut">{t("copyrights")}</p>
       </div>
     </section>
   );
