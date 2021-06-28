@@ -1,6 +1,6 @@
 import { CMSPath } from "../../../../helpers/imageCMSPath";
 import Link from "next/link";
-import SVG from "react-inlinesvg";
+import SVGComp from "../../../SVGComp";
 
 const ImageStyleWT = (props) => {
   const { content } = props;
@@ -26,7 +26,7 @@ const ImageStyleWT = (props) => {
                     data-scroll-direction="vertical"
                     data-scroll-speed="1"
                   >
-                    <img
+                    <img crossorigin="anonymous"
                       className="load_img"
                       data-src={`${CMSPath}${image.image.url}`}
                       width="100%"
@@ -52,7 +52,7 @@ const ImageStyleWT = (props) => {
                     )}
                     {image.symbol && (
                       <div className="col_shape">
-                        <SVG src={`${CMSPath}${image.symbol.symbol.url}`} />
+                        <SVGComp src={`${image.symbol.symbol.url}`} />
                       </div>
                     )}
                   </div>

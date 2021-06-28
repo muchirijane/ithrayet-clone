@@ -5,7 +5,7 @@ import { CMSPath } from "../helpers/imageCMSPath";
 import client from "../lib/apollo";
 import _ from "lodash";
 import FeedbackForm from "../components/forms/Feedback";
-import SVG from "react-inlinesvg";
+import SVGComp from "../components/SVGComp";
 
 export const getStaticProps = async ({ locale }) => {
   const { data } = await client.query({
@@ -79,7 +79,7 @@ const ContactUs = (props) => {
                     data-scroll-direction="vertical"
                     data-scroll-speed="3"
                   >
-                    <img
+                    <img crossorigin="anonymous"
                       className="load_img"
                       data-src={`${CMSPath}${contactData.creative.images[0].image.url}`}
                       width="100%"
@@ -94,7 +94,7 @@ const ContactUs = (props) => {
                     data-scroll-direction="vertical"
                     data-scroll-speed="1"
                   >
-                    <img
+                    <img crossorigin="anonymous"
                       className="load_img"
                       data-src={`${CMSPath}${contactData.creative.images[1].image.url}`}
                       width="100%"
@@ -121,7 +121,7 @@ const ContactUs = (props) => {
                       <div className="box_pattern flex">
                         {/* {_.times(4, (i) => {
                       console.log(i);
-                    <SVG
+                    <SVGComp
                       src={`${CMSPath}${contactData.creative.symbolCard.symbol.symbol.url}`}
                       key={`symbol-${i}`}
                     />;
@@ -292,7 +292,7 @@ const ContactUs = (props) => {
                     data-scroll-direction="vertical"
                     data-scroll-speed="1"
                   >
-                    <img
+                    <img crossorigin="anonymous"
                       className="load_img"
                       data-src={`${CMSPath}${contactData.creative.images[2].image.url}`}
                       width="100%"

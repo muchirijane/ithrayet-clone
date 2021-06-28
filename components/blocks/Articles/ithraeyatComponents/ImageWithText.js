@@ -15,7 +15,7 @@ const ImageWithText = (props) => {
                 data-scroll-direction="vertical"
                 data-scroll-speed="1"
               >
-                <img
+                <img crossorigin="anonymous"
                   className="load_img"
                   data-src={`${CMSPath}${content.coverImage.image.url}`}
                   width="100%"
@@ -56,7 +56,7 @@ const ImageWithText = (props) => {
               data-scroll-speed="2"
             >
               <div className="side_img">
-                <img
+                <img crossorigin="anonymous"
                   className="load_img"
                   data-src={`${CMSPath}${content.parallaxImageWT_images[0].image.url}`}
                   width="100%"
@@ -84,7 +84,7 @@ const ImageWithText = (props) => {
                 data-scroll-direction="vertical"
                 data-scroll-speed="1"
               >
-                <img
+                <img crossorigin="anonymous"
                   className="load_img"
                   data-src={`${CMSPath}${content.parallaxImageWT_images[1].image.url}`}
                   width="100%"

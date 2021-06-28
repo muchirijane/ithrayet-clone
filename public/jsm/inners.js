@@ -2288,7 +2288,7 @@ function appendImgs(){
 
 		t.removeAttr('data-src').attr("src", s).removeClass('load_img');
 
-		$('<img src="'+ s +'">').on('load',function(){
+		$('<img crossorigin="anonymous" src="'+ s +'">').on('load',function(){
 
 			clearTimeout($.data(this, 'imgsTimer'));
 

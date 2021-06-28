@@ -1,4 +1,4 @@
-import SVG from "react-inlinesvg";
+import SVGComp from "../SVGComp";
 
 const CreativeArtist = ({ dist, artistName, svgUrl, profileUrl }) => {
   return (
@@ -15,8 +15,8 @@ const CreativeArtist = ({ dist, artistName, svgUrl, profileUrl }) => {
           </svg>
         </div>
 
-        <SVG className="sign sign_a" src={`${svgUrl}`} />
-        <SVG className="sign sign_b" src={`${svgUrl}`} />
+        <SVGComp classes="sign sign_a" url_path={`${svgUrl}`} />
+        <SVGComp classes="sign sign_b" url_path={`${svgUrl}`} />
 
         <div className="crv_img">
           <i className="load_bg" data-src={profileUrl}></i>

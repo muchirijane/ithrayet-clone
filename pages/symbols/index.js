@@ -4,7 +4,7 @@ import { CMSPath } from "../../helpers/imageCMSPath";
 import { format } from "date-fns";
 import client from "../../lib/apollo";
 import Link from "next/link";
-import SVG from "react-inlinesvg";
+import SVGComp from "../../components/SVGComp";
 
 export const getStaticProps = async ({ locale }) => {
   const { data } = await client.query({
@@ -46,7 +46,7 @@ const Symbols = (props) => {
                     >
                       <a className="result_set has_svg">
                         <div className="result_img">
-                          <SVG src={`${CMSPath}${symbol.symbol.url}`} />
+                          <SVGComp url_path={`${symbol.symbol.url}`} />
                         </div>
                         <div className="f_30 uppercase">{symbol.Title}</div>
                         <div className="result_title">

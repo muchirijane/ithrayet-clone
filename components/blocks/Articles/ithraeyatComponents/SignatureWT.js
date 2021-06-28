@@ -1,5 +1,5 @@
 import { CMSPath } from "../../../../helpers/imageCMSPath";
-import SVG from "react-inlinesvg";
+import SVGComp from "../../../SVGComp";
 
 const SignatureWT = (props) => {
   const { content } = props;
@@ -17,7 +17,7 @@ const SignatureWT = (props) => {
 
               <div className="text_side">
                 <div className="sign_set">
-                  <SVG src={`${CMSPath}${content.signatureWT_sign.url}`} />
+                  <SVGComp url_path={`${content.signatureWT_sign.url}`} />
                 </div>
               </div>
             </div>

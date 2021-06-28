@@ -4,7 +4,7 @@ import Link from "next/link";
 import { CMSPath } from "../../helpers/imageCMSPath";
 import { GET_CREATIVE_DATA } from "../../graphql/creatives";
 import Layout from "../../components/Layout";
-import SVG from "react-inlinesvg";
+import SVGComp from "../../components/SVGComp";
 
 export const getStaticPaths = async ({ locales }) => {
   const { data } = await client.query({
@@ -143,7 +143,7 @@ const Creative = (props) => {
 
                     <div className="inner_side">
                       <div className="side_img">
-                        <img
+                        <img crossorigin="anonymous"
                           className="preloadIMG"
                           data-img={`${CMSPath}${creative.profileImage.url}`}
                           width="100%"
@@ -151,9 +151,7 @@ const Creative = (props) => {
                           alt={creative.profileImage.alternativeText}
                         />
                         <div className="symbol floating">
-                          <SVG
-                            src={`${CMSPath}${creative.symbol.symbol.url}`}
-                          />
+                          <SVGComp url_path={`${creative.symbol.symbol.url}`} />
                         </div>
                       </div>
                     </div>
@@ -166,7 +164,7 @@ const Creative = (props) => {
                   <div className="section_sides text_sides flex">
                     <div className="text_side">
                       <div className="sign">
-                        <SVG src={`${CMSPath}${creative.signature.url}`} />
+                        <SVGComp url_path={`${creative.signature.url}`} />
                       </div>
 
                       <div className="side_img">
@@ -193,7 +191,7 @@ const Creative = (props) => {
                       </div>
 
                       <div className="jr_row_image rounded has_margin double">
-                        <img
+                        <img crossorigin="anonymous"
                           className="load_img"
                           data-src={`${CMSPath}${creative.images[0].image.url}`}
                           width="100%"
@@ -203,7 +201,7 @@ const Creative = (props) => {
                       </div>
 
                       <div className="symbol floating">
-                        <SVG src={`${CMSPath}${creative.symbol.symbol.url}`} />
+                        <SVGComp url_path={`${creative.symbol.symbol.url}`} />
                       </div>
                     </div>
 
@@ -217,7 +215,7 @@ const Creative = (props) => {
                       />
 
                       <div className="jr_row_image rounded has_margin">
-                        <img
+                        <img crossorigin="anonymous"
                           className="load_img"
                           data-src={`${CMSPath}${creative.images[1].image.url}`}
                           width="100%"
@@ -234,7 +232,7 @@ const Creative = (props) => {
             <section>
               <div className="section_content">
                 <div className="jr_row_image rounded floating">
-                  <img
+                  <img crossorigin="anonymous"
                     className="load_img"
                     data-src={`${CMSPath}${creative.images[2].image.url}`}
                     width="100%"

@@ -25,7 +25,7 @@ const TypeRight = (props) => {
                 data-scroll-speed="2"
                 
               >
-                <img
+                <img crossorigin="anonymous"
                   className="load_img"
                   data-src={`${CMSPath}${image.image.url}`}
                   width="100%"

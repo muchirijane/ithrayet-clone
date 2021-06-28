@@ -2,7 +2,7 @@ import { CMSPath } from "../../../../helpers/imageCMSPath";
 import Link from "next/link";
 import LargeQuote from "./quoteSvg/largeQuote";
 import SmallQuote from "./quoteSvg/smallQuote";
-import SVG from "react-inlinesvg";
+import SVGComp from "../../../SVGComp";
 
 const QuoteWithImage = (props) => {
   const { content } = props;
@@ -53,7 +53,7 @@ const QuoteWithImage = (props) => {
               </div>
 
               <div className="text_side">
-                <img
+                <img crossorigin="anonymous"
                   className="load_img"
                   data-src={`${CMSPath}${content.quoteWithImage_image.image.url}`}
                   width="100%"
@@ -62,8 +62,8 @@ const QuoteWithImage = (props) => {
                 />
                 <div className="info_line">
                   <div className="info_shape">
-                    <SVG
-                      src={`${CMSPath}${content.quoteWithImage_image.symbol.symbol.url}`}
+                    <SVGComp
+                      url_path={`${content.quoteWithImage_image.symbol.symbol.url}`}
                     />
                   </div>
                   <div className="f_14">

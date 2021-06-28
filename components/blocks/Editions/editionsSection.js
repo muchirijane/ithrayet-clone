@@ -20,7 +20,7 @@ const EditionsSection = (props) => {
             {edition.articles.map((article, index) => {
               if (index < 5) {
                 return (
-                  <img
+                  <img crossorigin="anonymous"
                     className="preloadIMG"
                     data-img={`${CMSPath}${article.cover.url}`}
                     width="100%"

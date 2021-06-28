@@ -1,6 +1,6 @@
 import { format } from "date-fns";
-import { CMSPath } from "../../../helpers/imageCMSPath"; 
-import SVG from "react-inlinesvg";
+import { CMSPath } from "../../../helpers/imageCMSPath";
+import SVGComp from "../../SVGComp";
 import Link from "next/link";
 const BannerSection = (props) => {
   const {
@@ -53,7 +53,7 @@ const BannerSection = (props) => {
             <h1>{title}</h1>
           </div>
           <div className="cover_image standerd">
-            <img
+            <img crossorigin="anonymous"
               className="preloadIMG"
               data-img={`${CMSPath}${cover.url}`}
               width="100%"
@@ -67,7 +67,7 @@ const BannerSection = (props) => {
           <div id="scratch" className="no-select">
             <Link href={`/symbols/${symbol.slug}`}>
               <a target="_blank" className="full_bg flex">
-                <SVG src={`${CMSPath}${symbol.symbol.url}`} />
+                <SVGComp url_path={`${symbol.symbol.url}`} />
               </a>
             </Link>
 

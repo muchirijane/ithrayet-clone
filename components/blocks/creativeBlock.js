@@ -39,7 +39,7 @@ const CreativeBlock = ({ artists, sectionData, dataUrl }) => {
                         key={key + val.firstName}
                         dist={key}
                         artistName={`${val.firstName} ${val.lastName}`}
-                        svgUrl={`${CMSPath}${val.signature.url}`}
+                        svgUrl={`${val.signature.url}`}
                         profileUrl={`${CMSPath}${val.profileImage.url}`}
                       />
                     );

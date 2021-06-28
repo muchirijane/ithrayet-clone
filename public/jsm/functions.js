@@ -857,7 +857,7 @@ function homeFunction(){
 			getSub1 = cardSelector.attr('data-img1'),
 			getSub2 = cardSelector.attr('data-img2');
 
-		cardFaceBack.html('<img src="'+THIS_getCover+'" alt="'+getTitle+'">')
+		cardFaceBack.html('<img crossorigin="anonymous" src="'+THIS_getCover+'" alt="'+getTitle+'">')
 
 		$('.ed_sub_image').eq(0).html('<img src="'+getSub1+'" alt="'+getTitle+'" crossorigin="anonymous">')
 

@@ -467,7 +467,7 @@ const OurJourney = (props) => {
                     data-scroll-direction="vertical"
                     data-scroll-speed="2"
                   >
-                    <img
+                    <img crossorigin="anonymous"
                       className="load_img"
                       data-src={`${CMSPath}${journey.ithraeyat.images[0].image.url}`}
                       width="100%"
@@ -482,7 +482,7 @@ const OurJourney = (props) => {
                     data-scroll-direction="horizontal"
                     data-scroll-speed="-2"
                   >
-                    <img
+                    <img crossorigin="anonymous"
                       className="load_img"
                       data-src={`${CMSPath}${journey.ithraeyat.images[1].image.url}`}
                       width="100%"
@@ -499,7 +499,7 @@ const OurJourney = (props) => {
                     data-scroll-direction="horizontal"
                     data-scroll-speed="2"
                   >
-                    <img
+                    <img crossorigin="anonymous"
                       className="load_img"
                       data-src={`${CMSPath}${journey.ithraeyat.images[2].image.url}`}
                       width="100%"
@@ -509,7 +509,7 @@ const OurJourney = (props) => {
                   </div>
 
                   <div className="jr_row_image suqared">
-                    <img
+                    <img crossorigin="anonymous"
                       className="load_img"
                       data-src={`${CMSPath}${journey.ithraeyat.images[3].image.url}`}
                       width="100%"
@@ -718,7 +718,7 @@ const OurJourney = (props) => {
                   >
                     <div className="mstones_row flex">
                       <div className="mstones_img">
-                        <img
+                        <img crossorigin="anonymous"
                           className="load_img"
                           data-src={`${CMSPath}${milestone.images[0].image.url}`}
                           width="100%"
@@ -728,7 +728,7 @@ const OurJourney = (props) => {
                       </div>
 
                       <div className="mstones_img">
-                        <img
+                        <img crossorigin="anonymous"
                           className="load_img"
                           data-src={`${CMSPath}${milestone.images[1].image.url}`}
                           width="100%"
@@ -738,7 +738,7 @@ const OurJourney = (props) => {
                       </div>
 
                       <div className="mstones_img">
-                        <img
+                        <img crossorigin="anonymous"
                           className="load_img"
                           data-src={`${CMSPath}${milestone.images[2].image.url}`}
                           width="100%"
@@ -750,7 +750,7 @@ const OurJourney = (props) => {
 
                     <div className="mstones_row flex">
                       <div className="mstones_img">
-                        <img
+                        <img crossorigin="anonymous"
                           className="load_img"
                           data-src={`${CMSPath}${milestone.images[3].image.url}`}
                           width="100%"
@@ -760,7 +760,7 @@ const OurJourney = (props) => {
                       </div>
 
                       <div className="mstones_img">
-                        <img
+                        <img crossorigin="anonymous"
                           className="load_img"
                           data-src={`${CMSPath}${milestone.images[4].image.url}`}
                           width="100%"
