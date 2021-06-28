@@ -19,7 +19,7 @@ const ImageStyle = (props) => {
                     data-scroll-direction="vertical"
                     data-scroll-speed="1"
                   >
-                    <img crossOrigin="anonymous"
+                    <img
                       className="load_img"
                       data-src={`${CMSPath}${image.image.url}`}
                       width="100%"

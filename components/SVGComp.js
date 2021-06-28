@@ -3,7 +3,6 @@ import { CMSPath } from "../helpers/imageCMSPath";
 
 const SVGComp = (props) => {
   const { url_path, classes } = props;
-  const headers = new Headers();
 
   return (
     <SVG

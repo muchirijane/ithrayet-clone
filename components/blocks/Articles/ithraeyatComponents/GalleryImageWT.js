@@ -51,7 +51,7 @@ const GalleryImageWT = (props) => {
               {content.images &&
                 content.images.map((image, key) => (
                   <div className="cs_col">
-                    <img crossOrigin="anonymous"
+                    <img
                       className="load_img"
                       data-src={`${CMSPath}${image.image.url}`}
                       width="100%"

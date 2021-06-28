@@ -124,7 +124,7 @@ const DonwloadIssues = (props) => {
                       target="_blank"
                       data-title="Download"
                     >
-                      <img crossOrigin="anonymous"
+                      <img
                         class="preloadIMG"
                         data-img={`${CMSPath}${edition.cover.url}`}
                         alt={edition.cover.alternativeText}
@@ -144,7 +144,7 @@ const DonwloadIssues = (props) => {
                         data-title="Downlaod"
                       >
                         <div class="grid_img">
-                          <img crossOrigin="anonymous"
+                          <img
                             class="load_img"
                             data-src={`${CMSPath}${edition.cover.url}`}
                             alt={edition.cover.alternativeText}

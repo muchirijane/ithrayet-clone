@@ -13,7 +13,7 @@ const BigImageTitle = (props) => {
             </div>
 
             <div className="media_set">
-              <img crossOrigin="anonymous"
+              <img
                 className="load_img"
                 data-src={`${CMSPath}${content.bigImageWT_image.image.url}`}
                 width="100%"

@@ -123,7 +123,7 @@ const SymbolPage = (props) => {
                     data-scroll-direction="vertical"
                     data-scroll-speed="2"
                   >
-                    <img crossOrigin="anonymous"
+                    <img
                       className="load_img"
                       data-src={`${CMSPath}${
                         symbol && symbol.Inspiration.image.url

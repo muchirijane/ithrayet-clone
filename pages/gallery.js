@@ -42,7 +42,7 @@ const Gallery = (props) => {
                       >
                         <a className="gallery_block _curTL1" data-title="+">
                           <div className="gallery_img">
-                            <img crossOrigin="anonymous"
+                            <img
                               className="load_img"
                               data-src={`${CMSPath}${article.cover.url}`}
                               width="100%"

@@ -19,7 +19,7 @@ const ImageStyleFullWidth = (props) => {
                 data-scroll-direction="vertical"
                 data-scroll-speed="2"
               >
-                <img crossOrigin="anonymous"
+                <img
                   className="load_img"
                   data-src={`${CMSPath}${content.imageFullWidth_image[0].image.url}`}
                   width="100%"
@@ -48,7 +48,7 @@ const ImageStyleFullWidth = (props) => {
                 data-scroll-direction="vertical"
                 data-scroll-speed="3"
               >
-                <img crossOrigin="anonymous"
+                <img
                   className="load_img"
                   data-src={`${CMSPath}${content.imageFullWidth_image[1].image.url}`}
                   width="100%"

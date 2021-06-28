@@ -211,7 +211,7 @@ $(window).on("load", function(){
 
 							t.attr('src', s).removeAttr('data-img');
 
-							$('<img src="'+ s +'" crossorigin="anonymous">').on('load',function(){
+							$('<img src="'+ s +'">').on('load',function(){
 
 								LoadingPerc = (getLoaded+1) / preloadIMGSrc.length
 
@@ -508,7 +508,7 @@ function pageScroll(val){
 		Sketch.setPosition(0)
 
 		Sketch.imageStore.forEach(o=>{
-			o.img.crossOrigin = "anonymous";
+		 
 			let bounds = o.img.getBoundingClientRect()
 
 			if (o.mesh.material.uniforms.uMouseMoveStrength.value > -1 && lastScrollVal != scrollVal && $.inArray(o, isPlaying) == -1) {
@@ -2288,7 +2288,7 @@ function appendImgs(){
 
 		t.removeAttr('data-src').attr("src", s).removeClass('load_img');
 
-		$('<img crossorigin="anonymous" src="'+ s +'">').on('load',function(){
+		$('<img src="'+ s +'">').on('load',function(){
 
 			clearTimeout($.data(this, 'imgsTimer'));
 
@@ -2885,7 +2885,7 @@ function webGL(){
 				this.materials = []
 
 				this.imageStore = this.images.map(img=>{
-					img.crossOrigin = "anonymous";
+					 
 					let bounds = img.getBoundingClientRect()
 
 					let geometry = new THREE.PlaneBufferGeometry(1,1,10,10);
@@ -2923,7 +2923,7 @@ function webGL(){
 				if(this.imageStore) {
 
 					this.imageStore.forEach(o=>{
-						o.img.crossOrigin = "anonymous";
+	 
 						let bounds = o.img.getBoundingClientRect()
 						o.mesh.scale.set(bounds.width, bounds.height, 1)
 						o.mesh.position.y = (val*2) + ( - bounds.top + this.height/2 - bounds.height/2);

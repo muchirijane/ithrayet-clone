@@ -16,7 +16,7 @@ const ImageLandscape = (props) => {
               }
             >
               <div className="ds_col">
-                <img crossOrigin="anonymous"
+                <img
                   className="load_img"
                   data-src={`${CMSPath}${content.parallaxLS_imageTitle.image.url}`}
                   width="100%"
@@ -36,7 +36,7 @@ const ImageLandscape = (props) => {
                 data-scroll-direction="vertical"
                 data-scroll-speed="2"
               >
-                <img crossOrigin="anonymous"
+                <img
                   className="load_img"
                   data-src={`${CMSPath}${content.imageTitleDescription.image.url}`}
                   width="100%"

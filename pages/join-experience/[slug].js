@@ -133,7 +133,7 @@ const Experience = (props) => {
                   <div class="section_sides inner_sides flex">
                     <div class="inner_side">
                       <div class="side_img">
-                        <img crossOrigin="anonymous"
+                        <img
                           class="load_img"
                           data-src={`${CMSPath}${project.showcase.images[0].image.url}`}
                           width="100%"
@@ -188,7 +188,7 @@ const Experience = (props) => {
                       data-scroll-speed="2"
                     >
                       <div class="side_img">
-                        <img crossOrigin="anonymous"
+                        <img
                           class="load_img"
                           data-src={`${CMSPath}${project.showcase.images[1].image.url}`}
                           width="100%"
@@ -211,7 +211,7 @@ const Experience = (props) => {
                       </div>
 
                       <div class="side_img">
-                        <img crossOrigin="anonymous"
+                        <img
                           class="load_img"
                           data-src={`${CMSPath}${project.showcase.images[2].image.url}`}
                           width="100%"
@@ -235,7 +235,7 @@ const Experience = (props) => {
                       </div>
 
                       <div class="side_img">
-                        <img crossOrigin="anonymous"
+                        <img
                           class="load_img"
                           data-src={`${CMSPath}${project.showcase.images[3].image.url}`}
                           width="100%"
@@ -268,7 +268,7 @@ const Experience = (props) => {
                         data-scroll-direction="vertical"
                         data-scroll-speed="1"
                       >
-                        <img crossOrigin="anonymous"
+                        <img
                           class="load_img"
                           data-src={`${CMSPath}${project.bottomImages[0].image.url}`}
                           width="100%"
@@ -299,7 +299,7 @@ const Experience = (props) => {
                       data-scroll-speed="2"
                     >
                       <div class="side_img">
-                        <img crossOrigin="anonymous"
+                        <img
                           class="load_img"
                           data-src={`${CMSPath}${project.bottomImages[1].image.url}`}
                           width="100%"

@@ -410,7 +410,7 @@ preloadPictures = function(pictureUrls, callback) {
 		loaded = 0;
 
 	for (i = 0, j = pictureUrls.length; i < j; i++) {(function (img, src) {
-		img.crossOrigin = "anonymous";
+	 
 		img.onload = function () {
 			if (++loaded == pictureUrls.length && callback) {
 				callback();
@@ -438,7 +438,7 @@ preloadPictures = function(pictureUrls, callback) {
 
 				if(img){
 
-					$(this).find('i').append('<img src="'+img+'" alt="'+title+'" crossorigin="anonymous">')
+					$(this).find('i').append('<img src="'+img+'" alt="'+title+'">')
 
 					$(this).removeAttr('data-img')
 				}
@@ -446,7 +446,7 @@ preloadPictures = function(pictureUrls, callback) {
 			})
 
 		}
-		img.crossOrigin = "anonymous";
+ 
 		img.src = src;
 		img.onerror = function () {console.log('Imgages Loading Error')};
 
@@ -604,7 +604,7 @@ function homeFunction(){
 			this.materials = []
 
 			this.imageStore = this.images.map(img=>{
-				img.crossOrigin = "anonymous";
+				 
 
 				let bounds = img.getBoundingClientRect()
 
@@ -858,11 +858,11 @@ function homeFunction(){
 			getSub1 = cardSelector.attr('data-img1'),
 			getSub2 = cardSelector.attr('data-img2');
 
-		cardFaceBack.html('<img crossorigin="anonymous" src="'+THIS_getCover+'" alt="'+getTitle+'">')
+		cardFaceBack.html('<img src="'+THIS_getCover+'" alt="'+getTitle+'">')
 
-		$('.ed_sub_image').eq(0).html('<img src="'+getSub1+'" alt="'+getTitle+'" crossorigin="anonymous">')
+		$('.ed_sub_image').eq(0).html('<img src="'+getSub1+'" alt="'+getTitle+'">')
 
-		$('.ed_sub_image').eq(1).html('<img src="'+getSub2+'" alt="'+getTitle+'" crossorigin="anonymous">')
+		$('.ed_sub_image').eq(1).html('<img src="'+getSub2+'" alt="'+getTitle+'">')
 
 		if(cardTL) {cardTL.kill()}
 
@@ -912,7 +912,7 @@ function homeFunction(){
 
 		function prepCard(){
 
-			cardFaceFront.html('<img src="'+THIS_getCover+'" alt="'+getTitle+'" crossorigin="anonymous">')
+			cardFaceFront.html('<img src="'+THIS_getCover+'" alt="'+getTitle+'">')
 
 			preloadPictures([NEXT_getCover, PREV_getCover, getSub1, getSub2], function(){ nextCardReady = true })
 
@@ -1059,7 +1059,7 @@ function homeFunction(){
 			var x;
 
 			pageLang == 'en' ? x = ( slide.target + flkty.x ) * -1/3 : x = ( slide.target + flkty.x ) * 1/3;
-			img.crossOrigin = "anonymous";
+		 
 			img.style.transform = 'translateX( ' + x  + 'px)';
 		});
 
@@ -2021,7 +2021,7 @@ function appendImgs(){
 		var t = $(this),
 			s = t.attr('data-src');
 
-		t.append('<img src="'+s+'" alt="" crossorigin="anonymous">');
+		t.append('<img src="'+s+'" alt="">');
 
 	});
 

@@ -25,7 +25,7 @@ const TypeLandscape = (props) => {
               </div>
 
               <div className="text_side">
-                <img crossOrigin="anonymous"
+                <img
                   className="load_img"
                   data-src={`${CMSPath}${image.image.url}`}
                   width="100%"

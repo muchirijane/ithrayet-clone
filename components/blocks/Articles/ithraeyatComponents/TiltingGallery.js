@@ -23,7 +23,7 @@ const TiltingGallery = (props) => {
                   data-scroll-direction="horizontal"
                   data-scroll-speed="-1"
                 >
-                  <img crossOrigin="anonymous"
+                  <img
                     className="load_img"
                     data-src={`${CMSPath}${content.galleryImage.image.url}`}
                     width="100%"
@@ -55,7 +55,7 @@ const TiltingGallery = (props) => {
                       data-scroll-direction="horizontal"
                       data-scroll-speed={key + 2}
                     >
-                      <img crossOrigin="anonymous"
+                      <img
                         className="load_img"
                         data-src={`${CMSPath}${image.image.url}`}
                         width="100%"

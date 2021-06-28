@@ -53,7 +53,7 @@ const BannerSection = (props) => {
             <h1>{title}</h1>
           </div>
           <div className="cover_image standerd">
-            <img crossOrigin="anonymous"
+            <img
               className="preloadIMG"
               data-img={`${CMSPath}${cover.url}`}
               width="100%"

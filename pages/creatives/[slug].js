@@ -143,7 +143,7 @@ const Creative = (props) => {
 
                     <div className="inner_side">
                       <div className="side_img">
-                        <img crossOrigin="anonymous"
+                        <img
                           className="preloadIMG"
                           data-img={`${CMSPath}${creative.profileImage.url}`}
                           width="100%"
@@ -191,7 +191,7 @@ const Creative = (props) => {
                       </div>
 
                       <div className="jr_row_image rounded has_margin double">
-                        <img crossOrigin="anonymous"
+                        <img
                           className="load_img"
                           data-src={`${CMSPath}${creative.images[0].image.url}`}
                           width="100%"
@@ -215,7 +215,7 @@ const Creative = (props) => {
                       />
 
                       <div className="jr_row_image rounded has_margin">
-                        <img crossOrigin="anonymous"
+                        <img
                           className="load_img"
                           data-src={`${CMSPath}${creative.images[1].image.url}`}
                           width="100%"
@@ -232,7 +232,7 @@ const Creative = (props) => {
             <section>
               <div className="section_content">
                 <div className="jr_row_image rounded floating">
-                  <img crossOrigin="anonymous"
+                  <img
                     className="load_img"
                     data-src={`${CMSPath}${creative.images[2].image.url}`}
                     width="100%"
