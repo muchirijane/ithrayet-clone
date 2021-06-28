@@ -446,7 +446,7 @@ preloadPictures = function(pictureUrls, callback) {
 			})
 
 		}
- 
+		img.crossOrigin = "anonymous";
 		img.src = src;
 		img.onerror = function () {console.log('Imgages Loading Error')};
 
