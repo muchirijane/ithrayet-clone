@@ -8,7 +8,7 @@ const SVGComp = (props) => {
       className={classes ? classes : ""}
       src={`${CMSPath}${url_path}`}
       cacheRequests={true}
-      fetchOptions={{ headers: { "Access-Control-Allow-Origin": "*" } }}
+      fetchOptions={{ mode: 'no-cors' }}
     />
   );
 };
