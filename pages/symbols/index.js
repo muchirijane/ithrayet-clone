@@ -1,6 +1,5 @@
 import Layout from "../../components/Layout";
 import { GET_SYMBOLS_DATA } from "../../graphql";
-import { CMSPath } from "../../helpers/imageCMSPath";
 import { format } from "date-fns";
 import client from "../../lib/apollo";
 import Link from "next/link";
