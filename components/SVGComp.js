@@ -5,15 +5,7 @@ const SVGComp = (props) => {
   const { url_path, classes } = props;
 
   return (
-    <SVG
-      className={classes ? classes : ""}
-      src={`${CMSPath}${url_path}`}
-      fetchOptions={{
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-      }}
-    />
+    <SVG className={classes ? classes : ""} src={`${CMSPath}${url_path}`} />
   );
 };
 
