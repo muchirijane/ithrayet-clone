@@ -446,7 +446,7 @@ preloadPictures = function(pictureUrls, callback) {
 			})
 
 		}
-		img.crossOrigin = "";
+	
 		img.src = src;
 		img.onerror = function () {console.log('Imgages Loading Error')};
 
@@ -605,7 +605,7 @@ function homeFunction(){
 
 			this.imageStore = this.images.map(img=>{
 				 
-
+				img.crossOrigin = "";
 				let bounds = img.getBoundingClientRect()
 
 				let geometry = new THREE.PlaneBufferGeometry(1,1,10,10);
