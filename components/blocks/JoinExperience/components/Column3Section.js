@@ -17,7 +17,7 @@ const Column3Section = (props) => {
               data-scroll-speed={key + 1}
             >
               <div className="exp_img">
-                <img crossorigin="anonymous"
+                <img crossOrigin="anonymous"
                   className="load_img"
                   data-src={`${CMSPath}${card.project.cover.url}`}
                   alt={card.project.cover.alternativeText}

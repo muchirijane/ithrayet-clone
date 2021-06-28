@@ -8,7 +8,7 @@ const InteractiveMap = (props) => {
         <div className="content_a">
           <div className="content_b">
             <div className="media_set">
-              <img crossorigin="anonymous"
+              <img crossOrigin="anonymous"
                 className="load_img"
                 data-src={`${CMSPath}${content.map_image.url}`}
                 width="100%"

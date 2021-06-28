@@ -74,7 +74,7 @@ const Search = (props) => {
               <div className="search_row flex">
                 <a href="#" className="result_set">
                   <div className="result_img">
-                    <img crossorigin="anonymous"
+                    <img crossOrigin="anonymous"
                       className="load_img"
                       data-src="imgs/inners/editions/edition1-2.jpg"
                       width="100%"
@@ -90,7 +90,7 @@ const Search = (props) => {
 
                 <a href="#" className="result_set">
                   <div className="result_img">
-                    <img crossorigin="anonymous"
+                    <img crossOrigin="anonymous"
                       className="load_img"
                       data-src="imgs/inners/editions/edition2-1.jpg"
                       width="100%"
@@ -106,7 +106,7 @@ const Search = (props) => {
 
                 <a href="#" className="result_set">
                   <div className="result_img">
-                    <img crossorigin="anonymous"
+                    <img crossOrigin="anonymous"
                       className="load_img"
                       data-src="imgs/inners/editions/edition2-2.jpg"
                       width="100%"
@@ -130,7 +130,7 @@ const Search = (props) => {
               <div className="search_row flex">
                 <a href="#" className="result_set">
                   <div className="result_img">
-                    <img crossorigin="anonymous"
+                    <img crossOrigin="anonymous"
                       className="load_img"
                       data-src="imgs/inners/stories/1.jpg"
                       width="100%"
@@ -146,7 +146,7 @@ const Search = (props) => {
 
                 <a href="#" className="result_set">
                   <div className="result_img">
-                    <img crossorigin="anonymous"
+                    <img crossOrigin="anonymous"
                       className="load_img"
                       data-src="imgs/inners/stories/2.jpg"
                       width="100%"
@@ -162,7 +162,7 @@ const Search = (props) => {
 
                 <a href="#" className="result_set">
                   <div className="result_img">
-                    <img crossorigin="anonymous"
+                    <img crossOrigin="anonymous"
                       className="load_img"
                       data-src="imgs/inners/stories/3.jpg"
                       width="100%"

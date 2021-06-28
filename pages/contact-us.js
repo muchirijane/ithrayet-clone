@@ -79,7 +79,7 @@ const ContactUs = (props) => {
                     data-scroll-direction="vertical"
                     data-scroll-speed="3"
                   >
-                    <img crossorigin="anonymous"
+                    <img crossOrigin="anonymous"
                       className="load_img"
                       data-src={`${CMSPath}${contactData.creative.images[0].image.url}`}
                       width="100%"
@@ -94,7 +94,7 @@ const ContactUs = (props) => {
                     data-scroll-direction="vertical"
                     data-scroll-speed="1"
                   >
-                    <img crossorigin="anonymous"
+                    <img crossOrigin="anonymous"
                       className="load_img"
                       data-src={`${CMSPath}${contactData.creative.images[1].image.url}`}
                       width="100%"
@@ -292,7 +292,7 @@ const ContactUs = (props) => {
                     data-scroll-direction="vertical"
                     data-scroll-speed="1"
                   >
-                    <img crossorigin="anonymous"
+                    <img crossOrigin="anonymous"
                       className="load_img"
                       data-src={`${CMSPath}${contactData.creative.images[2].image.url}`}
                       width="100%"

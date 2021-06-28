@@ -605,7 +605,7 @@ function homeFunction(){
 
 			this.imageStore = this.images.map(img=>{
 				img.crossOrigin = "anonymous";
-				
+
 				let bounds = img.getBoundingClientRect()
 
 				let geometry = new THREE.PlaneBufferGeometry(1,1,10,10);

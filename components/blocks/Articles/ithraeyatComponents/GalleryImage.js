@@ -51,7 +51,7 @@ const GalleryImage = (props) => {
               {content.imageGallerySlider_images &&
                 content.imageGallerySlider_images.map((image, key) => (
                   <div className="cs_col" key={`gallery-img-${key}`}>
-                    <img crossorigin="anonymous"
+                    <img crossOrigin="anonymous"
                       className="load_img"
                       data-src={`${CMSPath}${image.image.url}`}
                       width="100%"

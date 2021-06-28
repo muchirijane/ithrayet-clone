@@ -8,7 +8,7 @@ const FullWidthImage = (props) => {
     <section>
       <div className="custom_content">
         <div className="media_set full">
-          <img crossorigin="anonymous"
+          <img crossOrigin="anonymous"
             className="load_img"
             data-src={`${CMSPath}${content.fullWidthImage_image.image.url}`}
             width="100%"

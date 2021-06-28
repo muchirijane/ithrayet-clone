@@ -19,7 +19,7 @@ const TiltingFullWidth = (props) => {
                   data-scroll-direction="horizontal"
                   data-scroll-speed="2"
                 >
-                  <img crossorigin="anonymous"
+                  <img crossOrigin="anonymous"
                     className="load_img"
                     data-src={`${CMSPath}${content.tiltImageFW_image[0].image.url}`}
                     width="100%"
@@ -49,7 +49,7 @@ const TiltingFullWidth = (props) => {
                   data-scroll-direction="horizontal"
                   data-scroll-speed="-2"
                 >
-                  <img crossorigin="anonymous"
+                  <img crossOrigin="anonymous"
                     className="load_img"
                     data-src={`${CMSPath}${content.tiltImageFW_image[1].image.url}`}
                     width="100%"

@@ -53,7 +53,7 @@ const QuoteWithImage = (props) => {
               </div>
 
               <div className="text_side">
-                <img crossorigin="anonymous"
+                <img crossOrigin="anonymous"
                   className="load_img"
                   data-src={`${CMSPath}${content.quoteWithImage_image.image.url}`}
                   width="100%"

@@ -19,7 +19,7 @@ const EditonArticle = (props) => {
               data-title="Read"
             >
               <div className="section_side img_side">
-                <img crossorigin="anonymous"
+                <img crossOrigin="anonymous"
                   className="preloadIMG"
                   data-img={`${CMSPath}${article.cover.url}`}
                   width="100%"
