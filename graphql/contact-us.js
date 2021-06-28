@@ -31,6 +31,7 @@ export const GET_CONTACT_US_DATA = gql`
             symbol {
               url
             }
+            slug
           }
         }
       }

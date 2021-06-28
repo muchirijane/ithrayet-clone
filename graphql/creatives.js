@@ -83,6 +83,7 @@ export const GET_CREATIVE_DATA = gql`
         symbol {
           url
         }
+        slug
       }
       images {
         image {

@@ -4,6 +4,36 @@ import {
 } from "../../../constants/articleComponents";
 import dynamic from "next/dynamic";
 
+const ImageStyle = dynamic(() => import("./ithraeyatComponents/ImageStyle"));
+const ImageStyleWT = dynamic(() =>
+  import("./ithraeyatComponents/ImageStyleWT")
+);
+const GalleryImage = dynamic(() =>
+  import("./ithraeyatComponents/GalleryImage")
+);
+const GalleryImageWT = dynamic(() =>
+  import("./ithraeyatComponents/GalleryImageWT")
+);
+const TiltingGallery = dynamic(() =>
+  import("./ithraeyatComponents/TiltingGallery")
+);
+const InteractiveMap = dynamic(() =>
+  import("./ithraeyatComponents/InteractiveMap")
+);
+const HoverImage = dynamic(() => import("./ithraeyatComponents/HoverImage"));
+const TiltingFullWidth = dynamic(() =>
+  import("./ithraeyatComponents/TiltingFullWidth")
+);
+const ImageWithText = dynamic(() =>
+  import("./ithraeyatComponents/ImageWithText")
+);
+const ImageLandscape = dynamic(() =>
+  import("./ithraeyatComponents/ImageLandscape")
+);
+const TextSound = dynamic(() => import("./ithraeyatComponents/TextSound"));
+const SignatureWT = dynamic(() => import("./ithraeyatComponents/SignatureWT"));
+const Signature = dynamic(() => import("./ithraeyatComponents/Signature"));
+
 const BigImageTitle = dynamic(() =>
   import("./standardComponents/BigImageTitle")
 );
@@ -65,6 +95,34 @@ const ArticleDynamicComponents = (props) => {
         return <BigImageTitle content={block} />;
       case StandardArticleComponents.FULLWIDTH_IMAGE_SECTION:
         return <FullWidthImage content={block} />;
+      case IthraeyatArticleComponents.PARALLAX_IMAGE_SECTION:
+        return <ImageStyle content={block} />;
+      case IthraeyatArticleComponents.IMAGE_GALLERY_WT_SECTION:
+        return <ImageStyleWT content={block} />;
+      case IthraeyatArticleComponents.IMAGE_GALLERYSLIDER_SECTION:
+        return <GalleryImage content={block} />;
+      case IthraeyatArticleComponents.IMAGE_GALLERY_SLIDER_WT_SECTION:
+        return <GalleryImageWT content={block} />;
+      case IthraeyatArticleComponents.TILTING_GALLERY_SECTION:
+        return <TiltingGallery content={block} />;
+      case IthraeyatArticleComponents.INTERACTIVE_MAP_SECTION:
+        return <InteractiveMap content={block} />;
+      case IthraeyatArticleComponents.HOVER_IMAGE_SECTION:
+        return <HoverImage content={block} />;
+      case IthraeyatArticleComponents.TILTING_FULLWIDTH_SECTION:
+        return <TiltingFullWidth content={block} />;
+      case IthraeyatArticleComponents.PARALLAX_IMAGE_TEXT_SECTION:
+        return <ImageWithText content={block} />;
+      case IthraeyatArticleComponents.PARALLAX_IMAGE_LANDSCAPE_SECTION:
+        return <ImageLandscape content={block} />;
+      case IthraeyatArticleComponents.TEXT_WITH_SOUND_SECTION:
+        return <TextSound content={block} />;
+      case IthraeyatArticleComponents.SIGNATURE_WO_TEXT_SECTION:
+        return <Signature content={block} />;
+
+      case IthraeyatArticleComponents.SIGNATURE_WT_SECTION:
+        return <SignatureWT content={block} />;
+
       default:
         return null;
     }

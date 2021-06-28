@@ -1,13 +1,10 @@
 const nextTranslate = require("next-translate");
-const {
-  PHASE_DEVELOPMENT_SERVER,
-  PHASE_PRODUCTION_BUILD,
-} = require("next/constants");
+const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
 
 const prodOptions = {
   env: {
-    GRAPHQL_STRAPI_URL: "http://ithraeyat-server.1020dev.com/graphql",
-    IMAGE_CMS_URL: "http://ithraeyat-server.1020dev.com",
+    GRAPHQL_STRAPI_URL: "https://ithraeyat-server.1020dev.com/graphql",
+    IMAGE_CMS_URL: "https://ithraeyat-server.1020dev.com",
   },
   domains: ["localhost", "ithraeyat-server.1020dev.com"],
 };
