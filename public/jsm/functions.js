@@ -74,7 +74,7 @@ $(window).on("load", function(){
 		$('.preloadIMG').each(function(){
 
 			var img = $(this).attr('data-img')
-
+			img.crossOrigin = ""
 			siteIMGS.push(img)
 
 		})
