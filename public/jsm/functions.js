@@ -410,7 +410,7 @@ preloadPictures = function(pictureUrls, callback) {
 		loaded = 0;
 
 	for (i = 0, j = pictureUrls.length; i < j; i++) {(function (img, src) {
-
+		img.crossOrigin = "anonymous";
 		img.onload = function () {
 			if (++loaded == pictureUrls.length && callback) {
 				callback();
@@ -604,7 +604,8 @@ function homeFunction(){
 			this.materials = []
 
 			this.imageStore = this.images.map(img=>{
-
+				img.crossOrigin = "anonymous";
+				
 				let bounds = img.getBoundingClientRect()
 
 				let geometry = new THREE.PlaneBufferGeometry(1,1,10,10);
