@@ -18,7 +18,7 @@ import { GET_CONTACT_US_DATA } from "./contact-us";
 import { GET_DOWNLOAD_ISSUES_DATA } from "./downloads";
 import { GET_JOURNEY_DATA } from "./journey";
 import { GET_SYMBOLS_DATA, GET_SYMBOLS_SLUG, GET_SYMBOL_DATA } from "./symbols";
-
+import { SEARCH_RESULTS } from "./search";
 export {
   GET_HOMEPAGE_DATA,
   GET_EDITIONS_DATA,
@@ -39,4 +39,5 @@ export {
   GET_SYMBOLS_DATA,
   GET_SYMBOLS_SLUG,
   GET_SYMBOL_DATA,
+  SEARCH_RESULTS,
 };

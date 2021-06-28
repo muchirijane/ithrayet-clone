@@ -4,7 +4,7 @@ import Link from "next/link";
 import { CMSPath } from "../../helpers/imageCMSPath";
 import { GET_CREATIVE_DATA } from "../../graphql/creatives";
 import Layout from "../../components/Layout";
-import { ReactSVG } from "react-svg";
+import SVG from "react-inlinesvg";
 
 export const getStaticPaths = async ({ locales }) => {
   const { data } = await client.query({
@@ -151,7 +151,7 @@ const Creative = (props) => {
                           alt={creative.profileImage.alternativeText}
                         />
                         <div className="symbol floating">
-                          <ReactSVG
+                          <SVG
                             src={`${CMSPath}${creative.symbol.symbol.url}`}
                           />
                         </div>
@@ -166,7 +166,7 @@ const Creative = (props) => {
                   <div className="section_sides text_sides flex">
                     <div className="text_side">
                       <div className="sign">
-                        <ReactSVG src={`${CMSPath}${creative.signature.url}`} />
+                        <SVG src={`${CMSPath}${creative.signature.url}`} />
                       </div>
 
                       <div className="side_img">
@@ -203,9 +203,7 @@ const Creative = (props) => {
                       </div>
 
                       <div className="symbol floating">
-                        <ReactSVG
-                          src={`${CMSPath}${creative.symbol.symbol.url}`}
-                        />
+                        <SVG src={`${CMSPath}${creative.symbol.symbol.url}`} />
                       </div>
                     </div>
 

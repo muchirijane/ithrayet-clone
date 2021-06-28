@@ -1,6 +1,6 @@
 import { format } from "date-fns";
-import { CMSPath } from "../../../helpers/imageCMSPath";
-import { ReactSVG } from "react-svg";
+import { CMSPath } from "../../../helpers/imageCMSPath"; 
+import SVG from "react-inlinesvg";
 import Link from "next/link";
 const BannerSection = (props) => {
   const {
@@ -67,7 +67,7 @@ const BannerSection = (props) => {
           <div id="scratch" className="no-select">
             <Link href={`/symbols/${symbol.slug}`}>
               <a target="_blank" className="full_bg flex">
-                <ReactSVG src={`${CMSPath}${symbol.symbol.url}`} />
+                <SVG src={`${CMSPath}${symbol.symbol.url}`} />
               </a>
             </Link>
 

@@ -1,5 +1,5 @@
-import { ReactSVG } from "react-svg";
 import { CMSPath } from "../../../../helpers/imageCMSPath";
+import SVG from "react-inlinesvg";
 
 const Signature = (props) => {
   const { content } = props;
@@ -11,7 +11,7 @@ const Signature = (props) => {
             <div className="section_sides signes text_sides flex">
               <div className="text_side">
                 <div className="sign_set">
-                  <ReactSVG src={`${CMSPath}${content.signature.url}`} />
+                  <SVG src={`${CMSPath}${content.signature.url}`} />
                 </div>
               </div>
             </div>

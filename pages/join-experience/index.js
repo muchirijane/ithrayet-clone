@@ -2,8 +2,6 @@ import ExperienceDynamicComponents from "../../components/blocks/JoinExperience/
 import InnerFooter from "../../components/InnerFooter";
 import Layout from "../../components/Layout";
 import client from "../../lib/apollo";
-import Link from "next/link";
-import { CMSPath } from "../../helpers/imageCMSPath";
 import { GET_JOINEXPERIENCE_DATA } from "../../graphql";
 
 export const getStaticProps = async ({ locale }) => {

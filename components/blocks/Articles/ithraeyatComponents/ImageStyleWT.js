@@ -1,6 +1,6 @@
 import { CMSPath } from "../../../../helpers/imageCMSPath";
 import Link from "next/link";
-import { ReactSVG } from "react-svg";
+import SVG from "react-inlinesvg";
 
 const ImageStyleWT = (props) => {
   const { content } = props;
@@ -52,9 +52,7 @@ const ImageStyleWT = (props) => {
                     )}
                     {image.symbol && (
                       <div className="col_shape">
-                        <ReactSVG
-                          src={`${CMSPath}${image.symbol.symbol.url}`}
-                        />
+                        <SVG src={`${CMSPath}${image.symbol.symbol.url}`} />
                       </div>
                     )}
                   </div>

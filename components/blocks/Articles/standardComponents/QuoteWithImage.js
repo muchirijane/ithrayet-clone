@@ -1,8 +1,8 @@
 import { CMSPath } from "../../../../helpers/imageCMSPath";
-import { ReactSVG } from "react-svg";
 import Link from "next/link";
 import LargeQuote from "./quoteSvg/largeQuote";
 import SmallQuote from "./quoteSvg/smallQuote";
+import SVG from "react-inlinesvg";
 
 const QuoteWithImage = (props) => {
   const { content } = props;
@@ -11,11 +11,20 @@ const QuoteWithImage = (props) => {
       <div className="custom_content">
         <div className="content_a">
           <div className="content_b">
-            <div className={content.layout.toLowerCase() === 'left' ? "section_sides inner_sides  flex" : "section_sides inner_sides reversed flex"}>
+            <div
+              className={
+                content.layout.toLowerCase() === "left"
+                  ? "section_sides inner_sides  flex"
+                  : "section_sides inner_sides reversed flex"
+              }
+            >
               <div className="text_side">
                 <div className="quote_set">
                   <strong
-                    className={content.capsTitle && "uppercase", content.isSmallQuote ? "f_40": "f_80"}
+                    className={
+                      (content.capsTitle && "uppercase",
+                      content.isSmallQuote ? "f_40" : "f_80")
+                    }
                   >
                     {content.isSmallQuote ? (
                       <SmallQuote>
@@ -53,7 +62,7 @@ const QuoteWithImage = (props) => {
                 />
                 <div className="info_line">
                   <div className="info_shape">
-                    <ReactSVG
+                    <SVG
                       src={`${CMSPath}${content.quoteWithImage_image.symbol.symbol.url}`}
                     />
                   </div>

@@ -1,10 +1,11 @@
 import Layout from "../../components/Layout";
 import { GET_SYMBOLS_DATA } from "../../graphql";
-import { ReactSVG } from "react-svg";
 import { CMSPath } from "../../helpers/imageCMSPath";
 import { format } from "date-fns";
 import client from "../../lib/apollo";
 import Link from "next/link";
+import SVG from "react-inlinesvg";
+
 export const getStaticProps = async ({ locale }) => {
   const { data } = await client.query({
     query: GET_SYMBOLS_DATA,
@@ -45,7 +46,7 @@ const Symbols = (props) => {
                     >
                       <a className="result_set has_svg">
                         <div className="result_img">
-                          <ReactSVG src={`${CMSPath}${symbol.symbol.url}`} />
+                          <SVG src={`${CMSPath}${symbol.symbol.url}`} />
                         </div>
                         <div className="f_30 uppercase">{symbol.Title}</div>
                         <div className="result_title">

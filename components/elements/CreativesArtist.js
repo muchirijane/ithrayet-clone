@@ -1,5 +1,4 @@
-import { ReactSVG } from "react-svg";
-import { CMSPath } from "../../helpers/imageCMSPath";
+import SVG from "react-inlinesvg";
 
 const CreativeArtist = ({ dist, artistName, svgUrl, profileUrl }) => {
   return (
@@ -15,10 +14,10 @@ const CreativeArtist = ({ dist, artistName, svgUrl, profileUrl }) => {
             ></path>
           </svg>
         </div>
-  
-        <ReactSVG className="sign sign_a" src={`${svgUrl}`} />
-        <ReactSVG className="sign sign_b" src={`${svgUrl}`} />
-      
+
+        <SVG className="sign sign_a" src={`${svgUrl}`} />
+        <SVG className="sign sign_b" src={`${svgUrl}`} />
+
         <div className="crv_img">
           <i className="load_bg" data-src={profileUrl}></i>
         </div>

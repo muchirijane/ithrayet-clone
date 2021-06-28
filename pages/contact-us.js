@@ -1,4 +1,3 @@
-import { ReactSVG } from "react-svg";
 import InnerFooter from "../components/InnerFooter";
 import Layout from "../components/Layout";
 import { GET_CONTACT_US_DATA } from "../graphql";
@@ -6,6 +5,7 @@ import { CMSPath } from "../helpers/imageCMSPath";
 import client from "../lib/apollo";
 import _ from "lodash";
 import FeedbackForm from "../components/forms/Feedback";
+import SVG from "react-inlinesvg";
 
 export const getStaticProps = async ({ locale }) => {
   const { data } = await client.query({
@@ -121,7 +121,7 @@ const ContactUs = (props) => {
                       <div className="box_pattern flex">
                         {/* {_.times(4, (i) => {
                       console.log(i);
-                    <ReactSVG
+                    <SVG
                       src={`${CMSPath}${contactData.creative.symbolCard.symbol.symbol.url}`}
                       key={`symbol-${i}`}
                     />;
