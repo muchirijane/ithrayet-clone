@@ -1,14 +1,16 @@
-import SVG from "react-inlinesvg";
+import { ReactSVG } from "react-svg";
 import { CMSPath } from "../helpers/imageCMSPath";
 
 const SVGComp = (props) => {
   const { url_path, classes } = props;
+
   return (
-    <SVG
+    <ReactSVG
       className={classes ? classes : ""}
       src={`${CMSPath}${url_path}`}
-      cacheRequests={true}
-      fetchOptions={{ mode: 'no-cors' }}
+      beforeInjection={(svg) => {
+        svg.setAttribute("crossorigin", "anonymous");
+      }}
     />
   );
 };
