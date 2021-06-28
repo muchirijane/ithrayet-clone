@@ -3,14 +3,10 @@ import { CMSPath } from "../helpers/imageCMSPath";
 
 const SVGComp = (props) => {
   const { url_path, classes } = props;
-
+ 
   return (
-    <SVG
-      className={classes ? classes : ""}
-      src={`${CMSPath}${url_path}`}
-      fetchOptions={{ mode: "cors" }}
-    />
+    <SVG className={classes ? classes : ""} src={`${CMSPath}${url_path}`} fetchOptions={{mode: 'cors'}}/>
   );
 };
 
-export default SVGComp;
+export default SVGComp; 

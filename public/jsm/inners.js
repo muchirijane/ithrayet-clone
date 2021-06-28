@@ -2925,6 +2925,7 @@ function webGL(){
 					this.imageStore.forEach(o=>{
 	 
 						let bounds = o.img.getBoundingClientRect()
+						o.img.crossOrigin = "";
 						o.mesh.scale.set(bounds.width, bounds.height, 1)
 						o.mesh.position.y = (val*2) + ( - bounds.top + this.height/2 - bounds.height/2);
 						o.mesh.position.x = bounds.left - this.width/2 + bounds.width/2;
