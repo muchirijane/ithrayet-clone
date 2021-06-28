@@ -9,9 +9,7 @@ const SVGComp = (props) => {
       className={classes ? classes : ""}
       src={`${CMSPath}${url_path}`}
       fetchOptions={{
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
+        mode: "same-origin",
       }}
     />
   );
