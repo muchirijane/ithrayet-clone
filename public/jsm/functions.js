@@ -74,7 +74,7 @@ $(window).on("load", function(){
 		$('.preloadIMG').each(function(){
 
 			var img = $(this).attr('data-img')
-			img.crossOrigin = ""
+			
 			siteIMGS.push(img)
 
 		})
@@ -410,7 +410,7 @@ preloadPictures = function(pictureUrls, callback) {
 		loaded = 0;
 
 	for (i = 0, j = pictureUrls.length; i < j; i++) {(function (img, src) {
-	 
+		img.crossOrigin = "";
 		img.onload = function () {
 			if (++loaded == pictureUrls.length && callback) {
 				callback();
