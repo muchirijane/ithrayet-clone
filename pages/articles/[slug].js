@@ -1,10 +1,12 @@
-import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
 import client from "../../lib/apollo";
 import { GET_ARTICLES_SLUGS, GET_ARTICLE_DATA } from "../../graphql";
 import BannerSection from "../../components/blocks/Articles/BannerSection";
 import ArticleDynamicComponents from "../../components/blocks/Articles/ArticleDynamicComponents";
-
+import { fetchAPI } from "../../helpers/api";
+import _ from "lodash";
+import { ArticleBlocksKeyReplace } from "../../helpers/arrayHelper";
+import router from "next/router";
 export const getStaticPaths = async ({ locales }) => {
   const { data } = await client.query({
     query: GET_ARTICLES_SLUGS,
@@ -35,18 +37,35 @@ export const getStaticPaths = async ({ locales }) => {
 export const getStaticProps = async (context) => {
   const slug = context.params.slug;
 
-  const { data } = await client.query({
-    query: GET_ARTICLE_DATA,
-    variables: {
-      slug: slug,
-      locale: context.locale,
-    },
-  });
+  const preview = context.preview;
+  const previewData = context.previewData;
+  let data_results;
+  if (preview) {
+    let result = await fetchAPI(`/preview-drafts/${previewData.preview_id}`);
+    data_results = result.json;
+    data_results.ArticleBlocks.map((block) => {
+      block.__component = `Component${_.upperFirst(
+        _.camelCase(block.__component)
+      )}`;
+    });
+    data_results = ArticleBlocksKeyReplace(data_results);
+  } else {
+    const { data } = await client.query({
+      query: GET_ARTICLE_DATA,
+      variables: {
+        slug: slug,
+        locale: context.locale,
+      },
+    });
+    data_results = data;
+  }
 
-  if (data) {
+  if (data_results) {
     return {
       props: {
-        article: data.articles.length && data.articles[0],
+        article: preview
+          ? data_results
+          : data_results.articles.length && data_results.articles[0],
       },
       revalidate: 60,
     };

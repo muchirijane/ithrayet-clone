@@ -3,6 +3,7 @@ import InnerFooter from "../../components/InnerFooter";
 import { GET_SYMBOLS_SLUG, GET_SYMBOL_DATA } from "../../graphql";
 import { CMSPath } from "../../helpers/imageCMSPath";
 import client from "../../lib/apollo";
+import { fetchAPI } from "../../helpers/api";
 
 export const getStaticPaths = async ({ locales }) => {
   const { data } = await client.query({
@@ -33,20 +34,32 @@ export const getStaticPaths = async ({ locales }) => {
 
 export const getStaticProps = async (context) => {
   const slug = context.params.slug;
+  const preview = context.preview;
+  const previewData = context.previewData;
+  let data_results;
+  if (preview) {
+    let result = await fetchAPI(`/preview-drafts/${previewData.preview_id}`);
+    data_results = result.json;
+  } else {
+    const { data } = await client.query({
+      query: GET_SYMBOL_DATA,
+      variables: {
+        slug: slug,
+        locale: context.locale,
+      },
+    });
+    data_results = data;
+  }
 
-  const { data } = await client.query({
-    query: GET_SYMBOL_DATA,
-    variables: {
-      slug: slug,
-      locale: context.locale,
-    },
-  });
-
-  if (data) {
+  if (data_results) {
     return {
       props: {
-        symbol: data.symbols.length && data.symbols[0],
-        news_letter: data.newsLetterForm && data.newsLetterForm,
+        symbol: preview
+          ? data_results
+          : data_results.symbols.length && data_results.symbols[0],
+        news_letter: preview
+          ? null
+          : data_results.newsLetterForm && data_results.newsLetterForm,
       },
       revalidate: 60,
     };
@@ -82,7 +95,7 @@ const SymbolPage = (props) => {
               </div>
             </div>
           </div>
-        </section> 
+        </section>
 
         <section>
           <div className="section_content near">

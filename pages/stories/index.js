@@ -153,27 +153,27 @@ const Stories = (props) => {
                               key={`story_article-${key}`}
                             >
                               <a
-                                class="story_set _curTL1"
+                                className="story_set _curTL1"
                                 data-scroll
                                 data-scroll-direction="vertical"
                                 data-scroll-speed="2"
                                 data-title="View"
                               >
-                                <div class="story_box">
-                                  <div class="story_img">
+                                <div className="story_box">
+                                  <div className="story_img">
                                     <i
-                                      class="full_bg load_bg"
+                                      className="full_bg load_bg"
                                       data-src={`${CMSPath}${article.cover.url}`}
                                       data-scroll
                                       data-scroll-direction="vertical"
                                       data-scroll-speed="-1"
                                     ></i>
                                   </div>
-                                  <div class="story_details">
-                                    <span class="f_40 alt">
+                                  <div className="story_details">
+                                    <span className="f_40 alt">
                                       {article.description}
                                     </span>
-                                    <div class="tags flex">
+                                    <div className="tags flex">
                                       {article.tags &&
                                         article.tags.map((tag, tkey) => {
                                           return (
@@ -183,7 +183,7 @@ const Stories = (props) => {
                                           );
                                         })}
                                     </div>
-                                    <p class="f_16">{article.quote}</p>
+                                    <p className="f_16">{article.quote}</p>
                                   </div>
                                 </div>
                               </a>

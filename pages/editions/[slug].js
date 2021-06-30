@@ -5,6 +5,7 @@ import { GET_EDITION_SLUGS, GET_EDITION_DATA } from "../../graphql";
 import PageBarArticle from "../../components/blocks/Editions/Edition/pageBarArticle";
 import BannerTitle from "../../components/blocks/Editions/Edition/BannerTitle";
 import ArticleSection from "../../components/blocks/Editions/Edition/AritcleSection";
+import { fetchAPI } from "../../helpers/api";
 
 export const getStaticPaths = async ({ locales }) => {
   const { data } = await client.query({
@@ -34,19 +35,29 @@ export const getStaticPaths = async ({ locales }) => {
 };
 export const getStaticProps = async (context) => {
   const slug = context.params.slug;
+  const preview = context.preview;
+  const previewData = context.previewData;
+  let data_results;
+  if (preview) {
+    let result = await fetchAPI(`/preview-drafts/${previewData.preview_id}`);
+    data_results = result.json;
+  } else {
+    const { data } = await client.query({
+      query: GET_EDITION_DATA,
+      variables: {
+        slug: slug,
+        locale: context.locale,
+      },
+    });
+    data_results = data;
+  }
 
-  const { data } = await client.query({
-    query: GET_EDITION_DATA,
-    variables: {
-      slug: slug,
-      locale: context.locale,
-    },
-  });
-
-  if (data) {
+  if (data_results) {
     return {
       props: {
-        edition: data.editions.length && data.editions[0],
+        edition: preview
+          ? data_results
+          : data_results.editions.length && data_results.editions[0],
       },
       revalidate: 60,
     };
@@ -55,7 +66,6 @@ export const getStaticProps = async (context) => {
 
 const Edition = (props) => {
   const { edition } = props;
-  const router = useRouter();
 
   return (
     <Layout isInner seo={edition && edition.seo}>

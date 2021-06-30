@@ -11,14 +11,20 @@ const Column3Section = dynamic(() => import("./components/Column3Section"));
 const ExperienceDynamicComponents = (props) => {
   const { ProjectSections } = props;
 
-  return ProjectSections.map((block) => {
+  return ProjectSections.map((block, key) => {
     switch (block.__typename) {
       case JoinExperienceComponents.COLUMN3_SECTION:
-        return <Column3Section content={block} />;
+        return (
+          <Column3Section content={block} key={`project-sections_${key}`} />
+        );
       case JoinExperienceComponents.CENTER_LOGO_SECTION:
-        return <CenterLogoSection content={block} />;
+        return (
+          <CenterLogoSection content={block} key={`project-sections_${key}`} />
+        );
       case JoinExperienceComponents.CENTER_TEXT_SECTION:
-        return <CenterTextSection content={block} />;
+        return (
+          <CenterTextSection content={block} key={`project-sections_${key}`} />
+        );
 
       default:
         return null;

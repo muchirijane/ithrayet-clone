@@ -1,7 +1,7 @@
 import InnerFooter from "../components/InnerFooter";
 import Layout from "../components/Layout";
 import { GET_JOURNEY_DATA } from "../graphql";
-import { ChunkArray } from "../helpers/arrayChunks";
+import { ChunkArray } from "../helpers/arrayHelper";
 
 import { CMSPath } from "../helpers/imageCMSPath";
 import client from "../lib/apollo";

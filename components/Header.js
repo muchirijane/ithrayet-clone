@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { HeaderNav } from "../constants/nav_constants";
-import { padLeadingZeros } from "../helpers/arrayChunks";
+import { padLeadingZeros } from "../helpers/arrayHelper";
 
 const Header = ({ locale }) => {
   return (

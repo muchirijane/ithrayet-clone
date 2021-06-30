@@ -3,7 +3,7 @@ import { GET_CREATIVES_DATA } from "../../graphql";
 import client from "../../lib/apollo";
 import Link from "next/link";
 import { CMSPath } from "../../helpers/imageCMSPath";
-import { padLeadingZeros } from "../../helpers/arrayChunks";
+import { padLeadingZeros } from "../../helpers/arrayHelper";
 
 export const getStaticProps = async ({ locale }) => {
   const { data } = await client.query({

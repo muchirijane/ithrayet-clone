@@ -47,7 +47,8 @@ const Layout = ({
       {!isInner && <main>{children}</main>}
 
       <Modes locale={locale} />
-      <Loader />
+      {isInner && <Loader />}
+
       <Cursor />
       <Footer locale={locale} />
 

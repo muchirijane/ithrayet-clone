@@ -5,6 +5,7 @@ import { CMSPath } from "../../helpers/imageCMSPath";
 import { GET_CREATIVE_DATA } from "../../graphql/creatives";
 import Layout from "../../components/Layout";
 import SVGComp from "../../components/SVGComp";
+import { fetchAPI } from "../../helpers/api";
 
 export const getStaticPaths = async ({ locales }) => {
   const { data } = await client.query({
@@ -34,19 +35,29 @@ export const getStaticPaths = async ({ locales }) => {
 };
 export const getStaticProps = async (context) => {
   const slug = context.params.slug;
+  const preview = context.preview;
+  const previewData = context.previewData;
+  let data_results;
+  if (preview) {
+    let result = await fetchAPI(`/preview-drafts/${previewData.preview_id}`);
+    data_results = result.json;
+  } else {
+    const { data } = await client.query({
+      query: GET_CREATIVE_DATA,
+      variables: {
+        slug: slug,
+        locale: context.locale,
+      },
+    });
+    data_results = data;
+  }
 
-  const { data } = await client.query({
-    query: GET_CREATIVE_DATA,
-    variables: {
-      slug: slug,
-      locale: context.locale,
-    },
-  });
-
-  if (data) {
+  if (data_results) {
     return {
       props: {
-        creative: data.artists.length && data.artists[0],
+        creative: preview
+          ? data_results
+          : data_results.artists.length && data_results.artists[0],
       },
       revalidate: 60,
     };

@@ -5,6 +5,7 @@ const prodOptions = {
   env: {
     GRAPHQL_STRAPI_URL: "https://ithraeyat-server.1020dev.com/graphql",
     IMAGE_CMS_URL: "https://ithraeyat-server.1020dev.com",
+    NEXT_PUBLIC_API_URL: "https://ithraeyat-server.1020dev.com",
   },
   domains: ["localhost", "ithraeyat-server.1020dev.com"],
 };
@@ -13,6 +14,7 @@ const devOptions = {
   env: {
     GRAPHQL_STRAPI_URL: "http://localhost:8082/graphql",
     IMAGE_CMS_URL: "http://localhost:8082",
+    NEXT_PUBLIC_API_URL: "http://localhost:8082",
   },
   domains: ["localhost", "ithraeyat-server.1020dev.com"],
 };

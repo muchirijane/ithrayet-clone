@@ -1,6 +1,6 @@
 import Layout from "../components/Layout";
 import { GET_GALLERY_DATA } from "../graphql";
-import { ChunkArray } from "../helpers/arrayChunks";
+import { ChunkArray } from "../helpers/arrayHelper";
 import { CMSPath } from "../helpers/imageCMSPath";
 import Link from "next/link";
 import client from "../lib/apollo";

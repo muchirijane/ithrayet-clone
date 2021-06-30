@@ -1,6 +1,6 @@
 import Elements from "../elements";
 import useTranslation from "next-translate/useTranslation";
-import { ChunkArray } from "../../helpers/arrayChunks";
+import { ChunkArray } from "../../helpers/arrayHelper";
 import { CMSPath } from "../../helpers/imageCMSPath";
 
 const CreativeBlock = ({ artists, sectionData, dataUrl }) => {

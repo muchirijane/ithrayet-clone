@@ -67,58 +67,64 @@ const QuoteWithText = dynamic(() =>
 const ArticleDynamicComponents = (props) => {
   const { articleBlocks } = props;
 
-  return articleBlocks.map((block) => {
+  return articleBlocks.map((block, key) => {
     switch (block.__typename) {
       case StandardArticleComponents.INTRODUCTION_SECTION:
-        return <IntroductionSection content={block} />;
+        return (
+          <IntroductionSection content={block} key={`article-block_${key}`} />
+        );
       case StandardArticleComponents.CL_IMAGETEXT_SECTION:
-        return <CLImgTxt content={block} />;
+        return <CLImgTxt content={block} key={`article-block_${key}`} />;
       case StandardArticleComponents.CL_TEXT_SECTION:
-        return <CLTxt content={block} />;
+        return <CLTxt content={block} key={`article-block_${key}`} />;
       case StandardArticleComponents.CL_TEXTWITHTITLE_SECTION:
-        return <CLTxtTitle content={block} />;
+        return <CLTxtTitle content={block} key={`article-block_${key}`} />;
       case StandardArticleComponents.CL_TEXT_WO_TITLE_SECTION:
-        return <CLTxtWoTitle content={block} />;
+        return <CLTxtWoTitle content={block} key={`article-block_${key}`} />;
       case StandardArticleComponents.CL3_TEXT_WO_TITLE_SECTION:
-        return <CL3TxtWoTitle content={block} />;
+        return <CL3TxtWoTitle content={block} key={`article-block_${key}`} />;
       case StandardArticleComponents.CENTEREDTEXTPARA_SECTION:
-        return <CenteredPara content={block} />;
+        return <CenteredPara content={block} key={`article-block_${key}`} />;
       case StandardArticleComponents.QUOTEWITHIMAGE_SECTION:
-        return <QuoteWithImage content={block} />;
+        return <QuoteWithImage content={block} key={`article-block_${key}`} />;
       case StandardArticleComponents.QUOTEWITHTEXT_SECTION:
-        return <QuoteWithText content={block} />;
+        return <QuoteWithText content={block} key={`article-block_${key}`} />;
       case StandardArticleComponents.CENTEREDQUOTE_SECTION:
-        return <CenteredQuote content={block} />;
+        return <CenteredQuote content={block} key={`article-block_${key}`} />;
       case StandardArticleComponents.IMAGESTYLEFULLWIDTH_SECTION:
-        return <ImageStyleFullWidth content={block} />;
+        return (
+          <ImageStyleFullWidth content={block} key={`article-block_${key}`} />
+        );
       case StandardArticleComponents.BIG_IMAGEWITHTITLE_SECTION:
-        return <BigImageTitle content={block} />;
+        return <BigImageTitle content={block} key={`article-block_${key}`} />;
       case StandardArticleComponents.FULLWIDTH_IMAGE_SECTION:
-        return <FullWidthImage content={block} />;
+        return <FullWidthImage content={block} key={`article-block_${key}`} />;
       case IthraeyatArticleComponents.PARALLAX_IMAGE_SECTION:
-        return <ImageStyle content={block} />;
+        return <ImageStyle content={block} key={`article-block_${key}`} />;
       case IthraeyatArticleComponents.IMAGE_GALLERY_WT_SECTION:
-        return <ImageStyleWT content={block} />;
+        return <ImageStyleWT content={block} key={`article-block_${key}`} />;
       case IthraeyatArticleComponents.IMAGE_GALLERYSLIDER_SECTION:
-        return <GalleryImage content={block} />;
+        return <GalleryImage content={block} key={`article-block_${key}`} />;
       case IthraeyatArticleComponents.IMAGE_GALLERY_SLIDER_WT_SECTION:
-        return <GalleryImageWT content={block} />;
+        return <GalleryImageWT content={block} key={`article-block_${key}`} />;
       case IthraeyatArticleComponents.TILTING_GALLERY_SECTION:
-        return <TiltingGallery content={block} />;
+        return <TiltingGallery content={block} key={`article-block_${key}`} />;
       case IthraeyatArticleComponents.INTERACTIVE_MAP_SECTION:
-        return <InteractiveMap content={block} />;
+        return <InteractiveMap content={block} key={`article-block_${key}`} />;
       case IthraeyatArticleComponents.HOVER_IMAGE_SECTION:
-        return <HoverImage content={block} />;
+        return <HoverImage content={block} key={`article-block_${key}`} />;
       case IthraeyatArticleComponents.TILTING_FULLWIDTH_SECTION:
-        return <TiltingFullWidth content={block} />;
+        return (
+          <TiltingFullWidth content={block} key={`article-block_${key}`} />
+        );
       case IthraeyatArticleComponents.PARALLAX_IMAGE_TEXT_SECTION:
-        return <ImageWithText content={block} />;
+        return <ImageWithText content={block} key={`article-block_${key}`} />;
       case IthraeyatArticleComponents.PARALLAX_IMAGE_LANDSCAPE_SECTION:
-        return <ImageLandscape content={block} />;
+        return <ImageLandscape content={block} key={`article-block_${key}`} />;
       case IthraeyatArticleComponents.TEXT_WITH_SOUND_SECTION:
-        return <TextSound content={block} />;
+        return <TextSound content={block} key={`article-block_${key}`} />;
       case IthraeyatArticleComponents.SIGNATURE_WO_TEXT_SECTION:
-        return <Signature content={block} />;
+        return <Signature content={block} key={`article-block_${key}`} />;
 
       case IthraeyatArticleComponents.SIGNATURE_WT_SECTION:
         return <SignatureWT content={block} />;

@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import Safe from "react-safe";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -36,12 +37,11 @@ class MyDocument extends Document {
         <body id={`${currentPage != undefined ? currentPage : ""}`}>
           <Main />
           <NextScript />
-        </body>
-        <script
-          id="fragment"
-          type="x-shader/x-fragment"
-          dangerouslySetInnerHTML={{
-            __html: `
+          <script
+            id="fragment"
+            type="x-shader/x-fragment"
+            dangerouslySetInnerHTML={{
+              __html: `
 			  varying float vNoise;
 			  varying vec2 vUv;
 			  uniform sampler2D uImage;
@@ -59,13 +59,13 @@ class MyDocument extends Document {
 				  gl_FragColor.rgb += 0.05*vec3(vNoise);
 				  gl_FragColor.a = percent;
 			  }`,
-          }}
-        ></script>
-        <script
-          id="vertex"
-          type="x-shader/x-vertex"
-          dangerouslySetInnerHTML={{
-            __html: `vec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x, 289.0);}
+            }}
+          ></script>
+          <script
+            id="vertex"
+            type="x-shader/x-vertex"
+            dangerouslySetInnerHTML={{
+              __html: `vec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x, 289.0);}
 			  vec4 taylorInvSqrt(vec4 r){return 1.79284291400159 - 0.85373472095314 * r;}
 			  vec3 fade(vec3 t) {return t*t*t*(t*(t*6.0-15.0)+10.0);}
   
@@ -160,17 +160,18 @@ class MyDocument extends Document {
 				  gl_Position = projectionMatrix * modelViewMatrix * vec4( newposition, 1.0 );
   
 			  }`,
-          }}
-        ></script>
-        <script src="/jsm/jquery-3.5.1.min.js"></script>
-        {currentPage && currentPage === "home" ? (
-          <script src="/jsm/functions.js" type="text/javascript"></script>
-        ) : (
-          <>
-            <script src="https://code.responsivevoice.org/responsivevoice.js?key=y6hCA2Ps"></script>
-            <script src="/jsm/inners.js" type="text/javascript"></script>
-          </>
-        )}
+            }}
+          ></script>
+          <script src="/jsm/jquery-3.5.1.min.js"></script>
+          {currentPage && currentPage === "home" ? (
+            <Safe.script src="/jsm/functions.js"></Safe.script>
+          ) : (
+            <>
+              <Safe.script src="https://code.responsivevoice.org/responsivevoice.js?key=y6hCA2Ps"></Safe.script>
+              <Safe.script src="/jsm/inners.js"></Safe.script>
+            </>
+          )}
+        </body>
       </Html>
     );
   }

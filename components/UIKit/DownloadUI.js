@@ -1,9 +1,9 @@
 const DownloadUI = (props) => {
   return (
     <>
-      <div class="fixed_block right">
-        <strong class="f_14 uppercase">Scan to open it on your mobile</strong>
-        <div class="fixed_circle flex">
+      <div className="fixed_block right">
+        <strong className="f_14 uppercase">Scan to open it on your mobile</strong>
+        <div className="fixed_circle flex">
           <svg
             width="76"
             height="76"
@@ -88,14 +88,14 @@ const DownloadUI = (props) => {
           </svg>
         </div>
       </div>
-      <div class="fixed_block left">
+      <div className="fixed_block left">
         <a
           href="#"
-          class="fixed_circle solid flex _up"
+          className="fixed_circle solid flex _up"
           target="_blank"
           id="getURL"
         >
-          <strong class="f_14 uppercase">Digital version</strong>
+          <strong className="f_14 uppercase">Digital version</strong>
         </a>
       </div>
     </>
