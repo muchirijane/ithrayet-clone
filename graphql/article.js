@@ -50,9 +50,6 @@ export const GET_ARTICLE_DATA = gql`
           quoteWithText: quote {
             artistName
             title
-            artist_type {
-              Type
-            }
           }
           description
           quoteWithText_title: title
@@ -63,9 +60,7 @@ export const GET_ARTICLE_DATA = gql`
           centeredQuote: quote {
             artistName
             title
-            artist_type {
-              Type
-            }
+         
           }
         }
         ... on ComponentStandardArticleBlocksCenteredTextParagraph {
@@ -78,9 +73,7 @@ export const GET_ARTICLE_DATA = gql`
           quoteWithImage_quote: quote {
             artistName
             title
-            artist_type {
-              Type
-            }
+      
           }
           capsTitle
           isSmallQuote
