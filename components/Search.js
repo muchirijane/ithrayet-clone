@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 
 const SearchComponent = () => {
   const [search_term, onSearch] = useState();
-  const router = useRouter();
 
   return (
     <div className="search_wrap full_bg flex">
@@ -29,15 +28,17 @@ const SearchComponent = () => {
         />
       </div>
 
-      <div className="inner_circle_set mg _el" data-dist="6">
-        <Link href={`/search?search_term=${search_term}`}>
-          <a>
-            <div className="circle_mag flex full_bg">
-              <span className="f_14 uppercase">Search</span>
-            </div>
-          </a>
-        </Link>
-      </div>
+      {search_term && (
+        <div className="inner_circle_set mg _el" data-dist="6">
+          <Link href={`/search?search_term=${search_term}`}>
+            <a>
+              <div className="circle_mag flex full_bg">
+                <span className="f_14 uppercase">Search</span>
+              </div>
+            </a>
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,9 +1,25 @@
 import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
 import { NewsLetterNav } from "../constants/nav_constants";
+import { MUTATION_NewsLetterForm } from "../graphql/mutations/newsLetterForm";
+import { useMutation } from "@apollo/client";
+import client from "../lib/apollo";
+import { useEffect } from "react";
 
 const InnerFooter = (props) => {
   const { sectionData } = props;
+  let input;
+  const [formSubmit, { error, data }] = useMutation(MUTATION_NewsLetterForm, {
+    client: client,
+    errorPolicy: "all",
+  });
+
+  useEffect(()=>{
+    if(data){
+      
+    }
+  },[data])
+
   const { t } = useTranslation("common");
   return (
     <section id="inner-footer">
@@ -21,13 +37,28 @@ const InnerFooter = (props) => {
             />
 
             <div className="form_set">
-              <form action="#">
+              <form>
                 <div className="input_set buildup">
-                  <input type="email" name="email" id="newsletter_email" />
+                  <input
+                    type="email"
+                    name="email"
+                    id="newsletter_email"
+                    ref={(node) => {
+                      input = node;
+                    }}
+                  />
                   <label for="newsletter_email" className="full_bg flex">
                     {t("email_address")}
                   </label>
-                  <div className="inline_submit flex _curTL2 submitThis">
+                  <div
+                    className="inline_submit flex _curTL2 submitThis"
+                    onClick={(e) => {
+                      e.preventDefault();
+
+                      formSubmit({ variables: { email: input.value } });
+                      input.value = "";
+                    }}
+                  >
                     <span>{t("subscribe")}</span>
                     <i className="full_bg"></i>
                   </div>
@@ -77,6 +108,12 @@ const InnerFooter = (props) => {
                     </svg>
                   </div>
                 </div>
+                <pre>
+                  {error &&
+                    error.graphQLErrors.map(({ message }, i) => (
+                      <span key={i}>{message}</span>
+                    ))}
+                </pre>
               </form>
             </div>
 

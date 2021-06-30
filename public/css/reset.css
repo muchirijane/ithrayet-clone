@@ -764,6 +764,7 @@ label {
 	font-weight: 700;
 	text-transform: uppercase;
 	overflow: hidden;
+	z-index: 100;
 }
 
 html[lang='en'] .inline_submit {

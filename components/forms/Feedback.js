@@ -1,3 +1,4 @@
+
 const FeedbackForm = (props) => {
   const { sectionData } = props;
   return (
@@ -10,8 +11,10 @@ const FeedbackForm = (props) => {
               dangerouslySetInnerHTML={{ __html: sectionData.title }}
             />
 
-            <div className="f_20 less_opacity"  dangerouslySetInnerHTML={{__html: sectionData.description}}/>
-             
+            <div
+              className="f_20 less_opacity"
+              dangerouslySetInnerHTML={{ __html: sectionData.description }}
+            />
           </div>
           <div className="form_set inner_form">
             <form action="#">

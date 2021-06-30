@@ -211,7 +211,7 @@ $(window).on("load", function(){
 
 							t.attr('src', s).removeAttr('data-img');
 
-							$('<img src="'+ s +'">').on('load',function(){
+							$('<img crossorigin="anonymous" src="'+ s +'">').on('load',function(){
 
 								LoadingPerc = (getLoaded+1) / preloadIMGSrc.length
 
@@ -2288,7 +2288,7 @@ function appendImgs(){
 
 		t.removeAttr('data-src').attr("src", s).removeClass('load_img');
 
-		$('<img src="'+ s +'">').on('load',function(){
+		$('<img crossorigin="anonymous" src="'+ s +'">').on('load',function(){
 
 			clearTimeout($.data(this, 'imgsTimer'));
 
