@@ -14,11 +14,10 @@ const InnerFooter = (props) => {
     errorPolicy: "all",
   });
 
-  useEffect(()=>{
-    if(data){
-      
+  useEffect(() => {
+    if (data) {
     }
-  },[data])
+  }, [data]);
 
   const { t } = useTranslation("common");
   return (
@@ -111,7 +110,9 @@ const InnerFooter = (props) => {
                 <pre>
                   {error &&
                     error.graphQLErrors.map(({ message }, i) => (
-                      <span key={i}>{message}</span>
+                      <span key={i} style={{ color: "#fd3838" }}>
+                        {message}
+                      </span>
                     ))}
                 </pre>
               </form>
