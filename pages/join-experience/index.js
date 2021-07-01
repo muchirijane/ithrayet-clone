@@ -4,6 +4,7 @@ import Layout from "../../components/Layout";
 import client from "../../lib/apollo";
 import { GET_JOINEXPERIENCE_DATA } from "../../graphql";
 import SearchBar from "../../components/elements/SearchBar";
+import Link from "next/link";
 
 export const getStaticProps = async ({ locale }) => {
   const { data } = await client.query({
@@ -84,12 +85,11 @@ const JoinExperience = (props) => {
                     do eiusmod
                   </div>
                   <div className="circle_btn_set mg" data-dist="5">
-                    <a
-                      href="collaborate_en.php"
-                      className="btn circle_btn flex"
-                    >
-                      <span>Join Now</span>
-                    </a>
+                    <Link href={`/collaborate`}>
+                      <a className="btn circle_btn flex">
+                        <span>Join Now</span>
+                      </a>
+                    </Link>
                   </div>
                 </div>
               </div>

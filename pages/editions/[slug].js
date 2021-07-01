@@ -35,6 +35,7 @@ export const getStaticPaths = async ({ locales }) => {
 };
 export const getStaticProps = async (context) => {
   const slug = context.params.slug;
+
   const preview = context.preview;
   const previewData = context.previewData;
   let data_results;

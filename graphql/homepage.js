@@ -103,7 +103,7 @@ export const GET_HOMEPAGE_DATA = gql`
       }
       color
     }
-    newsLetterForm {
+    newsLetterForm(locale: $locale) {
       title
       description
     }

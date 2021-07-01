@@ -144,7 +144,7 @@ export const GET_JOINEXPERIENCE_DATA = gql`
         }
       }
     }
-    newsLetterForm {
+    newsLetterForm(locale: $locale) {
       title
       description
     }

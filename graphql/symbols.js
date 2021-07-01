@@ -95,7 +95,7 @@ export const GET_SYMBOL_DATA = gql`
         publishedDate
       }
     }
-    newsLetterForm {
+    newsLetterForm(locale: $locale) {
       title
       description
     }

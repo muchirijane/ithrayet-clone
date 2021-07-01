@@ -17,11 +17,11 @@ export const GET_DOWNLOAD_ISSUES_DATA = gql`
         url
       }
     }
-    newsLetterForm {
+    newsLetterForm(locale: $locale) {
       title
       description
     }
-    downloadIssue {
+    downloadIssue(locale: $locale) {
       seo {
         metaTitle
         metaDescription

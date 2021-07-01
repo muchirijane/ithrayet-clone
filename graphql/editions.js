@@ -35,6 +35,8 @@ export const GET_EDITIONS_DATA = gql`
         cover {
           url
         }
+        isFeatured
+        isExclusive
       }
     }
     listEdition {

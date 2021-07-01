@@ -103,7 +103,7 @@ export default function FourOhFour() {
             No worries, read this article about being lost.
           </div>
           <div className="f_16">
-            <a href="article_en.php" style={{ color: "#9C8AE5" }}>
+            <a href="/" style={{ color: "#9C8AE5" }}>
               Feeling Lost and How It Can Help You Find Yourself
             </a>
           </div>

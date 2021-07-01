@@ -36,11 +36,11 @@ export const GET_CONTACT_US_DATA = gql`
         }
       }
     }
-    newsLetterForm {
+    newsLetterForm(locale: $locale) {
       title
       description
     }
-    feedbackForm {
+    feedbackForm(locale: $locale) {
       title
       description
     }

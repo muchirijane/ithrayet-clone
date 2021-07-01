@@ -19,7 +19,7 @@ import { GET_DOWNLOAD_ISSUES_DATA } from "./downloads";
 import { GET_JOURNEY_DATA } from "./journey";
 import { GET_SYMBOLS_DATA, GET_SYMBOLS_SLUG, GET_SYMBOL_DATA } from "./symbols";
 import { SEARCH_RESULTS, GET_SEARCH_DATA } from "./search";
-
+import { GET_COLLABORATE_DATA } from "./collaborate";
 export {
   GET_HOMEPAGE_DATA,
   GET_EDITIONS_DATA,
@@ -42,4 +42,5 @@ export {
   GET_SYMBOL_DATA,
   SEARCH_RESULTS,
   GET_SEARCH_DATA,
+  GET_COLLABORATE_DATA,
 };

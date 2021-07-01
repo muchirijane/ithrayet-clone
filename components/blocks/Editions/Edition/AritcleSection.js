@@ -1,7 +1,9 @@
-import EditonArticle from '../../../elements/EditionArticle';
+import { useState } from "react";
+import EditonArticle from "../../../elements/EditionArticle";
 
 const ArticleSection = (props) => {
-  const { articles } = props;
+  const { articles, slug } = props;
+
   return (
     <div id="sections">
       <div
@@ -13,33 +15,35 @@ const ArticleSection = (props) => {
         <div className="sub-menu secondary">
           <ul>
             <li>
-              <a href="edition_en.php" className="active">
+              <a className="active exclude-a">
                 <span className="f_lable">All</span>
               </a>
             </li>
             <li>
-              <a href="edition_en.php?id=1">
+              <a className="exclude-a">
                 <span className="f_lable">Featured</span>
               </a>
             </li>
             <li>
-              <a href="edition_en.php?id=2">
+              <a className="exclude-a">
                 <span className="f_lable">Exclusive</span>
               </a>
             </li>
-            <li>
+            {/* <li>
               <a href="edition_en.php?id=3">
                 <span className="f_lable">Most Read</span>
               </a>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
-      {articles.map((article, key) => {
-        return (
-          <EditonArticle id={key+1} article={article} key={`editon_article-${key}`} />
-        );
-      })}
+      {articles.map((article, key) => (
+        <EditonArticle
+          id={key + 1}
+          article={article}
+          key={`editon_article-${key}`}
+        />
+      ))}
     </div>
   );
 };
