@@ -1,13 +1,13 @@
 {
   "title_prefix": "Ithraeyat",
-  "email_address": "Email Address",
-  "subscribe": "Subscribe",
+  "email_address": "عنوان البريد الإلكتروني",
+  "subscribe": "الإشتراك",
 
-  "copyrights": "© 2021 Ithraeyat . All right reserved.",
+  "copyrights": "© إثريات 2021. جميع الحقوق محفوظة.",
 
-  "loader_musicwarn_text": "This Website contains music<br /> click anywhere to enable media playback",
+  "loader_musicwarn_text": "يحتوي هذا الموقع على موسيقى <br /> انقر في أي مكان لتمكين تشغيل الوسائط",
 
-  "more_about_ithraeyat": "More About <br />Ithraeyat",
+  "more_about_ithraeyat": "المزيد عن <br /> إثرائيات",
   "all_projects": "All Projects",
   "all_editions": "All Editions",
   "all_creatives": "All Creatives",

@@ -56,7 +56,7 @@ const FeedbackForm = (props) => {
         <div className="content_a">
           {isThankYou ? (
             <ThankYouMessage
-              title={"All done, wereceived your feedback"}
+              title={"All done, we received your feedback"}
               description={`Thank you for your message. we will contact you soon `}
               onClose={setThankYou}
             />
@@ -131,14 +131,14 @@ const FeedbackForm = (props) => {
                         ></line>
                       </svg>
                     </div>
-                    <pre>
-                      {errors?.name && (
-                        <span style={{ color: "#fd3838" }}>
-                          {errors.name.message}
-                        </span>
-                      )}
-                    </pre>
                   </div>
+                  <pre>
+                    {errors?.name && (
+                      <span style={{ color: "#fd3838" }}>
+                        {errors.name.message}
+                      </span>
+                    )}
+                  </pre>
                   <div className="input_set">
                     <input
                       type="email"
@@ -198,15 +198,14 @@ const FeedbackForm = (props) => {
                         ></line>
                       </svg>
                     </div>
-                    <pre>
-                      {errors?.emailAddress && (
-                        <span style={{ color: "#fd3838" }}>
-                          {errors.emailAddress.message}
-                        </span>
-                      )}
-                    </pre>
                   </div>
-
+                  <pre>
+                    {errors?.emailAddress && (
+                      <span style={{ color: "#fd3838" }}>
+                        {errors.emailAddress.message}
+                      </span>
+                    )}
+                  </pre>
                   <div className="input_set long">
                     <textarea
                       id="fb_message"
@@ -263,14 +262,14 @@ const FeedbackForm = (props) => {
                         ></line>
                       </svg>
                     </div>
-                    <pre>
-                      {errors?.message && (
-                        <span style={{ color: "#fd3838" }}>
-                          {errors.message.message}
-                        </span>
-                      )}
-                    </pre>
                   </div>
+                  <pre>
+                    {errors?.message && (
+                      <span style={{ color: "#fd3838" }}>
+                        {errors.message.message}
+                      </span>
+                    )}
+                  </pre>
 
                   <div
                     onClick={(e) => {

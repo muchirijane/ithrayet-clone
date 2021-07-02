@@ -707,6 +707,13 @@ footer {
 	height: 83px;
 	position: relative;
 }
+.input_set label, .input_set textarea{
+	opacity: 1;
+	transition: opacity 0.3s cubic-bezier(0.6, 0.04, 0.12, 0.96);
+}
+.input_set.active label{
+	opacity: 0!important;
+}
 
 .input_set.long {
 	height: 120px;
@@ -715,6 +722,7 @@ footer {
 .input_set.long label {
 	align-items: flex-start;
 	padding-top: 21px;
+	
 }
 
 

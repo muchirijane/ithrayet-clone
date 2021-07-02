@@ -52,6 +52,34 @@ var page = $('body').attr('id'),
 $(window).on("load", function(){
 	 
 	$.ready.then(function(){
+ 		$('.input_set input,.input_set textarea').not('[type="checkbox"], [type="radio"]').on({
+			focus: (e) => {
+			  const self = $(e.currentTarget);
+			  self.closest(".input_set").addClass("active");
+			},
+			blur: (e) => {
+			  const self = $(e.currentTarget);
+	 
+			  if(self.hasClass('hasDatepicker')){
+			
+				setTimeout(()=>{
+				  if (self.val() !== "") {
+					self.closest(".input_set").addClass("active");
+				  } else {
+					self.closest(".input_set").removeClass("active");
+				  }
+				},100);
+			  }else{
+				if (self.val() !== "") {
+				  self.closest(".input_set").addClass("active");
+				} else {
+				  self.closest(".input_set").removeClass("active");
+				}
+			  }
+		  
+			},
+		  })
+		  .trigger("blur")
 
 		isPageLoaded = true;
 

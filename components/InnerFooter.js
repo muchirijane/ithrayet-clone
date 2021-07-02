@@ -13,7 +13,6 @@ const InnerFooter = (props) => {
   const [isThankYou, setThankYou] = useState(false);
   const [formSubmit, { error, data }] = useMutation(MUTATION_NewsLetterForm, {
     client: client,
-  
   });
   const {
     register,

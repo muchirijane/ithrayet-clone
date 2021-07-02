@@ -47,7 +47,7 @@ export const GET_HOMEPAGE_DATA = gql`
         }
       }
     }
-    artists {
+    artists(locale: $locale) {
       firstName
       lastName
       signature {
@@ -58,7 +58,7 @@ export const GET_HOMEPAGE_DATA = gql`
         alternativeText
       }
     }
-    homepage {
+    homepage(locale: $locale) {
       seo {
         metaTitle
         metaDescription
@@ -95,7 +95,7 @@ export const GET_HOMEPAGE_DATA = gql`
         quote
       }
     }
-    projects {
+    projects{
       title
       cover {
         url

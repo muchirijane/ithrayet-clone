@@ -55,9 +55,9 @@ const StoryBlock = ({ sectionData, dataUrl }) => {
           ></i>
 
           <h2 className="_lines">
-            {ReactHtmlParser(mediaQuote, {
+            {/* {ReactHtmlParser(mediaQuote, {
               transform: transform,
-            })}
+            })} */}
           </h2>
 
           <i
