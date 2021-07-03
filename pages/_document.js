@@ -24,7 +24,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link rel="shortcut icon" href="favicon.ico" />
+          <link rel="shortcut icon" href="/favicon.ico" />
           <link type="text/css" rel="stylesheet" href="/css/reset.css"></link>
           {((currentPage && currentPage != "home") ||
             currentPage === undefined) && (
