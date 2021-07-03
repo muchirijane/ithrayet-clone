@@ -31,6 +31,11 @@ module.exports = (phase, { defaultConfig }) => {
           ? devOptions.domains
           : prodOptions.domains,
     },
+    eslint: {
+      // Warning: Dangerously allow production builds to successfully complete even if
+      // your project has ESLint errors.
+      ignoreDuringBuilds: true,
+    },
     env: phase === PHASE_DEVELOPMENT_SERVER ? devOptions.env : prodOptions.env,
     webpack: (config, { isServer, webpack }) => {
       return config;
