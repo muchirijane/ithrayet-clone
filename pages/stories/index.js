@@ -5,30 +5,87 @@ import Link from "next/link";
 import { CMSPath } from "../../helpers/imageCMSPath";
 import SearchBar from "../../components/elements/SearchBar";
 
-export const getStaticProps = async ({ locale }) => {
+export const getServerSideProps = async ({ locale, query }) => {
+  const { online_exclusive, story_name } = query;
+
+  const { alphabet, writer, catID, dateFrom, dateTo } = query;
+  let catJson;
+  let toDate;
+  let fromDate;
+  if (dateFrom && dateFrom != "") {
+  }
+  if (dateTo && dateTo != "") {
+  }
+  if (catID && catID != "") {
+    catJson = [];
+    let splitArray = catID.split(",");
+    if (splitArray.length > 0) {
+      splitArray.map((val) => {
+        catJson.push({
+          articles: { tags: { name_eq: val } },
+        });
+      });
+    } else {
+      catJson.push({
+        articles: { tags: { name_eq: catID } },
+      });
+    }
+  }
   const { data } = await client.query({
     query: GET_STORIES_DATA,
     variables: {
       locale: locale,
+      isOnlineExclusive: online_exclusive && true,
+      name: story_name && story_name,
+      authFirstName: writer && writer != "" && writer.split(",")[0],
+      authLastName: writer && writer != "" && writer.split(",")[1],
+      tags: catJson && catJson,
     },
   });
 
+  if (data.stories.length === 0) {
+    return {
+      notFound: true,
+    };
+  }
   if (data) {
     return {
       props: {
         stories: data.stories,
         storiedCount: data.countStories,
         SEO: data.listStory.seo,
+        isOnlineExclusive: online_exclusive ? true : null,
+        storyName: story_name ? true : null,
+        filter_authors: data.filter_authors,
+        filter_tags: data.filter_tags,
       },
-      revalidate: 60,
     };
   }
 };
 const Stories = (props) => {
-  const { stories, storiedCount, SEO } = props;
+  const {
+    filter_authors,
+    filter_tags,
+    stories,
+    storiedCount,
+    SEO,
+    isOnlineExclusive,
+    storyName,
+  } = props;
+  const isAll = isOnlineExclusive === null && storyName === null;
 
   return (
-    <Layout isInner isFilter seo={SEO && SEO}>
+    <Layout
+      isInner
+      isFilter
+      seo={SEO && SEO}
+      filterData={{
+        date: true,
+        filter_authors: filter_authors,
+        filter_tags: filter_tags,
+        alphabet: true,
+      }}
+    >
       <div className="page_head_set">
         <h1>Our Stories</h1>
       </div>
@@ -58,11 +115,19 @@ const Stories = (props) => {
                     fill="currentColor"
                   ></path>
                 </svg>
-                <a href="stories_en.php" className="inline_link _up">
-                  Online Exclusive
-                </a>
+                {isOnlineExclusive ? (
+                  <Link href={`/stories`}>
+                    <a className="inline_link _up">Stories</a>
+                  </Link>
+                ) : (
+                  <Link href={`/stories?online_exclusive=true`}>
+                    <a className="inline_link _up">Online Exclusive</a>
+                  </Link>
+                )}
               </span>
-              <span className="f_lable">{`(${storiedCount.length})`}</span>
+              {!isOnlineExclusive && (
+                <span className="f_lable">{`(${storiedCount.length})`}</span>
+              )}
             </div>
           </div>
         </div>
@@ -79,16 +144,21 @@ const Stories = (props) => {
             <div className="sub-menu" data-page="_stories_fitch_en.php">
               <ul>
                 <li>
-                  <a href="#" className="active" data-id="-1">
-                    <span className="f_lable">All</span>
-                  </a>
+                  <Link href={`/stories`}>
+                    <a className={`${isAll && "active"}`} data-id="-1">
+                      <span className="f_lable">All</span>
+                    </a>
+                  </Link>
                 </li>
                 {stories &&
                   stories.map((story, key) => {
                     return (
                       <li key={`story_name-${key}`}>
-                        <Link href="#">
-                          <a data-id={`${key + 1}`}>
+                        <Link href={`/stories?story_name=${story.name}`}>
+                          <a
+                            data-id={`${key + 1}`}
+                            className={`${storyName && "active"}`}
+                          >
                             <span className="f_lable">{story.name}</span>
                           </a>
                         </Link>
@@ -140,7 +210,10 @@ const Stories = (props) => {
                                       {article.tags &&
                                         article.tags.map((tag, tkey) => {
                                           return (
-                                            <span style={{ color: tag.color }}>
+                                            <span
+                                              style={{ color: tag.color }}
+                                              key={`st_tags-${tkey}`}
+                                            >
                                               {tag.name}
                                             </span>
                                           );

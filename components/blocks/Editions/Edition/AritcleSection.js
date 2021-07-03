@@ -1,9 +1,12 @@
+import Link from "next/link";
 import { useState } from "react";
 import EditonArticle from "../../../elements/EditionArticle";
 
 const ArticleSection = (props) => {
-  const { articles, slug } = props;
-
+  const { articles, slug, featured, exclusive } = props;
+ 
+  const isAll = (featured === null && exclusive === null);
+ 
   return (
     <div id="sections">
       <div
@@ -15,19 +18,25 @@ const ArticleSection = (props) => {
         <div className="sub-menu secondary">
           <ul>
             <li>
-              <a className="active exclude-a">
-                <span className="f_lable">All</span>
-              </a>
+              <Link href={`/editions/${slug}`}>
+                <a className={`exclude-a ${isAll ? "active" : ""}`}>
+                  <span className="f_lable">All</span>
+                </a>
+              </Link>
             </li>
             <li>
-              <a className="exclude-a">
-                <span className="f_lable">Featured</span>
-              </a>
+              <Link href={`/editions/${slug}?featured=true`}>
+                <a className={`exclude-a ${featured ? "active" : ""}`}>
+                  <span className="f_lable">Featured</span>
+                </a>
+              </Link>
             </li>
             <li>
-              <a className="exclude-a">
-                <span className="f_lable">Exclusive</span>
-              </a>
+              <Link href={`/editions/${slug}?exclusive=true`}>
+                <a className={`exclude-a ${exclusive ? "active" : ""}`}>
+                  <span className="f_lable">Exclusive</span>
+                </a>
+              </Link>
             </li>
             {/* <li>
               <a href="edition_en.php?id=3">

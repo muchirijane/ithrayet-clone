@@ -6,40 +6,42 @@ const StoryBlock = ({ sectionData, dataUrl }) => {
   const { t } = useTranslation("common");
 
   const { mediaQuote, description, rightImage, leftImage } = sectionData;
- 
+
   const transform = (node) => {
     if ((node.type = "tag")) {
-   
       switch (node.name) {
-        case "div":
- 
-          return node.children.map((tag,key)=>{
-            if(tag.type === 'text'){
-              return tag.data
-            }else if(tag.type === 'br'){
-              return (<br/>)
-            }
-          })
-        case "figure":
+        case "p":
           return (
-            <i
-              className="story_media img load_img _secEle prx"
-              data-src={`${CMSPath}${node.children[0].attribs.src}`}
-            ></i>
+            <>
+              {`${node.children[0].data}`}
+              {node.next && node.next.name != "figure" && <br />}
+            </>
           );
-   
-          
-        // case "video":
-        //   return <i className="story_media video _secEle prx">
-        //   <video preload="metadata" autoPlay loop muted playsInline>
-        //     {" "}
-        //     <source
-        //       src={`${CMSPath}${node.attribs.src}`}
-        //       type="video/mp4"
-        //     />{" "}
-        //   </video>
-        // </i>;
-        default: return node
+        case "figure":
+          if (node.children[0].name === "img") {
+            return (
+              <i
+                className="story_media img load_img _secEle prx"
+                data-src={`${CMSPath}${node.children[0].attribs.src}`}
+              ></i>
+            );
+          } else if (node.children[0].name === "oembed") {
+            return (
+              <i className="story_media video _secEle prx">
+                <video preload="metadata" autoPlay loop muted playsInline>
+                  <source
+                    src={`${node.children[0].attribs.url}`}
+                    type="video/mp4"
+                  />
+                </video>
+              </i>
+            );
+          } else {
+            return node;
+          }
+
+        default:
+          return node;
       }
     }
   };
@@ -55,9 +57,9 @@ const StoryBlock = ({ sectionData, dataUrl }) => {
           ></i>
 
           <h2 className="_lines">
-            {/* {ReactHtmlParser(mediaQuote, {
+            {ReactHtmlParser(mediaQuote, {
               transform: transform,
-            })} */}
+            })}
           </h2>
 
           <i

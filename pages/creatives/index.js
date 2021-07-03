@@ -6,11 +6,30 @@ import { CMSPath } from "../../helpers/imageCMSPath";
 import { padLeadingZeros } from "../../helpers/arrayHelper";
 import SearchBar from "../../components/elements/SearchBar";
 
-export const getStaticProps = async ({ locale }) => {
+export const getServerSideProps = async ({ locale, query }) => {
+  const { alphabet, catID } = query;
+  let catJson;
+
+  if (catID && catID != "") {
+    catJson = [];
+    let splitArray = catID.split(",");
+    if (splitArray.length > 0) {
+      splitArray.map((val) => {
+        catJson.push({
+          tags: { name_eq: val },
+        });
+      });
+    } else {
+      catJson.push({
+        tags: { name_eq: catID },
+      });
+    }
+  }
   const { data } = await client.query({
     query: GET_CREATIVES_DATA,
     variables: {
       locale: locale,
+      tags: catJson && catJson,
     },
   });
 
@@ -19,17 +38,25 @@ export const getStaticProps = async ({ locale }) => {
       props: {
         creatives: data.artists,
         SEO: data.listCreative.seo,
+        filter_tags: data.filter_tags,
       },
-      revalidate: 60,
     };
   }
 };
 
 const Creatives = (props) => {
-  const { creatives, SEO } = props;
+  const { creatives, SEO, filter_tags } = props;
 
   return (
-    <Layout isInner isFilter seo={SEO && SEO}>
+    <Layout
+      isInner
+      isFilter
+      seo={SEO && SEO}
+      filterData={{
+        filter_tags: filter_tags,
+        alphabet: true,
+      }}
+    >
       <div id="fixed-bar" className="fixed-bar">
         <div
           className="page_bar fixed_item forced-full-width"

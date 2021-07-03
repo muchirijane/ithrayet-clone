@@ -25,36 +25,52 @@ const Home = (props) => {
   } = props;
 
   return (
-    <Layout seo={SEO} isHomepage={true} IncludeNoSelect>
-      <MainBlock
-        editions={editions}
-        sectionData={sections.main_section}
-        dataUrl={`/editions`}
-      />
-      <EditionBlock featuredEdition={featuredEdition} dataUrl={`/editions`} />
-      <CreativeBlock
-        artists={artists}
-        sectionData={sections.creatives}
-        dataUrl={`/creatives`}
-      />
-      <StoryBlock sectionData={sections.our_story} dataUrl={`/stories`} />
-      <JoinBlock
-        projects={projects}
-        sectionData={sections.join_exp}
-        dataUrl={`/join-experience`}
-      />
-      <NewsLetterBlock sectionData={sections.news_letter} />
+    sections && (
+      <Layout seo={SEO} isHomepage={true} IncludeNoSelect>
+        {sections.main_section && (
+          <MainBlock
+            editions={editions}
+            sectionData={sections.main_section}
+            dataUrl={`/editions`}
+          />
+        )}
+        {featuredEdition && (
+          <EditionBlock
+            featuredEdition={featuredEdition}
+            dataUrl={`/editions`}
+          />
+        )}
+        {sections.creatives && (
+          <CreativeBlock
+            artists={artists}
+            sectionData={sections.creatives}
+            dataUrl={`/creatives`}
+          />
+        )}
+        {sections.our_story && (
+          <StoryBlock sectionData={sections.our_story} dataUrl={`/stories`} />
+        )}
+        {sections.join_ex && (
+          <JoinBlock
+            projects={projects}
+            sectionData={sections.join_exp}
+            dataUrl={`/join-experience`}
+          />
+        )}
+        {sections.news_letter && (
+          <NewsLetterBlock sectionData={sections.news_letter} />
+        )}
 
-      <IndicatorSet />
-      <AnimatedCircle />
+        <IndicatorSet />
+        <AnimatedCircle />
 
-      <AnimatedArrow direction={"prev"} />
-      <AnimatedArrow direction={"next"} />
+        <AnimatedArrow direction={"prev"} />
+        <AnimatedArrow direction={"next"} />
 
-      <MobileViewButton />
-
-      <SiteLoader loaderImages={loaderImages} />
-    </Layout>
+        <MobileViewButton />
+        {loaderImages && <SiteLoader loaderImages={loaderImages} />}
+      </Layout>
+    )
   );
 };
 
@@ -76,13 +92,13 @@ export const getStaticProps = async ({ locale }) => {
         projects: data.projects,
         featuredEdition: data.featuredEdition,
         sections: {
-          main_section: data.homepage.mainSection,
-          our_story: data.homepage.ourStory,
-          join_exp: data.homepage.joinExperience,
-          news_letter: data.newsLetterForm,
-          creatives: data.homepage.creatives,
+          main_section: data.homepage && data.homepage.mainSection,
+          our_story: data.homepage && data.homepage.ourStory,
+          join_exp: data.homepage && data.homepage.joinExperience,
+          news_letter: data.homepage && data.newsLetterForm,
+          creatives: data.homepage && data.homepage.creatives,
         },
-        SEO: data.homepage.seo,
+        SEO: data.homepage && data.homepage.seo,
         pageType: "home",
       },
       revalidate: 60,

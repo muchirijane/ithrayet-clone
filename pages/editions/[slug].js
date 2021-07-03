@@ -7,37 +7,39 @@ import BannerTitle from "../../components/blocks/Editions/Edition/BannerTitle";
 import ArticleSection from "../../components/blocks/Editions/Edition/AritcleSection";
 import { fetchAPI } from "../../helpers/api";
 
-export const getStaticPaths = async ({ locales }) => {
-  const { data } = await client.query({
-    query: GET_EDITION_SLUGS,
-  });
+// export const getStaticPaths = async ({ locales }) => {
+//   const { data } = await client.query({
+//     query: GET_EDITION_SLUGS,
+//   });
 
-  if (data) {
-    let paths = [];
+//   if (data) {
+//     let paths = [];
 
-    locales.map((locale) => {
-      data.editions.map((edition) => {
-        paths = [
-          ...paths,
-          {
-            params: { slug: edition.slug },
-            locale,
-          },
-        ];
-      });
-    });
+//     locales.map((locale) => {
+//       data.editions.map((edition) => {
+//         paths = [
+//           ...paths,
+//           {
+//             params: { slug: edition.slug },
+//             locale,
+//           },
+//         ];
+//       });
+//     });
 
-    return {
-      paths,
-      fallback: true,
-    };
-  }
-};
-export const getStaticProps = async (context) => {
+//     return {
+//       paths,
+//       fallback: true,
+//     };
+//   }
+// };
+export const getServerSideProps = async (context) => {
   const slug = context.params.slug;
 
   const preview = context.preview;
   const previewData = context.previewData;
+  const { featured, exclusive } = context.query;
+
   let data_results;
   if (preview) {
     let result = await fetchAPI(`/preview-drafts/${previewData.preview_id}`);
@@ -48,25 +50,33 @@ export const getStaticProps = async (context) => {
       variables: {
         slug: slug,
         locale: context.locale,
+        isFeatured: featured ? true : null,
+        isExclusive: exclusive ? true : null,
       },
     });
     data_results = data;
   }
-
+  if (!data_results || data_results.editions.length === 0) {
+    return {
+      notFound: true,
+    };
+  }
   if (data_results) {
     return {
       props: {
         edition: preview
           ? data_results
           : data_results.editions.length && data_results.editions[0],
+        isFeatured: featured ? true : null,
+        isExclusive: exclusive ? true : null,
       },
-      revalidate: 60,
+      // revalidate: 60,
     };
   }
 };
 
 const Edition = (props) => {
-  const { edition } = props;
+  const { edition, isFeatured, isExclusive } = props;
 
   return (
     <Layout isInner seo={edition && edition.seo}>
@@ -80,7 +90,12 @@ const Edition = (props) => {
             type={edition.type}
           />
 
-          <ArticleSection articles={edition.articles} />
+          <ArticleSection
+            articles={edition.articles}
+            slug={edition.slug}
+            featured={isFeatured}
+            exclusive={isExclusive}
+          />
         </div>
       )}
     </Layout>

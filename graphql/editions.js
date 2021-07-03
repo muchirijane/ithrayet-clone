@@ -1,8 +1,20 @@
 import { gql } from "@apollo/client";
-
+import { GET_FILTER_AUTHORS, GET_FILTER_TAGS } from "./filters";
 export const GET_EDITIONS_DATA = gql`
-  query ($locale: String!) {
-    editions(locale: $locale) {
+  query ($locale: String!, $authFirstName:String, $authLastName: String, $tags: [JSON], $dateFrom: String, $dateTo: String ) {
+    editions(locale: $locale,  
+      where: {
+        _and: [
+          {
+            _and: [
+              { articles: { author: { firstName_contains: $authFirstName } } }
+              { articles: { author: { lastName_contains: $authLastName } } }
+            ]
+          }
+          { _and: $tags }
+          { _and: [{publishedDate_gte: $dateFrom}, {publishedDate_lte: $dateTo}] }
+        ]
+      }) {
       id
       title
       color
@@ -52,6 +64,8 @@ export const GET_EDITIONS_DATA = gql`
         }
       }
     }
+    ${GET_FILTER_AUTHORS}
+    ${GET_FILTER_TAGS}
   }
 `;
 
@@ -64,7 +78,12 @@ export const GET_EDITION_SLUGS = gql`
 `;
 
 export const GET_EDITION_DATA = gql`
-  query ($slug: String!, $locale: String!) {
+  query (
+    $slug: String!
+    $locale: String!
+    $isFeatured: Boolean
+    $isExclusive: Boolean
+  ) {
     editions(where: { slug_eq: $slug }, locale: $locale) {
       id
       title
@@ -93,7 +112,9 @@ export const GET_EDITION_DATA = gql`
         name
         color
       }
-      articles {
+      articles(
+        where: { isFeatured_eq: $isFeatured, isExclusive: $isExclusive }
+      ) {
         title
         slug
         cover {

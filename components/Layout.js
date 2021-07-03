@@ -10,11 +10,13 @@ import SearchComponent from "./Search";
 import Filters from "./Filter";
 import Loader from "./Loader";
 import DownloadUI from "./UIKit/DownloadUI";
+import Script from "next/script";
 
 const Layout = ({
   children,
   isInner,
   isFilter,
+  filterData,
   IncludeNoSelect,
   isDownloadUI,
   seo,
@@ -27,7 +29,7 @@ const Layout = ({
       {isInner ? (
         <main>
           <SearchComponent />
-          {isFilter && <Filters />}
+          {isFilter && <Filters data={filterData}/>}
           {isDownloadUI && <DownloadUI />}
           <div data-scroll-container>
             <div data-scroll-section>
@@ -53,6 +55,15 @@ const Layout = ({
       <Footer locale={locale} />
 
       {!isInner && <Equalizer />}
+
+      {isInner ? (
+        <>
+          <Script src="https://code.responsivevoice.org/responsivevoice.js?key=y6hCA2Ps" />
+          <Script src="/jsm/inners.js" />
+        </>
+      ) : (
+        <Script src="/jsm/functions.js" />
+      )}
     </div>
   );
 };

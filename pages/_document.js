@@ -1,6 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import Safe from "react-safe";
-
+ 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const originalRenderPage = ctx.renderPage;
@@ -13,7 +12,7 @@ class MyDocument extends Document {
       });
 
     const initialProps = await Document.getInitialProps(ctx);
-
+	  
     return initialProps;
   }
   render() {
@@ -163,14 +162,6 @@ class MyDocument extends Document {
             }}
           ></script>
           <script src="/jsm/jquery-3.5.1.min.js"></script>
-          {currentPage && currentPage === "home" ? (
-            <Safe.script src="/jsm/functions.js"></Safe.script>
-          ) : (
-            <>
-              <Safe.script src="https://code.responsivevoice.org/responsivevoice.js?key=y6hCA2Ps"></Safe.script>
-              <Safe.script src="/jsm/inners.js"></Safe.script>
-            </>
-          )}
         </body>
       </Html>
     );

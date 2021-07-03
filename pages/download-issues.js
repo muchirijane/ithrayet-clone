@@ -30,7 +30,7 @@ const DonwloadIssues = (props) => {
   const [isListView, toggleView] = useState(true);
 
   return (
-    <Layout isInner isFilter isDownloadUI seo={SEO && SEO}>
+    <Layout isInner isDownloadUI seo={SEO && SEO}>
       {editions && (
         <div id="fixed-bar" className="fixed-bar">
           <div className="content_a">

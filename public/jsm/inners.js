@@ -1868,7 +1868,7 @@ function globalFunc(){
 
 	}
 
-	$(document).on('click', 'a:not(.exclude-a), ._link', function(e){ 
+	$(document).on('click', 'a, ._link', function(e){ 
 
 		if(!isDragging) {
 
