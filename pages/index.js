@@ -50,7 +50,7 @@ const Home = (props) => {
         {sections.our_story && (
           <StoryBlock sectionData={sections.our_story} dataUrl={`/stories`} />
         )}
-        {sections.join_ex && (
+        {sections.join_exp && (
           <JoinBlock
             projects={projects}
             sectionData={sections.join_exp}
