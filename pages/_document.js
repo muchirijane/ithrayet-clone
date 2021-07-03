@@ -1,5 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
- 
+import Loader from "../components/Loader";
+import Cursor from "../components/UIKit/cursor";
+
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const originalRenderPage = ctx.renderPage;
@@ -12,7 +14,7 @@ class MyDocument extends Document {
       });
 
     const initialProps = await Document.getInitialProps(ctx);
-	  
+
     return initialProps;
   }
   render() {
@@ -36,6 +38,8 @@ class MyDocument extends Document {
         <body id={`${currentPage != undefined ? currentPage : ""}`}>
           <Main />
           <NextScript />
+          <Loader />
+          <Cursor />
           <script
             id="fragment"
             type="x-shader/x-fragment"

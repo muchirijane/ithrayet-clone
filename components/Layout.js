@@ -29,7 +29,7 @@ const Layout = ({
       {isInner ? (
         <main>
           <SearchComponent />
-          {isFilter && <Filters data={filterData}/>}
+          {isFilter && <Filters data={filterData} />}
           {isDownloadUI && <DownloadUI />}
           <div data-scroll-container>
             <div data-scroll-section>
@@ -49,9 +49,7 @@ const Layout = ({
       {!isInner && <main>{children}</main>}
 
       <Modes locale={locale} />
-      {isInner && <Loader />}
 
-      <Cursor />
       <Footer locale={locale} />
 
       {!isInner && <Equalizer />}
