@@ -26,7 +26,7 @@ const BigImageTitle = (props) => {
                   {content.bigImageWT_image.description} Artwork by{" "}
                   <strong>
                     <Link
-                      href={`/creative/${content.bigImageWT_image.artist.slug}`}
+                      href={`/creatives/${content.bigImageWT_image.artist.slug}`}
                     >
                       <a target="_blank">
                         {`${content.bigImageWT_image.artist.firstName} ${content.bigImageWT_image.artist.lastName}`}
