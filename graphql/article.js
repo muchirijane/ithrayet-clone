@@ -33,6 +33,7 @@ export const GET_ARTICLE_DATA = gql`
         ...Images
       }
       edition {
+        slug
         symbol {
           symbol {
             url
@@ -295,6 +296,15 @@ export const GET_ARTICLES_SLUGS = gql`
   query {
     articles {
       slug
+    }
+  }
+`;
+
+export const GET_NEXT_ARTICLE = gql`
+  query ($where: JSON, $limit: Int, $locale: String!) {
+    articles(where: $where, limit: $limit, locale: $locale) {
+      slug
+      title
     }
   }
 `;

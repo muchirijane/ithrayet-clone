@@ -1,12 +1,17 @@
 import Layout from "../../components/Layout";
 import client from "../../lib/apollo";
-import { GET_ARTICLES_SLUGS, GET_ARTICLE_DATA } from "../../graphql";
+import {
+  GET_ARTICLES_SLUGS,
+  GET_ARTICLE_DATA,
+  GET_NEXT_ARTICLE,
+} from "../../graphql";
 import BannerSection from "../../components/blocks/Articles/BannerSection";
 import ArticleDynamicComponents from "../../components/blocks/Articles/ArticleDynamicComponents";
 import { fetchAPI } from "../../helpers/api";
 import _ from "lodash";
 import { ArticleBlocksKeyReplace } from "../../helpers/arrayHelper";
 import router from "next/router";
+
 export const getStaticPaths = async ({ locales }) => {
   const { data } = await client.query({
     query: GET_ARTICLES_SLUGS,
@@ -34,11 +39,11 @@ export const getStaticPaths = async ({ locales }) => {
   }
 };
 
-export const getStaticProps = async (context) => {
-  const slug = context.params.slug;
+export const getStaticProps = async ({ params, preview, previewData, locale}) => {
+  const slug = params.slug;
 
-  const preview = context.preview;
-  const previewData = context.previewData;
+  // const preview = preview;
+  // const previewData = previewData;
   let data_results;
   if (preview) {
     let result = await fetchAPI(`/preview-drafts/${previewData.preview_id}`);
@@ -54,18 +59,42 @@ export const getStaticProps = async (context) => {
       query: GET_ARTICLE_DATA,
       variables: {
         slug: slug,
-        locale: context.locale,
+        locale: locale,
       },
     });
+
     data_results = data;
   }
 
   if (data_results) {
+    const article = data_results.articles[0];
+    const nextArticle = await client.query({
+      query: GET_NEXT_ARTICLE,
+      variables: {
+        limit: 1,
+        locale: locale,
+        where: {
+          edition: {
+            slug: article.edition.slug
+          },
+          _or: [
+            {
+              publishDate_lt: article.publishDate,
+            },
+            {
+              publishDate_gt: article.publishDate,
+            }
+          ]
+
+        },
+      },
+    });
     return {
       props: {
         article: preview
           ? data_results
-          : data_results.articles.length && data_results.articles[0],
+          : data_results.articles.length && article,
+        nextArticle: nextArticle.data.articles.length ? nextArticle.data.articles[0] : null,
       },
       revalidate: 60,
     };
@@ -73,7 +102,9 @@ export const getStaticProps = async (context) => {
 };
 
 const Article = (props) => {
-  const { article } = props;
+  const { article, nextArticle } = props;
+
+  // console.log(article, nextArticle);
 
   return (
     <Layout isInner seo={article && article.seo}>
@@ -109,7 +140,7 @@ const Article = (props) => {
             {article.ArticleBlocks.length && (
               <ArticleDynamicComponents articleBlocks={article.ArticleBlocks} />
             )}
-            <section>
+           {nextArticle ? <section>
               <div className="section_content">
                 <div className="line_shape jr_shape_set">
                   <svg
@@ -128,19 +159,19 @@ const Article = (props) => {
                 <div className="content_a">
                   <div
                     className="section_head_set _link"
-                    data-href="article_ithrayat_en.php"
+                    data-href={`/articles/${nextArticle.slug}`}
                     data-scroll
                     data-scroll-direction="vertical"
                     data-scroll-speed="1"
                   >
                     <div className="section_head">
                       <div className="f_30 less_opacity">Up Next</div>
-                      <h1>Ithrayat Article</h1>
+                      <h1>{nextArticle.title}</h1>
                     </div>
                   </div>
                 </div>
               </div>
-            </section>
+            </section> : null}
           </div>
         </div>
       )}

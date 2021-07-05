@@ -6,7 +6,7 @@ import {
 } from "./editions";
 import { GET_STORIES_DATA } from "./stories";
 
-import { GET_ARTICLES_SLUGS, GET_ARTICLE_DATA } from "./article";
+import { GET_ARTICLES_SLUGS, GET_ARTICLE_DATA, GET_NEXT_ARTICLE } from "./article";
 import { GET_CREATIVES_DATA, GET_CREATIVES_SLUGS } from "./creatives";
 import {
   GET_JOINEXPERIENCE_DATA,
@@ -44,4 +44,5 @@ export {
   SEARCH_RESULTS,
   GET_SEARCH_DATA,
   GET_COLLABORATE_DATA,
+  GET_NEXT_ARTICLE
 };
