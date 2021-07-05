@@ -7,8 +7,10 @@ import client from "../lib/apollo";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import ThankYouMessage from "./forms/ThankYou";
+import { useRouter } from "next/router";
 
 const InnerFooter = (props) => {
+  const router = useRouter();
   const { sectionData } = props;
   const [isThankYou, setThankYou] = useState(false);
   const [formSubmit, { error, data }] = useMutation(MUTATION_NewsLetterForm, {
@@ -149,7 +151,7 @@ const InnerFooter = (props) => {
 
               <div className="sub_footer">
                 <ul className="flex">
-                  {NewsLetterNav.map((link, key) => (
+                  {NewsLetterNav(router.locale).map((link, key) => (
                     <li key={`link_inf-${key}`}>
                       <Link href={link.href}>
                         <a className="_ele">{link.name}</a>

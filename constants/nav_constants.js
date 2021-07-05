@@ -1,7 +1,8 @@
-export const NewsLetterNav = [
+export const NewsLetterNav = (locale) => [
   {
     href: "/our-journey",
     name: "Our Journey",
+    target: ""
   },
   {
     href: "/download-issues",
@@ -12,11 +13,11 @@ export const NewsLetterNav = [
     name: "Symbols",
   },
   {
-    href: "/articles",
+    href: `https://www.ithra.com/${locale}/terms-conditions/`,
     name: `Terms & Conditions`,
   },
   {
-    href: "/articles",
+    href: `https://www.ithra.com/${locale}/privacy-policy/`,
     name: "Privacy Policy",
   },
   {

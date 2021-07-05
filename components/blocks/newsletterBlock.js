@@ -7,8 +7,10 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import ThankYouMessageHomepage from "../forms/ThankYouHomepage";
+import { useRouter } from "next/router";
 
 const NewsLetterBlock = ({ sectionData }) => {
+  const router = useRouter();
   const { t } = useTranslation("common");
   const { title, description } = sectionData;
   const [isThankYou, setThankYou] = useState(false);
@@ -146,7 +148,7 @@ const NewsLetterBlock = ({ sectionData }) => {
           )}
           <div className="sub_footer">
             <ul className="flex">
-              {NewsLetterNav.map((link, key) => (
+              {NewsLetterNav(router.locale).map((link, key) => (
                 <li key={`link_nlf-${key}`}>
                   <Link href={link.href}>
                     <a className="_inOut">{link.name}</a>
