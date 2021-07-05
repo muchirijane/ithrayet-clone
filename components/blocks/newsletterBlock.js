@@ -150,7 +150,7 @@ const NewsLetterBlock = ({ sectionData }) => {
           <div className="sub_footer">
             <ul className="flex">
               {NewsLetterNav(router.locale).map((link, key) => {
-                link.target ? (
+                return link.target ? (
                   <a
                     key={`link_nlf-${key}`}
                     className="_inOut"
