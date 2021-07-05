@@ -32,11 +32,13 @@ export const GET_ARTICLE_DATA = gql`
       Images {
         ...Images
       }
-      symbol {
+      edition {
         symbol {
-          url
+          symbol {
+            url
+          }
+          slug
         }
-        slug
       }
 
       ArticleBlocks {
@@ -60,7 +62,6 @@ export const GET_ARTICLE_DATA = gql`
           centeredQuote: quote {
             artistName
             title
-         
           }
         }
         ... on ComponentStandardArticleBlocksCenteredTextParagraph {
@@ -73,7 +74,6 @@ export const GET_ARTICLE_DATA = gql`
           quoteWithImage_quote: quote {
             artistName
             title
-      
           }
           capsTitle
           isSmallQuote

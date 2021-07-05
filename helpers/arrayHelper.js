@@ -18,13 +18,12 @@ export const padLeadingZeros = (num, size) => {
 export const StripPTags = (text) => {
   const result = stripHtml(text, {
     cb: ({ tag, rangesArr }) => {
-      console.log(tag.name);
       if (["p"].includes(tag.name)) {
         rangesArr.push(tag.lastOpeningBracketAt, tag.lastClosingBracketAt + 1);
       }
     },
   }).result;
-  console.log(result);
+ 
   return result;
 };
 export const ArticleBlocksKeyReplace = (data) => {

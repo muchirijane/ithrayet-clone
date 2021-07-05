@@ -104,7 +104,7 @@ const Article = (props) => {
               author={`${article.author.firstName} ${article.author.lastName}`}
               timeToRead={article.timeToRead}
               publishedDate={article.publishDate}
-              symbol={article.symbol}
+              symbol={article.edition.symbol}
             />
             {article.ArticleBlocks.length && (
               <ArticleDynamicComponents articleBlocks={article.ArticleBlocks} />
