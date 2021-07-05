@@ -12,7 +12,7 @@ const JoinBlock = ({ projects, sectionData, dataUrl }) => {
           <div className="content_set">
             <div className="section_title flex">
               <h4 className="_secEle">{t("homepage.join_exp")}</h4>
-              <a href="projects_en.php" className="mobile_only _secEle">
+              <a href={`${dataUrl}`} className="mobile_only _secEle">
                 {t("all_projects")}
               </a>
             </div>

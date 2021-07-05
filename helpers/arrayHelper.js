@@ -1,3 +1,5 @@
+import { stripHtml } from "string-strip-html";
+
 export const ChunkArray = (array, size) => {
   let sample_array = array;
   return [].concat.apply(
@@ -13,7 +15,18 @@ export const padLeadingZeros = (num, size) => {
   while (s.length < size) s = "0" + s;
   return s;
 };
-
+export const StripPTags = (text) => {
+  const result = stripHtml(text, {
+    cb: ({ tag, rangesArr }) => {
+      console.log(tag.name);
+      if (["p"].includes(tag.name)) {
+        rangesArr.push(tag.lastOpeningBracketAt, tag.lastClosingBracketAt + 1);
+      }
+    },
+  }).result;
+  console.log(result);
+  return result;
+};
 export const ArticleBlocksKeyReplace = (data) => {
   data.ArticleBlocks.map((block) => {
     switch (block.__component) {

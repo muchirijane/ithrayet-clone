@@ -1,6 +1,7 @@
 import { CMSPath } from "../../../../helpers/imageCMSPath";
 import { format } from "date-fns";
 import Link from "next/link";
+import { StripPTags } from "../../../../helpers/arrayHelper";
 
 const CenterTextSection = (props) => {
   const { content } = props;
@@ -48,7 +49,7 @@ const CenterTextSection = (props) => {
       <div className="row_middle flex">
         <strong
           className="f_40 uppercase"
-          dangerouslySetInnerHTML={{ __html: content.middleText }}
+          dangerouslySetInnerHTML={{ __html: StripPTags(content.middleText) }}
         />
       </div>
     </div>

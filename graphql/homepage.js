@@ -26,6 +26,7 @@ export const GET_HOMEPAGE_DATA = gql`
       sort: "publishedDate:desc"
     ) {
       title
+      featuredTitle
       type {
         value
         number

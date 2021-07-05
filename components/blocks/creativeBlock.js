@@ -13,7 +13,7 @@ const CreativeBlock = ({ artists, sectionData, dataUrl }) => {
       <div className="content_set">
         <div className="section_title flex">
           <h4 className="_inOut">{t("homepage.creatives")}</h4>
-          <a href="creatives_en.php" className="mobile_only _inOut">
+          <a href={`${dataUrl}`} className="mobile_only _inOut">
             {t("all_creatives")}
           </a>
         </div>
