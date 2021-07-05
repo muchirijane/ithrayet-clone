@@ -81,7 +81,7 @@ export const GET_EXPERIENCE_SLUGS = gql`
 `;
 
 export const GET_JOINEXPERIENCE_DATA = gql`
-  query ($locale: String!) {
+  query ($locale: String!, $dateFrom: String, $dateTo: String) {
     joinExperience(locale: $locale) {
       seo {
         metaTitle
@@ -99,7 +99,10 @@ export const GET_JOINEXPERIENCE_DATA = gql`
       }
       centerText
     }
-    projects(locale: $locale) {
+    projects(
+      locale: $locale
+      where: { _and: [{ date_gte: $dateFrom }, { date_lte: $dateTo }] }
+    ) {
       title
       quote
       cover {

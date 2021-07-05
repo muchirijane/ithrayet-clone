@@ -2085,8 +2085,8 @@ function globalFunc(){
 				yearFrom = $('#yearFrom').val(),
 				yearTo = $('#yearTo').val();
 
-				$('input[name=dateFrom]').val(monthFrom+'-'+yearFrom)
-				$('input[name=dateTo]').val(monthTo+'-'+yearTo)
+				$('input[name=dateFrom]').val(yearFrom+'-'+monthFrom+'-01')
+				$('input[name=dateTo]').val(yearTo+'-'+monthTo+'-31')
 		})
 
 		$(document).on('click', '.form_btn', function(e){

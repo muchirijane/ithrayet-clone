@@ -204,8 +204,8 @@ const Collaborate = (props) => {
 
                   <div className="table_set has_margin no-select">
                     {collaborator.collaboratorsBlock.brands.map(
-                      (brand, key) => {
-                        <div className="table_row flex">
+                      (brand, key) => (
+                        <div className="table_row flex" key={`brand-row-${key}`}>
                           <div className="row_logo_set">
                             <div className="row_logo_an full_bg">
                               <div className="row_logo full_bg">
@@ -226,8 +226,8 @@ const Collaborate = (props) => {
                               {brand.location}
                             </span>
                           </div>
-                        </div>;
-                      }
+                        </div>
+                      )
                     )}
                   </div>
                 </div>

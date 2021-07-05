@@ -10,12 +10,14 @@ export const getServerSideProps = async ({ locale, query }) => {
 
   const { alphabet, writer, catID, dateFrom, dateTo } = query;
   let catJson;
-  let toDate;
-  let fromDate;
-  if (dateFrom && dateFrom != "") {
+  let dates = {};
+  if (dateFrom && dateTo && dateFrom != "" && dateTo != "") {
+    dates = {
+      dateTo: dateTo && dateTo != "" ? new Date(dateTo) : null,
+      dateFrom: dateFrom && dateFrom != "" ? new Date(dateFrom) : null,
+    };
   }
-  if (dateTo && dateTo != "") {
-  }
+
   if (catID && catID != "") {
     catJson = [];
     let splitArray = catID.split(",");
@@ -34,6 +36,7 @@ export const getServerSideProps = async ({ locale, query }) => {
   const { data } = await client.query({
     query: GET_STORIES_DATA,
     variables: {
+      ...dates,
       locale: locale,
       isOnlineExclusive: online_exclusive && true,
       name: story_name && story_name,
@@ -156,7 +159,11 @@ const Stories = (props) => {
                   allStoriesName.map((story, key) => {
                     return (
                       <li key={`story_name-${key}`}>
-                        <Link href={`/stories?story_name=${story.name}${isOnlineExclusive ? '&online_exclusive=true' : ""}`}>
+                        <Link
+                          href={`/stories?story_name=${story.name}${
+                            isOnlineExclusive ? "&online_exclusive=true" : ""
+                          }`}
+                        >
                           <a
                             data-id={`${key + 1}`}
                             className={`${

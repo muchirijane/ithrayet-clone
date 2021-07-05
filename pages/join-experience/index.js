@@ -10,10 +10,20 @@ import Column3Section from "../../components/blocks/JoinExperience/components/Co
 import CenterTextSection from "../../components/blocks/JoinExperience/components/CenterTextSection";
 import CenterLogoSection from "../../components/blocks/JoinExperience/components/CenterLogoSection";
 
-export const getStaticProps = async ({ locale }) => {
+export const getServerSideProps = async ({ locale, query }) => {
+  const { alphabet, dateFrom, dateTo } = query;
+  let dates = {};
+  if (dateFrom && dateTo && dateFrom != "" && dateTo != "") {
+    dates = {
+      dateTo: dateTo && dateTo != "" ? new Date(dateTo) : null,
+      dateFrom: dateFrom && dateFrom != "" ? new Date(dateFrom) : null,
+    };
+  }
+
   const { data } = await client.query({
     query: GET_JOINEXPERIENCE_DATA,
     variables: {
+      ...dates,
       locale: locale,
     },
   });
@@ -26,7 +36,6 @@ export const getStaticProps = async ({ locale }) => {
         projects: data.projects,
         collaborateWithUs: data.collaborateWithUs,
       },
-      revalidate: 60,
     };
   }
 };

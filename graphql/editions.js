@@ -11,7 +11,7 @@ export const GET_EDITIONS_DATA = gql`
               { articles: { author: { lastName_contains: $authLastName } } }
             ]
           }
-          { _and: $tags }
+          { _or: $tags }
           { _and: [{publishedDate_gte: $dateFrom}, {publishedDate_lte: $dateTo}] }
         ]
       }) {

@@ -17,8 +17,8 @@ export const GET_STORIES_DATA = gql`
               { articles: { author: { lastName_contains: $authLastName } } }
             ]
           }
-          { _and: $tags }
-          { _and: [{articles : {publishedDate_gte: $dateFrom}}, {articles : {publishedDate_lte: $dateTo}}] }
+          { _or: $tags }
+          { _and: [{articles : {publishDate_gte: $dateFrom}}, {articles : {publishDate_lte: $dateTo}}] }
         ]}
       ]}
     ) {

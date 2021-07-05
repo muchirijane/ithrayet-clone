@@ -3,7 +3,7 @@ import { GET_FILTER_TAGS } from "./filters";
 
 export const GET_CREATIVES_DATA = gql`
   query ($locale: String!,$tags: [JSON]) {
-    artists(locale: $locale, where :{ _and:$tags}) {
+    artists(locale: $locale, where :{ _or:$tags}) {
       firstName
       lastName
       signature {

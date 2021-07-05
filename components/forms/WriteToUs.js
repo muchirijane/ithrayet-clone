@@ -4,15 +4,15 @@ import { useRef } from "react";
 import client from "../../lib/apollo";
 import { useMutation } from "@apollo/client";
 import { useEffect, useState } from "react";
-import { MUTATION_collaborateForm } from "../../graphql/mutations/collaborateForm";
 import { StripPTags } from "../../helpers/arrayHelper";
+import { MUTATION_writeToUsForm } from "../../graphql/mutations/writeToUsForm";
 
-const CollaborateForm = (props) => {
+const WriteToUsForm = (props) => {
   const { sectionData } = props;
   const [isThankYou, setThankYou] = useState(false);
 
   const [formCollaborateSubmit, { error, data }] = useMutation(
-    MUTATION_collaborateForm,
+    MUTATION_writeToUsForm,
     {
       client: client,
     }
@@ -541,4 +541,4 @@ const CollaborateForm = (props) => {
   );
 };
 
-export default CollaborateForm;
+export default WriteToUsForm;

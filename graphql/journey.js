@@ -59,6 +59,10 @@ export const GET_JOURNEY_DATA = gql`
         }
       }
     }
+    writeToUsForm(locale: $locale) {
+      title
+      description
+    }
     newsLetterForm(locale: $locale) {
       title
       description

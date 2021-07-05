@@ -9,12 +9,14 @@ import SearchBar from "../../components/elements/SearchBar";
 export const getServerSideProps = async ({ locale, query }) => {
   const { alphabet, writer, catID, dateFrom, dateTo } = query;
   let catJson;
-  let toDate;
-  let fromDate;
-  if (dateFrom && dateFrom != "") {
+  let dates = {};
+  if (dateFrom && dateTo && dateFrom != "" && dateTo != "") {
+    dates = {
+      dateTo: dateTo && dateTo != "" ? new Date(dateTo) : null,
+      dateFrom: dateFrom && dateFrom != "" ? new Date(dateFrom) : null,
+    };
   }
-  if (dateTo && dateTo != "") {
-  }
+ 
   if (catID && catID != "") {
     catJson = [];
     let splitArray = catID.split(",");
@@ -30,13 +32,16 @@ export const getServerSideProps = async ({ locale, query }) => {
       });
     }
   }
+  console.log(catJson);
   const { data } = await client.query({
     query: GET_EDITIONS_DATA,
     variables: {
+      ...dates,
       locale: locale,
       authFirstName: writer && writer != "" && writer.split(",")[0],
       authLastName: writer && writer != "" && writer.split(",")[1],
       tags: catJson && catJson,
+ 
     },
   });
 
