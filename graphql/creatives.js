@@ -44,6 +44,7 @@ export const GET_CREATIVES_SLUGS = gql`
 export const GET_CREATIVE_DATA = gql`
   query ($slug: String!, $locale: String!) {
     artists(where: { slug_eq: $slug }, locale: $locale) {
+      published_at
       firstName
       lastName
       signature {
@@ -93,6 +94,16 @@ export const GET_CREATIVE_DATA = gql`
           alternativeText
         }
       }
+    }
+  }
+`;
+
+export const GET_NEXT_CREATIVE = gql`
+  query ($where: JSON, $limit: Int, $locale: String!) {
+    artists(where: $where, limit: $limit, locale: $locale) {
+      slug
+      firstName
+      lastName
     }
   }
 `;

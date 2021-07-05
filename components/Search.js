@@ -27,18 +27,15 @@ const SearchComponent = () => {
           }}
         />
       </div>
-
-      {search_term && (
-        <div className="inner_circle_set mg _el" data-dist="6">
-          <Link href={`/search?search_term=${search_term}`}>
-            <a>
-              <div className="circle_mag flex full_bg">
-                <span className="f_14 uppercase">Search</span>
-              </div>
-            </a>
-          </Link>
-        </div>
-      )}
+      <div className="inner_circle_set mg _el" data-dist="6">
+        <Link href={`/search?search_term=${search_term}`}>
+          <a>
+            <div className="circle_mag flex full_bg">
+              <span className="f_14 uppercase">Search</span>
+            </div>
+          </a>
+        </Link>
+      </div>
     </div>
   );
 };

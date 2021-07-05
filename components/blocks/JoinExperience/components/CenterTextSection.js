@@ -4,14 +4,14 @@ import Link from "next/link";
 import { StripPTags } from "../../../../helpers/arrayHelper";
 
 const CenterTextSection = (props) => {
-  const { content } = props;
+  const { content, centerText } = props;
 
   return (
     <div className="section_sides exp_sides flex">
-      {content.CenterTextLayout.map((card, key) => {
+      {content.map((card, key) => {
         return (
           <Link
-            href={`/join-experience/${card.project.slug}`}
+            href={`/join-experience/${card.slug}`}
             key={`exp-text-${key}`}
           >
             <a
@@ -24,22 +24,22 @@ const CenterTextSection = (props) => {
               <div className="exp_img">
                 <img
                   className="load_img"
-                  data-src={`${CMSPath}${card.project.cover.url}`}
-                  alt={card.project.cover.alternativeText}
+                  data-src={`${CMSPath}${card.cover.url}`}
+                  alt={card.cover.alternativeText}
                   width="100%"
                   height="auto"
                 />
               </div>
               <div className="exp_details">
                 <span className="f_40 alt flex">
-                  <span>{card.project.title}</span>
+                  <span>{card.title}</span>
                   <span className="f_16 norm">
                     /{" "}
-                    {card.project.date &&
-                      format(new Date(card.project.date), "yyyy")}
+                    {card.date &&
+                      format(new Date(card.date), "yyyy")}
                   </span>
                 </span>
-                <span className="f_16">{card.project.quote}</span>
+                <span className="f_16">{card.quote}</span>
               </div>
             </a>
           </Link>
@@ -49,7 +49,7 @@ const CenterTextSection = (props) => {
       <div className="row_middle flex">
         <strong
           className="f_40 uppercase"
-          dangerouslySetInnerHTML={{ __html: StripPTags(content.middleText) }}
+          dangerouslySetInnerHTML={{ __html: StripPTags(centerText) }}
         />
       </div>
     </div>

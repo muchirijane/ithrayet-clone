@@ -5,6 +5,7 @@ import client from "../../lib/apollo";
 import { useForm } from "react-hook-form";
 import { useRef } from "react";
 import ThankYouMessage from "./ThankYou";
+import { StripPTags } from "../../helpers/arrayHelper";
 
 const FeedbackForm = (props) => {
   const { sectionData } = props;
@@ -65,7 +66,9 @@ const FeedbackForm = (props) => {
               <div className="hero_text flex">
                 <strong
                   className="f_80 uppercase"
-                  dangerouslySetInnerHTML={{ __html: sectionData.title }}
+                  dangerouslySetInnerHTML={{
+                    __html: StripPTags(sectionData.title),
+                  }}
                 />
 
                 <div

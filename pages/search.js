@@ -33,7 +33,7 @@ const Search = (props) => {
   const [search, onSearch] = useState("");
 
   useEffect(() => {
-    if (search_term && search_term != 'undefined') {
+    if (search_term && search_term != "undefined") {
       onSearch(search_term);
     }
   }, [search_term]);

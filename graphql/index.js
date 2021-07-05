@@ -6,12 +6,21 @@ import {
 } from "./editions";
 import { GET_STORIES_DATA } from "./stories";
 
-import { GET_ARTICLES_SLUGS, GET_ARTICLE_DATA, GET_NEXT_ARTICLE } from "./article";
-import { GET_CREATIVES_DATA, GET_CREATIVES_SLUGS } from "./creatives";
+import {
+  GET_ARTICLES_SLUGS,
+  GET_ARTICLE_DATA,
+  GET_NEXT_ARTICLE,
+} from "./article";
+import {
+  GET_CREATIVES_DATA,
+  GET_CREATIVES_SLUGS,
+  GET_NEXT_CREATIVE,
+} from "./creatives";
 import {
   GET_JOINEXPERIENCE_DATA,
   GET_EXPERIENCE_SLUGS,
   GET_EXPERIENCE_DATA,
+  GET_NEXT_PROJECT
 } from "./experience";
 import { GET_GALLERY_DATA } from "./gallery";
 import { GET_CONTACT_US_DATA } from "./contact-us";
@@ -34,6 +43,7 @@ export {
   GET_JOINEXPERIENCE_DATA,
   GET_EXPERIENCE_DATA,
   GET_EXPERIENCE_SLUGS,
+  GET_NEXT_PROJECT,
   GET_GALLERY_DATA,
   GET_CONTACT_US_DATA,
   GET_DOWNLOAD_ISSUES_DATA,
@@ -44,5 +54,6 @@ export {
   SEARCH_RESULTS,
   GET_SEARCH_DATA,
   GET_COLLABORATE_DATA,
-  GET_NEXT_ARTICLE
+  GET_NEXT_ARTICLE,
+  GET_NEXT_CREATIVE,
 };

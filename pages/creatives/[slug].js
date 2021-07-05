@@ -2,7 +2,7 @@ import { GET_CREATIVES_SLUGS } from "../../graphql";
 import client from "../../lib/apollo";
 import Link from "next/link";
 import { CMSPath } from "../../helpers/imageCMSPath";
-import { GET_CREATIVE_DATA } from "../../graphql/creatives";
+import { GET_CREATIVE_DATA, GET_NEXT_CREATIVE } from "../../graphql/creatives";
 import Layout from "../../components/Layout";
 import SVGComp from "../../components/SVGComp";
 import { fetchAPI } from "../../helpers/api";
@@ -33,10 +33,14 @@ export const getStaticPaths = async ({ locales }) => {
     };
   }
 };
-export const getStaticProps = async (context) => {
-  const slug = context.params.slug;
-  const preview = context.preview;
-  const previewData = context.previewData;
+export const getStaticProps = async ({
+  locale,
+  params,
+  preview,
+  previewData,
+}) => {
+  const slug = params.slug;
+
   let data_results;
   if (preview) {
     let result = await fetchAPI(`/preview-drafts/${previewData.preview_id}`);
@@ -46,18 +50,38 @@ export const getStaticProps = async (context) => {
       query: GET_CREATIVE_DATA,
       variables: {
         slug: slug,
-        locale: context.locale,
+        locale: locale,
       },
     });
     data_results = data;
   }
 
   if (data_results) {
+    const artist = preview
+      ? data_results
+      : data_results.artists.length && data_results.artists[0];
+    const nextCreative = await client.query({
+      query: GET_NEXT_CREATIVE,
+      variables: {
+        limit: 1,
+        locale: locale,
+        where: {
+          _or: [
+            {
+              published_at_lt: artist && artist.published_at,
+            },
+            {
+              published_at_gt: artist && artist.published_at,
+            },
+          ],
+        },
+      },
+    });
     return {
       props: {
-        creative: preview
-          ? data_results
-          : data_results.artists.length && data_results.artists[0],
+        creative: artist,
+        nextCreative:
+          nextCreative.data.artists.length && nextCreative.data.artists[0],
       },
       revalidate: 60,
     };
@@ -65,7 +89,7 @@ export const getStaticProps = async (context) => {
 };
 
 const Creative = (props) => {
-  const { creative } = props;
+  const { creative, nextCreative } = props;
 
   return (
     <Layout isInner seo={creative && creative.seo}>
@@ -240,48 +264,50 @@ const Creative = (props) => {
               </div>
             </section>
 
-            <section>
-              <div className="section_content">
-                <div className="jr_row_image rounded floating">
-                  <img
-                    className="load_img"
-                    data-src={`${CMSPath}${creative.images[2].image.url}`}
-                    width="100%"
-                    height="auto"
-                    alt={creative.images[2].image.alternativeText}
-                  />
-                </div>
+            {nextCreative ? (
+              <section>
+                <div className="section_content">
+                  <div className="jr_row_image rounded floating">
+                    <img
+                      className="load_img"
+                      data-src={`${CMSPath}${creative.images[2].image.url}`}
+                      width="100%"
+                      height="auto"
+                      alt={creative.images[2].image.alternativeText}
+                    />
+                  </div>
 
-                <div className="line_shape jr_shape_set">
-                  <svg
-                    viewBox="0 0 1440 409"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M1502 399.861C1469.17 425.361 1398.99 377.293 1232.5 293.861C1012 183.361 1388 92.3613 1341 183.361C1308.92 245.474 1231 452.86 1077 399.861C923 346.861 774.5 -79.1387 431 14.3613C156.2 89.1613 7.83333 243.195 -32 310.861"
-                      className="svg-stroke"
-                      strokeOpacity="0.5"
-                    ></path>
-                  </svg>
-                </div>
+                  <div className="line_shape jr_shape_set">
+                    <svg
+                      viewBox="0 0 1440 409"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M1502 399.861C1469.17 425.361 1398.99 377.293 1232.5 293.861C1012 183.361 1388 92.3613 1341 183.361C1308.92 245.474 1231 452.86 1077 399.861C923 346.861 774.5 -79.1387 431 14.3613C156.2 89.1613 7.83333 243.195 -32 310.861"
+                        className="svg-stroke"
+                        strokeOpacity="0.5"
+                      ></path>
+                    </svg>
+                  </div>
 
-                <div className="content_a">
-                  <div
-                    className="section_head_set _link"
-                    data-href="creative_en.php"
-                    data-scroll
-                    data-scroll-direction="vertical"
-                    data-scroll-speed="1"
-                  >
-                    <div className="section_head">
-                      <div className="f_30 less_opacity">Up Next</div>
-                      <h1>Selano Martin</h1>
+                  <div className="content_a">
+                    <div
+                      className="section_head_set _link"
+                      data-href={`/creatives/${nextCreative.slug}`}
+                      data-scroll
+                      data-scroll-direction="vertical"
+                      data-scroll-speed="1"
+                    >
+                      <div className="section_head">
+                        <div className="f_30 less_opacity">Up Next</div>
+                        <h1>{`${nextCreative.firstName} ${nextCreative.lastName}`}</h1>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </section>
+              </section>
+            ) : null}
           </div>
         </div>
       )}

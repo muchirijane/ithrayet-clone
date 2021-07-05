@@ -2,7 +2,6 @@ export const NewsLetterNav = (locale) => [
   {
     href: "/our-journey",
     name: "Our Journey",
-    target: ""
   },
   {
     href: "/download-issues",
@@ -15,10 +14,12 @@ export const NewsLetterNav = (locale) => [
   {
     href: `https://www.ithra.com/${locale}/terms-conditions/`,
     name: `Terms & Conditions`,
+    target: "_blank"
   },
   {
     href: `https://www.ithra.com/${locale}/privacy-policy/`,
     name: "Privacy Policy",
+    target: "_blank"
   },
   {
     href: "/contact-us",
@@ -50,5 +51,5 @@ export const HeaderNav = [
   {
     href: "/contact-us",
     name: "Contact Us",
-  }
+  },
 ];

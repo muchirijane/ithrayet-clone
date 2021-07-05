@@ -1,5 +1,5 @@
 import Layout from "../../components/Layout";
-import { GET_EXPERIENCE_DATA, GET_EXPERIENCE_SLUGS } from "../../graphql";
+import { GET_EXPERIENCE_DATA, GET_EXPERIENCE_SLUGS, GET_NEXT_PROJECT } from "../../graphql";
 import { CMSPath } from "../../helpers/imageCMSPath";
 import client from "../../lib/apollo";
 import Link from "next/link";
@@ -32,10 +32,14 @@ export const getStaticPaths = async ({ locales }) => {
   }
 };
 
-export const getStaticProps = async (context) => {
-  const slug = context.params.slug;
-  const preview = context.preview;
-  const previewData = context.previewData;
+export const getStaticProps = async ({
+  locale,
+  params,
+  preview,
+  previewData,
+}) => {
+  const slug = params.slug;
+
   let data_results;
   if (preview) {
     let result = await fetchAPI(`/preview-drafts/${previewData.preview_id}`);
@@ -45,18 +49,38 @@ export const getStaticProps = async (context) => {
       query: GET_EXPERIENCE_DATA,
       variables: {
         slug: slug,
-        locale: context.locale,
+        locale: locale,
       },
     });
     data_results = data;
   }
 
   if (data_results) {
+    const project = preview
+      ? data_results
+      : data_results.projects.length && data_results.projects[0];
+    const nextProject = await client.query({
+      query: GET_NEXT_PROJECT,
+      variables: {
+        limit: 1,
+        locale: locale,
+        where: {
+          _or: [
+            {
+              published_at_lt: project && project.published_at,
+            },
+            {
+              published_at_gt: project && project.published_at,
+            },
+          ],
+        },
+      },
+    });
     return {
       props: {
-        project: preview
-          ? data_results
-          : data_results.projects.length && data_results.projects[0],
+        project: project,
+        nextProject:
+          nextProject.data.projects.length && nextProject.data.projects[0],
       },
       revalidate: 60,
     };
@@ -64,7 +88,7 @@ export const getStaticProps = async (context) => {
 };
 
 const Experience = (props) => {
-  const { project } = props;
+  const { project, nextProject } = props;
   return (
     <Layout isInner seo={project && project.seo}>
       {project && (
@@ -337,39 +361,40 @@ const Experience = (props) => {
                 </div>
               </div>
             </section>
+            {nextProject ? (
+              <section>
+                <div className="section_content">
+                  <div className="line_shape cr_shape_set">
+                    <svg
+                      viewBox="0 0 1440 409"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M1502 399.861C1469.17 425.361 1398.99 377.293 1232.5 293.861C1012 183.361 1388 92.3613 1341 183.361C1308.92 245.474 1231 452.86 1077 399.861C923 346.861 774.5 -79.1387 431 14.3613C156.2 89.1613 7.83333 243.195 -32 310.861"
+                        className="svg-stroke"
+                        strokeOpacity="0.5"
+                      ></path>
+                    </svg>
+                  </div>
 
-            <section>
-              <div className="section_content">
-                <div className="line_shape cr_shape_set">
-                  <svg
-                    viewBox="0 0 1440 409"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M1502 399.861C1469.17 425.361 1398.99 377.293 1232.5 293.861C1012 183.361 1388 92.3613 1341 183.361C1308.92 245.474 1231 452.86 1077 399.861C923 346.861 774.5 -79.1387 431 14.3613C156.2 89.1613 7.83333 243.195 -32 310.861"
-                      className="svg-stroke"
-                      strokeOpacity="0.5"
-                    ></path>
-                  </svg>
-                </div>
-
-                <div className="content_a">
-                  <div
-                    className="section_head_set _link"
-                    data-href="experience_en.php"
-                    data-scroll
-                    data-scroll-direction="vertical"
-                    data-scroll-speed="1"
-                  >
-                    <div className="section_head">
-                      <div className="f_30 less_opacity">Up Next</div>
-                      <h1>Cassettes of Arab legends</h1>
+                  <div className="content_a">
+                    <div
+                      className="section_head_set _link"
+                      data-href={`/join-experience/${nextProject.slug}`}
+                      data-scroll
+                      data-scroll-direction="vertical"
+                      data-scroll-speed="1"
+                    >
+                      <div className="section_head">
+                        <div className="f_30 less_opacity">Up Next</div>
+                        <h1>{nextProject.title}</h1>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </section>
+              </section>
+            ) : null}
           </div>
         </div>
       )}

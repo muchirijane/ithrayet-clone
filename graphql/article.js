@@ -27,6 +27,7 @@ export const GET_ARTICLE_DATA = gql`
         alternativeText
       }
       publishDate
+      published_at
       quote
       description
       Images {

@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import ThankYouMessage from "./forms/ThankYou";
 import { useRouter } from "next/router";
+import { StripPTags } from "../helpers/arrayHelper";
 
 const InnerFooter = (props) => {
   const router = useRouter();
@@ -61,7 +62,9 @@ const InnerFooter = (props) => {
             <div className="hero_text flex">
               <div
                 className="f_80 alt _ele"
-                dangerouslySetInnerHTML={{ __html: sectionData.title }}
+                dangerouslySetInnerHTML={{
+                  __html: StripPTags(sectionData.title),
+                }}
               />
 
               <div
@@ -151,13 +154,25 @@ const InnerFooter = (props) => {
 
               <div className="sub_footer">
                 <ul className="flex">
-                  {NewsLetterNav(router.locale).map((link, key) => (
-                    <li key={`link_inf-${key}`}>
-                      <Link href={link.href}>
-                        <a className="_ele">{link.name}</a>
-                      </Link>
-                    </li>
-                  ))}
+                  {NewsLetterNav(router.locale).map((link, key) => {
+                    return link.target ? (
+                      <a
+                        href={link.href}
+                        key={`link_nlf-${key}`}
+                        className="_inOut"
+                        target={link.target}
+                        rel="noopener noreferrer"
+                      >
+                        {link.name}
+                      </a>
+                    ) : (
+                      <li key={`link_nlf-${key}`}>
+                        <Link href={link.href}>
+                          <a className="_inOut">{link.name}</a>
+                        </Link>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </div>

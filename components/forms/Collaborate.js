@@ -5,6 +5,7 @@ import client from "../../lib/apollo";
 import { useMutation } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { MUTATION_collaborateForm } from "../../graphql/mutations/collaborateForm";
+import { StripPTags } from "../../helpers/arrayHelper";
 
 const CollaborateForm = (props) => {
   const { sectionData } = props;
@@ -77,7 +78,9 @@ const CollaborateForm = (props) => {
               <div className="hero_text flex">
                 <strong
                   className="f_80 uppercase"
-                  dangerouslySetInnerHTML={{ __html: sectionData.title }}
+                  dangerouslySetInnerHTML={{
+                    __html: StripPTags(sectionData.title),
+                  }}
                 />
 
                 <div

@@ -5,6 +5,10 @@ import client from "../../lib/apollo";
 import { GET_JOINEXPERIENCE_DATA } from "../../graphql";
 import SearchBar from "../../components/elements/SearchBar";
 import Link from "next/link";
+import { ChunkArray, StripPTags } from "../../helpers/arrayHelper";
+import Column3Section from "../../components/blocks/JoinExperience/components/Column3Section";
+import CenterTextSection from "../../components/blocks/JoinExperience/components/CenterTextSection";
+import CenterLogoSection from "../../components/blocks/JoinExperience/components/CenterLogoSection";
 
 export const getStaticProps = async ({ locale }) => {
   const { data } = await client.query({
@@ -19,6 +23,8 @@ export const getStaticProps = async ({ locale }) => {
       props: {
         joinExperience: data.joinExperience,
         news_letter: data.newsLetterForm,
+        projects: data.projects,
+        collaborateWithUs: data.collaborateWithUs,
       },
       revalidate: 60,
     };
@@ -26,7 +32,8 @@ export const getStaticProps = async ({ locale }) => {
 };
 
 const JoinExperience = (props) => {
-  const { joinExperience, news_letter } = props;
+  const { joinExperience, news_letter, projects, collaborateWithUs } = props;
+
   return (
     joinExperience && (
       <Layout
@@ -34,10 +41,10 @@ const JoinExperience = (props) => {
         isFilter
         seo={joinExperience && joinExperience.seo}
         filterData={{
-          date: false,
+          date: true,
           filter_authors: false,
           filter_tags: false,
-          alphabet: false,
+          alphabet: true,
         }}
       >
         <div className="page_head_set">
@@ -73,52 +80,95 @@ const JoinExperience = (props) => {
 
                 <div className="content_a">
                   <div className="section_sides_group">
-                    {joinExperience && (
+                    {projects &&
+                      ChunkArray(projects, 2).map((project, key) => {
+                        if (key + (1 % 2) != 1) {
+                          if (key + 1 === 2) {
+                            return (
+                              <CenterTextSection
+                                content={project}
+                                centerText={joinExperience.centerText}
+                                key={`card-section-${key}`}
+                              />
+                            );
+                          } else if (key + 1 === 4) {
+                            return (
+                              <CenterLogoSection
+                                content={project}
+                                centerLogo={joinExperience.centerLogo}
+                                key={`card-section-${key}`}
+                              />
+                            );
+                          } else {
+                            return (
+                              <Column3Section
+                                content={project}
+                                key={`card-section-${key}`}
+                              />
+                            );
+                          }
+                        } else {
+                          return (
+                            <Column3Section
+                              content={project}
+                              key={`card-section-${key}`}
+                            />
+                          );
+                        }
+                      })}
+                    {/* {joinExperience && (
                       <ExperienceDynamicComponents
                         ProjectSections={joinExperience.ProjectSections}
                       />
-                    )}
+                    )} */}
                   </div>
                 </div>
               </div>
             </section>
+            {collaborateWithUs && (
+              <section>
+                <div className="section_content">
+                  <div className="content_a">
+                    <div className="hero_text flex has_shape">
+                      <strong
+                        className="f_80 uppercase"
+                        dangerouslySetInnerHTML={{
+                          __html: StripPTags(collaborateWithUs.title),
+                        }}
+                      />
 
-            <section>
-              <div className="section_content">
-                <div className="content_a">
-                  <div className="hero_text flex has_shape">
-                    <strong className="f_80 uppercase">
-                      Want to contribute <br />
-                      to Ithraeyat?
-                    </strong>
-                    <div className="f_20 less_opacity">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                      sed do eiusmod
-                    </div>
-                    <div className="circle_btn_set mg" data-dist="5">
-                      <Link href={`/collaborate`}>
-                        <a className="btn circle_btn flex">
-                          <span>Join Now</span>
-                        </a>
-                      </Link>
+                      <div
+                        className="f_20 less_opacity"
+                        dangerouslySetInnerHTML={{
+                          __html: collaborateWithUs.description,
+                        }}
+                      />
+
+                      <div className="circle_btn_set mg" data-dist="5">
+                        <Link href={`/collaborate`}>
+                          <a className="btn circle_btn flex">
+                            <span>Join Now</span>
+                          </a>
+                        </Link>
+                      </div>
                     </div>
                   </div>
+                  <div className="line_shape cr_shape_set">
+                    <svg
+                      viewBox="0 0 1440 409"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M1941.5 183.361C1908.67 208.861 1372 471.5 1263.5 293.861C1134.94 83.3782 1419 92.3613 1372 183.361C1339.92 245.474 1262 452.86 1108 399.861C954 346.861 805.5 -79.1387 462 14.3613C187.2 89.1613 38.8333 243.195 -1 310.861"
+                        className="svg-stroke"
+                        strokeOpacity="0.5"
+                      ></path>
+                    </svg>
+                  </div>
                 </div>
-                <div className="line_shape cr_shape_set">
-                  <svg
-                    viewBox="0 0 1440 409"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M1941.5 183.361C1908.67 208.861 1372 471.5 1263.5 293.861C1134.94 83.3782 1419 92.3613 1372 183.361C1339.92 245.474 1262 452.86 1108 399.861C954 346.861 805.5 -79.1387 462 14.3613C187.2 89.1613 38.8333 243.195 -1 310.861"
-                      className="svg-stroke"
-                      strokeOpacity="0.5"
-                    ></path>
-                  </svg>
-                </div>
-              </div>
-            </section>
+              </section>
+            )}
 
             <InnerFooter sectionData={news_letter} />
           </div>

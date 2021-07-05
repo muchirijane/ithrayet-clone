@@ -29,7 +29,7 @@ const Layout = ({
       {isInner ? (
         <main>
           <SearchComponent />
-          {isFilter && <Filters data={filterData} />}
+          {isFilter && <Filters data={filterData ? filterData : null} />}
           {isDownloadUI && <DownloadUI />}
           <div data-scroll-container>
             <div data-scroll-section>

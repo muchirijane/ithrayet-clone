@@ -14,6 +14,7 @@ export const GET_EXPERIENCE_DATA = gql`
           url
         }
       }
+      published_at
       title
       color
       date
@@ -93,60 +94,37 @@ export const GET_JOINEXPERIENCE_DATA = gql`
           url
         }
       }
-      ProjectSections {
-        ... on ComponentJoinExperienceBlocksCenterTextLayout {
-          __typename
-          CenterTextLayout: projects {
-            project {
-              title
-              quote
-              cover {
-                url
-                alternativeText
-              }
-              slug
-              date
-            }
-          }
-          middleText
-        }
-        ... on ComponentJoinExperienceBlocksCenterLogoLayout {
-          __typename
-          CenterLogo: projects {
-            project {
-              title
-              quote
-              cover {
-                url
-                alternativeText
-              }
-              slug
-              date
-            }
-          }
-        }
-
-        ... on ComponentJoinExperienceBlocks3ColumnLayoutCards {
-          __typename
-          direction
-          CL3_cards: ProjectRelation {
-            project {
-              title
-              quote
-              cover {
-                url
-                alternativeText
-              }
-              slug
-              date
-            }
-          }
-        }
+      centerLogo {
+        url
       }
+      centerText
+    }
+    projects(locale: $locale) {
+      title
+      quote
+      cover {
+        url
+        alternativeText
+      }
+      slug
+      date
     }
     newsLetterForm(locale: $locale) {
       title
       description
+    }
+    collaborateWithUs(locale: $locale) {
+      title
+      description
+    }
+  }
+`;
+
+export const GET_NEXT_PROJECT = gql`
+  query ($where: JSON, $limit: Int, $locale: String!) {
+    projects(where: $where, limit: $limit, locale: $locale) {
+      slug
+      title
     }
   }
 `;

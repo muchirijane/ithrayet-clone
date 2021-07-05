@@ -6,9 +6,9 @@ const Column3Section = (props) => {
 
   return (
     <div className="section_sides exp_sides flex">
-      {content.CL3_cards.map((card, key) => (
+      {content.map((card, key) => (
         <Link
-          href={`/join-experience/${card.project.slug}`}
+          href={`/join-experience/${card.slug}`}
           key={`expc3-${key}`}
         >
           <a
@@ -21,20 +21,20 @@ const Column3Section = (props) => {
             <div className="exp_img">
               <img
                 className="load_img"
-                data-src={`${CMSPath}${card.project.cover.url}`}
-                alt={card.project.cover.alternativeText}
+                data-src={`${CMSPath}${card.cover.url}`}
+                alt={card.cover.alternativeText}
                 width="100%"
                 height="auto"
               />
             </div>
             <div className="exp_details">
               <span className="f_40 alt flex">
-                <span>{card.project.title}</span>
+                <span>{card.title}</span>
                 <span className="f_16 norm">
-                  / {format(new Date(card.project.date), "yyyy")}
+                  / {format(new Date(card.date), "yyyy")}
                 </span>
               </span>
-              <span className="f_16">{card.project.quote}</span>
+              <span className="f_16">{card.quote}</span>
             </div>
           </a>
         </Link>
