@@ -52,7 +52,7 @@ export const GET_STORIES_DATA = gql`
         }
       }
     }
-    allStoryNames: stories(locale: $locale){
+    allStoryNames: stories(locale: $locale, where:{isOnlineExclusive_eq: $isOnlineExclusive}){
       name
     }
     ${GET_FILTER_AUTHORS}
