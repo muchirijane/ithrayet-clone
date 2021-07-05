@@ -52,6 +52,9 @@ export const GET_STORIES_DATA = gql`
         }
       }
     }
+    allStoryNames: stories(locale: $locale){
+      name
+    }
     ${GET_FILTER_AUTHORS}
     ${GET_FILTER_TAGS}
   }

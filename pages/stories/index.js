@@ -55,9 +55,10 @@ export const getServerSideProps = async ({ locale, query }) => {
         storiedCount: data.countStories,
         SEO: data.listStory.seo,
         isOnlineExclusive: online_exclusive ? true : null,
-        storyName: story_name ? true : null,
+        storyName: story_name ? story_name : null,
         filter_authors: data.filter_authors,
         filter_tags: data.filter_tags,
+        allStoriesName: data.allStoryNames
       },
     };
   }
@@ -71,6 +72,7 @@ const Stories = (props) => {
     SEO,
     isOnlineExclusive,
     storyName,
+    allStoriesName
   } = props;
   const isAll = isOnlineExclusive === null && storyName === null;
 
@@ -150,14 +152,15 @@ const Stories = (props) => {
                     </a>
                   </Link>
                 </li>
-                {stories &&
-                  stories.map((story, key) => {
+                {allStoriesName &&
+                  allStoriesName.map((story, key) => {
+                   
                     return (
                       <li key={`story_name-${key}`}>
                         <Link href={`/stories?story_name=${story.name}`}>
                           <a
                             data-id={`${key + 1}`}
-                            className={`${storyName && "active"}`}
+                            className={`${storyName === story.name && "active"}`}
                           >
                             <span className="f_lable">{story.name}</span>
                           </a>
