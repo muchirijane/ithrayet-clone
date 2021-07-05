@@ -6,8 +6,10 @@ export const GET_STORIES_DATA = gql`
     stories(
       locale: $locale
       where: { _or: [
-        {isOnlineExclusive_eq: $isOnlineExclusive},
-        {name_eq: $name},
+        {_and:[
+          {isOnlineExclusive_eq: $isOnlineExclusive},
+          {name_eq: $name}
+        ]},
         {_and: [
           {
             _and: [
