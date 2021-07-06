@@ -72,8 +72,8 @@ const WriteToUsForm = (props) => {
         <div className="content_a">
           {isThankYou ? (
             <ThankYouMessage
-              title={"All done, we received your information"}
-              description={`Thank you for your message. we will contact you soon`}
+              title={sectionData.thankYou.title}
+              description={sectionData.thankYou.description}
               onClose={setThankYou}
             />
           ) : (

@@ -54,8 +54,8 @@ const InnerFooter = (props) => {
         <div className="content_a">
           {isThankYou ? (
             <ThankYouMessage
-              title={"ALL DONE, You subscribed to our Newsletter"}
-              description={`Thank you for subscribing.`}
+              title={sectionData.thankYou.title}
+              description={sectionData.thankYou.description}
               onClose={setThankYou}
             />
           ) : (

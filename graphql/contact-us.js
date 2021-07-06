@@ -43,6 +43,10 @@ export const GET_CONTACT_US_DATA = gql`
     feedbackForm(locale: $locale) {
       title
       description
+      thankYou {
+        title
+        description
+      }
     }
   }
 `;

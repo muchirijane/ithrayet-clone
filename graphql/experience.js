@@ -129,6 +129,10 @@ export const GET_JOINEXPERIENCE_DATA = gql`
     collaborateWithUs(locale: $locale) {
       title
       description
+      thankYou {
+        title
+        description
+      }
     }
   }
 `;
