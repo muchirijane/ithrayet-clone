@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 import { GET_FILTER_AUTHORS, GET_FILTER_TAGS } from "./filters";
 
 export const GET_STORIES_DATA = gql`
-  query ($locale: String!, $isOnlineExclusive: Boolean, $name: String,  $authFirstName:String, $authLastName: String, $tags: [JSON], $dateFrom: String, $dateTo: String) {
+  query ($locale: String!, $isOnlineExclusive: Boolean, $name: String,  $authFirstName:String, $authLastName: String, $tags: [JSON], $dateFrom: String, $dateTo: String, $alphabets: [JSON]) {
     stories(
       locale: $locale
       where: { _or: [
@@ -11,6 +11,7 @@ export const GET_STORIES_DATA = gql`
           {name_eq: $name}
         ]},
         {_and: [
+          {_or:$alphabets}
           {
             _and: [
               { articles: { author: { firstName_contains: $authFirstName } } }
@@ -54,7 +55,10 @@ export const GET_STORIES_DATA = gql`
         }
       }
     }
-    allStoryNames: stories(locale: $locale, where:{isOnlineExclusive_eq: $isOnlineExclusive}){
+    allStoryNames: stories(locale: $locale, where:{_and:[
+      {_or:$alphabets}
+      {isOnlineExclusive_eq: $isOnlineExclusive}
+    ]}){
       name
     }
     ${GET_FILTER_AUTHORS}

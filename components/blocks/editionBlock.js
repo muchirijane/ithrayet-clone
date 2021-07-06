@@ -28,18 +28,18 @@ const EditionBlock = ({ featuredEdition, dataUrl }) => {
 
             <span>{`${type.value} #${type.number}`}</span>
           </h1>
-          <div class="ed_image _curTL1">
-            <div class="full_bg prx">
-              <div class="cardWrapper full_bg">
-                <div class="card full_bg">
-                  <div class="cardFace full_bg front"></div>
-                  <div class="cardFace full_bg back"></div>
+          <div className="ed_image _curTL1">
+            <div className="full_bg prx">
+              <div className="cardWrapper full_bg">
+                <div className="card full_bg">
+                  <div className="cardFace full_bg front"></div>
+                  <div className="cardFace full_bg back"></div>
                 </div>
               </div>
 
-              <div class="ed_sub_images">
-                <div class="ed_sub_image"></div>
-                <div class="ed_sub_image"></div>
+              <div className="ed_sub_images">
+                <div className="ed_sub_image"></div>
+                <div className="ed_sub_image"></div>
               </div>
             </div>
           </div>

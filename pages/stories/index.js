@@ -9,6 +9,7 @@ export const getServerSideProps = async ({ locale, query }) => {
   const { online_exclusive, story_name } = query;
 
   const { alphabet, writer, catID, dateFrom, dateTo } = query;
+
   let catJson;
   let dates = {};
   if (dateFrom && dateTo && dateFrom != "" && dateTo != "") {
@@ -33,6 +34,23 @@ export const getServerSideProps = async ({ locale, query }) => {
       });
     }
   }
+  let alphabetJson;
+  if (alphabet && alphabet != "") {
+    alphabetJson = [];
+    let alphabetSplitArray = alphabet.split(",");
+    if (alphabetSplitArray.length > 0) {
+      alphabetSplitArray.map((val) => {
+        alphabetJson.push({
+          name_containss: val,
+        });
+      });
+    } else {
+      alphabetJson.push({
+        name_containss: val,
+      });
+    }
+  }
+ 
   const { data } = await client.query({
     query: GET_STORIES_DATA,
     variables: {
@@ -43,6 +61,7 @@ export const getServerSideProps = async ({ locale, query }) => {
       authFirstName: writer && writer != "" && writer.split(",")[0],
       authLastName: writer && writer != "" && writer.split(",")[1],
       tags: catJson && catJson,
+      alphabets: alphabetJson && alphabetJson,
     },
   });
 

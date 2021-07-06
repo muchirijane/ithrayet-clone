@@ -25,11 +25,28 @@ export const getServerSideProps = async ({ locale, query }) => {
       });
     }
   }
+  let alphabetJson;
+  if (alphabet && alphabet != "") {
+    alphabetJson = [];
+    let alphabetSplitArray = alphabet.split(",");
+    if (alphabetSplitArray.length > 0) {
+      alphabetSplitArray.map((val) => {
+        alphabetJson.push({
+          firstName_containss: val,
+        });
+      });
+    } else {
+      alphabetJson.push({
+        firstName_containss: val,
+      });
+    }
+  }
   const { data } = await client.query({
     query: GET_CREATIVES_DATA,
     variables: {
       locale: locale,
       tags: catJson && catJson,
+      alphabets: alphabetJson && alphabetJson,
     },
   });
 

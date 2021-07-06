@@ -16,7 +16,7 @@ export const getServerSideProps = async ({ locale, query }) => {
       dateFrom: dateFrom && dateFrom != "" ? new Date(dateFrom) : null,
     };
   }
- 
+
   if (catID && catID != "") {
     catJson = [];
     let splitArray = catID.split(",");
@@ -32,7 +32,23 @@ export const getServerSideProps = async ({ locale, query }) => {
       });
     }
   }
-  console.log(catJson);
+  let alphabetJson;
+  if (alphabet && alphabet != "") {
+    alphabetJson = [];
+    let alphabetSplitArray = alphabet.split(",");
+    if (alphabetSplitArray.length > 0) {
+      alphabetSplitArray.map((val) => {
+        alphabetJson.push({
+          title_containss: val,
+        });
+      });
+    } else {
+      alphabetJson.push({
+        title_containss: val,
+      });
+    }
+  }
+
   const { data } = await client.query({
     query: GET_EDITIONS_DATA,
     variables: {
@@ -41,7 +57,7 @@ export const getServerSideProps = async ({ locale, query }) => {
       authFirstName: writer && writer != "" && writer.split(",")[0],
       authLastName: writer && writer != "" && writer.split(",")[1],
       tags: catJson && catJson,
- 
+      alphabets: alphabetJson && alphabetJson,
     },
   });
 

@@ -20,11 +20,29 @@ export const getServerSideProps = async ({ locale, query }) => {
     };
   }
 
+  let alphabetJson;
+  if (alphabet && alphabet != "") {
+    alphabetJson = [];
+    let alphabetSplitArray = alphabet.split(",");
+    if (alphabetSplitArray.length > 0) {
+      alphabetSplitArray.map((val) => {
+        alphabetJson.push({
+          title_containss: val,
+        });
+      });
+    } else {
+      alphabetJson.push({
+        title_containss: val,
+      });
+    }
+  }
+
   const { data } = await client.query({
     query: GET_JOINEXPERIENCE_DATA,
     variables: {
       ...dates,
       locale: locale,
+      alphabets: alphabetJson && alphabetJson,
     },
   });
 

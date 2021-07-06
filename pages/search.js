@@ -6,6 +6,7 @@ import { GET_SEARCH_DATA, SEARCH_RESULTS } from "../graphql";
 import client from "../lib/apollo";
 import { CMSPath } from "../helpers/imageCMSPath";
 import Link from "next/link";
+import Image from "next/image";
 
 export const getStaticProps = async ({ locale }) => {
   const { data } = await client.query({
@@ -74,6 +75,8 @@ const Search = (props) => {
     let creativesCount = creatives.length;
     let total = editionsCount + projectsCount + storiesCount + creativesCount;
     updateCount(total);
+    window.dispatchEvent(new Event('resize'));
+
   }, [editions, projects, stories, creatives]);
 
   useEffect(() => {
@@ -237,13 +240,16 @@ const Search = (props) => {
                       key={`search_edition-${key}`}
                     >
                       <a className="result_set">
-                        <div className="result_img">
-                          <img
-                            className="load_img"
-                            data-src={`${CMSPath}${edition.cover.url}`}
-                            width="100%"
-                            height="auto"
+                        <div className="result_img" style={{ width: "70%" }}>
+                          <Image
+                            src={`${CMSPath}${edition.cover.url}`}
+                            layout="responsive"
+                            height={300}
+                            width={300}
+                            objectFit="contain"
+                            placeholder="blur"
                             alt={edition.cover.alternativeText}
+                            blurDataURL={`${CMSPath}${edition.cover.url}`}
                           />
                         </div>
                         <div className="result_title">
@@ -269,13 +275,16 @@ const Search = (props) => {
                       key={`search_project-${key}`}
                     >
                       <a className="result_set">
-                        <div className="result_img">
-                          <img
-                            className="load_img"
-                            data-src={`${CMSPath}${project.cover.url}`}
-                            width="100%"
-                            height="auto"
+                        <div className="result_img" style={{ width: "70%" }}>
+                          <Image
+                            src={`${CMSPath}${project.cover.url}`}
+                            layout="responsive"
+                            height={300}
+                            width={300}
+                            objectFit="contain"
+                            placeholder="blur"
                             alt={project.cover.alternativeText}
+                            blurDataURL={`${CMSPath}${project.cover.url}`}
                           />
                         </div>
                         <div className="result_title">
@@ -301,13 +310,16 @@ const Search = (props) => {
                       key={`search_story-${key}`}
                     >
                       <a className="result_set">
-                        <div className="result_img">
-                          <img
-                            className="load_img"
-                            data-src={`${CMSPath}${story.articles[0].cover.url}`}
-                            width="100%"
-                            height="auto"
+                        <div className="result_img" style={{ width: "70%" }}>
+                          <Image
+                            src={`${CMSPath}${story.articles[0].cover.url}`}
+                            layout="responsive"
+                            height={300}
+                            width={300}
+                            objectFit="contain"
+                            placeholder="blur"
                             alt={story.articles[0].cover.alternativeText}
+                            blurDataURL={`${CMSPath}${story.articles[0].cover.url}`}
                           />
                         </div>
                         <div className="result_title">
@@ -333,13 +345,16 @@ const Search = (props) => {
                       key={`search_creative-${key}`}
                     >
                       <a className="result_set">
-                        <div className="result_img">
-                          <img
-                            className="load_img"
-                            data-src={`${CMSPath}${creative.profileImage.url}`}
-                            width="100%"
-                            height="auto"
+                        <div className="result_img" style={{ width: "70%" }}>
+                          <Image
+                            src={`${CMSPath}${creative.profileImage.url}`}
+                            layout="responsive"
+                            height={300}
+                            width={300}
+                            objectFit="contain"
                             alt={creative.profileImage.alternativeText}
+                            placeholder="blur"
+                            blurDataURL={`${CMSPath}${creative.profileImage.url}`}
                           />
                         </div>
                         <div className="result_title">

@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Equalizer from "./UIKit/equalizer";
@@ -11,6 +11,7 @@ import Filters from "./Filter";
 import Loader from "./Loader";
 import DownloadUI from "./UIKit/DownloadUI";
 import Script from "next/script";
+import { useState } from "react";
 
 const Layout = ({
   children,
