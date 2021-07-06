@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import useTranslation from "next-translate/useTranslation";
 
 const SearchComponent = () => {
   const [search_term, onSearch] = useState();
+  const { t } = useTranslation("common");
 
   return (
     <div className="search_wrap full_bg flex">
@@ -21,7 +23,7 @@ const SearchComponent = () => {
         <input
           type="text"
           name="query"
-          placeholder="Type something.."
+          placeholder={t('type_something')}
           onChange={(e) => {
             onSearch(e.target.value);
           }}
@@ -31,7 +33,7 @@ const SearchComponent = () => {
         <Link href={`/search?search_term=${search_term}`}>
           <a>
             <div className="circle_mag flex full_bg">
-              <span className="f_14 uppercase">Search</span>
+              <span className="f_14 uppercase">{t("_search")}</span>
             </div>
           </a>
         </Link>

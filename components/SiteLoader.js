@@ -150,7 +150,7 @@ const SiteLoader = ({ loaderImages }) => {
                   <path d="M480,154.4l-1.9-3.1l-9.7,5.8l1.9,3.1L480,154.4z"></path>
                 </g>
               </svg>
-            </div>{" "}
+            </div>
           </div>
         </div>
       </div>

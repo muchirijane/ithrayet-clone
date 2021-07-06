@@ -6,8 +6,10 @@ import { useMutation } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { MUTATION_collaborateForm } from "../../graphql/mutations/collaborateForm";
 import { StripPTags } from "../../helpers/arrayHelper";
+import useTranslation from "next-translate/useTranslation";
 
 const CollaborateForm = (props) => {
+  const { t } = useTranslation("common");
   const { sectionData } = props;
   const [isThankYou, setThankYou] = useState(false);
 
@@ -100,7 +102,7 @@ const CollaborateForm = (props) => {
                       className="required"
                     />
                     <label for="f_name" className="full_bg flex">
-                      First Name *
+                      {t("collaborate_form.first_name")}
                     </label>
                     <div className="input_border">
                       <svg
@@ -165,7 +167,7 @@ const CollaborateForm = (props) => {
                       className="required"
                     />
                     <label for="l_name" className="full_bg flex">
-                      Last Name *
+                      {t("collaborate_form.last_name")}
                     </label>
                     <div className="input_border">
                       <svg
@@ -227,7 +229,7 @@ const CollaborateForm = (props) => {
                       id="entity"
                     />
                     <label for="entity" className="full_bg flex">
-                      Name of Entity/Institution
+                      {t("collaborate_form.name_entity")}
                     </label>
                     <div className="input_border">
                       <svg
@@ -288,7 +290,7 @@ const CollaborateForm = (props) => {
                       className="required"
                     />
                     <label for="w_email" className="full_bg flex">
-                      Email Address *
+                      {t("collaborate_form.email_address")}
                     </label>
                     <div className="input_border">
                       <svg
@@ -353,7 +355,7 @@ const CollaborateForm = (props) => {
                       onChange={handleContact}
                     />
                     <label for="number" className="full_bg flex">
-                      Phone Number
+                      {t("collaborate_form.phone_number")}
                     </label>
                     <div className="input_border">
                       <svg
@@ -404,7 +406,7 @@ const CollaborateForm = (props) => {
                   <div className="input_set">
                     <input type="text" {...register("jobTitle")} id="job" />
                     <label for="job" className="full_bg flex">
-                      Your job title
+                      {t("collaborate_form.job_title")}
                     </label>
                     <div className="input_border">
                       <svg
@@ -462,7 +464,7 @@ const CollaborateForm = (props) => {
                       maxLength="250"
                     ></textarea>
                     <label for="fb_message" className="full_bg flex">
-                      Your comment/letter*
+                      {t("collaborate_form.comment")}
                     </label>
                     <div className="input_border">
                       <svg
@@ -528,7 +530,7 @@ const CollaborateForm = (props) => {
                     }}
                   >
                     <div className="btn circle_btn flex _ele">
-                      <span>Submit</span>
+                      <span>{t("collaborate_form.submit")}</span>
                     </div>
                   </div>
                 </form>

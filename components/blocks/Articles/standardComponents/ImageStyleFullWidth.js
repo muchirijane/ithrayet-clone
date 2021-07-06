@@ -1,7 +1,8 @@
 import { CMSPath } from "../../../../helpers/imageCMSPath";
 import Link from "next/link";
-
+import useTranslation from "next-translate/useTranslation";
 const ImageStyleFullWidth = (props) => {
+  const { t } = useTranslation("common");
   const { content } = props;
   return (
     <section>
@@ -28,7 +29,7 @@ const ImageStyleFullWidth = (props) => {
                 />
                 <div className="info_line">
                   <div className="f_14">
-                    {content.imageFullWidth_image[0].description} Artwork by{" "}
+                    {content.imageFullWidth_image[0].description} {`${t("artwork_by")} `}
                     <strong>
                       <Link
                         href={`/creatives/${content.imageFullWidth_image[0].artist.slug}`}
@@ -57,7 +58,7 @@ const ImageStyleFullWidth = (props) => {
                 />
                 <div className="info_line">
                   <div className="f_14">
-                    {content.imageFullWidth_image[1].description} Artwork by{" "}
+                    {content.imageFullWidth_image[1].description} {`${t("artwork_by")} `}
                     <strong>
                       <Link
                         href={`/creatives/${content.imageFullWidth_image[1].artist.slug}`}

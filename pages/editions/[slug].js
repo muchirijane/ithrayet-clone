@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
 import client from "../../lib/apollo";
-import { GET_EDITION_SLUGS, GET_EDITION_DATA } from "../../graphql";
+import { GET_EDITION_DATA } from "../../graphql";
 import PageBarArticle from "../../components/blocks/Editions/Edition/pageBarArticle";
 import BannerTitle from "../../components/blocks/Editions/Edition/BannerTitle";
 import ArticleSection from "../../components/blocks/Editions/Edition/AritcleSection";

@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { CMSPath } from "../../../../helpers/imageCMSPath";
-
+import useTranslation from "next-translate/useTranslation";
 const ImageWithText = (props) => {
+  const { t } = useTranslation("common");
   const { content } = props;
   return (
     <section>
@@ -24,7 +25,7 @@ const ImageWithText = (props) => {
                 />
                 <div className="f_14">
                   <p>
-                    {content.coverImage.description} Artwork by{" "}
+                    {content.coverImage.description} {`${t("artwork_by")} `}
                     <Link href={`/creatives/${content.coverImage.artist.slug}`}>
                       <a>
                         <strong>{`${content.coverImage.artist.firstName} ${content.coverImage.artist.lastName}`}</strong>
@@ -65,7 +66,7 @@ const ImageWithText = (props) => {
                 />
                 <div className="f_14">
                   <p>
-                    {content.parallaxImageWT_images[0].description} Artwork by{" "}
+                    {content.parallaxImageWT_images[0].description} {`${t("artwork_by")} `}
                     <Link
                       href={`/creatives/${content.parallaxImageWT_images[0].artist.slug}`}
                     >
@@ -93,7 +94,7 @@ const ImageWithText = (props) => {
                 />
                 <div className="f_14">
                   <p>
-                    {content.parallaxImageWT_images[1].description} Artwork by{" "}
+                    {content.parallaxImageWT_images[1].description} {`${t("artwork_by")} `}
                     <Link
                       href={`/creatives/${content.parallaxImageWT_images[1].artist.slug}`}
                     >

@@ -10,6 +10,7 @@ import ArticleDynamicComponents from "../../components/blocks/Articles/ArticleDy
 import { fetchAPI } from "../../helpers/api";
 import _ from "lodash";
 import { ArticleBlocksKeyReplace } from "../../helpers/arrayHelper";
+import useTranslation from "next-translate/useTranslation";
 
 export const getStaticPaths = async ({ locales }) => {
   const { data } = await client.query({
@@ -107,6 +108,7 @@ export const getStaticProps = async ({
 };
 
 const Article = (props) => {
+  const { t } = useTranslation("common");
   const { article, nextArticle } = props;
 
   return (
@@ -169,7 +171,7 @@ const Article = (props) => {
                       data-scroll-speed="1"
                     >
                       <div className="section_head">
-                        <div className="f_30 less_opacity">Up Next</div>
+                        <div className="f_30 less_opacity">{`${t("up_next")}`}</div>
                         <h1>{nextArticle.title}</h1>
                       </div>
                     </div>

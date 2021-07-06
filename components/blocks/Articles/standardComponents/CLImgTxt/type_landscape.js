@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { CMSPath } from "../../../../../helpers/imageCMSPath";
+import useTranslation from "next-translate/useTranslation";
 
 const TypeLandscape = (props) => {
+  const { t } = useTranslation("common");
   const { title, description, image, isCentered } = props;
 
   return (
@@ -34,7 +36,7 @@ const TypeLandscape = (props) => {
                 />
                 <div className="info_line">
                   <div className="f_14">
-                    {`${image.description}`} Artwork by{" "}
+                    {`${image.description}`} {`${t("artwork_by")} `}
                     <strong>
                       <Link href={`/creatives/${image.artist.slug}`}>
                         <a target="_blank">{`${image.artist.firstName} ${image.artist.lastName}`}</a>

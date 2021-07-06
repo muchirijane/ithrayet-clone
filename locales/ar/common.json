@@ -1,21 +1,113 @@
 {
   "title_prefix": "Ithraeyat",
-  "email_address": "عنوان البريد الإلكتروني",
-  "subscribe": "الإشتراك",
 
   "copyrights": "اثريات. جميع الحقوق محفوظة.",
 
   "loader_musicwarn_text": "يحتوي هذا الموقع على موسيقى <br /> انقر في أي مكان لتمكين تشغيل الوسائط",
 
   "more_about_ithraeyat": "المزيد عن <br /> إثرائيات",
-  "all_projects": "كل المشاريع",
-  "all_editions": "كل الطبعات",
-  "all_creatives": "جميع التصميمات",
+  "all_projects": "جميعالمشاريع",
+  "all_editions": "جميعالإصدارات",
+  "all_creatives": "جميعالمعدات",
+  "join_now": "نضمالان",
+  "all": "الجميع",
+  "artwork_by": "العملالفني",
+  "up_next": "التالي",
 
+  "by": "بواسطة",
+  "stories": "قصص",
+  "online_exclusive": "الحصري على الانترنت",
+  "list_view": "عرض القائمة",
+  "slider_view": "عرض المنزلق",
+  "search": {
+    "editions": "إصدارات",
+    "stories": "قصص",
+    "creatives": "المبدعين",
+    "projects": "مشاريع"
+  },
   "homepage": {
-    "join_exp": "انضم إلى التجربة",
+    "join_exp": "انضم إلى الخبرة",
     "our_story": "قصتنا",
     "creatives": "المبدعين",
-    "editions": "طبعات"
-  }
+    "editions": "إصدارات"
+  },
+
+  "pages": {
+    "title_contact_us": "اتصل بنا",
+    "title_join_the_exp": "انضم إلى الخبرة",
+    "title_our_stories": "قصصنا",
+    "title_editions": "إصدارات",
+    "title_downloadList": "جميع الإصدارات",
+    "title_downloadIssues": "إصدارات",
+    "title_symbols": "حرف او رمز"
+  },
+
+  "news_letter_form": {
+    "email_address": "عنوان البريد الإلكتروني",
+    "subscribe": "الإشتراك"
+  },
+
+  "feedback_form": {
+    "name": "اسم",
+    "email_address": "عنوان البريد الإلكتروني",
+    "message": "رسالة..",
+    "submit": "إرسال"
+  },
+
+  "collaborate_form": {
+    "first_name": "الاسم الأول *",
+    "last_name": "الكنية *",
+    "name_entity": "اسم الكيان / المؤسسة",
+    "email_address": "عنوان البريد الإلكتروني *",
+    "phone_number": "رقم الهاتف",
+    "job_title": "المسمى الوظيفي",
+    "comment": "تعليقك / خطابك *",
+    "submit": "إرسال"
+  },
+
+  "write_to_us_form": {
+    "first_name": "الاسم الأول *",
+    "last_name": "الكنية *",
+    "name_entity": "اسم الكيان / المؤسسة",
+    "email_address": "عنوان البريد الإلكتروني *",
+    "phone_number": "رقم الهاتف",
+    "job_title": "المسمى الوظيفي",
+    "comment": "تعليقك / خطابك *",
+    "submit": "إرسال"
+  },
+  "not_found": {
+    "title": "هل أنت تائه؟",
+    "description": "لا تقلق، اقرأ هذه المقالة عن فقدانها.",
+    "callback": "الشعور بالضياع وكيف يمكن أن تساعدك في العثور على نفسك"
+  },
+  "minutes_read": "دقائق قراءة",
+  "scratch_here": "خدش هنا",
+  "aPlus": "A+",
+  "aMinus": "A-",
+
+  "articles": {
+    "featured": "متميز",
+    "exclusive": "حصرية"
+  },
+  "explore_text": "امسك هنا إلى <br /> استكشاف الإصدارات",
+  "search_bar": {
+    "filter": "منقي",
+    "placeholder": "هل تبحث عن شئ؟"
+  },
+  "filters": "مرشحات",
+  "by_writer": "بواسطة كاتب",
+  "by_alphabet": "بواسطة الأبجدية",
+  "by_cat": "بالتصنيف",
+  "by_date": "حسب التاريخ",
+  "done": "منجز",
+  "_search": "يبحث",
+  "dark_mode": "الوضع المظلم",
+  "light_mode": "وضع ضوء",
+  "home": "منزل، بيت",
+  "social": {
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "insta": "Instagram"
+  },
+  "type_something" : "اطبع شيئا.."
 }

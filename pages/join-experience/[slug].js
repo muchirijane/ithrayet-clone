@@ -1,9 +1,14 @@
 import Layout from "../../components/Layout";
-import { GET_EXPERIENCE_DATA, GET_EXPERIENCE_SLUGS, GET_NEXT_PROJECT } from "../../graphql";
+import {
+  GET_EXPERIENCE_DATA,
+  GET_EXPERIENCE_SLUGS,
+  GET_NEXT_PROJECT,
+} from "../../graphql";
 import { CMSPath } from "../../helpers/imageCMSPath";
 import client from "../../lib/apollo";
 import Link from "next/link";
 import { fetchAPI } from "../../helpers/api";
+import useTranslation from "next-translate/useTranslation";
 
 export const getStaticPaths = async ({ locales }) => {
   const { data } = await client.query({
@@ -88,6 +93,7 @@ export const getStaticProps = async ({
 };
 
 const Experience = (props) => {
+  const { t } = useTranslation("common");
   const { project, nextProject } = props;
   return (
     <Layout isInner seo={project && project.seo}>
@@ -178,7 +184,7 @@ const Experience = (props) => {
                         <div className="f_14">
                           <p>
                             {project.showcase.images[0].description}
-                            Artwork by{" "}
+                            {`${t('artwork_by')} `}
                             <Link
                               href={`/creatives/${project.showcase.images[0].artist.slug}`}
                             >
@@ -233,7 +239,7 @@ const Experience = (props) => {
                         <div className="f_14">
                           <p>
                             {project.showcase.images[1].description}
-                            Artwork by{" "}
+                            {`${t('artwork_by')} `}
                             <Link
                               href={`/creatives/${project.showcase.images[1].artist.slug}`}
                             >
@@ -256,7 +262,7 @@ const Experience = (props) => {
                         <div className="f_14">
                           <p>
                             {project.showcase.images[2].description}
-                            Artwork by{" "}
+                            {`${t('artwork_by')} `}
                             <Link
                               href={`/creatives/${project.showcase.images[2].artist.slug}`}
                             >
@@ -280,7 +286,7 @@ const Experience = (props) => {
                         <div className="f_14">
                           <p>
                             {project.showcase.images[3].description}
-                            Artwork by{" "}
+                            {`${t('artwork_by')} `}
                             <Link
                               href={`/creatives/${project.showcase.images[3].artist.slug}`}
                             >
@@ -313,7 +319,7 @@ const Experience = (props) => {
                         <div className="f_14">
                           <p>
                             {project.bottomImages[0].description}
-                            Artwork by{" "}
+                            {`${t('artwork_by')} `}
                             <Link
                               href={`/creatives/${project.bottomImages[0].artist.slug}`}
                             >
@@ -344,7 +350,7 @@ const Experience = (props) => {
                         <div className="f_14">
                           <p>
                             {project.bottomImages[1].description}
-                            Artwork by{" "}
+                            {`${t('artwork_by')} `}
                             <Link
                               href={`/creatives/${project.bottomImages[1].artist.slug}`}
                             >
@@ -387,7 +393,7 @@ const Experience = (props) => {
                       data-scroll-speed="1"
                     >
                       <div className="section_head">
-                        <div className="f_30 less_opacity">Up Next</div>
+                        <div className="f_30 less_opacity">{t('up_next')}</div>
                         <h1>{nextProject.title}</h1>
                       </div>
                     </div>

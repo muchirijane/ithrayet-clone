@@ -69,7 +69,7 @@ const InnerFooter = (props) => {
 
               <div
                 className="f_20 less_opacity _ele"
-                dangerouslySetInnerHTML={{ __html: sectionData.description }}
+                dangerouslySetInnerHTML={{ __html: StripPTags(sectionData.description) }}
               />
 
               <div className="form_set">
@@ -86,13 +86,13 @@ const InnerFooter = (props) => {
                       })}
                     />
                     <label for="newsletter_email" className="full_bg flex">
-                      {t("email_address")}
+                      {t("news_letter_form.email_address")}
                     </label>
                     <button
                       type="submit"
                       className="inline_submit flex _curTL2 submitThis"
                     >
-                      <span>{t("subscribe")}</span>
+                      <span>{t("news_letter_form.subscribe")}</span>
                       <i className="full_bg"></i>
                     </button>
 

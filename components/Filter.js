@@ -1,6 +1,11 @@
+import { useRouter } from "next/router";
+import useTranslation from "next-translate/useTranslation";
 const Filters = (props) => {
-  const { data } = props;
+  const { t } = useTranslation("common");
 
+  const { data } = props;
+  const router = useRouter();
+  const { locale } = router;
   return (
     data && (
       <div className="filters_wrap full_bg">
@@ -16,7 +21,7 @@ const Filters = (props) => {
               <i>-</i>
             </div>
 
-            <div className="f_80 alt uppercase">Filters</div>
+            <div className="f_80 alt uppercase">{t("filters")}</div>
           </div>
 
           <div className="filters_body">
@@ -24,7 +29,9 @@ const Filters = (props) => {
               {data.alphabet && (
                 <div className="filter_block _ele" id="alphabet">
                   <div className="filter_head flex">
-                    <strong className="f_20 uppercase">By Alphabet</strong>
+                    <strong className="f_20 uppercase">
+                      {t("by_alphabet")}
+                    </strong>
                     <div className="filter_side">
                       <div className="filter_count flex">0</div>
                       <div className="filter_arrow">
@@ -45,34 +52,67 @@ const Filters = (props) => {
                   </div>
 
                   <div className="filter_options f_16 uppercase">
-                    <div className="letters flex">
-                      <span>A</span>
-                      <span>B</span>
-                      <span>C</span>
-                      <span>D</span>
-                      <span>E</span>
-                      <span>F</span>
-                      <span>G</span>
-                      <span>H</span>
-                      <span>I</span>
-                      <span>J</span>
-                      <span>K</span>
-                      <span>L</span>
-                      <span>M</span>
-                      <span>N</span>
-                      <span>O</span>
-                      <span>P</span>
-                      <span>Q</span>
-                      <span>R</span>
-                      <span>S</span>
-                      <span>T</span>
-                      <span>U</span>
-                      <span>V</span>
-                      <span>W</span>
-                      <span>X</span>
-                      <span>Y</span>
-                      <span>Z</span>
-                    </div>
+                    {locale === "en" ? (
+                      <div className="letters flex">
+                        <span>A</span>
+                        <span>B</span>
+                        <span>C</span>
+                        <span>D</span>
+                        <span>E</span>
+                        <span>F</span>
+                        <span>G</span>
+                        <span>H</span>
+                        <span>I</span>
+                        <span>J</span>
+                        <span>K</span>
+                        <span>L</span>
+                        <span>M</span>
+                        <span>N</span>
+                        <span>O</span>
+                        <span>P</span>
+                        <span>Q</span>
+                        <span>R</span>
+                        <span>S</span>
+                        <span>T</span>
+                        <span>U</span>
+                        <span>V</span>
+                        <span>W</span>
+                        <span>X</span>
+                        <span>Y</span>
+                        <span>Z</span>
+                      </div>
+                    ) : (
+                      <div class="letters flex">
+                        <span>أ</span>
+                        <span>ب</span>
+                        <span>ج</span>
+                        <span>د</span>
+                        <span>ه</span>
+                        <span>و</span>
+                        <span>ز</span>
+                        <span>ح</span>
+                        <span>ط</span>
+                        <span>ي</span>
+                        <span>ك</span>
+                        <span>ل</span>
+                        <span>م</span>
+                        <span>ن</span>
+                        <span>س</span>
+                        <span>ع</span>
+                        <span>ف</span>
+                        <span>ص</span>
+                        <span>ق</span>
+                        <span>ر</span>
+                        <span>ش</span>
+                        <span>ت</span>
+                        <span>ث</span>
+                        <span>خ</span>
+                        <span>ذ</span>
+                        <span>ض</span>
+                        <span>ظ</span>
+                        <span>غ</span>
+                      </div>
+                    )}
                   </div>
                 </div>
               )}
@@ -80,7 +120,7 @@ const Filters = (props) => {
               {data.filter_authors && (
                 <div className="filter_block _ele" id="writer">
                   <div className="filter_head flex">
-                    <strong className="f_20 uppercase">By Writer</strong>
+                    <strong className="f_20 uppercase">{t("by_writer")}</strong>
                     <div className="filter_side">
                       <div className="filter_count flex">0</div>
                       <div className="filter_arrow">
@@ -141,7 +181,7 @@ const Filters = (props) => {
               {data.filter_tags && (
                 <div className="filter_block _ele" id="catID">
                   <div className="filter_head flex">
-                    <strong className="f_20 uppercase">By Category</strong>
+                    <strong className="f_20 uppercase">{t("by_cat")}</strong>
                     <div className="filter_side">
                       <div className="filter_count flex">0</div>
                       <div className="filter_arrow">
@@ -199,7 +239,7 @@ const Filters = (props) => {
               {data.date && (
                 <div className="filter_block _ele" id="date">
                   <div className="filter_head flex">
-                    <strong className="f_20 uppercase">By Date</strong>
+                    <strong className="f_20 uppercase">{t("by_date")}</strong>
                     <div className="filter_side">
                       <div className="filter_arrow">
                         <svg
@@ -219,74 +259,149 @@ const Filters = (props) => {
                   </div>
 
                   <div className="filter_options f_16 uppercase">
-                    <div className="dates_block flex">
-                      <div className="date_side">
-                        <div className="date_label">From</div>
-                        <div className="date_select flex">
-                          <div className="select_set">
-                            <select id="monthFrom">
-                              <option value="1">January</option>
-                              <option value="2">February</option>
-                              <option value="3">March</option>
-                              <option value="4">April</option>
-                              <option value="5">May</option>
-                              <option value="6">June</option>
-                              <option value="7">July</option>
-                              <option value="8">August</option>
-                              <option value="9">September</option>
-                              <option value="10">October</option>
-                              <option value="11">November</option>
-                              <option value="12">December</option>
-                            </select>
+                    {locale === "en" ? (
+                      <div className="dates_block flex">
+                        <div className="date_side">
+                          <div className="date_label">From</div>
+                          <div className="date_select flex">
+                            <div className="select_set">
+                              <select id="monthFrom">
+                                <option value="1">January</option>
+                                <option value="2">February</option>
+                                <option value="3">March</option>
+                                <option value="4">April</option>
+                                <option value="5">May</option>
+                                <option value="6">June</option>
+                                <option value="7">July</option>
+                                <option value="8">August</option>
+                                <option value="9">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                              </select>
+                            </div>
+                            <div className="select_set">
+                              <select id="yearFrom">
+                                <option value="2014">2014</option>
+                                <option value="2015">2015</option>
+                                <option value="2016">2016</option>
+                                <option value="2017">2017</option>
+                                <option value="2018">2018</option>
+                                <option value="2019">2019</option>
+                                <option value="2020">2020</option>
+                                <option value="2021">2021</option>
+                              </select>
+                            </div>
                           </div>
-                          <div className="select_set">
-                            <select id="yearFrom">
-                              <option value="2014">2014</option>
-                              <option value="2015">2015</option>
-                              <option value="2016">2016</option>
-                              <option value="2017">2017</option>
-                              <option value="2018">2018</option>
-                              <option value="2019">2019</option>
-                              <option value="2020">2020</option>
-                              <option value="2021">2021</option>
-                            </select>
+                        </div>
+                        <div className="date_side">
+                          <div className="date_label">To</div>
+                          <div className="date_select flex">
+                            <div className="select_set">
+                              <select id="monthTo">
+                                <option value="01">January</option>
+                                <option value="02">February</option>
+                                <option value="03">March</option>
+                                <option value="04">April</option>
+                                <option value="05">May</option>
+                                <option value="06">June</option>
+                                <option value="07">July</option>
+                                <option value="08">August</option>
+                                <option value="09">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                              </select>
+                            </div>
+                            <div className="select_set">
+                              <select id="yearTo">
+                                <option value="2014">2014</option>
+                                <option value="2015">2015</option>
+                                <option value="2016">2016</option>
+                                <option value="2017">2017</option>
+                                <option value="2018">2018</option>
+                                <option value="2019">2019</option>
+                                <option value="2020">2020</option>
+                                <option value="2021">2021</option>
+                              </select>
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div className="date_side">
-                        <div className="date_label">To</div>
-                        <div className="date_select flex">
-                          <div className="select_set">
-                            <select id="monthTo">
-                              <option value="01">January</option>
-                              <option value="02">February</option>
-                              <option value="03">March</option>
-                              <option value="04">April</option>
-                              <option value="05">May</option>
-                              <option value="06">June</option>
-                              <option value="07">July</option>
-                              <option value="08">August</option>
-                              <option value="09">September</option>
-                              <option value="10">October</option>
-                              <option value="11">November</option>
-                              <option value="12">December</option>
-                            </select>
+                    ) : (
+                      <div class="dates_block flex">
+                        <div class="date_side">
+                          <div class="date_label">من</div>
+                          <div class="date_select flex">
+                            <div class="select_set">
+                              <select id="monthFrom">
+                                <option value="1">يناير</option>
+                                <option value="2">فبراير</option>
+                                <option value="3">مارس</option>
+                                <option value="4">ابريل</option>
+                                <option value="5">مايو</option>
+                                <option value="6">يوتيو</option>
+                                <option value="7">يوليو</option>
+                                <option value="8">اغسطس</option>
+                                <option value="9">سبتمبر</option>
+                                <option value="10">اكتوبر</option>
+                                <option value="11">
+                                  تشرين الثاني (نوفمبر)
+                                </option>
+                                <option value="12">ديسمبر</option>
+                              </select>
+                            </div>
+                            <div class="select_set">
+                              <select id="yearFrom">
+                                <option value="2014">2014</option>
+                                <option value="2015">2015</option>
+                                <option value="2016">2016</option>
+                                <option value="2017">2017</option>
+                                <option value="2018">2018</option>
+                                <option value="2019">2019</option>
+                                <option value="2020">2020</option>
+                                <option value="2021">2021</option>
+                              </select>
+                            </div>
                           </div>
-                          <div className="select_set">
-                            <select id="yearTo">
-                              <option value="2014">2014</option>
-                              <option value="2015">2015</option>
-                              <option value="2016">2016</option>
-                              <option value="2017">2017</option>
-                              <option value="2018">2018</option>
-                              <option value="2019">2019</option>
-                              <option value="2020">2020</option>
-                              <option value="2021">2021</option>
-                            </select>
+                        </div>
+                        <div class="date_side">
+                          <div class="date_label">الي</div>
+                          <div class="date_select flex">
+                            <div class="select_set">
+                              <select id="monthTo">
+                                <option value="1">يناير</option>
+                                <option value="2">فبراير</option>
+                                <option value="3">مارس</option>
+                                <option value="4">ابريل</option>
+                                <option value="5">مايو</option>
+                                <option value="6">يوتيو</option>
+                                <option value="7">يوليو</option>
+                                <option value="8">اغسطس</option>
+                                <option value="9">سبتمبر</option>
+                                <option value="10">اكتوبر</option>
+                                <option value="11">
+                                  تشرين الثاني (نوفمبر)
+                                </option>
+                                <option value="12">ديسمبر</option>
+                              </select>
+                            </div>
+                            <div class="select_set">
+                              <select id="yearTo">
+                                <option value="2014">2014</option>
+                                <option value="2015">2015</option>
+                                <option value="2016">2016</option>
+                                <option value="2017">2017</option>
+                                <option value="2018">2018</option>
+                                <option value="2019">2019</option>
+                                <option value="2020">2020</option>
+                                <option value="2021">2021</option>
+                              </select>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
+                    )}
                   </div>
                 </div>
               )}
@@ -294,10 +409,11 @@ const Filters = (props) => {
           </div>
 
           <div className="filters_action _ele">
-            <form onSubmit={(e)=>{
-              e.preventDefault();
-              console.log(e.formData);
-            }}>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+              }}
+            >
               {data.alphabet && (
                 <input type="hidden" name="alphabet" value="" />
               )}
@@ -311,7 +427,7 @@ const Filters = (props) => {
               {data.date && <input type="hidden" name="dateTo" value="" />}
 
               <div className="form_btn _up">
-                <strong className="f_16 uppercase">Done</strong>
+                <strong className="f_16 uppercase">{t("done")}</strong>
               </div>
             </form>
           </div>

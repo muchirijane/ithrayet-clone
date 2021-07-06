@@ -2,7 +2,7 @@ import Layout from "../../components/Layout";
 import { GET_DOWNLOAD_ISSUES_DATA } from "../../graphql";
 import { CMSPath } from "../../helpers/imageCMSPath";
 import client from "../../lib/apollo";
-
+import useTranslation from "next-translate/useTranslation";
 export const getStaticProps = async ({ locale }) => {
   const { data } = await client.query({
     query: GET_DOWNLOAD_ISSUES_DATA,
@@ -23,6 +23,7 @@ export const getStaticProps = async ({ locale }) => {
 };
 
 const DonwloadIssues = (props) => {
+  const { t } = useTranslation("common");
   const { editions, SEO } = props;
 
   return (
@@ -36,7 +37,9 @@ const DonwloadIssues = (props) => {
               data-scroll-sticky
               data-scroll-target="#fixed-bar"
             >
-              <strong className="f_14 uppercase">{`${editions.length} EDITIONS`}</strong>
+              <strong className="f_14 uppercase">{`${editions.length} ${t(
+                "pages.title_downloadIssues"
+              )}`}</strong>
               <div className="f_80 alt" id="getName">
                 {editions[0].title}
               </div>
@@ -55,7 +58,7 @@ const DonwloadIssues = (props) => {
                     <i></i>
                   </div>
                 </div>
-                <strong className="f_14 uppercase">LIST VIEW</strong>
+                <strong className="f_14 uppercase">{t("list_view")}</strong>
               </a>
             </div>
           </div>

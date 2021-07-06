@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { CMSPath } from "../../../../helpers/imageCMSPath";
+import useTranslation from "next-translate/useTranslation";
 
 const TiltingGallery = (props) => {
+  const { t } = useTranslation("common");
   const { content } = props;
 
   return (
@@ -32,7 +34,7 @@ const TiltingGallery = (props) => {
                   />
                   <div className="info_line">
                     <div className="f_14">
-                      By{" "}
+                    {`${t("by")} `}
                       <strong>
                         <Link
                           href={`/creatives/${content.galleryImage.artist.slug}`}
@@ -65,7 +67,7 @@ const TiltingGallery = (props) => {
                       <div className="info_line">
                         <div className="f_14">
                           {image.description}
-                          Artwork by{" "}
+                          {`${t("artwork_by")} `}
                           <strong>
                             <Link href={`/creatives/${image.artist.slug}`}>
                               <a target="_blank">

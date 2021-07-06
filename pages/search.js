@@ -7,6 +7,7 @@ import client from "../lib/apollo";
 import { CMSPath } from "../helpers/imageCMSPath";
 import Link from "next/link";
 import Image from "next/image";
+import useTranslation from "next-translate/useTranslation";
 
 export const getStaticProps = async ({ locale }) => {
   const { data } = await client.query({
@@ -27,6 +28,7 @@ export const getStaticProps = async ({ locale }) => {
 };
 
 const Search = (props) => {
+  const { t } = useTranslation("common");
   const { searchProps } = props;
   const router = useRouter();
   const { search_term } = router.query;
@@ -75,8 +77,7 @@ const Search = (props) => {
     let creativesCount = creatives.length;
     let total = editionsCount + projectsCount + storiesCount + creativesCount;
     updateCount(total);
-    window.dispatchEvent(new Event('resize'));
-
+    window.dispatchEvent(new Event("resize"));
   }, [editions, projects, stories, creatives]);
 
   useEffect(() => {
@@ -157,7 +158,7 @@ const Search = (props) => {
               <input
                 type="text"
                 name="query"
-                placeholder="Type something.."
+                placeholder={t('type_something')}
                 value={search}
                 onChange={searchItem}
               />
@@ -174,7 +175,7 @@ const Search = (props) => {
                   data-type="all"
                 >
                   <span className="f_lable" style={{ pointerEvents: "none" }}>
-                    <span>All </span>
+                    <span>{t("all")} </span>
                     <span className="f_count">{totalCount}</span>
                   </span>
                 </a>
@@ -182,7 +183,7 @@ const Search = (props) => {
               <li>
                 <a href="#" onClick={updateType} data-type="editions">
                   <span className="f_lable" style={{ pointerEvents: "none" }}>
-                    <span>Editions </span>
+                    <span>{t("search.editions")} </span>
                     <span className="f_count">
                       {editions ? editions.length : "0"}
                     </span>
@@ -192,7 +193,7 @@ const Search = (props) => {
               <li>
                 <a href="#" onClick={updateType} data-type="stories">
                   <span className="f_lable" style={{ pointerEvents: "none" }}>
-                    <span>Stories </span>
+                    <span>{t("search.stories")} </span>
                     <span className="f_count">
                       {stories ? stories.length : "0"}
                     </span>
@@ -202,7 +203,7 @@ const Search = (props) => {
               <li>
                 <a href="#" onClick={updateType} data-type="creatives">
                   <span className="f_lable" style={{ pointerEvents: "none" }}>
-                    <span>Creatives </span>
+                    <span>{t("search.creatives")} </span>
                     <span className="f_count">
                       {creatives ? creatives.length : "0"}
                     </span>
@@ -212,7 +213,7 @@ const Search = (props) => {
               <li>
                 <a href="#" onClick={updateType} data-type="projects">
                   <span className="f_lable" style={{ pointerEvents: "none" }}>
-                    <span>Projects </span>
+                    <span>{t("search.projects")} </span>
                     <span className="f_count">
                       {projects ? projects.length : "0"}
                     </span>
@@ -230,7 +231,9 @@ const Search = (props) => {
             {editions.length > 0 && (
               <div className="search_block">
                 <div className="content_a">
-                  <strong className="f_40 uppercase">Editions</strong>
+                  <strong className="f_40 uppercase">
+                    {t("search.editions")}
+                  </strong>
                 </div>
 
                 <div className="search_row flex">
@@ -265,7 +268,9 @@ const Search = (props) => {
             {projects.length > 0 && (
               <div className="search_block">
                 <div className="content_a">
-                  <strong className="f_40 uppercase">Projects</strong>
+                  <strong className="f_40 uppercase">
+                    {t("search.projects")}
+                  </strong>
                 </div>
 
                 <div className="search_row flex">
@@ -300,7 +305,9 @@ const Search = (props) => {
             {stories.length > 0 && (
               <div className="search_block">
                 <div className="content_a">
-                  <strong className="f_40 uppercase">Stories</strong>
+                  <strong className="f_40 uppercase">
+                    {t("search.stories")}
+                  </strong>
                 </div>
 
                 <div className="search_row flex">
@@ -335,7 +342,9 @@ const Search = (props) => {
             {creatives.length > 0 && (
               <div className="search_block">
                 <div className="content_a">
-                  <strong className="f_40 uppercase">Creatives</strong>
+                  <strong className="f_40 uppercase">
+                    {t("search.creatives")}
+                  </strong>
                 </div>
 
                 <div className="search_row flex">

@@ -1,12 +1,15 @@
 import Link from "next/link";
 import { useState } from "react";
 import EditonArticle from "../../../elements/EditionArticle";
+import useTranslation from "next-translate/useTranslation";
 
 const ArticleSection = (props) => {
+  const { t } = useTranslation("common");
+
   const { articles, slug, featured, exclusive } = props;
- 
-  const isAll = (featured === null && exclusive === null);
- 
+
+  const isAll = featured === null && exclusive === null;
+
   return (
     <div id="sections">
       <div
@@ -20,21 +23,21 @@ const ArticleSection = (props) => {
             <li>
               <Link href={`/editions/${slug}`}>
                 <a className={`exclude-a ${isAll ? "active" : ""}`}>
-                  <span className="f_lable">All</span>
+                  <span className="f_lable">{t("all")}</span>
                 </a>
               </Link>
             </li>
             <li>
               <Link href={`/editions/${slug}?featured=true`}>
                 <a className={`exclude-a ${featured ? "active" : ""}`}>
-                  <span className="f_lable">Featured</span>
+                  <span className="f_lable">{t("articles.featured")}</span>
                 </a>
               </Link>
             </li>
             <li>
               <Link href={`/editions/${slug}?exclusive=true`}>
                 <a className={`exclude-a ${exclusive ? "active" : ""}`}>
-                  <span className="f_lable">Exclusive</span>
+                  <span className="f_lable">{t("articles.exclusive")}</span>
                 </a>
               </Link>
             </li>

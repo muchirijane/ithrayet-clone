@@ -1,7 +1,5 @@
 {
   "title_prefix": "Ithraeyat",
-  "email_address": "Email Address",
-  "subscribe": "Subscribe",
 
   "copyrights": "Ithraeyat . All right reserved.",
 
@@ -11,11 +9,105 @@
   "all_projects": "All Projects",
   "all_editions": "All Editions",
   "all_creatives": "All Creatives",
+  "join_now": "Join Now",
+  "all": "All",
+  "artwork_by": "Artwork by",
+  "up_next": "Up Next",
 
+  "by": "By",
+  "stories": "Stories",
+  "online_exclusive": "Online Exclusive",
+  "list_view": "LIST VIEW",
+  "slider_view": "Slider View",
+  "search": {
+    "editions": "Editions",
+    "stories": "Stories",
+    "creatives": "Creatives",
+    "projects": "Projects"
+  },
   "homepage": {
     "join_exp": "Join The experience",
     "our_story": "Our Story",
     "creatives": "Creatives",
     "editions": "Editions"
-  }
+  },
+
+  "pages": {
+    "title_contact_us": "Contact us",
+    "title_join_the_exp": "Join The Experience",
+    "title_our_stories": "Our Stories",
+    "title_editions": "Editions",
+    "title_downloadList": "All Editions",
+    "title_downloadIssues": "EDITIONS",
+    "title_symbols": "Symbols"
+  },
+
+  "news_letter_form": {
+    "email_address": "Email Address",
+    "subscribe": "Subscribe"
+  },
+
+  "feedback_form": {
+    "name": "Name",
+    "email_address": "Email Address",
+    "message": "Message..",
+    "submit": "Submit"
+  },
+
+  "collaborate_form": {
+    "first_name": "First Name *",
+    "last_name": "Last Name *",
+    "name_entity": "Name of Entity/Institution",
+    "email_address": "Email Address *",
+    "phone_number": "Phone Number",
+    "job_title": "Your job title",
+    "comment": "Your comment/letter*",
+    "submit": "Submit"
+  },
+
+  "write_to_us_form": {
+    "first_name": "First Name *",
+    "last_name": "Last Name *",
+    "name_entity": "Name of Entity/Institution",
+    "email_address": "Email Address *",
+    "phone_number": "Phone Number",
+    "job_title": "Your job title",
+    "comment": "Your comment/letter*",
+    "submit": "Submit"
+  },
+  "not_found": {
+    "title": "Are you lost?",
+    "description": "No worries, read this article about being lost.",
+    "callback": "Feeling Lost and How It Can Help You Find Yourself"
+  },
+  "minutes_read": "minutes read",
+  "scratch_here": "Scratch Here",
+  "aPlus": "A+",
+  "aMinus": "A-",
+
+  "articles": {
+    "featured": "Featured",
+    "exclusive": "Exclusive"
+  },
+  "explore_text": "Hold here to <br />Explore Editions",
+  "search_bar": {
+    "filter": "Filter",
+    "placeholder": "Are you looking for something?"
+  },
+  "filters": "Filters",
+  "by_writer": "By Writer",
+  "by_alphabet": "By Alphabet",
+  "by_cat": "By Category",
+  "by_date": "By Date",
+  "done": "Done",
+  "_search": "Search",
+  "dark_mode": "Dark Mode",
+  "light_mode": "Light Mode",
+  "home": "Home",
+  "social": {
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "insta": "Instagram"
+  },
+  "type_something" : "Type something.."
 }

@@ -4,7 +4,7 @@ import { format } from "date-fns";
 import client from "../../lib/apollo";
 import Link from "next/link";
 import SVGComp from "../../components/SVGComp";
-
+import useTranslation from "next-translate/useTranslation";
 export const getStaticProps = async ({ locale }) => {
   const { data } = await client.query({
     query: GET_SYMBOLS_DATA,
@@ -25,11 +25,12 @@ export const getStaticProps = async ({ locale }) => {
 };
 
 const Symbols = (props) => {
+  const { t } = useTranslation("common");
   const { symbols, SEO } = props;
   return (
     <Layout isInner seo={SEO && SEO}>
       <div className="page_head_set">
-        <h1>Symbols</h1>
+        <h1>{t('pages.title_symbols')}</h1>
       </div>
 
       <div id="sections">

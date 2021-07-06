@@ -1,7 +1,7 @@
 import Layout from "../../components/Layout";
 import { GET_EDITIONS_DATA } from "../../graphql";
 import client from "../../lib/apollo";
-
+import useTranslation from "next-translate/useTranslation";
 import EditionsSection from "../../components/blocks/Editions/editionsSection";
 import PageBar from "../../components/blocks/Editions/pageBar";
 import SearchBar from "../../components/elements/SearchBar";
@@ -75,6 +75,7 @@ export const getServerSideProps = async ({ locale, query }) => {
 };
 
 const Editions = (props) => {
+  const { t } = useTranslation("common");
   const { editions, SEO, filter_authors, filter_tags } = props;
 
   return (
@@ -90,7 +91,7 @@ const Editions = (props) => {
       }}
     >
       <div className="page_head_set">
-        <h1>Editions</h1>
+        <h1>{t('pages.title_editions')}</h1>
       </div>
 
       <div className="page_bar">

@@ -1,7 +1,10 @@
 import React from "react";
 import Link from "next/link";
+import useTranslation from "next-translate/useTranslation";
 
 const Footer = ({ locale }) => {
+  const { t } = useTranslation("common");
+
   return (
     <footer style={{ visibility: "hidden" }} className="_show">
       <div className="footer_set flex">
@@ -21,7 +24,7 @@ const Footer = ({ locale }) => {
             rel="noopener"
             className="_curTL2"
           >
-            Facebook
+            {t("social.facebook")}
             <svg
               width="14"
               height="23"
@@ -46,7 +49,7 @@ const Footer = ({ locale }) => {
             rel="noopener"
             className="_curTL2"
           >
-            Twitter
+            {t("social.twitter")}
             <svg
               width="22"
               height="19"
@@ -66,7 +69,7 @@ const Footer = ({ locale }) => {
             rel="noopener"
             className="_curTL2"
           >
-            Instagram
+            {t("social.insta")}
             <svg
               width="19"
               height="19"

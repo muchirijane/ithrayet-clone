@@ -10,7 +10,7 @@ export const GET_GALLERY_DATA = gql`
         alternativeText
       }
     }
-    listGallery {
+    listGallery(locale: $locale) {
       seo {
         metaTitle
         metaDescription

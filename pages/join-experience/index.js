@@ -1,4 +1,3 @@
-import ExperienceDynamicComponents from "../../components/blocks/JoinExperience/ExperienceDynamicComponents";
 import InnerFooter from "../../components/InnerFooter";
 import Layout from "../../components/Layout";
 import client from "../../lib/apollo";
@@ -9,6 +8,7 @@ import { ChunkArray, StripPTags } from "../../helpers/arrayHelper";
 import Column3Section from "../../components/blocks/JoinExperience/components/Column3Section";
 import CenterTextSection from "../../components/blocks/JoinExperience/components/CenterTextSection";
 import CenterLogoSection from "../../components/blocks/JoinExperience/components/CenterLogoSection";
+import useTranslation from "next-translate/useTranslation";
 
 export const getServerSideProps = async ({ locale, query }) => {
   const { alphabet, dateFrom, dateTo } = query;
@@ -59,6 +59,8 @@ export const getServerSideProps = async ({ locale, query }) => {
 };
 
 const JoinExperience = (props) => {
+  const { t } = useTranslation("common");
+
   const { joinExperience, news_letter, projects, collaborateWithUs } = props;
 
   return (
@@ -75,7 +77,7 @@ const JoinExperience = (props) => {
         }}
       >
         <div className="page_head_set">
-          <h1>Join The Experience</h1>
+          <h1>{t("pages.title_join_the_exp")}</h1>
         </div>
 
         <div id="fixed-bar" className="fixed-bar">
@@ -174,7 +176,7 @@ const JoinExperience = (props) => {
                       <div className="circle_btn_set mg" data-dist="5">
                         <Link href={`/collaborate`}>
                           <a className="btn circle_btn flex">
-                            <span>Join Now</span>
+                            <span>{t("join_now")}</span>
                           </a>
                         </Link>
                       </div>

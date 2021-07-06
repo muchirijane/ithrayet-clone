@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { CMSPath } from "../../../../helpers/imageCMSPath";
-
+import useTranslation from "next-translate/useTranslation";
 const TiltingFullWidth = (props) => {
+  const { t } = useTranslation("common");
   const { content } = props;
   return (
     <section>
@@ -28,7 +29,7 @@ const TiltingFullWidth = (props) => {
                   />
                   <div className="info_line">
                     <div className="f_14">
-                      {content.tiltImageFW_image[0].description} Artwork by{" "}
+                      {content.tiltImageFW_image[0].description} {`${t("artwork_by")} `}
                       <strong>
                         <Link
                           href={`/creatives/${content.tiltImageFW_image[0].artist.slug}`}
@@ -58,7 +59,7 @@ const TiltingFullWidth = (props) => {
                   />
                   <div className="info_line">
                     <div className="f_14">
-                      {content.tiltImageFW_image[1].description} Artwork by{" "}
+                      {content.tiltImageFW_image[1].description} {`${t("artwork_by")} `}
                       <strong>
                         <Link
                           href={`/creatives/${content.tiltImageFW_image[1].artist.slug}`}

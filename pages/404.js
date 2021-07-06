@@ -1,8 +1,11 @@
 import Link from "next/link";
 import Layout from "../components/Layout";
 import { Page404_SEO } from "../constants/page_constants";
+import useTranslation from "next-translate/useTranslation";
 
 export default function FourOhFour() {
+  const { t } = useTranslation("common");
+
   return (
     <Layout isInner={true} seo={Page404_SEO}>
       <div className="full_bg nf_wrapper flex">
@@ -98,13 +101,11 @@ export default function FourOhFour() {
         </div>
 
         <div className="wrap_text">
-          <div className="f_80 alt">Are you lost?</div>
-          <div className="f_20">
-            No worries, read this article about being lost.
-          </div>
+          <div className="f_80 alt">{t("not_found.title")}</div>
+          <div className="f_20">{t("not_found.description")}</div>
           <div className="f_16">
             <a href="/" style={{ color: "#9C8AE5" }}>
-              Feeling Lost and How It Can Help You Find Yourself
+              {t("not_found.callback")}
             </a>
           </div>
         </div>

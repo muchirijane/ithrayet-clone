@@ -5,7 +5,7 @@ import { CMSPath } from "../helpers/imageCMSPath";
 import client from "../lib/apollo";
 import _ from "lodash";
 import FeedbackForm from "../components/forms/Feedback";
-import SVGComp from "../components/SVGComp";
+import useTranslation from "next-translate/useTranslation";
 
 export const getStaticProps = async ({ locale }) => {
   const { data } = await client.query({
@@ -28,12 +28,13 @@ export const getStaticProps = async ({ locale }) => {
 };
 
 const ContactUs = (props) => {
+  const { t } = useTranslation("common");
   const { contactData, news_letter, feedback } = props;
   return (
     <Layout isInner seo={contactData && contactData.seo}>
       {contactData && (
         <div className="page_head_set">
-          <h1>Contact us</h1>
+          <h1>{t('pages.title_contact_us')}</h1>
           <div className="content_a">
             <strong className="f_20 uppercase">{contactData.title}</strong>
             <div className="f_20">

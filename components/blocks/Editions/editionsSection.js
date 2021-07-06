@@ -1,6 +1,8 @@
 import { CMSPath } from "../../../helpers/imageCMSPath";
-
+import useTranslation from "next-translate/useTranslation";
 const EditionsSection = (props) => {
+  const { t } = useTranslation("common");
+
   const { editions } = props;
 
   return (
@@ -72,10 +74,10 @@ const EditionsSection = (props) => {
                     </svg>
                   </div>
                 </div>
-                <span className="f_14 uppercase">
-                  Hold here to <br />
-                  Explore Edition
-                </span>
+                <span
+                  className="f_14 uppercase"
+                  dangerouslySetInnerHTML={{ __html: t("explore_text") }}
+                />
               </div>
             </div>
           </div>

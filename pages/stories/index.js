@@ -4,6 +4,7 @@ import client from "../../lib/apollo";
 import Link from "next/link";
 import { CMSPath } from "../../helpers/imageCMSPath";
 import SearchBar from "../../components/elements/SearchBar";
+import useTranslation from "next-translate/useTranslation";
 
 export const getServerSideProps = async ({ locale, query }) => {
   const { online_exclusive, story_name } = query;
@@ -50,7 +51,7 @@ export const getServerSideProps = async ({ locale, query }) => {
       });
     }
   }
- 
+
   const { data } = await client.query({
     query: GET_STORIES_DATA,
     variables: {
@@ -86,6 +87,7 @@ export const getServerSideProps = async ({ locale, query }) => {
   }
 };
 const Stories = (props) => {
+  const { t } = useTranslation("common");
   const {
     filter_authors,
     filter_tags,
@@ -111,7 +113,7 @@ const Stories = (props) => {
       }}
     >
       <div className="page_head_set">
-        <h1>Our Stories</h1>
+        <h1>{t("pages.title_our_stories")}</h1>
       </div>
 
       <div className="page_bar">
@@ -141,11 +143,11 @@ const Stories = (props) => {
                 </svg>
                 {isOnlineExclusive ? (
                   <Link href={`/stories`}>
-                    <a className="inline_link _up">Stories</a>
+                    <a className="inline_link _up">{t("stories")}</a>
                   </Link>
                 ) : (
                   <Link href={`/stories?online_exclusive=true`}>
-                    <a className="inline_link _up">Online Exclusive</a>
+                    <a className="inline_link _up">{t("online_exclusive")}</a>
                   </Link>
                 )}
               </span>
@@ -170,7 +172,7 @@ const Stories = (props) => {
                 <li>
                   <Link href={`/stories`}>
                     <a className={`${isAll && "active"}`} data-id="-1">
-                      <span className="f_lable">All</span>
+                      <span className="f_lable">{t('all')}</span>
                     </a>
                   </Link>
                 </li>

@@ -6,8 +6,10 @@ import { useForm } from "react-hook-form";
 import { useRef } from "react";
 import ThankYouMessage from "./ThankYou";
 import { StripPTags } from "../../helpers/arrayHelper";
+import useTranslation from "next-translate/useTranslation";
 
 const FeedbackForm = (props) => {
+  const { t } = useTranslation("common");
   const { sectionData } = props;
   const [isThankYou, setThankYou] = useState(false);
 
@@ -87,7 +89,7 @@ const FeedbackForm = (props) => {
                       })}
                     />
                     <label for="fb_name" className="full_bg flex">
-                      Name
+                      {t("feedback_form.name")}
                     </label>
                     <div className="input_border">
                       <svg
@@ -154,7 +156,7 @@ const FeedbackForm = (props) => {
                       })}
                     />
                     <label for="fb_email" className="full_bg flex">
-                      Email Address
+                      {t("feedback_form.email_address")}
                     </label>
                     <div className="input_border">
                       <svg
@@ -217,7 +219,7 @@ const FeedbackForm = (props) => {
                       })}
                     ></textarea>
                     <label for="fb_message" className="full_bg flex">
-                      Message..
+                      {t("feedback_form.message")}
                     </label>
 
                     <div className="input_border">
@@ -285,7 +287,7 @@ const FeedbackForm = (props) => {
                     data-dist="5"
                   >
                     <div className="btn circle_btn flex _ele">
-                      <span>Submit</span>
+                      <span> {t("feedback_form.submit")}</span>
                     </div>
                   </div>
                 </form>

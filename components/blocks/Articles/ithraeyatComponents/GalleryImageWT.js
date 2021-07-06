@@ -1,7 +1,8 @@
 import { CMSPath } from "../../../../helpers/imageCMSPath";
 import Link from "next/link";
-
+import useTranslation from "next-translate/useTranslation";
 const GalleryImageWT = (props) => {
+  const { t } = useTranslation("common");
   const { content } = props;
   return (
     <section>
@@ -60,7 +61,7 @@ const GalleryImageWT = (props) => {
                     />
                     <div className="info_line">
                       <div className="f_14">
-                        {image.description} Artwork by{" "}
+                        {image.description} {`${t("artwork_by")} `}
                         <strong>
                           <Link href={`/creatives/${image.artist.slug}`}>
                             <a target="_blank">

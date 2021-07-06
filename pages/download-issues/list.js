@@ -3,6 +3,7 @@ import Layout from "../../components/Layout";
 import { GET_DOWNLOAD_ISSUES_DATA } from "../../graphql";
 import { CMSPath } from "../../helpers/imageCMSPath";
 import client from "../../lib/apollo";
+import useTranslation from "next-translate/useTranslation";
 
 export const getStaticProps = async ({ locale }) => {
   const { data } = await client.query({
@@ -25,6 +26,7 @@ export const getStaticProps = async ({ locale }) => {
 };
 
 const DonwloadIssuesList = (props) => {
+  const { t } = useTranslation("common");
   const { editions, news_letter, SEO } = props;
 
   return (
@@ -33,8 +35,10 @@ const DonwloadIssuesList = (props) => {
         <div id="fixed-bar" className="fixed-bar">
           <div className="content_a">
             <div className="downloads_head flex">
-              <strong className="f_14 uppercase">{`${editions.length} EDITIONS`}</strong>
-              <div className="f_80 alt">All Editions</div>
+              <strong className="f_14 uppercase">{`${editions.length} ${t(
+                "pages.title_downloadIssues"
+              )}`}</strong>
+              <div className="f_80 alt">{t("pages.title_downloadList")}</div>
               <a href="/download-issues" className="view_toggle flex">
                 <div className="view_shape_set flex">
                   <svg
@@ -60,7 +64,7 @@ const DonwloadIssuesList = (props) => {
                     ></rect>
                   </svg>
                 </div>
-                <strong className="f_14 uppercase">Slider View</strong>
+                <strong className="f_14 uppercase">{t("slider_view")}</strong>
               </a>
             </div>
           </div>

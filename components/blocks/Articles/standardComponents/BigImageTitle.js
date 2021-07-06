@@ -1,7 +1,9 @@
 import { CMSPath } from "../../../../helpers/imageCMSPath";
 import Link from "next/link";
+import useTranslation from "next-translate/useTranslation";
 
 const BigImageTitle = (props) => {
+  const { t } = useTranslation("common");
   const { content } = props;
   return (
     <section>
@@ -23,7 +25,7 @@ const BigImageTitle = (props) => {
 
               <div className="info_line">
                 <div className="f_14">
-                  {content.bigImageWT_image.description} Artwork by{" "}
+                  {content.bigImageWT_image.description} {`${t("artwork_by")} `}
                   <strong>
                     <Link
                       href={`/creatives/${content.bigImageWT_image.artist.slug}`}

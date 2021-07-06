@@ -6,7 +6,7 @@ import { GET_CREATIVE_DATA, GET_NEXT_CREATIVE } from "../../graphql/creatives";
 import Layout from "../../components/Layout";
 import SVGComp from "../../components/SVGComp";
 import { fetchAPI } from "../../helpers/api";
-
+import useTranslation from "next-translate/useTranslation";
 export const getStaticPaths = async ({ locales }) => {
   const { data } = await client.query({
     query: GET_CREATIVES_SLUGS,
@@ -89,6 +89,7 @@ export const getStaticProps = async ({
 };
 
 const Creative = (props) => {
+  const { t } = useTranslation("common");
   const { creative, nextCreative } = props;
 
   return (
@@ -300,7 +301,7 @@ const Creative = (props) => {
                       data-scroll-speed="1"
                     >
                       <div className="section_head">
-                        <div className="f_30 less_opacity">Up Next</div>
+                        <div className="f_30 less_opacity">{`${t("up_next")}`}</div>
                         <h1>{`${nextCreative.firstName} ${nextCreative.lastName}`}</h1>
                       </div>
                     </div>

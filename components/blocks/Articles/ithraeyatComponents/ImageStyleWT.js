@@ -1,8 +1,10 @@
 import { CMSPath } from "../../../../helpers/imageCMSPath";
 import Link from "next/link";
 import SVGComp from "../../../SVGComp";
+import useTranslation from "next-translate/useTranslation";
 
 const ImageStyleWT = (props) => {
+  const { t } = useTranslation("common");
   const { content } = props;
   return (
     <section>
@@ -35,7 +37,7 @@ const ImageStyleWT = (props) => {
                     />
                     <div className="info_line">
                       <div className="f_14">
-                        {`${image.description}`} Artwork by{" "}
+                        {`${image.description}`} {`${t("artwork_by")} `}
                         <strong>
                           <Link href={`/creatives/${image.artist.slug}`}>
                             <a target="_blank">

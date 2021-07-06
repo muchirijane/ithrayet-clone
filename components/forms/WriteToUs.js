@@ -6,8 +6,11 @@ import { useMutation } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { StripPTags } from "../../helpers/arrayHelper";
 import { MUTATION_writeToUsForm } from "../../graphql/mutations/writeToUsForm";
+import useTranslation from "next-translate/useTranslation";
 
 const WriteToUsForm = (props) => {
+  const { t } = useTranslation("common");
+
   const { sectionData } = props;
   const [isThankYou, setThankYou] = useState(false);
 
@@ -100,7 +103,7 @@ const WriteToUsForm = (props) => {
                       className="required"
                     />
                     <label for="f_name" className="full_bg flex">
-                      First Name *
+                      {t("write_to_us_form.first_name")}
                     </label>
                     <div className="input_border">
                       <svg
@@ -165,7 +168,7 @@ const WriteToUsForm = (props) => {
                       className="required"
                     />
                     <label for="l_name" className="full_bg flex">
-                      Last Name *
+                      {t("write_to_us_form.last_name")}
                     </label>
                     <div className="input_border">
                       <svg
@@ -227,7 +230,7 @@ const WriteToUsForm = (props) => {
                       id="entity"
                     />
                     <label for="entity" className="full_bg flex">
-                      Name of Entity/Institution
+                      {t("write_to_us_form.name_entity")}
                     </label>
                     <div className="input_border">
                       <svg
@@ -288,7 +291,7 @@ const WriteToUsForm = (props) => {
                       className="required"
                     />
                     <label for="w_email" className="full_bg flex">
-                      Email Address *
+                      {t("write_to_us_form.email_address")}
                     </label>
                     <div className="input_border">
                       <svg
@@ -353,7 +356,7 @@ const WriteToUsForm = (props) => {
                       onChange={handleContact}
                     />
                     <label for="number" className="full_bg flex">
-                      Phone Number
+                      {t("write_to_us_form.phone_number")}
                     </label>
                     <div className="input_border">
                       <svg
@@ -404,7 +407,7 @@ const WriteToUsForm = (props) => {
                   <div className="input_set">
                     <input type="text" {...register("jobTitle")} id="job" />
                     <label for="job" className="full_bg flex">
-                      Your job title
+                      {t("write_to_us_form.job_title")}
                     </label>
                     <div className="input_border">
                       <svg
@@ -462,7 +465,7 @@ const WriteToUsForm = (props) => {
                       maxLength="250"
                     ></textarea>
                     <label for="fb_message" className="full_bg flex">
-                      Your comment/letter*
+                      {t("write_to_us_form.comment")}
                     </label>
                     <div className="input_border">
                       <svg
@@ -528,7 +531,7 @@ const WriteToUsForm = (props) => {
                     }}
                   >
                     <div className="btn circle_btn flex _ele">
-                      <span>Submit</span>
+                      <span>{t("write_to_us_form.submit")}</span>
                     </div>
                   </div>
                 </form>

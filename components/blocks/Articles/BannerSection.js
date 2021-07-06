@@ -2,7 +2,11 @@ import { format } from "date-fns";
 import { CMSPath } from "../../../helpers/imageCMSPath";
 import SVGComp from "../../SVGComp";
 import Link from "next/link";
+import useTranslation from "next-translate/useTranslation";
+
 const BannerSection = (props) => {
+  const { t } = useTranslation("common");
+
   const {
     tags,
     title,
@@ -36,12 +40,12 @@ const BannerSection = (props) => {
           <div className="font_set flex">
             <div className="font_circ disabled">
               <strong className="f_20 uppercase" id="decrease">
-                A-
+                {t("aMinus")}
               </strong>
             </div>
             <div className="font_circ">
               <strong className="f_20 uppercase" id="increase">
-                A+
+                {t("aPlus")}
               </strong>
             </div>
           </div>
@@ -72,7 +76,7 @@ const BannerSection = (props) => {
             </Link>
 
             <div className="scratch_tip full_bg flex">
-              <strong className="f_14 uppercase">Scratch Here</strong>
+              <strong className="f_14 uppercase">{t("scratch_here")}</strong>
               <div className="scratch_svg">
                 <svg
                   width="19"
@@ -97,7 +101,7 @@ const BannerSection = (props) => {
             ></canvas>
           </div>
         )}
-        <div className="info_line">
+        {/* <div className="info_line">
           <div className="f_14">
             Traditional ancient reindeer illustration, Sámi. Artwork by{" "}
             <strong>
@@ -106,15 +110,17 @@ const BannerSection = (props) => {
               </a>
             </strong>
           </div>
-        </div>
+        </div> */}
 
         <div className="content_b">
           <div className="outline_bar flex">
-            <div className="f_20">By {`${author}`}</div>
+            <div className="f_20">
+              {t("by")} {`${author}`}
+            </div>
             <div className="f_20">{`${format(
               new Date(publishedDate),
               "MMMM do, yyyy"
-            )} · ${Math.floor(timeToRead / 60)} minutes read`}</div>
+            )} · ${Math.floor(timeToRead / 60)} ${t("minutes_read")}`}</div>
           </div>
         </div>
       </div>

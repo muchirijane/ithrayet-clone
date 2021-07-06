@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-
+import useTranslation from "next-translate/useTranslation";
 const SearchBar = (props) => {
+  const { t } = useTranslation("common");
+
   const [search_term, onSearch] = useState();
 
   useEffect(() => {
@@ -40,14 +42,14 @@ const SearchBar = (props) => {
             <input
               type="text"
               name="query"
-              placeholder="Are you looking for something?"
+              placeholder={t("search_bar.placeholder")}
             />
           </form>
         </div>
       </div>
       <div className="search_bar_side flex">
         <div className="filters_toggle flex">
-          <span className="f_lable">Filter</span>
+          <span className="f_lable">{t("search_bar.filter")}</span>
           <div className="filters_circle flex">
             <i></i>
             <i></i>

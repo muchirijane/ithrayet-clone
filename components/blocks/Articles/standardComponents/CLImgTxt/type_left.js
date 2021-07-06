@@ -1,7 +1,8 @@
 import { CMSPath } from "../../../../../helpers/imageCMSPath";
 import Link from "next/link";
-
+import useTranslation from "next-translate/useTranslation";
 const TypeLeft = (props) => {
+  const { t } = useTranslation("common");
   const { title, description, image, isCentered } = props;
  
   return (
@@ -33,7 +34,7 @@ const TypeLeft = (props) => {
                 />
                 <div className="info_line">
                   <div className="f_14">
-                    {`${image.description}`} Artwork by{" "}
+                    {`${image.description}`} {`${t("artwork_by")} `}
                     <strong>
                       <Link href={`/creatives/${image.artist.slug}`}>
                         <a target="_blank">{`${image.artist.firstName} ${image.artist.lastName}`}</a>

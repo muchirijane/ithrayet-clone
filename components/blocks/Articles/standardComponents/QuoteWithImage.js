@@ -3,8 +3,9 @@ import Link from "next/link";
 import LargeQuote from "./quoteSvg/largeQuote";
 import SmallQuote from "./quoteSvg/smallQuote";
 import SVGComp from "../../../SVGComp";
-
+import useTranslation from "next-translate/useTranslation";
 const QuoteWithImage = (props) => {
+  const { t } = useTranslation("common");
   const { content } = props;
   return (
     <section>
@@ -39,7 +40,7 @@ const QuoteWithImage = (props) => {
                   </strong>
                   <div className="info_line">
                     <div className="f_14">
-                      By{" "}
+                      {`${t("by")} `}
                       <strong>
                         <Link href={`/creatives`}>
                           <a target="_blank">
@@ -67,7 +68,8 @@ const QuoteWithImage = (props) => {
                     />
                   </div>
                   <div className="f_14">
-                    {`${content.quoteWithImage_image.description}`} Artwork by{" "}
+                    {`${content.quoteWithImage_image.description}`}{" "}
+                    {`${t("artwork_by")} `}
                     <strong>
                       <Link
                         href={`/creatives/${content.quoteWithImage_image.artist.slug}`}
