@@ -8,6 +8,7 @@ import { CMSPath } from "../helpers/imageCMSPath";
 import Link from "next/link";
 import Image from "next/image";
 import useTranslation from "next-translate/useTranslation";
+import { getTypeValue } from "../helpers/api";
 
 export const getStaticProps = async ({ locale }) => {
   const { data } = await client.query({
