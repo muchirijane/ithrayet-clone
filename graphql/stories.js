@@ -42,7 +42,7 @@ export const GET_STORIES_DATA = gql`
     countStories: stories(where: { isOnlineExclusive_eq: true }) {
       name
     }
-    listStory {
+    listStory (locale: $locale){
       seo {
         metaTitle
         metaDescription

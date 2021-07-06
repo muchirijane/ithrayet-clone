@@ -52,7 +52,7 @@ export const GET_EDITIONS_DATA = gql`
         isExclusive
       }
     }
-    listEdition {
+    listEdition(locale: $locale) {
       seo {
         metaTitle
         metaDescription

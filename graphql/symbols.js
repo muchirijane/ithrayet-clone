@@ -36,7 +36,7 @@ export const GET_SYMBOLS_DATA = gql`
         publishedDate
       }
     }
-    listSymbol {
+    listSymbol(locale: $locale) {
       seo {
         metaTitle
         metaDescription

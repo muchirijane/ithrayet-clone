@@ -21,7 +21,7 @@ export const GET_CREATIVES_DATA = gql`
       }
       slug
     }
-    listCreative {
+    listCreative(locale: $locale) {
       seo {
         metaTitle
         metaDescription
