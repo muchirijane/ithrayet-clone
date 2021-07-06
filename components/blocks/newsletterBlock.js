@@ -9,6 +9,7 @@ import { useMutation } from "@apollo/client";
 import ThankYouMessageHomepage from "../forms/ThankYouHomepage";
 import { useRouter } from "next/router";
 import { StripPTags } from "../../helpers/arrayHelper";
+import { useRef } from "react";
 
 const NewsLetterBlock = ({ sectionData }) => {
   const router = useRouter();
@@ -47,6 +48,7 @@ const NewsLetterBlock = ({ sectionData }) => {
       },
     });
   };
+  const formRef = useRef(null);
   return (
     <section id="newsletter" style={{ visibility: "hidden" }}>
       <div className="section_content flex full_bg">
@@ -68,7 +70,7 @@ const NewsLetterBlock = ({ sectionData }) => {
                 dangerouslySetInnerHTML={{ __html: description }}
               />
               <div className="form_set">
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(onSubmit)} ref={formRef}>
                   <div className="input_set buildup">
                     <input
                       type="email"
@@ -83,13 +85,21 @@ const NewsLetterBlock = ({ sectionData }) => {
                     <label for="newsletter_email" className="full_bg flex">
                       {t("news_letter_form.email_address")}
                     </label>
-                    <button
-                      type="submit"
+                    <div
                       className="inline_submit flex _curTL2"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        formRef.current.dispatchEvent(
+                          new Event("submit", {
+                            cancelable: true,
+                            bubbles: true,
+                          })
+                        );
+                      }}
                     >
                       <span>{t("news_letter_form.subscribe")}</span>
                       <i className="full_bg"></i>
-                    </button>
+                    </div>
                     <div className="input_border">
                       <svg
                         version="1.1"

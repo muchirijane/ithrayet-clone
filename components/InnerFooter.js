@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import ThankYouMessage from "./forms/ThankYou";
 import { useRouter } from "next/router";
 import { StripPTags } from "../helpers/arrayHelper";
+import { useRef } from "react";
 
 const InnerFooter = (props) => {
   const router = useRouter();
@@ -46,7 +47,7 @@ const InnerFooter = (props) => {
       },
     });
   };
-
+  const formRef = useRef(null);
   const { t } = useTranslation("common");
   return (
     <section id="inner-footer">
@@ -75,7 +76,7 @@ const InnerFooter = (props) => {
               />
 
               <div className="form_set">
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(onSubmit)} ref={formRef}>
                   <div className="input_set buildup">
                     <input
                       type="email"
@@ -90,13 +91,21 @@ const InnerFooter = (props) => {
                     <label for="newsletter_email" className="full_bg flex">
                       {t("news_letter_form.email_address")}
                     </label>
-                    <button
-                      type="submit"
+                    <div
                       className="inline_submit flex _curTL2 submitThis"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        formRef.current.dispatchEvent(
+                          new Event("submit", {
+                            cancelable: true,
+                            bubbles: true,
+                          })
+                        );
+                      }}
                     >
                       <span>{t("news_letter_form.subscribe")}</span>
                       <i className="full_bg"></i>
-                    </button>
+                    </div>
 
                     <div className="input_border">
                       <svg
