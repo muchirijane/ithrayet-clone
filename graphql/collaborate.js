@@ -42,10 +42,18 @@ export const GET_COLLABORATE_DATA = gql`
     newsLetterForm(locale: $locale) {
       title
       description
+      thankYou{
+        title
+        description
+      }
     }
     collaborateWithUs(locale: $locale) {
       title
       description
+      thankYou{
+        title
+        description
+      }
     }
   }
   ${SEO}

@@ -12,6 +12,12 @@ html {
 	height: 100%;
 	cursor: none;
 }
+@media (max-width: 500px){
+	.news-letter-error{
+		padding-top: 80px;
+	}
+}
+
 
 body {
 	line-height: 1;

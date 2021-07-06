@@ -108,6 +108,10 @@ export const GET_HOMEPAGE_DATA = gql`
     newsLetterForm(locale: $locale) {
       title
       description
+      thankYou{
+        title
+        description
+      }
     }
   }
 `;

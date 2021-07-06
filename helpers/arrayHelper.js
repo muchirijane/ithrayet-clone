@@ -16,7 +16,8 @@ export const padLeadingZeros = (num, size) => {
   return s;
 };
 export const StripPTags = (text) => {
-  const result = stripHtml(text, {
+  
+  const result = stripHtml(text.replace(/\&nbsp;/g, ' '), {
     cb: ({ tag, rangesArr }) => {
       if (["p"].includes(tag.name)) {
         rangesArr.push(tag.lastOpeningBracketAt, tag.lastClosingBracketAt + 1);

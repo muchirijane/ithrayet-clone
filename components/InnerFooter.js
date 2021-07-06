@@ -152,15 +152,16 @@ const InnerFooter = (props) => {
                         ></line>
                       </svg>
                     </div>
-                    <pre>
-                      {errors?.email && (
-                        <span style={{ color: "#fd3838" }}>
-                          {errors.email.message}
-                        </span>
-                      )}
-                    </pre>
                   </div>
+                  
                 </form>
+                <pre className="news-letter-error">
+                    {errors?.email && (
+                      <span style={{ color: "#fd3838" }}>
+                        {errors.email.message}
+                      </span>
+                    )}
+                  </pre>
               </div>
 
               <div className="sub_footer">

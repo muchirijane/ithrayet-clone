@@ -20,6 +20,10 @@ export const GET_DOWNLOAD_ISSUES_DATA = gql`
     newsLetterForm(locale: $locale) {
       title
       description
+      thankYou{
+        title
+        description
+      }
     }
     downloadIssue(locale: $locale) {
       seo {

@@ -98,6 +98,10 @@ export const GET_SYMBOL_DATA = gql`
     newsLetterForm(locale: $locale) {
       title
       description
+      thankYou{
+        title
+        description
+      }
     }
   }
 `;

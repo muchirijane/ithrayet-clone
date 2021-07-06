@@ -125,6 +125,10 @@ export const GET_JOINEXPERIENCE_DATA = gql`
     newsLetterForm(locale: $locale) {
       title
       description
+      thankYou{
+        title
+        description
+      }
     }
     collaborateWithUs(locale: $locale) {
       title

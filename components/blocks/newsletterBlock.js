@@ -67,7 +67,7 @@ const NewsLetterBlock = ({ sectionData }) => {
               />
               <h6
                 className="_inOut"
-                dangerouslySetInnerHTML={{ __html: description }}
+                dangerouslySetInnerHTML={{ __html: StripPTags(description) }}
               />
               <div className="form_set">
                 <form onSubmit={handleSubmit(onSubmit)} ref={formRef}>
@@ -145,15 +145,15 @@ const NewsLetterBlock = ({ sectionData }) => {
                         ></line>
                       </svg>
                     </div>
-                    <pre>
-                      {errors?.email && (
-                        <span style={{ color: "#fd3838" }}>
-                          {errors.email.message}
-                        </span>
-                      )}
-                    </pre>
                   </div>
                 </form>
+                <pre className="news-letter-error">
+                  {errors?.email && (
+                    <span style={{ color: "#fd3838" }}>
+                      {errors.email.message}
+                    </span>
+                  )}
+                </pre>
               </div>
             </>
           )}
