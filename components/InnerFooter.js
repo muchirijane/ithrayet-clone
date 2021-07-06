@@ -69,7 +69,9 @@ const InnerFooter = (props) => {
 
               <div
                 className="f_20 less_opacity _ele"
-                dangerouslySetInnerHTML={{ __html: StripPTags(sectionData.description) }}
+                dangerouslySetInnerHTML={{
+                  __html: StripPTags(sectionData.description),
+                }}
               />
 
               <div className="form_set">
@@ -79,7 +81,7 @@ const InnerFooter = (props) => {
                       type="email"
                       id="newsletter_email"
                       {...register("email", {
-                        required: "Email is required.",
+                        required: t("error_fields.email"),
                         pattern:
                           /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                         message: "Please enter a valid email",

@@ -85,7 +85,7 @@ const FeedbackForm = (props) => {
                       type="text"
                       id="fb_name"
                       {...register("name", {
-                        required: "Name is required.",
+                        required: t("error_fields.name"),
                       })}
                     />
                     <label for="fb_name" className="full_bg flex">
@@ -149,7 +149,7 @@ const FeedbackForm = (props) => {
                       type="email"
                       id="fb_email"
                       {...register("emailAddress", {
-                        required: "Email is required.",
+                        required: t("error_fields.email"),
                         pattern:
                           /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                         message: "Please enter a valid email",
@@ -215,7 +215,7 @@ const FeedbackForm = (props) => {
                     <textarea
                       id="fb_message"
                       {...register("message", {
-                        required: "Message is required.",
+                        required: t("error_fields.message"),
                       })}
                     ></textarea>
                     <label for="fb_message" className="full_bg flex">

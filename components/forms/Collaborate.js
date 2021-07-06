@@ -96,7 +96,7 @@ const CollaborateForm = (props) => {
                     <input
                       type="text"
                       {...register("firstName", {
-                        required: "First Name is required.",
+                        required: t("error_fields.first_name"),
                       })}
                       id="f_name"
                       className="required"
@@ -161,7 +161,7 @@ const CollaborateForm = (props) => {
                     <input
                       type="text"
                       {...register("lastName", {
-                        required: "Last Name is required.",
+                        required: t("error_fields.last_name"),
                       })}
                       id="l_name"
                       className="required"
@@ -281,7 +281,7 @@ const CollaborateForm = (props) => {
                     <input
                       type="email"
                       {...register("emailAddress", {
-                        required: "Email is required.",
+                        required: t("error_fields.email"),
                         pattern:
                           /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                         message: "Please enter a valid email",
@@ -457,7 +457,7 @@ const CollaborateForm = (props) => {
                   <div className="input_set long">
                     <textarea
                       {...register("commentLetter", {
-                        required: "Comment/Letter is required.",
+                        required: t("error_fields.comment_letter"),
                       })}
                       id="fb_message"
                       className="required"

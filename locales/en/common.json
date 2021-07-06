@@ -109,5 +109,13 @@
     "twitter": "Twitter",
     "insta": "Instagram"
   },
-  "type_something" : "Type something.."
+  "type_something": "Type something..",
+  "error_fields": {
+    "email": "Email is required.",
+    "first_name": "First Name is required.",
+    "last_name": "Last Name is required.",
+    "comment_letter": "Comment/Letter is required.",
+    "name": "Name is required.",
+    "message": "Message is required."
+  }
 }

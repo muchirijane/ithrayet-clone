@@ -109,5 +109,13 @@
     "twitter": "Twitter",
     "insta": "Instagram"
   },
-  "type_something" : "اطبع شيئا.."
+  "type_something": "اطبع شيئا..",
+  "error_fields": {
+    "email": "البريد الالكتروني مطلوب.",
+    "first_name": "الإسم الأول مطلوب.",
+    "last_name": "إسم العائلة مطلوب.",
+    "comment_letter": "التعليق / الرسالة مطلوب.",
+    "name": "مطلوب اسم.",
+    "message": "الرسالة مطلوبة."
+  }
 }
