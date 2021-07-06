@@ -65,7 +65,7 @@ export const SEO = ({ seo }) => {
               />
             </>
           )}
-          <title>{`${t("title_prefix")} - ${seo.metaTitle}`}</title>
+          <title>{`${seo.metaTitle} - ${t("title_prefix")}`}</title>
         </>
       )}
     </Head>

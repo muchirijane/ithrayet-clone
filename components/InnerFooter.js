@@ -156,15 +156,17 @@ const InnerFooter = (props) => {
                 <ul className="flex">
                   {NewsLetterNav(router.locale).map((link, key) => {
                     return link.target ? (
-                      <a
-                        href={link.href}
-                        key={`link_nlf-${key}`}
-                        className="_inOut"
-                        target={link.target}
-                        rel="noopener noreferrer"
-                      >
-                        {link.name}
-                      </a>
+                      <li key={`link_nlf-${key}`}>
+                        <Link href={link.href}>
+                          <a
+                            className="_inOut"
+                            target={link.target}
+                            rel="noopener noreferrer"
+                          >
+                            {link.name}
+                          </a>
+                        </Link>
+                      </li>
                     ) : (
                       <li key={`link_nlf-${key}`}>
                         <Link href={link.href}>

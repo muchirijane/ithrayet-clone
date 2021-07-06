@@ -1,55 +1,55 @@
 export const NewsLetterNav = (locale) => [
   {
     href: "/our-journey",
-    name: "Our Journey",
+    name: locale === "en" ? "Our Journey" : "رحلتنا",
   },
   {
     href: "/download-issues",
-    name: "Download Issues",
+    name: locale === "en" ? "Download Issues" : "تحميل الاصدارات",
   },
   {
     href: "/symbols",
-    name: "Symbols",
+    name: locale === "en" ? "Symbols" : "الرموز",
   },
   {
     href: `https://www.ithra.com/${locale}/terms-conditions/`,
-    name: `Terms & Conditions`,
-    target: "_blank"
+    name: locale === "en" ? `Terms & Conditions` : "الشروط والأحكام",
+    target: "_blank",
   },
   {
     href: `https://www.ithra.com/${locale}/privacy-policy/`,
-    name: "Privacy Policy",
-    target: "_blank"
+    name: locale === "en" ? "Privacy Policy" : "سياسة الخصوصية",
+    target: "_blank",
   },
   {
     href: "/contact-us",
-    name: "Contact Us",
+    name: locale === "en" ? "Contact Us" : "اتصل بنا",
   },
 ];
 
-export const HeaderNav = [
+export const HeaderNav = (locale) => [
   {
     href: "/editions",
-    name: "Editions",
+    name: locale === "en" ? "Editions" : "الاصدارات",
   },
   {
     href: "/stories",
-    name: "Our Stories",
+    name: locale === "en" ? "Our Stories" : "القصص",
   },
   {
     href: "/creatives",
-    name: "Our Creatives",
+    name: locale === "en" ? "Our Creatives" : "الفنانون",
   },
   {
     href: "/join-experience",
-    name: "Join The Experience",
+    name: locale === "en" ? "Join The Experience" : "انضم إلى التجربة",
   },
   {
     href: "/gallery",
-    name: "Gallery",
+    name: locale === "en" ? "Gallery" : "معرض الصور",
   },
   {
     href: "/contact-us",
-    name: "Contact Us",
+    name: locale === "en" ? "Contact Us" : "اتصل بنا",
   },
 ];

@@ -51,7 +51,7 @@ const Header = ({ locale }) => {
 
       <nav>
         <ul className="flex _mainElement" style={{ visibility: "hidden" }}>
-          {HeaderNav.map((link, key) => (
+          {HeaderNav(locale).map((link, key) => (
             <li key={`header_link-${key}`}>
               <Link href={link.href}>
                 <a className="_curTL2">{link.name}</a>

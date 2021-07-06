@@ -21,6 +21,7 @@ export const GET_HOMEPAGE_DATA = gql`
       publishedDate
     }
     featuredEdition: editions(
+      locale: $locale
       where: { isFeatured_eq: true }
       limit: 1
       sort: "publishedDate:desc"
@@ -96,7 +97,7 @@ export const GET_HOMEPAGE_DATA = gql`
         quote
       }
     }
-    projects{
+    projects(locale:$locale){
       title
       cover {
         url

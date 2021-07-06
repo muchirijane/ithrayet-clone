@@ -151,14 +151,16 @@ const NewsLetterBlock = ({ sectionData }) => {
             <ul className="flex">
               {NewsLetterNav(router.locale).map((link, key) => {
                 return link.target ? (
-                  <a
-                    key={`link_nlf-${key}`}
-                    className="_inOut"
-                    target={link.target}
-                    rel="noopener noreferrer"
-                  >
-                    {link.name}
-                  </a>
+                  <li key={`link_nlf-${key}`}>
+                    <a
+                      href={link.href}
+                      className="_inOut"
+                      target={link.target}
+                      rel="noopener noreferrer"
+                    >
+                      {link.name}
+                    </a>
+                  </li>
                 ) : (
                   <li key={`link_nlf-${key}`}>
                     <Link href={link.href}>
@@ -170,7 +172,9 @@ const NewsLetterBlock = ({ sectionData }) => {
             </ul>
           </div>
         </div>
-        <p className="copyrights _inOut">{`© ${new Date().getFullYear()} ${t("copyrights")}`}</p>
+        <p className="copyrights _inOut">{`© ${new Date().getFullYear()} ${t(
+          "copyrights"
+        )}`}</p>
       </div>
     </section>
   );
