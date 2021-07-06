@@ -11,6 +11,7 @@ import { fetchAPI } from "../../helpers/api";
 import _ from "lodash";
 import { ArticleBlocksKeyReplace } from "../../helpers/arrayHelper";
 import useTranslation from "next-translate/useTranslation";
+import { useRouter } from "next/router";
 
 export const getStaticPaths = async ({ locales }) => {
   const { data } = await client.query({
@@ -110,7 +111,8 @@ export const getStaticProps = async ({
 const Article = (props) => {
   const { t } = useTranslation("common");
   const { article, nextArticle } = props;
-
+  const router = useRouter();
+  const { locale } = router;
   return (
     <Layout isInner seo={article && article.seo}>
       {article && (
@@ -165,13 +167,17 @@ const Article = (props) => {
                   <div className="content_a">
                     <div
                       className="section_head_set _link"
-                      data-href={`/articles/${nextArticle.slug}`}
+                      data-href={`${locale === "ar" ? "/ar" : ""}/articles/${
+                        nextArticle.slug
+                      }`}
                       data-scroll
                       data-scroll-direction="vertical"
                       data-scroll-speed="1"
                     >
                       <div className="section_head">
-                        <div className="f_30 less_opacity">{`${t("up_next")}`}</div>
+                        <div className="f_30 less_opacity">{`${t(
+                          "up_next"
+                        )}`}</div>
                         <h1>{nextArticle.title}</h1>
                       </div>
                     </div>

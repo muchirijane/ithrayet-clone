@@ -9,6 +9,7 @@ import client from "../../lib/apollo";
 import Link from "next/link";
 import { fetchAPI } from "../../helpers/api";
 import useTranslation from "next-translate/useTranslation";
+import { useRouter } from "next/router";
 
 export const getStaticPaths = async ({ locales }) => {
   const { data } = await client.query({
@@ -93,6 +94,8 @@ export const getStaticProps = async ({
 };
 
 const Experience = (props) => {
+  const router = useRouter();
+  const { locale } = router;
   const { t } = useTranslation("common");
   const { project, nextProject } = props;
   return (
@@ -184,7 +187,7 @@ const Experience = (props) => {
                         <div className="f_14">
                           <p>
                             {project.showcase.images[0].description}
-                            {`${t('artwork_by')} `}
+                            {`${t("artwork_by")} `}
                             <Link
                               href={`/creatives/${project.showcase.images[0].artist.slug}`}
                             >
@@ -239,7 +242,7 @@ const Experience = (props) => {
                         <div className="f_14">
                           <p>
                             {project.showcase.images[1].description}
-                            {`${t('artwork_by')} `}
+                            {`${t("artwork_by")} `}
                             <Link
                               href={`/creatives/${project.showcase.images[1].artist.slug}`}
                             >
@@ -262,7 +265,7 @@ const Experience = (props) => {
                         <div className="f_14">
                           <p>
                             {project.showcase.images[2].description}
-                            {`${t('artwork_by')} `}
+                            {`${t("artwork_by")} `}
                             <Link
                               href={`/creatives/${project.showcase.images[2].artist.slug}`}
                             >
@@ -286,7 +289,7 @@ const Experience = (props) => {
                         <div className="f_14">
                           <p>
                             {project.showcase.images[3].description}
-                            {`${t('artwork_by')} `}
+                            {`${t("artwork_by")} `}
                             <Link
                               href={`/creatives/${project.showcase.images[3].artist.slug}`}
                             >
@@ -319,7 +322,7 @@ const Experience = (props) => {
                         <div className="f_14">
                           <p>
                             {project.bottomImages[0].description}
-                            {`${t('artwork_by')} `}
+                            {`${t("artwork_by")} `}
                             <Link
                               href={`/creatives/${project.bottomImages[0].artist.slug}`}
                             >
@@ -350,7 +353,7 @@ const Experience = (props) => {
                         <div className="f_14">
                           <p>
                             {project.bottomImages[1].description}
-                            {`${t('artwork_by')} `}
+                            {`${t("artwork_by")} `}
                             <Link
                               href={`/creatives/${project.bottomImages[1].artist.slug}`}
                             >
@@ -387,13 +390,15 @@ const Experience = (props) => {
                   <div className="content_a">
                     <div
                       className="section_head_set _link"
-                      data-href={`/join-experience/${nextProject.slug}`}
+                      data-href={`${
+                        locale === "ar" ? "/ar" : ""
+                      }/join-experience/${nextProject.slug}`}
                       data-scroll
                       data-scroll-direction="vertical"
                       data-scroll-speed="1"
                     >
                       <div className="section_head">
-                        <div className="f_30 less_opacity">{t('up_next')}</div>
+                        <div className="f_30 less_opacity">{t("up_next")}</div>
                         <h1>{nextProject.title}</h1>
                       </div>
                     </div>

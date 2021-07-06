@@ -7,6 +7,7 @@ import Layout from "../../components/Layout";
 import SVGComp from "../../components/SVGComp";
 import { fetchAPI } from "../../helpers/api";
 import useTranslation from "next-translate/useTranslation";
+import { useRouter } from "next/router";
 export const getStaticPaths = async ({ locales }) => {
   const { data } = await client.query({
     query: GET_CREATIVES_SLUGS,
@@ -91,7 +92,8 @@ export const getStaticProps = async ({
 const Creative = (props) => {
   const { t } = useTranslation("common");
   const { creative, nextCreative } = props;
-
+  const router = useRouter();
+  const { locale } = router;
   return (
     <Layout isInner seo={creative && creative.seo}>
       {creative && (
@@ -295,13 +297,17 @@ const Creative = (props) => {
                   <div className="content_a">
                     <div
                       className="section_head_set _link"
-                      data-href={`/creatives/${nextCreative.slug}`}
+                      data-href={`${locale === "ar" ? "/ar" : ""}/creatives/${
+                        nextCreative.slug
+                      }`}
                       data-scroll
                       data-scroll-direction="vertical"
                       data-scroll-speed="1"
                     >
                       <div className="section_head">
-                        <div className="f_30 less_opacity">{`${t("up_next")}`}</div>
+                        <div className="f_30 less_opacity">{`${t(
+                          "up_next"
+                        )}`}</div>
                         <h1>{`${nextCreative.firstName} ${nextCreative.lastName}`}</h1>
                       </div>
                     </div>
