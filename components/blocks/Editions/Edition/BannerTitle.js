@@ -1,4 +1,9 @@
+import { getTypeValue } from "../../../../helpers/api";
+import useTranslation from "next-translate/useTranslation";
+
 const BannerTitle = (props) => {
+  const { t } = useTranslation("common");
+
   const { tags, title, type } = props;
   return (
     <div className="content_a">
@@ -17,7 +22,9 @@ const BannerTitle = (props) => {
               );
             })}
           </div>
-          <div className="f_30">{`${type.value} #${type.number}`}</div>
+          <div className="f_30">{`${getTypeValue(type.value, t)} #${
+            type.number
+          }`}</div>
           <h1>{title}</h1>
         </div>
       </div>

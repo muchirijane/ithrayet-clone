@@ -4,6 +4,7 @@ import { GET_DOWNLOAD_ISSUES_DATA } from "../../graphql";
 import { CMSPath } from "../../helpers/imageCMSPath";
 import client from "../../lib/apollo";
 import useTranslation from "next-translate/useTranslation";
+import { getTypeValue } from "../../helpers/api";
 
 export const getStaticProps = async ({ locale }) => {
   const { data } = await client.query({
@@ -90,7 +91,10 @@ const DonwloadIssuesList = (props) => {
                       </div>
                       <div className="result_title">
                         <div className="f_80 alt">{edition.title}</div>
-                        <span className="f_16 less_opacity">{`${edition.type.value} #${edition.type.number}`}</span>
+                        <span className="f_16 less_opacity">{`${getTypeValue(
+                          edition.type.value,
+                          t
+                        )} #${edition.type.number}`}</span>
                       </div>
                     </a>
                   );

@@ -1,7 +1,13 @@
 import EditionsTitle from "../../elements/EditionsTitle";
 import { TagsBuilder } from "../../../helpers/tagsBuilder";
+import { getTypeValue } from "../../../helpers/api";
+import useTranslation from "next-translate/useTranslation";
+import { useRouter } from "next/router";
 
 const PageBar = (props) => {
+  const { t } = useTranslation("common");
+  const router = useRouter();
+  const { locale } = router;
   const { editions } = props;
   return (
     <div
@@ -20,9 +26,13 @@ const PageBar = (props) => {
               id={key + 1}
               tags={tags.tagNames}
               tagColors={tags.tagColors}
-              type={`${edition.type.value} #${edition.type.number}`}
+              type={`${getTypeValue(edition.type.value, t)} #${
+                edition.type.number
+              }`}
               title={edition.title}
-              pageURL={`/editions/${edition.slug}`}
+              pageURL={`${locale === "ar" ? "/ar" : ""}/editions/${
+                edition.slug
+              }`}
               bgColor={edition.color}
             />
           );

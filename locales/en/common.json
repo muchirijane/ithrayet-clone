@@ -117,5 +117,9 @@
     "comment_letter": "Comment/Letter is required.",
     "name": "Name is required.",
     "message": "Message is required."
+  },
+  "type": {
+    "edition": "Edition",
+    "issue": "Issue"
   }
 }

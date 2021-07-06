@@ -158,7 +158,7 @@ const Search = (props) => {
               <input
                 type="text"
                 name="query"
-                placeholder={t('type_something')}
+                placeholder={t("type_something")}
                 value={search}
                 onChange={searchItem}
               />
@@ -257,7 +257,10 @@ const Search = (props) => {
                         </div>
                         <div className="result_title">
                           <div className="f_80 alt">{edition.title}</div>
-                          <span className="f_16 less_opacity">{`${edition.type.value} #${edition.type.number}`}</span>
+                          <span className="f_16 less_opacity">{`${getTypeValue(
+                            edition.type.value,
+                            t
+                          )} #${edition.type.number}`}</span>
                         </div>
                       </a>
                     </Link>

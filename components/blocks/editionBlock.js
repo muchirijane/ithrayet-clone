@@ -1,4 +1,5 @@
 import useTranslation from "next-translate/useTranslation";
+import { getTypeValue } from "../../helpers/api";
 import { StripPTags } from "../../helpers/arrayHelper";
 import { CMSPath } from "../../helpers/imageCMSPath";
 import Elements from "../elements";
@@ -26,7 +27,7 @@ const EditionBlock = ({ featuredEdition, dataUrl }) => {
               dangerouslySetInnerHTML={{ __html: StripPTags(featuredTitle) }}
             />
 
-            <span>{`${type.value} #${type.number}`}</span>
+            <span>{`${getTypeValue(type.value, t)} #${type.number}`}</span>
           </h1>
           <div className="ed_image _curTL1">
             <div className="full_bg prx">
