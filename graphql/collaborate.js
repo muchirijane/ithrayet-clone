@@ -1,4 +1,5 @@
 import { gql } from "@apollo/client";
+import { SEO } from "./fragments/SEO";
 
 export const GET_COLLABORATE_DATA = gql`
   query ($locale: String!) {
@@ -19,6 +20,9 @@ export const GET_COLLABORATE_DATA = gql`
           url
           alternativeText
         }
+      }
+      seo{
+        ...SEO
       }
       collaboratorsBlock {
         title
@@ -44,4 +48,5 @@ export const GET_COLLABORATE_DATA = gql`
       description
     }
   }
+  ${SEO}
 `;

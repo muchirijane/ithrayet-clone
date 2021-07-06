@@ -19,6 +19,7 @@ export const getStaticProps = async ({ locale }) => {
         collaborator: data.collaborator,
         news_letter: data.newsLetterForm,
         collaborateWithUs: data.collaborateWithUs,
+ 
       },
       revalidate: 60,
     };
@@ -29,7 +30,7 @@ const Collaborate = (props) => {
   const { collaborator, news_letter, collaborateWithUs } = props;
   return (
     collaborator && (
-      <Layout isInner>
+      <Layout isInner seo={collaborator && collaborator.seo}>
         <div className="page_head_set flex">
           <h1>{collaborator.title}</h1>
           <div className="page_paragraph">
@@ -205,7 +206,10 @@ const Collaborate = (props) => {
                   <div className="table_set has_margin no-select">
                     {collaborator.collaboratorsBlock.brands.map(
                       (brand, key) => (
-                        <div className="table_row flex" key={`brand-row-${key}`}>
+                        <div
+                          className="table_row flex"
+                          key={`brand-row-${key}`}
+                        >
                           <div className="row_logo_set">
                             <div className="row_logo_an full_bg">
                               <div className="row_logo full_bg">
