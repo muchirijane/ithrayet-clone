@@ -54,14 +54,14 @@ const Layout = ({
       <Footer locale={locale} />
 
       {!isInner && <Equalizer />}
-
+      <script src="/jsm/jquery-3.5.1.min.js"></script>
       {isInner ? (
         <>
-          <Script src="https://code.responsivevoice.org/responsivevoice.js?key=y6hCA2Ps" />
-          <Script src="/jsm/inners.js" />
+          <script src="https://code.responsivevoice.org/responsivevoice.js?key=y6hCA2Ps" />
+          <script src="/jsm/inners.js" />
         </>
       ) : (
-        <Script src="/jsm/functions.js" />
+        <script src="/jsm/functions.js" />
       )}
     </div>
   );

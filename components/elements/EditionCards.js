@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import Link from "next/link";
 const EditionCards = ({ title, cover, img1, img2, date, slug }) => {
   return (
     <span

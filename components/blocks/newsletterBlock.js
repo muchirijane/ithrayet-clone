@@ -170,7 +170,7 @@ const NewsLetterBlock = ({ sectionData }) => {
             </ul>
           </div>
         </div>
-        <p className="copyrights _inOut">{t("copyrights")}</p>
+        <p className="copyrights _inOut">{`© ${new Date().getFullYear()} ${t("copyrights")}`}</p>
       </div>
     </section>
   );

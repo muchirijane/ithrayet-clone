@@ -165,7 +165,7 @@ class MyDocument extends Document {
 			  }`,
             }}
           ></script>
-          <script src="/jsm/jquery-3.5.1.min.js"></script>
+        
         </body>
       </Html>
     );

@@ -63,7 +63,7 @@ const BannerSection = (props) => {
           </div>
         </div>
 
-        {symbol && (
+        {symbol && symbol.symbol && (
           <div id="scratch" className="no-select">
             <Link href={`/symbols/${symbol.slug}`}>
               <a target="_blank" className="full_bg flex">

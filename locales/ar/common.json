@@ -3,19 +3,19 @@
   "email_address": "عنوان البريد الإلكتروني",
   "subscribe": "الإشتراك",
 
-  "copyrights": "© إثريات 2021. جميع الحقوق محفوظة.",
+  "copyrights": "اثريات. جميع الحقوق محفوظة.",
 
   "loader_musicwarn_text": "يحتوي هذا الموقع على موسيقى <br /> انقر في أي مكان لتمكين تشغيل الوسائط",
 
   "more_about_ithraeyat": "المزيد عن <br /> إثرائيات",
-  "all_projects": "All Projects",
-  "all_editions": "All Editions",
-  "all_creatives": "All Creatives",
+  "all_projects": "كل المشاريع",
+  "all_editions": "كل الطبعات",
+  "all_creatives": "جميع التصميمات",
 
   "homepage": {
-    "join_exp": "Join The experience",
-    "our_story": "Our Story",
-    "creatives": "Creatives",
-    "editions": "Editions"
+    "join_exp": "انضم إلى التجربة",
+    "our_story": "قصتنا",
+    "creatives": "المبدعين",
+    "editions": "طبعات"
   }
 }

@@ -1,21 +1,26 @@
 import React from "react";
 import Link from "next/link";
 
-const Footer = ({locale}) => {
+const Footer = ({ locale }) => {
   return (
-    <footer style={{visibility: "hidden"}} className="_show">
+    <footer style={{ visibility: "hidden" }} className="_show">
       <div className="footer_set flex">
         <div className="lang flex">
           <Link href="/" locale="ar">
-            <a className={`_curTL2 ${locale==='ar' && 'active'}`}>AR</a>
+            <a className={`_curTL2 ${locale === "ar" && "active"}`}>AR</a>
           </Link>
           <Link href="/" locale="en">
-            <a className={`_curTL2 ${locale==='en' && 'active'}`}>EN</a>
+            <a className={`_curTL2 ${locale === "en" && "active"}`}>EN</a>
           </Link>
         </div>
 
         <div className="social flex zero-font">
-          <a href="#" target="_blank" rel="noopener" className="_curTL2">
+          <a
+            href="https://www.facebook.com/KingAbdulazizCenterForWorldCulture/"
+            target="_blank"
+            rel="noopener"
+            className="_curTL2"
+          >
             Facebook
             <svg
               width="14"
@@ -35,7 +40,12 @@ const Footer = ({locale}) => {
               ></path>
             </svg>
           </a>
-          <a href="#" target="_blank" rel="noopener" className="_curTL2">
+          <a
+            href="https://twitter.com/ithra"
+            target="_blank"
+            rel="noopener"
+            className="_curTL2"
+          >
             Twitter
             <svg
               width="22"
@@ -50,7 +60,12 @@ const Footer = ({locale}) => {
               ></path>
             </svg>
           </a>
-          <a href="#" target="_blank" rel="noopener" className="_curTL2">
+          <a
+            href="https://www.instagram.com/ithra/"
+            target="_blank"
+            rel="noopener"
+            className="_curTL2"
+          >
             Instagram
             <svg
               width="19"

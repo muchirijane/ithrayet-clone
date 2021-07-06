@@ -109,8 +109,6 @@ export const getStaticProps = async ({
 const Article = (props) => {
   const { article, nextArticle } = props;
 
-  // console.log(article, nextArticle);
-
   return (
     <Layout isInner seo={article && article.seo}>
       {article && (

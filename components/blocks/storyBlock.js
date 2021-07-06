@@ -1,9 +1,11 @@
 import useTranslation from "next-translate/useTranslation";
+import { useEffect, useRef } from "react";
 import ReactHtmlParser from "react-html-parser";
 import { CMSPath } from "../../helpers/imageCMSPath";
 
 const StoryBlock = ({ sectionData, dataUrl }) => {
   const { t } = useTranslation("common");
+  const videoRef = useRef();
 
   const { mediaQuote, description, rightImage, leftImage } = sectionData;
 
@@ -28,11 +30,18 @@ const StoryBlock = ({ sectionData, dataUrl }) => {
           } else if (node.children[0].name === "oembed") {
             return (
               <i className="story_media video _secEle prx">
-                <video preload="metadata" autoPlay loop muted playsInline>
+                <video
+                  preload="metadata"
+                  autoPlay={true}
+                  loop={true}
+                  muted={true}
+                  playsInline={true}
+                  ref={videoRef}
+                >
                   <source
                     src={`${node.children[0].attribs.url}`}
                     type="video/mp4"
-                  />
+                  ></source>
                 </video>
               </i>
             );
