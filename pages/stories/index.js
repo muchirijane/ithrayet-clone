@@ -67,7 +67,13 @@ export const getServerSideProps = async ({ locale, query }) => {
     },
   });
 
-  if (_.isEmpty(query) && data.stories.length === 0) {
+  if (
+    !_.every(
+      ["alphabet", "writer", "catID", "dateFrom", "dateTo"],
+      _.partial(_.has, query)
+    ) &&
+    data.stories.length === 0
+  ) {
     return {
       notFound: true,
     };
@@ -171,9 +177,11 @@ const Stories = (props) => {
             <div className="sub-menu" data-page="_stories_fitch_en.php">
               <ul>
                 <li>
-                  <Link href={`/stories`}>
+                  <Link href={`/stories${
+                            isOnlineExclusive ? "?online_exclusive=true" : ""
+                          }`}>
                     <a className={`${isAll && "active"}`} data-id="-1">
-                      <span className="f_lable">{t('all')}</span>
+                      <span className="f_lable">{t("all")}</span>
                     </a>
                   </Link>
                 </li>

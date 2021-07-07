@@ -60,7 +60,13 @@ export const getServerSideProps = async ({
     });
     data_results = data;
   }
-  if (!preview && _.isEmpty(query) && data_results.editions.length === 0) {
+
+  if (
+    !preview &&
+    !_.has(query, "featured") &&
+    !_.has(query, "exclusive") &&
+    data_results.editions.length === 0
+  ) {
     return {
       notFound: true,
     };
