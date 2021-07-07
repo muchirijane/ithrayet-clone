@@ -11,34 +11,34 @@ import { fetchAPI } from "../../helpers/api";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 
-export const getStaticPaths = async ({ locales }) => {
-  const { data } = await client.query({
-    query: GET_EXPERIENCE_SLUGS,
-  });
+// export const getStaticPaths = async ({ locales }) => {
+//   const { data } = await client.query({
+//     query: GET_EXPERIENCE_SLUGS,
+//   });
 
-  if (data) {
-    let paths = [];
+//   if (data) {
+//     let paths = [];
 
-    locales.map((locale) => {
-      data.projects.map((project) => {
-        paths = [
-          ...paths,
-          {
-            params: { slug: project.slug },
-            locale,
-          },
-        ];
-      });
-    });
+//     locales.map((locale) => {
+//       data.projects.map((project) => {
+//         paths = [
+//           ...paths,
+//           {
+//             params: { slug: project.slug },
+//             locale,
+//           },
+//         ];
+//       });
+//     });
 
-    return {
-      paths,
-      fallback: true,
-    };
-  }
-};
+//     return {
+//       paths,
+//       fallback: true,
+//     };
+//   }
+// };
 
-export const getStaticProps = async ({
+export const getServerSideProps = async ({
   locale,
   params,
   preview,
@@ -94,7 +94,6 @@ export const getStaticProps = async ({
         nextProject:
           nextProject.data.projects.length && nextProject.data.projects[0],
       },
-      revalidate: 60,
     };
   }
 };

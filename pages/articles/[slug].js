@@ -13,34 +13,34 @@ import { ArticleBlocksKeyReplace } from "../../helpers/arrayHelper";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 
-export const getStaticPaths = async ({ locales }) => {
-  const { data } = await client.query({
-    query: GET_ARTICLES_SLUGS,
-  });
+// export const getStaticPaths = async ({ locales }) => {
+//   const { data } = await client.query({
+//     query: GET_ARTICLES_SLUGS,
+//   });
 
-  if (data) {
-    let paths = [];
+//   if (data) {
+//     let paths = [];
 
-    locales.map((locale) => {
-      data.articles.map((article) => {
-        paths = [
-          ...paths,
-          {
-            params: { slug: article.slug },
-            locale,
-          },
-        ];
-      });
-    });
+//     locales.map((locale) => {
+//       data.articles.map((article) => {
+//         paths = [
+//           ...paths,
+//           {
+//             params: { slug: article.slug },
+//             locale,
+//           },
+//         ];
+//       });
+//     });
 
-    return {
-      paths,
-      fallback: true,
-    };
-  }
-};
+//     return {
+//       paths,
+//       fallback: true,
+//     };
+//   }
+// };
 
-export const getStaticProps = async ({
+export const getServerSideProps = async ({
   params,
   preview,
   previewData,
@@ -108,7 +108,7 @@ export const getStaticProps = async ({
           ? nextArticle.data.articles[0]
           : null,
       },
-      revalidate: 60,
+    
     };
   }
 };

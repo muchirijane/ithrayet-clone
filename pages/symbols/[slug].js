@@ -5,34 +5,34 @@ import { CMSPath } from "../../helpers/imageCMSPath";
 import client from "../../lib/apollo";
 import { fetchAPI } from "../../helpers/api";
 
-export const getStaticPaths = async ({ locales }) => {
-  const { data } = await client.query({
-    query: GET_SYMBOLS_SLUG,
-  });
+// export const getStaticPaths = async ({ locales }) => {
+//   const { data } = await client.query({
+//     query: GET_SYMBOLS_SLUG,
+//   });
 
-  if (data) {
-    let paths = [];
+//   if (data) {
+//     let paths = [];
 
-    locales.map((locale) => {
-      data.symbols.map((symbol) => {
-        paths = [
-          ...paths,
-          {
-            params: { slug: symbol.slug },
-            locale,
-          },
-        ];
-      });
-    });
+//     locales.map((locale) => {
+//       data.symbols.map((symbol) => {
+//         paths = [
+//           ...paths,
+//           {
+//             params: { slug: symbol.slug },
+//             locale,
+//           },
+//         ];
+//       });
+//     });
 
-    return {
-      paths,
-      fallback: true,
-    };
-  }
-};
+//     return {
+//       paths,
+//       fallback: true,
+//     };
+//   }
+// };
 
-export const getStaticProps = async ({
+export const getServerSideProps = async ({
   params,
   previewData,
   preview,
@@ -71,7 +71,6 @@ export const getStaticProps = async ({
           ? null
           : data_results.newsLetterForm && data_results.newsLetterForm,
       },
-      revalidate: 60,
     };
   }
 };
