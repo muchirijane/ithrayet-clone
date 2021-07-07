@@ -31,7 +31,7 @@ const Layout = ({
     });
     setTimeout(() => {
       setVisible(true);
-    }, 20);
+    }, 500);
   });
   return (
     <div
