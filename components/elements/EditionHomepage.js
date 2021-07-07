@@ -1,4 +1,4 @@
-const ArticleHomepage = ({id,imgUrl,title,subTitle}) => {
+const ArticleHomepage = ({id,imgUrl,title,subTitle,hrefUrl}) => {
   return (
     <article
       id={id}
@@ -6,7 +6,7 @@ const ArticleHomepage = ({id,imgUrl,title,subTitle}) => {
       data-img={imgUrl}
       data-title={title}
       data-sub={subTitle}
-      data-url="#"
+      data-url={hrefUrl}
     >
       <div className="article_content full_bg">
         <i></i>

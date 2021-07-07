@@ -1,10 +1,10 @@
-const ProjectCircle = ({ title, url, color }) => {
+const ProjectCircle = ({ title, url, color, hrefUrl }) => {
   return (
     <div
-      className="jn_circle"
+      className="jn_circle _link"
       data-color={color}
       data-title={title}
-      data-url={`#1`}
+      data-href={hrefUrl}
     >
       <div className="jn_circle_content">
         <i className="full_bg">

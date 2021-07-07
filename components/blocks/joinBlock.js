@@ -1,8 +1,10 @@
 import useTranslation from "next-translate/useTranslation";
+import { useRouter } from "next/router";
 import { CMSPath } from "../../helpers/imageCMSPath";
 import Elements from "../elements";
 
 const JoinBlock = ({ projects, sectionData, dataUrl }) => {
+  const {locale} = useRouter();
   const { t } = useTranslation("common");
   const { quote, title } = sectionData;
   return (
@@ -41,6 +43,7 @@ const JoinBlock = ({ projects, sectionData, dataUrl }) => {
                     key={key}
                     title={val.title}
                     url={`${CMSPath}${val.cover.url}`}
+                    hrefUrl={`${locale === 'ar' ? "/ar" : ""}/join-experience/${val.slug}`}
                     color={val.color}
                   />
                 );

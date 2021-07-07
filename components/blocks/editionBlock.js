@@ -1,4 +1,5 @@
 import useTranslation from "next-translate/useTranslation";
+import { useRouter } from "next/router";
 import { getTypeValue } from "../../helpers/api";
 import { StripPTags } from "../../helpers/arrayHelper";
 import { CMSPath } from "../../helpers/imageCMSPath";
@@ -6,7 +7,7 @@ import Elements from "../elements";
 
 const EditionBlock = ({ featuredEdition, dataUrl }) => {
   const { t } = useTranslation("common");
-
+  const { locale } = useRouter();
   const { title, type, articles, featuredTitle } = featuredEdition[0];
 
   return (
@@ -29,7 +30,7 @@ const EditionBlock = ({ featuredEdition, dataUrl }) => {
 
             <span>{`${getTypeValue(type.value, t)} #${type.number}`}</span>
           </h1>
-          <div className="ed_image _curTL1">
+          <div className="ed_image _curTL1 _link">
             <div className="full_bg prx">
               <div className="cardWrapper full_bg">
                 <div className="card full_bg">
@@ -65,7 +66,7 @@ const EditionBlock = ({ featuredEdition, dataUrl }) => {
                   article.Images[1] &&
                   `${CMSPath}${article.Images[1].image.url}`
                 }
-                slug={article.slug}
+                slug={`${locale === "ar" ? "/ar" : ""}/articles/${article.slug}`}
               />
             );
           })}

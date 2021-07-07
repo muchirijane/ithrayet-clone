@@ -19,6 +19,7 @@ export const GET_HOMEPAGE_DATA = gql`
         alternativeText
       }
       publishedDate
+      slug
     }
     featuredEdition: editions(
       locale: $locale
@@ -32,6 +33,7 @@ export const GET_HOMEPAGE_DATA = gql`
         value
         number
       }
+      slug
       publishedDate
       articles {
         publishDate
@@ -104,6 +106,7 @@ export const GET_HOMEPAGE_DATA = gql`
         alternativeText
       }
       color
+      slug
     }
     newsLetterForm(locale: $locale) {
       title
