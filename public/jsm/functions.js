@@ -778,7 +778,7 @@ function homeFunction(){
 						getURL = $this.attr('data-url');
 
 					$('.view_btn').attr('href', getURL)
-
+					animCircle.attr('data-url', getURL)
 					if(mHeadTL) { mHeadTL.kill() }
 
 					mHeadTL = new TimelineMax();
