@@ -101,16 +101,19 @@ const BannerSection = (props) => {
             ></canvas>
           </div>
         )}
-        {/* <div className="info_line">
-          <div className="f_14">
-            Traditional ancient reindeer illustration, Sámi. Artwork by{" "}
-            <strong>
-              <a href="creative_en.php" target="_blank">
-                Anne Katrine Senstad
-              </a>
-            </strong>
+        {cover.caption && (
+          <div className="info_line">
+            <div className="f_14">
+              {cover.caption} 
+              {/* {`${t('artwork_by')} `}
+              <strong>
+                <a href="creative_en.php" target="_blank">
+                  Anne Katrine Senstad
+                </a>
+              </strong> */}
+            </div>
           </div>
-        </div> */}
+        )}
 
         <div className="content_b">
           <div className="outline_bar flex">

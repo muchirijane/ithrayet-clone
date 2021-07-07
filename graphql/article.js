@@ -25,6 +25,7 @@ export const GET_ARTICLE_DATA = gql`
       cover {
         url
         alternativeText
+        caption
       }
       publishDate
       published_at
