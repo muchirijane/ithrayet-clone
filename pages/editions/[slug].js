@@ -6,7 +6,7 @@ import PageBarArticle from "../../components/blocks/Editions/Edition/pageBarArti
 import BannerTitle from "../../components/blocks/Editions/Edition/BannerTitle";
 import ArticleSection from "../../components/blocks/Editions/Edition/AritcleSection";
 import { fetchAPI } from "../../helpers/api";
-
+import _ from "lodash";
 // export const getStaticPaths = async ({ locales }) => {
 //   const { data } = await client.query({
 //     query: GET_EDITION_SLUGS,
@@ -33,12 +33,16 @@ import { fetchAPI } from "../../helpers/api";
 //     };
 //   }
 // };
-export const getServerSideProps = async (context) => {
-  const slug = context.params.slug;
+export const getServerSideProps = async ({
+  params,
+  preview,
+  previewData,
+  query,
+  locale,
+}) => {
+  const slug = params.slug;
 
-  const preview = context.preview;
-  const previewData = context.previewData;
-  const { featured, exclusive } = context.query;
+  const { featured, exclusive } = query;
 
   let data_results;
   if (preview) {
@@ -49,14 +53,14 @@ export const getServerSideProps = async (context) => {
       query: GET_EDITION_DATA,
       variables: {
         slug: slug,
-        locale: context.locale,
+        locale: locale,
         isFeatured: featured ? true : null,
         isExclusive: exclusive ? true : null,
       },
     });
     data_results = data;
   }
-  if (!data_results || data_results.editions.length === 0) {
+  if (!preview && _.isEmpty(query) && data_results.editions.length === 0) {
     return {
       notFound: true,
     };

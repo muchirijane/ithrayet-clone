@@ -32,10 +32,15 @@ export const getStaticPaths = async ({ locales }) => {
   }
 };
 
-export const getStaticProps = async (context) => {
-  const slug = context.params.slug;
-  const preview = context.preview;
-  const previewData = context.previewData;
+export const getStaticProps = async ({
+  params,
+  previewData,
+  preview,
+  locale,
+}) => {
+  const slug = params.slug;
+  const preview = preview;
+  const previewData = previewData;
   let data_results;
   if (preview) {
     let result = await fetchAPI(`/preview-drafts/${previewData.preview_id}`);
@@ -45,10 +50,16 @@ export const getStaticProps = async (context) => {
       query: GET_SYMBOL_DATA,
       variables: {
         slug: slug,
-        locale: context.locale,
+        locale: locale,
       },
     });
     data_results = data;
+  }
+
+  if (!preview && data_results.symbols.length === 0) {
+    return {
+      notFound: true,
+    };
   }
 
   if (data_results) {

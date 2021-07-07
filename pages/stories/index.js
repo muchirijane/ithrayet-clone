@@ -5,6 +5,7 @@ import Link from "next/link";
 import { CMSPath } from "../../helpers/imageCMSPath";
 import SearchBar from "../../components/elements/SearchBar";
 import useTranslation from "next-translate/useTranslation";
+import _ from "lodash";
 
 export const getServerSideProps = async ({ locale, query }) => {
   const { online_exclusive, story_name } = query;
@@ -66,7 +67,7 @@ export const getServerSideProps = async ({ locale, query }) => {
     },
   });
 
-  if (data.stories.length === 0) {
+  if (_.isEmpty(query) && data.stories.length === 0) {
     return {
       notFound: true,
     };

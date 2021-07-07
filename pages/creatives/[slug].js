@@ -56,6 +56,11 @@ export const getStaticProps = async ({
     });
     data_results = data;
   }
+  if (!preview && data_results.artists.length === 0) {
+    return {
+      notFound: true,
+    };
+  }
 
   if (data_results) {
     const artist = preview
