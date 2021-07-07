@@ -36,6 +36,11 @@ const Gallery = (props) => {
   // const handleResize = () => {
   //   callResize(true);
   // };
+  useEffect(() => {
+    setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+    }, 1000);
+  }, [articles]);
   return (
     <Layout isInner seo={SEO && SEO}>
       {articles && (

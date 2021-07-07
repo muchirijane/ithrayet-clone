@@ -5,12 +5,12 @@ import Equalizer from "./UIKit/equalizer";
 import Modes from "./UIKit/modes";
 import { useRouter } from "next/router";
 import SEO from "./SEO";
-import Cursor from "./UIKit/cursor";
+
 import SearchComponent from "./Search";
 import Filters from "./Filter";
-import Loader from "./Loader";
+
 import DownloadUI from "./UIKit/DownloadUI";
-import Script from "next/script";
+
 import { useState } from "react";
 
 const Layout = ({
@@ -22,10 +22,23 @@ const Layout = ({
   isDownloadUI,
   seo,
 }) => {
-  const { locale } = useRouter();
+  const { locale, reload } = useRouter();
+  const [visibleLayout, setVisible] = useState(false);
 
+  useEffect(() => {
+    window.addEventListener("popstate", function (event) {
+      reload(window.location.pathname);
+    });
+    setTimeout(() => {
+      setVisible(true);
+    }, 20);
+  });
   return (
-    <div id="site" className={IncludeNoSelect && "no-select"}>
+    <div
+      id="site"
+      className={IncludeNoSelect && "no-select"}
+      style={{ visibility: visibleLayout ? "visible" : "hidden" }}
+    >
       <SEO seo={seo} />
       {isInner ? (
         <main>
