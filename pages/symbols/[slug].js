@@ -39,8 +39,7 @@ export const getStaticProps = async ({
   locale,
 }) => {
   const slug = params.slug;
-  const preview = preview;
-  const previewData = previewData;
+
   let data_results;
   if (preview) {
     let result = await fetchAPI(`/preview-drafts/${previewData.preview_id}`);
