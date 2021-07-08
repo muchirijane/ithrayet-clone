@@ -13,7 +13,7 @@ import { useRef } from "react";
 import _ from "lodash";
 const NewsLetterBlock = ({ sectionData }) => {
   const router = useRouter();
-  const {locale} = router;
+  const { locale } = router;
   const { t } = useTranslation("common");
   const { title, description } = sectionData;
   const [isThankYou, setThankYou] = useState(false);
@@ -21,7 +21,7 @@ const NewsLetterBlock = ({ sectionData }) => {
     client: client,
     context: {
       headers: {
-        "language": locale,
+        language: locale,
       },
     },
   });
@@ -34,6 +34,8 @@ const NewsLetterBlock = ({ sectionData }) => {
   useEffect(() => {
     if (data) {
       setThankYou(true);
+      formRef.current.reset();
+      $('input, textarea').blur();
     }
   }, [data]);
 
@@ -56,110 +58,106 @@ const NewsLetterBlock = ({ sectionData }) => {
     <section id="newsletter" style={{ visibility: "hidden" }}>
       <div className="section_content flex full_bg">
         <div className="content_set no-padding">
-          {isThankYou ? (
-            <ThankYouMessageHomepage
-              title={"ALL DONE, You subscribed to our Newsletter"}
-              description={`Thank you for subscribing.`}
-              onClose={setThankYou}
-            />
-          ) : (
-            <>
-              <h3
-                className="_inOut"
-                dangerouslySetInnerHTML={{ __html: StripPTags(title) }}
-              />
-              <h6
-                className="_inOut"
-                dangerouslySetInnerHTML={{ __html: StripPTags(description) }}
-              />
-              <div className="form_set">
-                <form onSubmit={handleSubmit(onSubmit)} ref={formRef}>
-                  <div className="input_set buildup">
-                    <input
-                      type="email"
-                      {...register("email", {
-                        required: t("error_fields.email"),
-                        pattern:
-                          /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                        message: "Please enter a valid email",
-                      })}
-                      id="newsletter_email"
-                    />
-                    <label for="newsletter_email" className="full_bg flex">
-                      {t("news_letter_form.email_address")}
-                    </label>
-                    <div
-                      className="inline_submit flex _curTL2"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        formRef.current.dispatchEvent(
-                          new Event("submit", {
-                            cancelable: true,
-                            bubbles: true,
-                          })
-                        );
-                      }}
-                    >
-                      <span>{t("news_letter_form.subscribe")}</span>
-                      <i className="full_bg"></i>
-                    </div>
-                    <div className="input_border">
-                      <svg
-                        version="1.1"
-                        xmlns="http://www.w3.org/2000/svg"
-                        x="0px"
-                        y="0px"
-                      >
-                        <line
-                          className="svg-stroke"
-                          fill="none"
-                          strokeMiterlimit="10"
-                          x1="0"
-                          y1="100%"
-                          x2="0"
-                          y2="0"
-                        ></line>
-                        <line
-                          className="svg-stroke"
-                          fill="none"
-                          strokeMiterlimit="10"
-                          x1="0"
-                          y1="0"
-                          x2="100%"
-                          y2="0"
-                        ></line>
-                        <line
-                          className="svg-stroke"
-                          fill="none"
-                          strokeMiterlimit="10"
-                          x1="100%"
-                          y1="0"
-                          x2="100%"
-                          y2="100%"
-                        ></line>
-                        <line
-                          className="svg-stroke"
-                          fill="none"
-                          strokeMiterlimit="10"
-                          x1="100%"
-                          y1="100%"
-                          x2="0"
-                          y2="100%"
-                        ></line>
-                      </svg>
-                    </div>
-                  </div>
-                </form>
-                <pre className="news-letter-error">
-                  {errors?.email && (
-                    <span style={{ color: "#fd3838" }}>
-                      {errors.email.message}
-                    </span>
-                  )}
-                </pre>
+          <ThankYouMessageHomepage
+            title={"ALL DONE, You subscribed to our Newsletter"}
+            description={`Thank you for subscribing.`}
+            onClose={setThankYou}
+            display = {isThankYou}
+          />
+          <h3
+            className="_inOut"
+            dangerouslySetInnerHTML={{ __html: StripPTags(title) }}
+            style={{ display: isThankYou ? "none" : "block" }}
+          />
+          <h6
+            className="_inOut"
+            dangerouslySetInnerHTML={{ __html: StripPTags(description) }}
+            style={{ display: isThankYou ? "none" : "block" }}
+          />
+          <div className="form_set" style={{ display: isThankYou ? "none" : "block" }}>
+            <form onSubmit={handleSubmit(onSubmit)} ref={formRef}>
+              <div className="input_set buildup">
+                <input
+                  type="email"
+                  {...register("email", {
+                    required: t("error_fields.email"),
+                    pattern:
+                      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    message: "Please enter a valid email",
+                  })}
+                  id="newsletter_email"
+                />
+                <label for="newsletter_email" className="full_bg flex">
+                  {t("news_letter_form.email_address")}
+                </label>
+                <div
+                  className="inline_submit flex _curTL2"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    formRef.current.dispatchEvent(
+                      new Event("submit", {
+                        cancelable: true,
+                        bubbles: true,
+                      })
+                    );
+                  }}
+                >
+                  <span>{t("news_letter_form.subscribe")}</span>
+                  <i className="full_bg"></i>
+                </div>
+                <div className="input_border">
+                  <svg
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    x="0px"
+                    y="0px"
+                  >
+                    <line
+                      className="svg-stroke"
+                      fill="none"
+                      strokeMiterlimit="10"
+                      x1="0"
+                      y1="100%"
+                      x2="0"
+                      y2="0"
+                    ></line>
+                    <line
+                      className="svg-stroke"
+                      fill="none"
+                      strokeMiterlimit="10"
+                      x1="0"
+                      y1="0"
+                      x2="100%"
+                      y2="0"
+                    ></line>
+                    <line
+                      className="svg-stroke"
+                      fill="none"
+                      strokeMiterlimit="10"
+                      x1="100%"
+                      y1="0"
+                      x2="100%"
+                      y2="100%"
+                    ></line>
+                    <line
+                      className="svg-stroke"
+                      fill="none"
+                      strokeMiterlimit="10"
+                      x1="100%"
+                      y1="100%"
+                      x2="0"
+                      y2="100%"
+                    ></line>
+                  </svg>
+                </div>
               </div>
-            </>
-          )}
+            </form>
+            <pre className="news-letter-error">
+              {errors?.email && (
+                <span style={{ color: "#fd3838" }}>{errors.email.message}</span>
+              )}
+            </pre>
+          </div>
           <div className="sub_footer">
             <ul className="flex">
               {NewsLetterNav(router.locale).map((link, key) => {

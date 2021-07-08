@@ -1,12 +1,12 @@
 const ThankYouMessage = (props) => {
-  const { title, description, onClose } = props;
+  const { title, description, onClose, display } = props;
 
   const handleClose = () => {
     onClose(false);
   };
 
   return (
-    <div className="hero_text flex">
+    <div className="hero_text flex" style={display}>
       <div
         className="nf_object"
         style={{

@@ -1,5 +1,5 @@
 const ThankYouMessageHomepage = (props) => {
-  const { title, description, onClose } = props;
+  const { title, description, onClose, display } = props;
 
   const handleClose = () => {
     onClose(false);
@@ -8,7 +8,7 @@ const ThankYouMessageHomepage = (props) => {
   return (
     <div
       style={{
-        display: "flex",
+        display: display ? "flex" : "none",
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
