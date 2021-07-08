@@ -10,7 +10,7 @@ const MainBlock = ({ editions, sectionData, dataUrl }) => {
   const { title, quote } = sectionData;
   const { locale } = useRouter();
   let editionsChunk = ChunkArray(editions, 5);
-  console.log(editionsChunk);
+ 
   const getEditonsBlock = (val, key, id) => {
     return (
       <Elements.EditionHomepage
