@@ -4,7 +4,7 @@ export default async (req, res) => {
   // Fetch the headless CMS to check if the provided `slug` exists
   // getPostBySlug would implement the required fetching logic to the headless CMS
   const previewData = await CheckPreviewDraft(req.query.id);
-
+  const {locale} = req.query;
   // If the slug doesn't exist prevent preview mode from being enabled
   if (!previewData) {
     return res.status(401).json({ message: "Invalid Request" });
@@ -20,25 +20,25 @@ export default async (req, res) => {
     },
     { maxAge: 20 }
   );
-
+ 
   // Redirect to the path from the fetched post
   // We don't redirect to req.query.slug as that might lead to open redirect
   let redirect_uri = "";
   switch (previewData.content_type) {
     case "article":
-      redirect_uri = `/articles/${previewData.json.slug}`;
+      redirect_uri = `/${locale}/articles/${previewData.json.slug}`;
       break;
     case "project":
-      redirect_uri = `/join-experience/${previewData.json.slug}`;
+      redirect_uri = `/${locale}/join-experience/${previewData.json.slug}`;
       break;
     case "edition":
-      redirect_uri = `/editions/${previewData.json.slug}`;
+      redirect_uri = `/${locale}/editions/${previewData.json.slug}`;
       break;
     case "symbols":
-      redirect_uri = `/symbols/${previewData.json.slug}`;
+      redirect_uri = `/${locale}/symbols/${previewData.json.slug}`;
       break;
     case "artist":
-      redirect_uri = `/creatives/${previewData.json.slug}`;
+      redirect_uri = `/${locale}/creatives/${previewData.json.slug}`;
       break;
     default:
       redirect_uri = "/";
