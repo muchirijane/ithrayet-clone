@@ -317,7 +317,7 @@ const Search = (props) => {
                 <div className="search_row flex">
                   {stories.map((story, key) => (
                     <Link
-                      href={`/projects/${story.name}`}
+                      href={`/stories?story_name=${story.name}`}
                       key={`search_story-${key}`}
                     >
                       <a className="result_set">
