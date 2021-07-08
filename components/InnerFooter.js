@@ -10,13 +10,20 @@ import ThankYouMessage from "./forms/ThankYou";
 import { useRouter } from "next/router";
 import { StripPTags } from "../helpers/arrayHelper";
 import { useRef } from "react";
+import _ from "lodash";
 
 const InnerFooter = (props) => {
   const router = useRouter();
+  const {locale} = router;
   const { sectionData } = props;
   const [isThankYou, setThankYou] = useState(false);
-  const [formSubmit, { error, data }] = useMutation(MUTATION_NewsLetterForm, {
+  const [formSubmit, {loading, error, data }] = useMutation(MUTATION_NewsLetterForm, {
     client: client,
+    context: {
+      headers: {
+        "language": locale,
+      },
+    },
   });
   const {
     register,
@@ -30,15 +37,12 @@ const InnerFooter = (props) => {
     }
   }, [data]);
 
+  let isFormError = !_.isEmpty(errors);
   useEffect(() => {
-    if (error) {
-      error.graphQLErrors.map(({ message }, i) => {
-        if (message === "ValidationError") {
-          errors.email = "Please input valid email";
-        }
-      });
+    if (isFormError) {
+      window.dispatchEvent(new Event("resize"));
     }
-  }, [error]);
+  }, [isFormError]);
 
   const onSubmit = (formData) => {
     formSubmit({
@@ -92,7 +96,7 @@ const InnerFooter = (props) => {
                       {t("news_letter_form.email_address")}
                     </label>
                     <div
-                      className="inline_submit flex _curTL2 submitThis"
+                      className={`inline_submit flex _curTL2 submitThis ${loading && 'disabled'}`}
                       onClick={(e) => {
                         e.preventDefault();
                         formRef.current.dispatchEvent(
@@ -153,15 +157,14 @@ const InnerFooter = (props) => {
                       </svg>
                     </div>
                   </div>
-                  
                 </form>
                 <pre className="news-letter-error">
-                    {errors?.email && (
-                      <span style={{ color: "#fd3838" }}>
-                        {errors.email.message}
-                      </span>
-                    )}
-                  </pre>
+                  {errors?.email && (
+                    <span style={{ color: "#fd3838" }}>
+                      {errors.email.message}
+                    </span>
+                  )}
+                </pre>
               </div>
 
               <div className="sub_footer">

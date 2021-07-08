@@ -7,9 +7,12 @@ import { useEffect, useState } from "react";
 import { MUTATION_collaborateForm } from "../../graphql/mutations/collaborateForm";
 import { StripPTags } from "../../helpers/arrayHelper";
 import useTranslation from "next-translate/useTranslation";
+import _ from "lodash";
+import { useRouter } from "next/router";
 
 const CollaborateForm = (props) => {
   const { t } = useTranslation("common");
+  const { locale } = useRouter();
   const { sectionData } = props;
   const [isThankYou, setThankYou] = useState(false);
 
@@ -17,6 +20,11 @@ const CollaborateForm = (props) => {
     MUTATION_collaborateForm,
     {
       client: client,
+      context: {
+        headers: {
+          "language": locale,
+        },
+      },
     }
   );
   const {
@@ -31,15 +39,12 @@ const CollaborateForm = (props) => {
     }
   }, [data]);
 
+  let isFormError = !_.isEmpty(errors);
   useEffect(() => {
-    if (error) {
-      error.graphQLErrors.map(({ message }, i) => {
-        if (message === "ValidationError") {
-          errors.email = "Please input valid email";
-        }
-      });
+    if (isFormError) {
+      window.dispatchEvent(new Event("resize"));
     }
-  }, [error]);
+  }, [isFormError]);
 
   const onSubmit = (formData) => {
     formCollaborateSubmit({

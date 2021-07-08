@@ -7,10 +7,12 @@ import { useEffect, useState } from "react";
 import { StripPTags } from "../../helpers/arrayHelper";
 import { MUTATION_writeToUsForm } from "../../graphql/mutations/writeToUsForm";
 import useTranslation from "next-translate/useTranslation";
+import _ from "lodash";
+import { useRouter } from "next/router";
 
 const WriteToUsForm = (props) => {
   const { t } = useTranslation("common");
-
+  const { locale } = useRouter();
   const { sectionData } = props;
   const [isThankYou, setThankYou] = useState(false);
 
@@ -18,6 +20,11 @@ const WriteToUsForm = (props) => {
     MUTATION_writeToUsForm,
     {
       client: client,
+      context: {
+        headers: {
+          "language": locale,
+        },
+      },
     }
   );
   const {
@@ -32,15 +39,12 @@ const WriteToUsForm = (props) => {
     }
   }, [data]);
 
+  let isFormError = !_.isEmpty(errors);
   useEffect(() => {
-    if (error) {
-      error.graphQLErrors.map(({ message }, i) => {
-        if (message === "ValidationError") {
-          errors.email = "Please input valid email";
-        }
-      });
+    if (isFormError) {
+      window.dispatchEvent(new Event("resize"));
     }
-  }, [error]);
+  }, [isFormError]);
 
   const onSubmit = (formData) => {
     formCollaborateSubmit({

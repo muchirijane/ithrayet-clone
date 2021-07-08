@@ -10,14 +10,20 @@ import ThankYouMessageHomepage from "../forms/ThankYouHomepage";
 import { useRouter } from "next/router";
 import { StripPTags } from "../../helpers/arrayHelper";
 import { useRef } from "react";
-
+import _ from "lodash";
 const NewsLetterBlock = ({ sectionData }) => {
   const router = useRouter();
+  const {locale} = router;
   const { t } = useTranslation("common");
   const { title, description } = sectionData;
   const [isThankYou, setThankYou] = useState(false);
   const [formSubmit, { error, data }] = useMutation(MUTATION_NewsLetterForm, {
     client: client,
+    context: {
+      headers: {
+        "language": locale,
+      },
+    },
   });
   const {
     register,
@@ -31,15 +37,12 @@ const NewsLetterBlock = ({ sectionData }) => {
     }
   }, [data]);
 
+  let isFormError = !_.isEmpty(errors);
   useEffect(() => {
-    if (error) {
-      error.graphQLErrors.map(({ message }, i) => {
-        if (message === "ValidationError") {
-          errors.email = "Please input valid email";
-        }
-      });
+    if (isFormError) {
+      window.dispatchEvent(new Event("resize"));
     }
-  }, [error]);
+  }, [isFormError]);
 
   const onSubmit = (formData) => {
     formSubmit({

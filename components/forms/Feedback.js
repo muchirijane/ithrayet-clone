@@ -7,16 +7,25 @@ import { useRef } from "react";
 import ThankYouMessage from "./ThankYou";
 import { StripPTags } from "../../helpers/arrayHelper";
 import useTranslation from "next-translate/useTranslation";
+import _ from "lodash";
+import { useRouter } from "next/router";
 
 const FeedbackForm = (props) => {
   const { t } = useTranslation("common");
+  const { locale } = useRouter();
+
   const { sectionData } = props;
   const [isThankYou, setThankYou] = useState(false);
 
-  const [formFeedbackSubmit, { error, data }] = useMutation(
+  const [formFeedbackSubmit, { loading, data }] = useMutation(
     MUTATION_FeedBackForm,
     {
       client: client,
+      context: {
+        headers: {
+          "language": locale,
+        },
+      },
     }
   );
 
@@ -32,15 +41,12 @@ const FeedbackForm = (props) => {
     }
   }, [data]);
 
+  let isFormError = !_.isEmpty(errors);
   useEffect(() => {
-    if (error) {
-      error.graphQLErrors.map(({ message }, i) => {
-        if (message === "ValidationError") {
-          errors.email = "Please input valid email";
-        }
-      });
+    if (isFormError) {
+      window.dispatchEvent(new Event("resize"));
     }
-  }, [error]);
+  }, [isFormError]);
 
   const onSubmit = (formData) => {
     formFeedbackSubmit({
@@ -283,7 +289,9 @@ const FeedbackForm = (props) => {
                         new Event("submit", { cancelable: true, bubbles: true })
                       );
                     }}
-                    className="circle_btn_set mg submitThis flex"
+                    className={`circle_btn_set mg submitThis flex ${
+                      loading && "disabled"
+                    }`}
                     data-dist="5"
                   >
                     <div className="btn circle_btn flex _ele">

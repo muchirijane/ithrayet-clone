@@ -1402,7 +1402,10 @@ body:not(.progress) .table_row {
 .circle_btn_set {
 	justify-content: center;
 }
-
+.circle_btn_set.disabled{
+	opacity: .5;
+	pointer-events: none;
+}
 .circle_btn {
 	background: currentColor;
 	width: 160px;
