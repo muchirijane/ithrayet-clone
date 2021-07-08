@@ -2513,6 +2513,8 @@ function appendImgs() {
       isSearch = true;
 
       searchTL.play();
+
+      return false;
     }
   });
 

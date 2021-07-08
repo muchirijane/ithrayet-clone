@@ -2508,13 +2508,14 @@ function globalFunc(){
 	.staggerFromTo('.search_wrap ._el', 0.5, {x: 100, autoAlpha: 0}, { x: 0, autoAlpha: 1, ease: Power3.easeOut }, 0.1, 0.5)
 
 	$(document).on('click', '.search-btn', function(e){
-
+		console.log(isSearch);
 		if(!isSearch) {
 
 			isSearch = true;
 
 			searchTL.play();
 
+			return false;
 		}
 
 	})

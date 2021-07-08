@@ -37,7 +37,7 @@ const Layout = ({
     <div
       id="site"
       className={IncludeNoSelect && "no-select"}
-      style={{ visibility: visibleLayout ? "visible" : "hidden" }}
+      style={{ opacity: visibleLayout ? 1 : 0 }}
     >
       <SEO seo={seo} />
       {isInner ? (
