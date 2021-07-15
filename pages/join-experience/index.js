@@ -9,6 +9,7 @@ import Column3Section from "../../components/blocks/JoinExperience/components/Co
 import CenterTextSection from "../../components/blocks/JoinExperience/components/CenterTextSection";
 import CenterLogoSection from "../../components/blocks/JoinExperience/components/CenterLogoSection";
 import useTranslation from "next-translate/useTranslation";
+import { useRouter } from "next/router";
 
 export const getServerSideProps = async ({ locale, query }) => {
   const { alphabet, dateFrom, dateTo } = query;
@@ -62,7 +63,7 @@ const JoinExperience = (props) => {
   const { t } = useTranslation("common");
 
   const { joinExperience, news_letter, projects, collaborateWithUs } = props;
-
+ 
   return (
     joinExperience && (
       <Layout

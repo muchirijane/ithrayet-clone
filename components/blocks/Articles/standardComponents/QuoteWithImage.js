@@ -4,9 +4,11 @@ import LargeQuote from "./quoteSvg/largeQuote";
 import SmallQuote from "./quoteSvg/smallQuote";
 import SVGComp from "../../../SVGComp";
 import useTranslation from "next-translate/useTranslation";
+import { useRouter } from "next/router";
 const QuoteWithImage = (props) => {
   const { t } = useTranslation("common");
   const { content } = props;
+  const { locale } = useRouter();
   return (
     <section>
       <div className="custom_content">
@@ -67,18 +69,38 @@ const QuoteWithImage = (props) => {
                       url_path={`${content.quoteWithImage_image.symbol.symbol.url}`}
                     />
                   </div>
+
                   <div className="f_14">
-                    {`${content.quoteWithImage_image.description}`}{" "}
-                    {`${t("artwork_by")} `}
-                    <strong>
-                      <Link
-                        href={`/creatives/${content.quoteWithImage_image.artist.slug}`}
-                      >
-                        <a target="_blank">
-                          {`${content.quoteWithImage_image.artist.firstName} ${content.quoteWithImage_image.artist.lastName}`}
-                        </a>
-                      </Link>
-                    </strong>
+                    {content.quoteWithImage_image.image.caption}{" "}
+                    {`${
+                      content.quoteWithImage_image.image.artist_relation
+                        ? t("artwork_by")
+                        : ""
+                    } `}
+                    {content.quoteWithImage_image.image.artist_relation && (
+                      <strong>
+                        {locale === "ar" ? (
+                          content.quoteWithImage_image.image.artist_relation
+                            .localizations.length > 0 ? (
+                            <Link
+                              href={`/creatives/${content.quoteWithImage_image.image.artist_relation.localizations[0].slug}`}
+                            >
+                              <a target="_blank">
+                                {`${content.quoteWithImage_image.image.artist_relation.localizations[0].firstName} ${content.quoteWithImage_image.image.artist_relation.localizations[0].lastName}`}
+                              </a>
+                            </Link>
+                          ) : null
+                        ) : (
+                          <Link
+                            href={`/creatives/${content.quoteWithImage_image.image.artist_relation.slug}`}
+                          >
+                            <a target="_blank">
+                              {`${content.quoteWithImage_image.image.artist_relation.firstName} ${content.quoteWithImage_image.image.artist_relation.lastName}`}
+                            </a>
+                          </Link>
+                        )}
+                      </strong>
+                    )}
                   </div>
                 </div>
               </div>

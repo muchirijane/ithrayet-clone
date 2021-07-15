@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { CMSPath } from "../../../../../helpers/imageCMSPath";
 import useTranslation from "next-translate/useTranslation";
+import { useRouter } from "next/router";
 
 const TypeRight = (props) => {
   const { t } = useTranslation("common");
   const { title, description, image, isCentered } = props;
-
+  const { locale } = useRouter();
   return (
     <section>
       <div className="custom_content">
@@ -38,12 +39,32 @@ const TypeRight = (props) => {
                 />
                 <div className="info_line">
                   <div className="f_14">
-                    {`${image.description}`} {`${t("artwork_by")} `}
-                    <strong>
-                      <Link href={`/creatives/${image.artist.slug}`}>
-                        <a target="_blank">{`${image.artist.firstName} ${image.artist.lastName}`}</a>
-                      </Link>
-                    </strong>
+                    {image.image.caption}{" "}
+                    {`${image.image.artist_relation ? t("artwork_by") : ""} `}
+                    {image.image.artist_relation && (
+                      <strong>
+                        {locale === "ar" ? (
+                          image.image.artist_relation.localizations.length >
+                          0 ? (
+                            <Link
+                              href={`/creatives/${image.image.artist_relation.localizations[0].slug}`}
+                            >
+                              <a target="_blank">
+                                {`${image.image.artist_relation.localizations[0].firstName} ${image.image.artist_relation.localizations[0].lastName}`}
+                              </a>
+                            </Link>
+                          ) : null
+                        ) : (
+                          <Link
+                            href={`/creatives/${image.image.artist_relation.slug}`}
+                          >
+                            <a target="_blank">
+                              {`${image.image.artist_relation.firstName} ${image.image.artist_relation.lastName}`}
+                            </a>
+                          </Link>
+                        )}
+                      </strong>
+                    )}
                   </div>
                 </div>
               </div>

@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { CMSPath } from "../../../../helpers/imageCMSPath";
 import useTranslation from "next-translate/useTranslation";
+import { useRouter } from "next/router";
 
 const FullWidthImage = (props) => {
   const { t } = useTranslation("common");
   const { content } = props;
-
+  const { locale } = useRouter();
   return (
     <section>
       <div className="custom_content">
@@ -20,16 +21,36 @@ const FullWidthImage = (props) => {
 
           <div className="info_line">
             <div className="f_14">
-              {content.fullWidthImage_image.description} {`${t("artwork_by")} `}
-              <strong>
-                <Link
-                  href={`/creatives/${content.fullWidthImage_image.artist.slug}`}
-                >
-                  <a target="_blank">
-                    {`${content.fullWidthImage_image.artist.firstName} ${content.fullWidthImage_image.artist.lastName}`}
-                  </a>
-                </Link>
-              </strong>
+              {content.fullWidthImage_image.image.caption}{" "}
+              {`${
+                content.fullWidthImage_image.image.artist_relation
+                  ? t("artwork_by")
+                  : ""
+              } `}
+              {content.fullWidthImage_image.image.artist_relation && (
+                <strong>
+                  {locale === "ar" ? (
+                    content.fullWidthImage_image.image.artist_relation
+                      .localizations.length > 0 ? (
+                      <Link
+                        href={`/creatives/${content.fullWidthImage_image.image.artist_relation.localizations[0].slug}`}
+                      >
+                        <a target="_blank">
+                          {`${content.fullWidthImage_image.image.artist_relation.localizations[0].firstName} ${content.fullWidthImage_image.image.artist_relation.localizations[0].lastName}`}
+                        </a>
+                      </Link>
+                    ) : null
+                  ) : (
+                    <Link
+                      href={`/creatives/${content.fullWidthImage_image.image.artist_relation.slug}`}
+                    >
+                      <a target="_blank">
+                        {`${content.fullWidthImage_image.image.artist_relation.firstName} ${content.fullWidthImage_image.image.artist_relation.lastName}`}
+                      </a>
+                    </Link>
+                  )}
+                </strong>
+              )}
             </div>
           </div>
         </div>

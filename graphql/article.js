@@ -26,6 +26,17 @@ export const GET_ARTICLE_DATA = gql`
         url
         alternativeText
         caption
+        artist_relation {
+          firstName
+          lastName
+          slug
+          localizations {
+            locale
+            firstName
+            lastName
+            slug
+          }
+        }
       }
       publishDate
       published_at
@@ -216,11 +227,18 @@ export const GET_ARTICLE_DATA = gql`
             image {
               url
               alternativeText
-            }
-            artist {
-              firstName
-              lastName
-              slug
+              caption
+              artist_relation {
+                firstName
+                lastName
+                slug
+                localizations {
+                  locale
+                  firstName
+                  lastName
+                  slug
+                }
+              }
             }
           }
           tiltGallery_image: image {
@@ -239,18 +257,28 @@ export const GET_ARTICLE_DATA = gql`
           hoverImage_title: title
 
           creativesList {
-            artist {
-              firstName
-              lastName
-              signature {
-                url
-              }
-              slug
-            }
             title
             image {
               url
               alternativeText
+              caption
+              artist_relation {
+                firstName
+                lastName
+                slug
+                signature {
+                  url
+                }
+                localizations {
+                  locale
+                  firstName
+                  lastName
+                  slug
+                  signature {
+                    url
+                  }
+                }
+              }
             }
           }
 

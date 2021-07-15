@@ -1,19 +1,20 @@
 export const IMAGES = `
 fragment Images on ComponentSiteGeneralLinkedImages {
-    artist {
-      slug
-      firstName
-      lastName
-    }
-    photographer {
-      firstName
-      lastName
-    }
-  
-    description
     image {
       url
       alternativeText
+      caption
+      artist_relation{
+        firstName
+        lastName
+        slug
+       	localizations{
+          locale
+          firstName
+          lastName
+          slug
+        }
+      }
     }
     symbol {
       symbol {

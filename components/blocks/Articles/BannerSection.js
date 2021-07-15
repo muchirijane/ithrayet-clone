@@ -3,10 +3,11 @@ import { CMSPath } from "../../../helpers/imageCMSPath";
 import SVGComp from "../../SVGComp";
 import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
+import { useRouter } from "next/router";
 
 const BannerSection = (props) => {
   const { t } = useTranslation("common");
-
+  const {locale} = useRouter();
   const {
     tags,
     title,
@@ -104,13 +105,28 @@ const BannerSection = (props) => {
         {cover.caption && (
           <div className="info_line">
             <div className="f_14">
-              {cover.caption} 
-              {/* {`${t('artwork_by')} `}
+              {cover.caption}
+              {`${t("artwork_by")} `}
+
               <strong>
-                <a href="creative_en.php" target="_blank">
-                  Anne Katrine Senstad
-                </a>
-              </strong> */}
+                {locale === "ar" ? (
+                  cover.artist_relation.localizations.length > 0 ? (
+                    <Link
+                      href={`/creatives/${cover.artist_relation.localizations[0].slug}`}
+                    >
+                      <a target="_blank">
+                        {`${cover.artist_relation.localizations[0].firstName} ${cover.artist_relation.localizations[0].lastName}`}
+                      </a>
+                    </Link>
+                  ) : null
+                ) : (
+                  <Link href={`/creatives/${cover.artist_relation.slug}`}>
+                    <a target="_blank">
+                      {`${cover.artist_relation.firstName} ${cover.artist_relation.lastName}`}
+                    </a>
+                  </Link>
+                )}
+              </strong>
             </div>
           </div>
         )}

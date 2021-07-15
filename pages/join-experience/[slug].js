@@ -189,19 +189,8 @@ const Experience = (props) => {
                           height="auto"
                           alt={project.showcase.images[0].image.alternativeText}
                         />
-                        <div className="f_14">
-                          <p>
-                            {project.showcase.images[0].description}
-                            {`${t("artwork_by")} `}
-                            <Link
-                              href={`/creatives/${project.showcase.images[0].artist.slug}`}
-                            >
-                              <a>
-                                <strong>{`${project.showcase.images[0].artist.firstName} ${project.showcase.images[0].artist.lastName}`}</strong>
-                              </a>
-                            </Link>
-                          </p>
-                        </div>
+
+                        {ArtistLink(project.showcase.images[0])}
                       </div>
 
                       <div
@@ -244,19 +233,8 @@ const Experience = (props) => {
                           height="auto"
                           alt={project.showcase.images[1].alternativeText}
                         />
-                        <div className="f_14">
-                          <p>
-                            {project.showcase.images[1].description}
-                            {`${t("artwork_by")} `}
-                            <Link
-                              href={`/creatives/${project.showcase.images[1].artist.slug}`}
-                            >
-                              <a>
-                                <strong>{`${project.showcase.images[1].artist.firstName} ${project.showcase.images[1].artist.lastName}`}</strong>
-                              </a>
-                            </Link>
-                          </p>
-                        </div>
+
+                        {ArtistLink(project.showcase.images[1])}
                       </div>
 
                       <div className="side_img">
@@ -267,20 +245,7 @@ const Experience = (props) => {
                           height="auto"
                           alt={project.showcase.images[2].alternativeText}
                         />
-                        <div className="f_14">
-                          <p>
-                            {project.showcase.images[2].description}
-                            {`${t("artwork_by")} `}
-                            <Link
-                              href={`/creatives/${project.showcase.images[2].artist.slug}`}
-                            >
-                              <a>
-                                <strong>{`${project.showcase.images[2].artist.firstName} ${project.showcase.images[2].artist.lastName}`}</strong>
-                              </a>
-                            </Link>
-                            .
-                          </p>
-                        </div>
+                        {ArtistLink(project.showcase.images[2])}
                       </div>
 
                       <div className="side_img">
@@ -291,20 +256,7 @@ const Experience = (props) => {
                           height="auto"
                           alt={project.showcase.images[3].image.alternativeText}
                         />
-                        <div className="f_14">
-                          <p>
-                            {project.showcase.images[3].description}
-                            {`${t("artwork_by")} `}
-                            <Link
-                              href={`/creatives/${project.showcase.images[3].artist.slug}`}
-                            >
-                              <a>
-                                <strong>{`${project.showcase.images[3].artist.firstName} ${project.showcase.images[3].artist.lastName}`}</strong>
-                              </a>
-                            </Link>
-                            .
-                          </p>
-                        </div>
+                        {ArtistLink(project.showcase.images[3])}
                       </div>
                     </div>
                   </div>
@@ -324,20 +276,7 @@ const Experience = (props) => {
                           height="auto"
                           alt={project.bottomImages[0].image.alternativeText}
                         />
-                        <div className="f_14">
-                          <p>
-                            {project.bottomImages[0].description}
-                            {`${t("artwork_by")} `}
-                            <Link
-                              href={`/creatives/${project.bottomImages[0].artist.slug}`}
-                            >
-                              <a>
-                                <strong>{`${project.bottomImages[0].artist.firstName} ${project.bottomImages[0].artist.lastName}`}</strong>
-                              </a>
-                            </Link>
-                            .
-                          </p>
-                        </div>
+                        {ArtistLink(project.bottomImages[0])}
                       </div>
                     </div>
 
@@ -355,20 +294,7 @@ const Experience = (props) => {
                           height="auto"
                           alt={project.bottomImages[1].image.alternativeText}
                         />
-                        <div className="f_14">
-                          <p>
-                            {project.bottomImages[1].description}
-                            {`${t("artwork_by")} `}
-                            <Link
-                              href={`/creatives/${project.bottomImages[1].artist.slug}`}
-                            >
-                              <a>
-                                <strong>{`${project.bottomImages[1].artist.firstName} ${project.bottomImages[1].artist.lastName}`}</strong>
-                              </a>
-                            </Link>
-                            .
-                          </p>
-                        </div>
+                        {ArtistLink(project.bottomImages[1])}
                       </div>
                     </div>
                   </div>
@@ -419,3 +345,31 @@ const Experience = (props) => {
 };
 
 export default Experience;
+
+const ArtistLink = (data) => (
+  <div className="f_14">
+    {data.image.caption}{" "}
+    {`${data.image.artist_relation ? t("artwork_by") : ""} `}
+    {data.image.artist_relation && (
+      <strong>
+        {locale === "ar" ? (
+          data.image.artist_relation.localizations.length > 0 ? (
+            <Link
+              href={`/creatives/${data.image.artist_relation.localizations[0].slug}`}
+            >
+              <a target="_blank">
+                {`${data.image.artist_relation.localizations[0].firstName} ${data.image.artist_relation.localizations[0].lastName}`}
+              </a>
+            </Link>
+          ) : null
+        ) : (
+          <Link href={`/creatives/${data.image.artist_relation.slug}`}>
+            <a target="_blank">
+              {`${data.image.artist_relation.firstName} ${data.image.artist_relation.lastName}`}
+            </a>
+          </Link>
+        )}
+      </strong>
+    )}
+  </div>
+);

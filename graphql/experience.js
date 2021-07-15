@@ -39,34 +39,38 @@ export const GET_EXPERIENCE_DATA = gql`
           image {
             url
             alternativeText
+            caption
+            artist_relation {
+              firstName
+              lastName
+              slug
+              localizations {
+                locale
+                firstName
+                lastName
+                slug
+              }
+            }
           }
-          artist {
-            firstName
-            lastName
-            slug
-          }
-          photographer {
-            firstName
-            lastName
-          }
-          description
         }
       }
       bottomImages {
         image {
           url
           alternativeText
+          caption
+          artist_relation {
+            firstName
+            lastName
+            slug
+            localizations {
+              locale
+              firstName
+              lastName
+              slug
+            }
+          }
         }
-        artist {
-          firstName
-          lastName
-          slug
-        }
-        photographer {
-          firstName
-          lastName
-        }
-        description
       }
     }
   }
@@ -125,7 +129,7 @@ export const GET_JOINEXPERIENCE_DATA = gql`
     newsLetterForm(locale: $locale) {
       title
       description
-      thankYou{
+      thankYou {
         title
         description
       }

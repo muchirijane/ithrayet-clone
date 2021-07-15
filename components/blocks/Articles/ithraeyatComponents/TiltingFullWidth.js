@@ -1,9 +1,12 @@
 import Link from "next/link";
 import { CMSPath } from "../../../../helpers/imageCMSPath";
 import useTranslation from "next-translate/useTranslation";
+import { useRouter } from "next/router";
 const TiltingFullWidth = (props) => {
   const { t } = useTranslation("common");
   const { content } = props;
+  const { locale } = useRouter();
+
   return (
     <section>
       <div className="custom_content">
@@ -29,16 +32,39 @@ const TiltingFullWidth = (props) => {
                   />
                   <div className="info_line">
                     <div className="f_14">
-                      {content.tiltImageFW_image[0].description} {`${t("artwork_by")} `}
-                      <strong>
-                        <Link
-                          href={`/creatives/${content.tiltImageFW_image[0].artist.slug}`}
-                        >
-                          <a target="_blank">
-                            {`${content.tiltImageFW_image[0].artist.firstName} ${content.tiltImageFW_image[0].artist.lastName}`}
-                          </a>
-                        </Link>
-                      </strong>
+                      {content.tiltImageFW_image[0].image.caption}{" "}
+                      {`${
+                        content.tiltImageFW_image[0].image.artist_relation
+                          ? t("artwork_by")
+                          : ""
+                      } `}
+                      {content.tiltImageFW_image[0].image.artist_relation && (
+                        <strong>
+                          {locale === "ar" ? (
+                            content.tiltImageFW_image[0].image.artist_relation
+                              .localizations.length > 0 ? (
+                              <Link
+                                href={`/creatives/${content.tiltImageFW_image[0].image.artist_relation
+                                  .localizations[0].slug}`}
+                              >
+                                <a target="_blank">
+                                  {`${content.tiltImageFW_image[0].image.artist_relation
+                                  .localizations[0].firstName} ${content.tiltImageFW_image[0].image.artist_relation
+                                    .localizations[0].lastName}`}
+                                </a>
+                              </Link>
+                            ) : null
+                          ) : (
+                            <Link
+                              href={`/creatives/${content.tiltImageFW_image[0].image.artist_relation.slug}`}
+                            >
+                              <a target="_blank">
+                                {`${content.tiltImageFW_image[0].image.artist_relation.firstName} ${content.tiltImageFW_image[0].image.artist_relation.lastName}`}
+                              </a>
+                            </Link>
+                          )}
+                        </strong>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -59,16 +85,39 @@ const TiltingFullWidth = (props) => {
                   />
                   <div className="info_line">
                     <div className="f_14">
-                      {content.tiltImageFW_image[1].description} {`${t("artwork_by")} `}
-                      <strong>
-                        <Link
-                          href={`/creatives/${content.tiltImageFW_image[1].artist.slug}`}
-                        >
-                          <a target="_blank">
-                            {`${content.tiltImageFW_image[1].artist.firstName} ${content.tiltImageFW_image[1].artist.lastName}`}
-                          </a>
-                        </Link>
-                      </strong>
+                      {content.tiltImageFW_image[1].image.caption}{" "}
+                      {`${
+                        content.tiltImageFW_image[1].image.artist_relation
+                          ? t("artwork_by")
+                          : ""
+                      } `}
+                      {content.tiltImageFW_image[1].image.artist_relation && (
+                        <strong>
+                          {locale === "ar" ? (
+                            content.tiltImageFW_image[1].image.artist_relation
+                              .localizations.length > 0 ? (
+                              <Link
+                                href={`/creatives/${content.tiltImageFW_image[1].image.artist_relation
+                                  .localizations[0].slug}`}
+                              >
+                                <a target="_blank">
+                                  {`${content.tiltImageFW_image[1].image.artist_relation
+                                  .localizations[0].firstName} ${content.tiltImageFW_image[1].image.artist_relation
+                                    .localizations[0].lastName}`}
+                                </a>
+                              </Link>
+                            ) : null
+                          ) : (
+                            <Link
+                              href={`/creatives/${content.tiltImageFW_image[1].image.artist_relation.slug}`}
+                            >
+                              <a target="_blank">
+                                {`${content.tiltImageFW_image[1].image.artist_relation.firstName} ${content.tiltImageFW_image[0].image.artist_relation.lastName}`}
+                              </a>
+                            </Link>
+                          )}
+                        </strong>
+                      )}
                     </div>
                   </div>
                 </div>
