@@ -40,17 +40,7 @@ export const GET_EXPERIENCE_DATA = gql`
             url
             alternativeText
             caption
-            artist_relation {
-              firstName
-              lastName
-              slug
-              localizations {
-                locale
-                firstName
-                lastName
-                slug
-              }
-            }
+            artist_relation: selectedArtist
           }
         }
       }
@@ -59,17 +49,7 @@ export const GET_EXPERIENCE_DATA = gql`
           url
           alternativeText
           caption
-          artist_relation {
-            firstName
-            lastName
-            slug
-            localizations {
-              locale
-              firstName
-              lastName
-              slug
-            }
-          }
+          artist_relation: selectedArtist
         }
       }
     }

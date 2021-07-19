@@ -8,17 +8,7 @@ fragment ImagesWithTitle on ComponentSiteGeneralLinkedImageWithTitle {
       url
       alternativeText
       caption
-      artist_relation{
-        firstName
-        lastName
-        slug
-       	localizations{
-          locale
-          firstName
-          lastName
-          slug
-        }
-      }
+      artist_relation: selectedArtist
     }
     symbol {
       symbol {

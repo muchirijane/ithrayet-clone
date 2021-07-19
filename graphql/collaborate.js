@@ -21,7 +21,7 @@ export const GET_COLLABORATE_DATA = gql`
           alternativeText
         }
       }
-      seo{
+      seo {
         ...SEO
       }
       collaboratorsBlock {
@@ -30,11 +30,9 @@ export const GET_COLLABORATE_DATA = gql`
         brands {
           title
           location
-          image_linking {
-            image {
-              url
-              alternativeText
-            }
+          image {
+            url
+            alternativeText
           }
         }
       }
@@ -42,7 +40,7 @@ export const GET_COLLABORATE_DATA = gql`
     newsLetterForm(locale: $locale) {
       title
       description
-      thankYou{
+      thankYou {
         title
         description
       }
@@ -50,7 +48,7 @@ export const GET_COLLABORATE_DATA = gql`
     collaborateWithUs(locale: $locale) {
       title
       description
-      thankYou{
+      thankYou {
         title
         description
       }

@@ -12,7 +12,7 @@ export const getStaticProps = async ({ locale }) => {
       locale: locale,
     },
   });
-
+ 
   if (data) {
     return {
       props: {
@@ -215,7 +215,7 @@ const Collaborate = (props) => {
                               <div className="row_logo full_bg">
                                 <i
                                   className="full_bg load_bg"
-                                  data-src={`${CMSPath}${brand.image_linking.image.url}`}
+                                  data-src={`${CMSPath}${brand.image.url}`}
                                 ></i>
                               </div>
                             </div>

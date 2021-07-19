@@ -118,6 +118,7 @@ const Article = (props) => {
   const { article, nextArticle } = props;
   const router = useRouter();
   const { locale } = router;
+  
   return (
     <Layout isInner seo={article && article.seo}>
       {article && (

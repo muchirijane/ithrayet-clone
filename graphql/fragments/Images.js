@@ -4,17 +4,7 @@ fragment Images on ComponentSiteGeneralLinkedImages {
       url
       alternativeText
       caption
-      artist_relation{
-        firstName
-        lastName
-        slug
-       	localizations{
-          locale
-          firstName
-          lastName
-          slug
-        }
-      }
+      artist_relation: selectedArtist
     }
     symbol {
       symbol {

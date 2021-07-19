@@ -190,7 +190,7 @@ const Experience = (props) => {
                           alt={project.showcase.images[0].image.alternativeText}
                         />
 
-                        {ArtistLink(project.showcase.images[0])}
+                        {ArtistLink(project.showcase.images[0],t,locale)}
                       </div>
 
                       <div
@@ -234,7 +234,7 @@ const Experience = (props) => {
                           alt={project.showcase.images[1].alternativeText}
                         />
 
-                        {ArtistLink(project.showcase.images[1])}
+                        {ArtistLink(project.showcase.images[1],t,locale)}
                       </div>
 
                       <div className="side_img">
@@ -245,7 +245,7 @@ const Experience = (props) => {
                           height="auto"
                           alt={project.showcase.images[2].alternativeText}
                         />
-                        {ArtistLink(project.showcase.images[2])}
+                        {ArtistLink(project.showcase.images[2],t,locale)}
                       </div>
 
                       <div className="side_img">
@@ -256,7 +256,7 @@ const Experience = (props) => {
                           height="auto"
                           alt={project.showcase.images[3].image.alternativeText}
                         />
-                        {ArtistLink(project.showcase.images[3])}
+                        {ArtistLink(project.showcase.images[3],t,locale)}
                       </div>
                     </div>
                   </div>
@@ -276,7 +276,7 @@ const Experience = (props) => {
                           height="auto"
                           alt={project.bottomImages[0].image.alternativeText}
                         />
-                        {ArtistLink(project.bottomImages[0])}
+                        {ArtistLink(project.bottomImages[0],t,locale)}
                       </div>
                     </div>
 
@@ -294,7 +294,7 @@ const Experience = (props) => {
                           height="auto"
                           alt={project.bottomImages[1].image.alternativeText}
                         />
-                        {ArtistLink(project.bottomImages[1])}
+                        {ArtistLink(project.bottomImages[1],t,locale)}
                       </div>
                     </div>
                   </div>
@@ -346,7 +346,7 @@ const Experience = (props) => {
 
 export default Experience;
 
-const ArtistLink = (data) => (
+const ArtistLink = (data,t,locale) => (
   <div className="f_14">
     {data.image.caption}{" "}
     {`${data.image.artist_relation ? t("artwork_by") : ""} `}
