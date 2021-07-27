@@ -3,6 +3,7 @@ import { GET_DOWNLOAD_ISSUES_DATA } from "../../graphql";
 import { CMSPath } from "../../helpers/imageCMSPath";
 import client from "../../lib/apollo";
 import useTranslation from "next-translate/useTranslation";
+import Link from "next/link";
 export const getStaticProps = async ({ locale }) => {
   const { data } = await client.query({
     query: GET_DOWNLOAD_ISSUES_DATA,
@@ -44,22 +45,24 @@ const DonwloadIssues = (props) => {
                 {editions[0].title}
               </div>
 
-              <a href="/download-issues/list" className="view_toggle flex">
-                <div className="view_shape_set flex">
-                  <div className="list flex">
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                    <i></i>
+              <Link href={`/download-issues/list`}>
+                <a className="view_toggle flex">
+                  <div className="view_shape_set flex">
+                    <div className="list flex">
+                      <i></i>
+                      <i></i>
+                      <i></i>
+                      <i></i>
+                      <i></i>
+                      <i></i>
+                      <i></i>
+                      <i></i>
+                      <i></i>
+                    </div>
                   </div>
-                </div>
-                <strong className="f_14 uppercase">{t("list_view")}</strong>
-              </a>
+                  <strong className="f_14 uppercase">{t("list_view")}</strong>
+                </a>
+              </Link>
             </div>
           </div>
 

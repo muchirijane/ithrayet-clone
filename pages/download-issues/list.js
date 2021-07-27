@@ -5,6 +5,7 @@ import { CMSPath } from "../../helpers/imageCMSPath";
 import client from "../../lib/apollo";
 import useTranslation from "next-translate/useTranslation";
 import { getTypeValue } from "../../helpers/api";
+import Link from "next/link";
 
 export const getStaticProps = async ({ locale }) => {
   const { data } = await client.query({
@@ -40,33 +41,35 @@ const DonwloadIssuesList = (props) => {
                 "pages.title_downloadIssues"
               )}`}</strong>
               <div className="f_80 alt">{t("pages.title_downloadList")}</div>
-              <a href="/download-issues" className="view_toggle flex">
-                <div className="view_shape_set flex">
-                  <svg
-                    width="26"
-                    height="35"
-                    viewBox="0 0 26 35"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      className="svg-stroke"
-                      x="0.5"
-                      y="0.5"
-                      width="25"
-                      height="25"
-                    ></rect>
-                    <rect
-                      className="svg-stroke"
-                      x="0.5"
-                      y="28.5"
-                      width="25"
-                      height="6"
-                    ></rect>
-                  </svg>
-                </div>
-                <strong className="f_14 uppercase">{t("slider_view")}</strong>
-              </a>
+              <Link href={`/download-issues`}>
+                <a className="view_toggle flex">
+                  <div className="view_shape_set flex">
+                    <svg
+                      width="26"
+                      height="35"
+                      viewBox="0 0 26 35"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect
+                        className="svg-stroke"
+                        x="0.5"
+                        y="0.5"
+                        width="25"
+                        height="25"
+                      ></rect>
+                      <rect
+                        className="svg-stroke"
+                        x="0.5"
+                        y="28.5"
+                        width="25"
+                        height="6"
+                      ></rect>
+                    </svg>
+                  </div>
+                  <strong className="f_14 uppercase">{t("slider_view")}</strong>
+                </a>
+              </Link>
             </div>
           </div>
 
