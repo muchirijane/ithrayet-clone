@@ -30,29 +30,29 @@ const BigImageTitle = (props) => {
                 <div className="f_14">
                   {content.bigImageWT_image.image.caption}{" "}
                   {`${
-                    content.bigImageWT_image.image.artist_relation
+                    content.bigImageWT_image.image.selectedArtist
                       ? t("artwork_by")
                       : ""
                   } `}
-                  {content.bigImageWT_image.image.artist_relation && (
+                  {content.bigImageWT_image.image.selectedArtist && (
                     <strong>
                       {locale === "ar" ? (
-                        content.bigImageWT_image.image.artist_relation
+                        content.bigImageWT_image.image.selectedArtist
                           .localizations.length > 0 ? (
                           <Link
-                            href={`/creatives/${content.bigImageWT_image.image.artist_relation.localizations[0].slug}`}
+                            href={`/creatives/${content.bigImageWT_image.image.selectedArtist.localizations[0].slug}`}
                           >
                             <a target="_blank">
-                              {`${content.bigImageWT_image.image.artist_relation.localizations[0].firstName} ${content.bigImageWT_image.image.artist_relation.localizations[0].lastName}`}
+                              {`${content.bigImageWT_image.image.selectedArtist.localizations[0].firstName} ${content.bigImageWT_image.image.selectedArtist.localizations[0].lastName}`}
                             </a>
                           </Link>
                         ) : null
                       ) : (
                         <Link
-                          href={`/creatives/${content.bigImageWT_image.image.artist_relation.slug}`}
+                          href={`/creatives/${content.bigImageWT_image.image.selectedArtist.slug}`}
                         >
                           <a target="_blank">
-                            {`${content.bigImageWT_image.image.artist_relation.firstName} ${content.bigImageWT_image.image.artist_relation.lastName}`}
+                            {`${content.bigImageWT_image.image.selectedArtist.firstName} ${content.bigImageWT_image.image.selectedArtist.lastName}`}
                           </a>
                         </Link>
                       )}

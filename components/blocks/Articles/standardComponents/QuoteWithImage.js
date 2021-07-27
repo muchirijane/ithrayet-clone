@@ -73,29 +73,29 @@ const QuoteWithImage = (props) => {
                   <div className="f_14">
                     {content.quoteWithImage_image.image.caption}{" "}
                     {`${
-                      content.quoteWithImage_image.image.artist_relation
+                      content.quoteWithImage_image.image.selectedArtist
                         ? t("artwork_by")
                         : ""
                     } `}
-                    {content.quoteWithImage_image.image.artist_relation && (
+                    {content.quoteWithImage_image.image.selectedArtist && (
                       <strong>
                         {locale === "ar" ? (
-                          content.quoteWithImage_image.image.artist_relation
+                          content.quoteWithImage_image.image.selectedArtist
                             .localizations.length > 0 ? (
                             <Link
-                              href={`/creatives/${content.quoteWithImage_image.image.artist_relation.localizations[0].slug}`}
+                              href={`/creatives/${content.quoteWithImage_image.image.selectedArtist.localizations[0].slug}`}
                             >
                               <a target="_blank">
-                                {`${content.quoteWithImage_image.image.artist_relation.localizations[0].firstName} ${content.quoteWithImage_image.image.artist_relation.localizations[0].lastName}`}
+                                {`${content.quoteWithImage_image.image.selectedArtist.localizations[0].firstName} ${content.quoteWithImage_image.image.selectedArtist.localizations[0].lastName}`}
                               </a>
                             </Link>
                           ) : null
                         ) : (
                           <Link
-                            href={`/creatives/${content.quoteWithImage_image.image.artist_relation.slug}`}
+                            href={`/creatives/${content.quoteWithImage_image.image.selectedArtist.slug}`}
                           >
                             <a target="_blank">
-                              {`${content.quoteWithImage_image.image.artist_relation.firstName} ${content.quoteWithImage_image.image.artist_relation.lastName}`}
+                              {`${content.quoteWithImage_image.image.selectedArtist.firstName} ${content.quoteWithImage_image.image.selectedArtist.lastName}`}
                             </a>
                           </Link>
                         )}

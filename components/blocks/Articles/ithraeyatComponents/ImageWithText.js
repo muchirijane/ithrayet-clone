@@ -29,28 +29,28 @@ const ImageWithText = (props) => {
                   <p>
                     {content.coverImage.image.caption}{" "}
                     {`${
-                      content.coverImage.image.artist_relation
+                      content.coverImage.image.selectedArtist
                         ? t("artwork_by")
                         : ""
                     } `}
-                    {content.coverImage.image.artist_relation &&
+                    {content.coverImage.image.selectedArtist &&
                     locale === "ar" ? (
-                      content.coverImage.image.artist_relation.localizations
+                      content.coverImage.image.selectedArtist.localizations
                         .length > 0 ? (
                         <Link
-                          href={`/creatives/${content.coverImage.image.artist_relation.localizations[0].slug}`}
+                          href={`/creatives/${content.coverImage.image.selectedArtist.localizations[0].slug}`}
                         >
                           <a>
-                            <strong>{`${content.coverImage.image.artist_relation.localizations[0].firstName} ${content.coverImage.image.artist_relation.localizations[0].lastName}`}</strong>
+                            <strong>{`${content.coverImage.image.selectedArtist.localizations[0].firstName} ${content.coverImage.image.selectedArtist.localizations[0].lastName}`}</strong>
                           </a>
                         </Link>
                       ) : null
                     ) : (
                       <Link
-                        href={`/creatives/${content.coverImage.image.artist_relation.slug}`}
+                        href={`/creatives/${content.coverImage.image.selectedArtist.slug}`}
                       >
                         <a>
-                          <strong>{`${content.coverImage.image.artist_relation.firstName} ${content.coverImage.image.artist_relation.lastName}`}</strong>
+                          <strong>{`${content.coverImage.image.selectedArtist.firstName} ${content.coverImage.image.selectedArtist.lastName}`}</strong>
                         </a>
                       </Link>
                     )}
@@ -91,27 +91,27 @@ const ImageWithText = (props) => {
                   <p>
                     {content.parallaxImageWT_images[0].image.caption}{" "}
                     {`${
-                      content.parallaxImageWT_images[0].image.artist_relation
+                      content.parallaxImageWT_images[0].image.selectedArtist
                         ? t("artwork_by")
                         : ""
                     } `}
                     {locale === "ar" ? (
-                      content.parallaxImageWT_images[0].image.artist_relation
+                      content.parallaxImageWT_images[0].image.selectedArtist
                         .localizations.length > 0 ? (
                         <Link
-                          href={`/creatives/${content.parallaxImageWT_images[0].image.artist_relation.localizations[0].slug}`}
+                          href={`/creatives/${content.parallaxImageWT_images[0].image.selectedArtist.localizations[0].slug}`}
                         >
                           <a>
-                            <strong>{`${content.parallaxImageWT_images[0].image.artist_relation.localizations[0].firstName} ${content.parallaxImageWT_images[0].image.artist_relation.localizations[0].lastName}`}</strong>
+                            <strong>{`${content.parallaxImageWT_images[0].image.selectedArtist.localizations[0].firstName} ${content.parallaxImageWT_images[0].image.selectedArtist.localizations[0].lastName}`}</strong>
                           </a>
                         </Link>
                       ) : null
                     ) : (
                       <Link
-                        href={`/creatives/${content.parallaxImageWT_images[0].image.artist_relation.slug}`}
+                        href={`/creatives/${content.parallaxImageWT_images[0].image.selectedArtist.slug}`}
                       >
                         <a>
-                          <strong>{`${content.parallaxImageWT_images[0].image.artist_relation.firstName} ${content.parallaxImageWT_images[0].image.artist_relation.lastName}`}</strong>
+                          <strong>{`${content.parallaxImageWT_images[0].image.selectedArtist.firstName} ${content.parallaxImageWT_images[0].image.selectedArtist.lastName}`}</strong>
                         </a>
                       </Link>
                     )}
@@ -137,27 +137,27 @@ const ImageWithText = (props) => {
                 <p>
                     {content.parallaxImageWT_images[1].image.caption}{" "}
                     {`${
-                      content.parallaxImageWT_images[1].image.artist_relation
+                      content.parallaxImageWT_images[1].image.selectedArtist
                         ? t("artwork_by")
                         : ""
                     } `}
                     {locale === "ar" ? (
-                      content.parallaxImageWT_images[1].image.artist_relation
+                      content.parallaxImageWT_images[1].image.selectedArtist
                         .localizations.length > 0 ? (
                         <Link
-                          href={`/creatives/${content.parallaxImageWT_images[1].image.artist_relation.localizations[0].slug}`}
+                          href={`/creatives/${content.parallaxImageWT_images[1].image.selectedArtist.localizations[0].slug}`}
                         >
                           <a>
-                            <strong>{`${content.parallaxImageWT_images[1].image.artist_relation.localizations[0].firstName} ${content.parallaxImageWT_images[0].image.artist_relation.localizations[0].lastName}`}</strong>
+                            <strong>{`${content.parallaxImageWT_images[1].image.selectedArtist.localizations[0].firstName} ${content.parallaxImageWT_images[0].image.selectedArtist.localizations[0].lastName}`}</strong>
                           </a>
                         </Link>
                       ) : null
                     ) : (
                       <Link
-                        href={`/creatives/${content.parallaxImageWT_images[1].image.artist_relation.slug}`}
+                        href={`/creatives/${content.parallaxImageWT_images[1].image.selectedArtist.slug}`}
                       >
                         <a>
-                          <strong>{`${content.parallaxImageWT_images[1].image.artist_relation.firstName} ${content.parallaxImageWT_images[0].image.artist_relation.lastName}`}</strong>
+                          <strong>{`${content.parallaxImageWT_images[1].image.selectedArtist.firstName} ${content.parallaxImageWT_images[0].image.selectedArtist.lastName}`}</strong>
                         </a>
                       </Link>
                     )}

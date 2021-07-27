@@ -23,29 +23,29 @@ const FullWidthImage = (props) => {
             <div className="f_14">
               {content.fullWidthImage_image.image.caption}{" "}
               {`${
-                content.fullWidthImage_image.image.artist_relation
+                content.fullWidthImage_image.image.selectedArtist
                   ? t("artwork_by")
                   : ""
               } `}
-              {content.fullWidthImage_image.image.artist_relation && (
+              {content.fullWidthImage_image.image.selectedArtist && (
                 <strong>
                   {locale === "ar" ? (
-                    content.fullWidthImage_image.image.artist_relation
+                    content.fullWidthImage_image.image.selectedArtist
                       .localizations.length > 0 ? (
                       <Link
-                        href={`/creatives/${content.fullWidthImage_image.image.artist_relation.localizations[0].slug}`}
+                        href={`/creatives/${content.fullWidthImage_image.image.selectedArtist.localizations[0].slug}`}
                       >
                         <a target="_blank">
-                          {`${content.fullWidthImage_image.image.artist_relation.localizations[0].firstName} ${content.fullWidthImage_image.image.artist_relation.localizations[0].lastName}`}
+                          {`${content.fullWidthImage_image.image.selectedArtist.localizations[0].firstName} ${content.fullWidthImage_image.image.selectedArtist.localizations[0].lastName}`}
                         </a>
                       </Link>
                     ) : null
                   ) : (
                     <Link
-                      href={`/creatives/${content.fullWidthImage_image.image.artist_relation.slug}`}
+                      href={`/creatives/${content.fullWidthImage_image.image.selectedArtist.slug}`}
                     >
                       <a target="_blank">
-                        {`${content.fullWidthImage_image.image.artist_relation.firstName} ${content.fullWidthImage_image.image.artist_relation.lastName}`}
+                        {`${content.fullWidthImage_image.image.selectedArtist.firstName} ${content.fullWidthImage_image.image.selectedArtist.lastName}`}
                       </a>
                     </Link>
                   )}

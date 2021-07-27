@@ -40,7 +40,7 @@ export const GET_EXPERIENCE_DATA = gql`
             url
             alternativeText
             caption
-            artist_relation: selectedArtist
+            selectedArtist
           }
         }
       }
@@ -49,7 +49,7 @@ export const GET_EXPERIENCE_DATA = gql`
           url
           alternativeText
           caption
-          artist_relation: selectedArtist
+          selectedArtist
         }
       }
     }

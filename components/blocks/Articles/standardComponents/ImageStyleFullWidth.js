@@ -35,29 +35,29 @@ const ImageStyleFullWidth = (props) => {
                   <div className="f_14">
                     {content.imageFullWidth_image[0].image.caption}{" "}
                     {`${
-                      content.imageFullWidth_image[0].image.artist_relation
+                      content.imageFullWidth_image[0].image.selectedArtist
                         ? t("artwork_by")
                         : ""
                     } `}
-                    {content.imageFullWidth_image[0].image.artist_relation && (
+                    {content.imageFullWidth_image[0].image.selectedArtist && (
                       <strong>
                         {locale === "ar" ? (
-                          content.imageFullWidth_image[0].image.artist_relation
+                          content.imageFullWidth_image[0].image.selectedArtist
                             .localizations.length > 0 ? (
                             <Link
-                              href={`/creatives/${content.imageFullWidth_image[0].image.artist_relation.localizations[0].slug}`}
+                              href={`/creatives/${content.imageFullWidth_image[0].image.selectedArtist.localizations[0].slug}`}
                             >
                               <a target="_blank">
-                                {`${content.imageFullWidth_image[0].image.artist_relation.localizations[0].firstName} ${content.imageFullWidth_image[0].image.artist_relation.localizations[0].lastName}`}
+                                {`${content.imageFullWidth_image[0].image.selectedArtist.localizations[0].firstName} ${content.imageFullWidth_image[0].image.selectedArtist.localizations[0].lastName}`}
                               </a>
                             </Link>
                           ) : null
                         ) : (
                           <Link
-                            href={`/creatives/${content.imageFullWidth_image[0].image.artist_relation.slug}`}
+                            href={`/creatives/${content.imageFullWidth_image[0].image.selectedArtist.slug}`}
                           >
                             <a target="_blank">
-                              {`${content.imageFullWidth_image[0].image.artist_relation.firstName} ${content.imageFullWidth_image[0].image.artist_relation.lastName}`}
+                              {`${content.imageFullWidth_image[0].image.selectedArtist.firstName} ${content.imageFullWidth_image[0].image.selectedArtist.lastName}`}
                             </a>
                           </Link>
                         )}
@@ -84,29 +84,29 @@ const ImageStyleFullWidth = (props) => {
                   <div className="f_14">
                     {content.imageFullWidth_image[1].image.caption}{" "}
                     {`${
-                      content.imageFullWidth_image[1].image.artist_relation
+                      content.imageFullWidth_image[1].image.selectedArtist
                         ? t("artwork_by")
                         : ""
                     } `}
-                    {content.imageFullWidth_image[1].image.artist_relation && (
+                    {content.imageFullWidth_image[1].image.selectedArtist && (
                       <strong>
                         {locale === "ar" ? (
-                          content.imageFullWidth_image[1].image.artist_relation
+                          content.imageFullWidth_image[1].image.selectedArtist
                             .localizations.length > 0 ? (
                             <Link
-                              href={`/creatives/${content.imageFullWidth_image[1].image.artist_relation.localizations[0].slug}`}
+                              href={`/creatives/${content.imageFullWidth_image[1].image.selectedArtist.localizations[0].slug}`}
                             >
                               <a target="_blank">
-                                {`${content.imageFullWidth_image[1].image.artist_relation.localizations[0].firstName} ${content.imageFullWidth_image[1].image.artist_relation.localizations[0].lastName}`}
+                                {`${content.imageFullWidth_image[1].image.selectedArtist.localizations[0].firstName} ${content.imageFullWidth_image[1].image.selectedArtist.localizations[0].lastName}`}
                               </a>
                             </Link>
                           ) : null
                         ) : (
                           <Link
-                            href={`/creatives/${content.imageFullWidth_image[1].image.artist_relation.slug}`}
+                            href={`/creatives/${content.imageFullWidth_image[1].image.selectedArtist.slug}`}
                           >
                             <a target="_blank">
-                              {`${content.imageFullWidth_image[1].image.artist_relation.firstName} ${content.imageFullWidth_image[1].image.artist_relation.lastName}`}
+                              {`${content.imageFullWidth_image[1].image.selectedArtist.firstName} ${content.imageFullWidth_image[1].image.selectedArtist.lastName}`}
                             </a>
                           </Link>
                         )}

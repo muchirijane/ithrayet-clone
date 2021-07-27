@@ -8,7 +8,7 @@ fragment ImagesWithTitle on ComponentSiteGeneralLinkedImageWithTitle {
       url
       alternativeText
       caption
-      artist_relation: selectedArtist
+      selectedArtist
     }
     symbol {
       symbol {

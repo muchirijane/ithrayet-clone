@@ -66,27 +66,27 @@ const GalleryImage = (props) => {
                       <div className="f_14">
                         {image.image.caption}{" "}
                         {`${
-                          image.image.artist_relation ? t("artwork_by") : ""
+                          image.image.selectedArtist ? t("artwork_by") : ""
                         } `}
-                        {image.image.artist_relation && (
+                        {image.image.selectedArtist && (
                           <strong>
                             {locale === "ar" ? (
-                              image.image.artist_relation.localizations.length >
+                              image.image.selectedArtist.localizations.length >
                               0 ? (
                                 <Link
-                                  href={`/creatives/${image.image.artist_relation.localizations[0].slug}`}
+                                  href={`/creatives/${image.image.selectedArtist.localizations[0].slug}`}
                                 >
                                   <a target="_blank">
-                                    {`${image.image.artist_relation.localizations[0].firstName} ${image.image.artist_relation.localizations[0].lastName}`}
+                                    {`${image.image.selectedArtist.localizations[0].firstName} ${image.image.selectedArtist.localizations[0].lastName}`}
                                   </a>
                                 </Link>
                               ) : null
                             ) : (
                               <Link
-                                href={`/creatives/${image.image.artist_relation.slug}`}
+                                href={`/creatives/${image.image.selectedArtist.slug}`}
                               >
                                 <a target="_blank">
-                                  {`${image.image.artist_relation.firstName} ${image.image.artist_relation.lastName}`}
+                                  {`${image.image.selectedArtist.firstName} ${image.image.selectedArtist.lastName}`}
                                 </a>
                               </Link>
                             )}

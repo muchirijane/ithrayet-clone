@@ -18,7 +18,7 @@ const HoverImage = (props) => {
               {content.creativesList &&
                 content.creativesList.map((creator, key) => (
                   <Link
-                    href={`/creatives/${creator.image.artist_relation.slug}`}
+                    href={`/creatives/${creator.image.selectedArtist.slug}`}
                     key={`creator-link-${key}`}
                   >
                     <a

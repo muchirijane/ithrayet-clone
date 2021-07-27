@@ -34,27 +34,27 @@ const TiltingGallery = (props) => {
                     alt={`${content.galleryImage.image.alternativeText}`}
                   />
                   <div className="info_line">
-                    {content.galleryImage.image.artist_relation && (
+                    {content.galleryImage.image.selectedArtist && (
                       <div className="f_14">
                         {`${t("by")} `}
                         <strong>
                           {locale === "ar" ? (
-                            content.galleryImage.image.artist_relation
+                            content.galleryImage.image.selectedArtist
                               .localizations.length > 0 ? (
                               <Link
-                                href={`/creatives/${content.galleryImage.image.artist_relation.localizations[0].slug}`}
+                                href={`/creatives/${content.galleryImage.image.selectedArtist.localizations[0].slug}`}
                               >
                                 <a target="_blank">
-                                  {`${content.galleryImage.image.artist_relation.localizations[0].firstName} ${content.galleryImage.image.artist_relation.localizations[0].lastName}`}
+                                  {`${content.galleryImage.image.selectedArtist.localizations[0].firstName} ${content.galleryImage.image.selectedArtist.localizations[0].lastName}`}
                                 </a>
                               </Link>
                             ) : null
                           ) : (
                             <Link
-                              href={`/creatives/${content.galleryImage.image.artist_relation.slug}`}
+                              href={`/creatives/${content.galleryImage.image.selectedArtist.slug}`}
                             >
                               <a target="_blank">
-                                {`${content.galleryImage.image.artist_relation.firstName} ${content.galleryImage.image.artist_relation.lastName}`}
+                                {`${content.galleryImage.image.selectedArtist.firstName} ${content.galleryImage.image.selectedArtist.lastName}`}
                               </a>
                             </Link>
                           )}
@@ -84,27 +84,27 @@ const TiltingGallery = (props) => {
                         <div className="f_14">
                           {image.image.caption}{" "}
                           {`${
-                            image.image.artist_relation ? t("artwork_by") : ""
+                            image.image.selectedArtist ? t("artwork_by") : ""
                           } `}
-                          {image.image.artist_relation && (
+                          {image.image.selectedArtist && (
                             <strong>
                               {locale === "ar" ? (
-                                image.image.artist_relation.localizations
+                                image.image.selectedArtist.localizations
                                   .length > 0 ? (
                                   <Link
-                                    href={`/creatives/${image.image.artist_relation.localizations[0].slug}`}
+                                    href={`/creatives/${image.image.selectedArtist.localizations[0].slug}`}
                                   >
                                     <a target="_blank">
-                                      {`${image.image.artist_relation.localizations[0].firstName} ${image.image.artist_relation.localizations[0].lastName}`}
+                                      {`${image.image.selectedArtist.localizations[0].firstName} ${image.image.selectedArtist.localizations[0].lastName}`}
                                     </a>
                                   </Link>
                                 ) : null
                               ) : (
                                 <Link
-                                  href={`/creatives/${image.image.artist_relation.slug}`}
+                                  href={`/creatives/${image.image.selectedArtist.slug}`}
                                 >
                                   <a target="_blank">
-                                    {`${image.image.artist_relation.firstName} ${image.image.artist_relation.lastName}`}
+                                    {`${image.image.selectedArtist.firstName} ${image.image.selectedArtist.lastName}`}
                                   </a>
                                 </Link>
                               )}

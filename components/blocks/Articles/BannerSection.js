@@ -110,19 +110,19 @@ const BannerSection = (props) => {
 
               <strong>
                 {locale === "ar" ? (
-                  cover.artist_relation.localizations.length > 0 ? (
+                  cover.selectedArtist.localizations.length > 0 ? (
                     <Link
-                      href={`/creatives/${cover.artist_relation.localizations[0].slug}`}
+                      href={`/creatives/${cover.selectedArtist.localizations[0].slug}`}
                     >
                       <a target="_blank">
-                        {`${cover.artist_relation.localizations[0].firstName} ${cover.artist_relation.localizations[0].lastName}`}
+                        {`${cover.selectedArtist.localizations[0].firstName} ${cover.selectedArtist.localizations[0].lastName}`}
                       </a>
                     </Link>
                   ) : null
                 ) : (
-                  <Link href={`/creatives/${cover.artist_relation.slug}`}>
+                  <Link href={`/creatives/${cover.selectedArtist.slug}`}>
                     <a target="_blank">
-                      {`${cover.artist_relation.firstName} ${cover.artist_relation.lastName}`}
+                      {`${cover.selectedArtist.firstName} ${cover.selectedArtist.lastName}`}
                     </a>
                   </Link>
                 )}

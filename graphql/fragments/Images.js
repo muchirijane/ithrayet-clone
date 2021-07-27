@@ -4,7 +4,7 @@ fragment Images on ComponentSiteGeneralLinkedImages {
       url
       alternativeText
       caption
-      artist_relation: selectedArtist
+      selectedArtist
     }
     symbol {
       symbol {

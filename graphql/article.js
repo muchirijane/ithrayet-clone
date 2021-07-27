@@ -26,7 +26,7 @@ export const GET_ARTICLE_DATA = gql`
         url
         alternativeText
         caption
-        artist_relation: selectedArtist
+        selectedArtist
       }
       publishDate
       published_at
@@ -218,7 +218,7 @@ export const GET_ARTICLE_DATA = gql`
               url
               alternativeText
               caption
-              artist_relation: selectedArtist
+              selectedArtist
             }
           }
           tiltGallery_image: image {
@@ -242,7 +242,7 @@ export const GET_ARTICLE_DATA = gql`
               url
               alternativeText
               caption
-              artist_relation: selectedArtist
+              selectedArtist
             }
           }
 

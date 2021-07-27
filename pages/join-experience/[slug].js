@@ -349,23 +349,23 @@ export default Experience;
 const ArtistLink = (data,t,locale) => (
   <div className="f_14">
     {data.image.caption}{" "}
-    {`${data.image.artist_relation ? t("artwork_by") : ""} `}
-    {data.image.artist_relation && (
+    {`${data.image.selectedArtist ? t("artwork_by") : ""} `}
+    {data.image.selectedArtist && (
       <strong>
         {locale === "ar" ? (
-          data.image.artist_relation.localizations.length > 0 ? (
+          data.image.selectedArtist.localizations.length > 0 ? (
             <Link
-              href={`/creatives/${data.image.artist_relation.localizations[0].slug}`}
+              href={`/creatives/${data.image.selectedArtist.localizations[0].slug}`}
             >
               <a target="_blank">
-                {`${data.image.artist_relation.localizations[0].firstName} ${data.image.artist_relation.localizations[0].lastName}`}
+                {`${data.image.selectedArtist.localizations[0].firstName} ${data.image.selectedArtist.localizations[0].lastName}`}
               </a>
             </Link>
           ) : null
         ) : (
-          <Link href={`/creatives/${data.image.artist_relation.slug}`}>
+          <Link href={`/creatives/${data.image.selectedArtist.slug}`}>
             <a target="_blank">
-              {`${data.image.artist_relation.firstName} ${data.image.artist_relation.lastName}`}
+              {`${data.image.selectedArtist.firstName} ${data.image.selectedArtist.lastName}`}
             </a>
           </Link>
         )}
