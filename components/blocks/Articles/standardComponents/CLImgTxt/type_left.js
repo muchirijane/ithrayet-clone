@@ -16,7 +16,7 @@ const TypeLeft = (props) => {
                 className="text_side"
                 style={isCentered ? { textAlign: "center" } : {}}
               >
-                <div className="f_80 alt">{title}</div>
+                <div className="f_80 alt"  style={isCentered ? { textAlign: "center" } : {}}>{title}</div>
                 <div
                   className="f_20 less_opacity"
                   dangerouslySetInnerHTML={{ __html: description }}
