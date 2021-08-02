@@ -4,7 +4,6 @@ import TypeLandscape from "./type_landscape";
 
 const CLImgTxt = (props) => {
   const { content } = props;
-
   switch (content.clImageText1_type.toLowerCase()) {
     case "left":
       return (
