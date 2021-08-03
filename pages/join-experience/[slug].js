@@ -348,7 +348,7 @@ export default Experience;
 
 const ArtistLink = (data,t,locale) => (
   <div className="f_14">
-    {data.image.caption}{" "}
+    {locale === 'en' ? data.image.caption : data.image.arabic_caption}{" "}
     {`${data.image.selectedArtist ? t("artwork_by") : ""} `}
     {data.image.selectedArtist && (
       <strong>

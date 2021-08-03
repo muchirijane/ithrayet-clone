@@ -105,7 +105,7 @@ const BannerSection = (props) => {
         {cover.caption && (
           <div className="info_line">
             <div className="f_14">
-              {cover.caption}
+              {locale === 'en' ? cover.caption : cover.arabic_caption}
               {`${t("artwork_by")} `}
 
               <strong>

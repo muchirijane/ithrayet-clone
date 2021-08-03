@@ -64,7 +64,7 @@ const GalleryImage = (props) => {
                     />
                     <div className="info_line">
                       <div className="f_14">
-                        {image.image.caption}{" "}
+                        {locale === 'en' ? image.image.caption : image.image.arabic_caption}{" "}
                         {`${
                           image.image.selectedArtist ? t("artwork_by") : ""
                         } `}

@@ -33,7 +33,7 @@ const ImageStyleFullWidth = (props) => {
 
                 <div className="info_line">
                   <div className="f_14">
-                    {content.imageFullWidth_image[0].image.caption}{" "}
+                    {locale === 'en' ? content.imageFullWidth_image[0].image.caption : content.imageFullWidth_image[0].image.arabic_caption}{" "}
                     {`${
                       content.imageFullWidth_image[0].image.selectedArtist
                         ? t("artwork_by")
@@ -82,7 +82,7 @@ const ImageStyleFullWidth = (props) => {
                 />
                 <div className="info_line">
                   <div className="f_14">
-                    {content.imageFullWidth_image[1].image.caption}{" "}
+                    {locale === 'en' ? content.imageFullWidth_image[1].image.caption : content.imageFullWidth_image[1].image.arabic_caption}{" "}
                     {`${
                       content.imageFullWidth_image[1].image.selectedArtist
                         ? t("artwork_by")

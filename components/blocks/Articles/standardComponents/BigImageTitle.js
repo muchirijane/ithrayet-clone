@@ -28,7 +28,7 @@ const BigImageTitle = (props) => {
 
               <div className="info_line">
                 <div className="f_14">
-                  {content.bigImageWT_image.image.caption}{" "}
+                  {locale === 'en' ? content.bigImageWT_image.image.caption : content.bigImageWT_image.image.arabic_caption}{" "}
                   {`${
                     content.bigImageWT_image.image.selectedArtist
                       ? t("artwork_by")

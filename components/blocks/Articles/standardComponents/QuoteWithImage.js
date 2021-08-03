@@ -71,7 +71,7 @@ const QuoteWithImage = (props) => {
                   </div>
 
                   <div className="f_14">
-                    {content.quoteWithImage_image.image.caption}{" "}
+                    {locale === 'en' ? content.quoteWithImage_image.image.caption : content.quoteWithImage_image.image.arabic_caption}{" "}
                     {`${
                       content.quoteWithImage_image.image.selectedArtist
                         ? t("artwork_by")

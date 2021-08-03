@@ -21,7 +21,7 @@ const FullWidthImage = (props) => {
 
           <div className="info_line">
             <div className="f_14">
-              {content.fullWidthImage_image.image.caption}{" "}
+              {locale  === 'en' ? content.fullWidthImage_image.image.caption : content.fullWidthImage_image.image.arabic_caption}{" "}
               {`${
                 content.fullWidthImage_image.image.selectedArtist
                   ? t("artwork_by")

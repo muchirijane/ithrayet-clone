@@ -4,6 +4,7 @@ fragment Images on ComponentSiteGeneralLinkedImages {
       url
       alternativeText
       caption
+      arabic_caption
       selectedArtist
     }
     symbol {

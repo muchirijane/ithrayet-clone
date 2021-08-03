@@ -40,6 +40,7 @@ export const GET_EXPERIENCE_DATA = gql`
             url
             alternativeText
             caption
+            arabic_caption
             selectedArtist
           }
         }
@@ -49,6 +50,7 @@ export const GET_EXPERIENCE_DATA = gql`
           url
           alternativeText
           caption
+          arabic_caption
           selectedArtist
         }
       }

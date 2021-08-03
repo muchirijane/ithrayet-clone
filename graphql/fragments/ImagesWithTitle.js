@@ -8,6 +8,7 @@ fragment ImagesWithTitle on ComponentSiteGeneralLinkedImageWithTitle {
       url
       alternativeText
       caption
+      arabic_caption
       selectedArtist
     }
     symbol {

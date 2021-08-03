@@ -27,7 +27,7 @@ const ImageWithText = (props) => {
                 />
                 <div className="f_14">
                   <p>
-                    {content.coverImage.image.caption}{" "}
+                    {locale ==='en' ? content.coverImage.image.caption : content.coverImage.image.arabic_caption}{" "}
                     {`${
                       content.coverImage.image.selectedArtist
                         ? t("artwork_by")
@@ -89,7 +89,7 @@ const ImageWithText = (props) => {
                 />
                 <div className="f_14">
                   <p>
-                    {content.parallaxImageWT_images[0].image.caption}{" "}
+                    {locale === 'en' ? content.parallaxImageWT_images[0].image.caption : content.parallaxImageWT_images[0].image.arabic_caption}{" "}
                     {`${
                       content.parallaxImageWT_images[0].image.selectedArtist
                         ? t("artwork_by")
@@ -135,7 +135,7 @@ const ImageWithText = (props) => {
                 />
                 <div className="f_14">
                 <p>
-                    {content.parallaxImageWT_images[1].image.caption}{" "}
+                    {locale === 'en' ? content.parallaxImageWT_images[1].image.caption : content.parallaxImageWT_images[1].image.arabic_caption}{" "}
                     {`${
                       content.parallaxImageWT_images[1].image.selectedArtist
                         ? t("artwork_by")

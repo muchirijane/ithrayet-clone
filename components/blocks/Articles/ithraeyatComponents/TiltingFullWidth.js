@@ -32,7 +32,7 @@ const TiltingFullWidth = (props) => {
                   />
                   <div className="info_line">
                     <div className="f_14">
-                      {content.tiltImageFW_image[0].image.caption}{" "}
+                      {locale === 'en' ? content.tiltImageFW_image[0].image.caption : content.tiltImageFW_image[0].image.arabic_caption}{" "}
                       {`${
                         content.tiltImageFW_image[0].image.selectedArtist
                           ? t("artwork_by")
@@ -85,7 +85,7 @@ const TiltingFullWidth = (props) => {
                   />
                   <div className="info_line">
                     <div className="f_14">
-                      {content.tiltImageFW_image[1].image.caption}{" "}
+                      {locale === 'en' ? content.tiltImageFW_image[1].image.caption : content.tiltImageFW_image[1].image.arabic_caption}{" "}
                       {`${
                         content.tiltImageFW_image[1].image.selectedArtist
                           ? t("artwork_by")

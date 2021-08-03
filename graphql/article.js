@@ -26,6 +26,7 @@ export const GET_ARTICLE_DATA = gql`
         url
         alternativeText
         caption
+        arabic_caption
         selectedArtist
       }
       publishDate
@@ -218,6 +219,7 @@ export const GET_ARTICLE_DATA = gql`
               url
               alternativeText
               caption
+              arabic_caption
               selectedArtist
             }
           }
@@ -242,6 +244,7 @@ export const GET_ARTICLE_DATA = gql`
               url
               alternativeText
               caption
+              arabic_caption
               selectedArtist
             }
           }
