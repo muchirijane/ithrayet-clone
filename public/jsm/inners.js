@@ -1789,11 +1789,11 @@ function globalFunc() {
 
     if (curMode == "dark") {
       curMode = "light";
-
+      localStorage.setItem("in_mode", curMode);
       modeTL.play();
     } else {
       curMode = "dark";
-
+      localStorage.setItem("in_mode", curMode);
       modeTL.reverse();
     }
   });
