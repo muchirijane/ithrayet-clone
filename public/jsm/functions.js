@@ -2263,9 +2263,11 @@ function globalFunc(){
 
 	};
 
-	var modeTL = new TimelineMax({paused: true}),
-		curMode = 'dark';
-
+	var modeTL = new TimelineMax({paused: true});
+	
+	const curSavedMode = localStorage.getItem("in_mode")
+	curMode = curSavedMode ? curSavedMode : 'dark';
+ 
 	modeTL.set('.modes_helpers', {autoAlpha: 1}, 0)
 
 	.to('.shines', 0.5, {opacity: 0}, 0.3)
@@ -2306,7 +2308,9 @@ function globalFunc(){
 
 	.to('.modes_helpers .b', 0.5, {scaleY: 0, ease: Power3.easeOut, transformOrigin: '0 0'}, 0.8)
 
-
+	if(curSavedMode){
+		modeTL.play()
+	}
 	$('.mode_set').click(function(e){
 
 		e.stopPropagation();
@@ -2316,13 +2320,14 @@ function globalFunc(){
 		if(curMode == 'dark') {
 
 			curMode = 'light';
-			
+			localStorage.setItem("in_mode", curMode);
+
 			modeTL.play()
 
 		} else {
 
 			curMode = 'dark';
-
+			localStorage.setItem("in_mode", curMode);
 			modeTL.reverse();
 
 		}
@@ -2342,13 +2347,14 @@ function globalFunc(){
 			if(getMode == 'light') {
 
 				curMode = 'light';
-				
+				localStorage.setItem("in_mode", curMode);
+
 				modeTL.play()
 
 			} else {
 
 				curMode = 'dark';
-
+				localStorage.setItem("in_mode", curMode);
 				modeTL.reverse();
 
 			}

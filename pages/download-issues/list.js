@@ -29,8 +29,8 @@ export const getStaticProps = async ({ locale }) => {
 
 const DonwloadIssuesList = (props) => {
   const { t } = useTranslation("common");
-  const { editions, news_letter, SEO } = props;
-
+  const { news_letter, SEO } = props;
+  const editions = props.editions.filter(item => item.PDF != null);
   return (
     <Layout isInner seo={SEO && SEO}>
       {editions && (

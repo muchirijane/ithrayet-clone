@@ -1720,7 +1720,8 @@ function globalFunc() {
 
   var modeTL = new TimelineMax({ paused: true }),
     curMode = "dark";
-
+  const curSavedMode = localStorage.getItem("in_mode")
+  curMode = curSavedMode ? curSavedMode : 'dark';
   modeTL
     .set(".modes_helpers", { autoAlpha: 1 }, 0)
 
@@ -1796,7 +1797,9 @@ function globalFunc() {
       modeTL.reverse();
     }
   });
-
+  if(curSavedMode){
+		modeTL.play()
+	}
   $(".in_mode").click(function (e) {
     if (!$(this).hasClass("active")) {
       $(".in_mode").removeClass("active");
@@ -1807,11 +1810,11 @@ function globalFunc() {
 
       if (getMode == "light") {
         curMode = "light";
-
+        localStorage.setItem("in_mode", curMode);
         modeTL.play();
       } else {
         curMode = "dark";
-
+        localStorage.setItem("in_mode", curMode);
         modeTL.reverse();
       }
     }
