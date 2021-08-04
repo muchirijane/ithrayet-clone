@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const GET_HOMEPAGE_DATA = gql`
-  query ($locale: String!, $editionLimit: Int) {
+  query ($locale: String!, $editionLimit: Int, $articleLimit: Int) {
     loaderImage {
       images {
         url
@@ -13,42 +13,40 @@ export const GET_HOMEPAGE_DATA = gql`
       sort: "publishedDate:desc"
       limit: $editionLimit
     ) {
-      title
-      cover {
-        url
-        alternativeText
+      articles(limit: $articleLimit) {
+        title
+        cover {
+          url
+          alternativeText
+        }
+        publishDate
+        slug
       }
-      publishedDate
-      slug
     }
     featuredEdition: editions(
       locale: $locale
       where: { isFeatured_eq: true }
-      limit: 1
       sort: "publishedDate:desc"
     ) {
       title
       featuredTitle
+      featuredImageLeft{
+        url
+        alternativeText
+      }
+      featuredImageRight{
+        url
+        alternativeText
+      }
       type {
         value
         number
       }
       slug
       publishedDate
-      articles {
-        publishDate
-        slug
-        title
-        cover {
-          url
-          alternativeText
-        }
-        Images {
-          image {
-            url
-            alternativeText
-          }
-        }
+      cover{
+        url
+        alternativeText
       }
     }
     artists(locale: $locale) {
@@ -99,7 +97,7 @@ export const GET_HOMEPAGE_DATA = gql`
         quote
       }
     }
-    projects(locale:$locale){
+    projects(locale: $locale) {
       title
       cover {
         url
@@ -111,7 +109,7 @@ export const GET_HOMEPAGE_DATA = gql`
     newsLetterForm(locale: $locale) {
       title
       description
-      thankYou{
+      thankYou {
         title
         description
       }

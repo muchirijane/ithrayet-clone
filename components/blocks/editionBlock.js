@@ -8,8 +8,8 @@ import Elements from "../elements";
 const EditionBlock = ({ featuredEdition, dataUrl }) => {
   const { t } = useTranslation("common");
   const { locale } = useRouter();
-  const { title, type, articles, featuredTitle } = featuredEdition[0];
-
+  const { type, featuredTitle } = featuredEdition[0];
+ 
   return (
     <section id="editions" style={{ visibility: "hidden" }} data-url={dataUrl}>
       <div className="content_set">
@@ -51,22 +51,24 @@ const EditionBlock = ({ featuredEdition, dataUrl }) => {
           <p className="_fill_card _inOut"></p>
         </div>
         <div className="cards">
-          {articles.map((article, key) => {
+          {featuredEdition.map((edition, key) => {
             return (
               <Elements.EditionCards
                 key={key}
-                title={article.title}
-                date={article.publishDate}
-                cover={`${CMSPath}${article.cover.url}`}
+                title={edition.title}
+                date={edition.publishedDate}
+                cover={`${CMSPath}${edition.cover.url}`}
                 img1={
-                  article.Images[0] &&
-                  `${CMSPath}${article.Images[0].image.url}`
+                  edition.featuredImageLeft &&
+                  `${CMSPath}${edition.featuredImageLeft.url}`
                 }
                 img2={
-                  article.Images[1] &&
-                  `${CMSPath}${article.Images[1].image.url}`
+                  edition.featuredImageRight &&
+                  `${CMSPath}${edition.featuredImageRight.url}`
                 }
-                slug={`${locale === "ar" ? "/ar" : ""}/articles/${article.slug}`}
+                slug={`${locale === "ar" ? "/ar" : ""}/editions/${
+                  edition.slug
+                }`}
               />
             );
           })}

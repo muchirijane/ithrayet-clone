@@ -79,7 +79,8 @@ export const getStaticProps = async ({ locale }) => {
     query: GET_HOMEPAGE_DATA,
     variables: {
       locale: locale,
-      editionLimit: 8,
+      editionLimit: 1,
+      articleLimit: 8
     },
   });
 

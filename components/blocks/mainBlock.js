@@ -9,7 +9,7 @@ const MainBlock = ({ editions, sectionData, dataUrl }) => {
   const { t } = useTranslation("mainblock");
   const { title, quote } = sectionData;
   const { locale } = useRouter();
-  let editionsChunk = ChunkArray(editions, 5);
+  let articleChunk = ChunkArray(editions[0]?.articles, 5);
  
   const getEditonsBlock = (val, key, id) => {
     return (
@@ -18,8 +18,8 @@ const MainBlock = ({ editions, sectionData, dataUrl }) => {
         id={id}
         imgUrl={`${CMSPath}${val.cover.url}`}
         title={val.title}
-        subTitle={`${format(new Date(val.publishedDate), "MMMM yyyy")}`}
-        hrefUrl={`${locale === "ar" ? "/ar" : ""}/editions/${val.slug}`}
+        subTitle={`${format(new Date(val.publishDate), "MMMM yyyy")}`}
+        hrefUrl={`${locale === "ar" ? "/ar" : ""}/articles/${val.slug}`}
       />
     );
   };
@@ -34,8 +34,8 @@ const MainBlock = ({ editions, sectionData, dataUrl }) => {
 
       <div className="main_wrap scale">
         <div className="main_wrap_animated full_bg">
-          {editionsChunk.reverse().map((chunk, keyChunk) => {
-            if (editionsChunk.length > 1) {
+          {articleChunk.reverse().map((chunk, keyChunk) => {
+            if (articleChunk.length > 1) {
               if (keyChunk === 0) {
                 return chunk.map((val, key) => {
                   return getEditonsBlock(val, key, 6 + key);
