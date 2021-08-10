@@ -33,9 +33,7 @@ export const GET_ARTICLE_DATA = gql`
       published_at
       quote
       description
-      Images {
-        ...Images
-      }
+
       edition {
         slug
         symbol {

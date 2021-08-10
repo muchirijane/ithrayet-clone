@@ -82,7 +82,7 @@ const Filters = (props) => {
                         <span>Z</span>
                       </div>
                     ) : (
-                      <div class="letters flex">
+                      <div className="letters flex">
                         <span>أ</span>
                         <span>ب</span>
                         <span>ج</span>
@@ -329,11 +329,11 @@ const Filters = (props) => {
                         </div>
                       </div>
                     ) : (
-                      <div class="dates_block flex">
-                        <div class="date_side">
-                          <div class="date_label">من</div>
-                          <div class="date_select flex">
-                            <div class="select_set">
+                      <div className="dates_block flex">
+                        <div className="date_side">
+                          <div className="date_label">من</div>
+                          <div className="date_select flex">
+                            <div className="select_set">
                               <select id="monthFrom">
                                 <option value="1">يناير</option>
                                 <option value="2">فبراير</option>
@@ -351,7 +351,7 @@ const Filters = (props) => {
                                 <option value="12">ديسمبر</option>
                               </select>
                             </div>
-                            <div class="select_set">
+                            <div className="select_set">
                               <select id="yearFrom">
                                 <option value="2014">2014</option>
                                 <option value="2015">2015</option>
@@ -365,10 +365,10 @@ const Filters = (props) => {
                             </div>
                           </div>
                         </div>
-                        <div class="date_side">
-                          <div class="date_label">الي</div>
-                          <div class="date_select flex">
-                            <div class="select_set">
+                        <div className="date_side">
+                          <div className="date_label">الي</div>
+                          <div className="date_select flex">
+                            <div className="select_set">
                               <select id="monthTo">
                                 <option value="1">يناير</option>
                                 <option value="2">فبراير</option>
@@ -386,7 +386,7 @@ const Filters = (props) => {
                                 <option value="12">ديسمبر</option>
                               </select>
                             </div>
-                            <div class="select_set">
+                            <div className="select_set">
                               <select id="yearTo">
                                 <option value="2014">2014</option>
                                 <option value="2015">2015</option>

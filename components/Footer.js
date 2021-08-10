@@ -1,18 +1,19 @@
 import React from "react";
 import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
+import { useRouter } from "next/dist/client/router";
 
 const Footer = ({ locale }) => {
   const { t } = useTranslation("common");
-
+  const router = useRouter();
   return (
     <footer style={{ visibility: "hidden" }} className="_show">
       <div className="footer_set flex">
         <div className="lang flex">
-          <Link href="/" locale="ar">
+          <Link href={router.pathname} locale="ar">
             <a className={`_curTL2 ${locale === "ar" && "active"}`}>AR</a>
           </Link>
-          <Link href="/" locale="en">
+          <Link href={router.pathname} locale="en">
             <a className={`_curTL2 ${locale === "en" && "active"}`}>EN</a>
           </Link>
         </div>
