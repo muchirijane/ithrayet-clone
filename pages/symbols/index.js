@@ -30,7 +30,7 @@ const Symbols = (props) => {
   return (
     <Layout isInner seo={SEO && SEO}>
       <div className="page_head_set">
-        <h1>{t('pages.title_symbols')}</h1>
+        <h1>{t("pages.title_symbols")}</h1>
       </div>
 
       <div id="sections">
@@ -49,15 +49,19 @@ const Symbols = (props) => {
                           <SVGComp url_path={`${symbol.symbol.url}`} />
                         </div>
                         <div className="f_30 uppercase">{symbol.Title}</div>
-                        <div className="result_title">
-                          <div className="f_80 alt">{symbol.edition.title}</div>
-                          <span className="f_16 less_opacity">
-                            {format(
-                              new Date(symbol.edition.publishedDate),
-                              "MMMM yyyy"
-                            )}
-                          </span>
-                        </div>
+                        {symbol.edition && (
+                          <div className="result_title">
+                            <div className="f_80 alt">
+                              {symbol.edition.title}
+                            </div>
+                            <span className="f_16 less_opacity">
+                              {format(
+                                new Date(symbol.edition.publishedDate),
+                                "MMMM yyyy"
+                              )}
+                            </span>
+                          </div>
+                        )}
                       </a>
                     </Link>
                   ))}
