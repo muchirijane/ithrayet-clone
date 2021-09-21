@@ -57,6 +57,7 @@ export const GET_HOMEPAGE_DATA = gql`
     artists(locale: $locale) {
       firstName
       lastName
+      slug
       signature {
         url
       }

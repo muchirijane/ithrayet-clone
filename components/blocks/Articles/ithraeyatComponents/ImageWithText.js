@@ -2,6 +2,7 @@ import Link from "next/link";
 import { CMSPath } from "../../../../helpers/imageCMSPath";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
+
 const ImageWithText = (props) => {
   const { t } = useTranslation("common");
   const { content } = props;
