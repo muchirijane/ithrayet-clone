@@ -1,6 +1,8 @@
+import useTranslation from "next-translate/useTranslation";
+
 const QuoteWithText = (props) => {
   const { content } = props;
-
+  const { t } = useTranslation("common");
   return (
     <section>
       <div className="custom_content">
@@ -44,25 +46,29 @@ const QuoteWithText = (props) => {
                       ></path>
                     </svg>
                   </strong>
-                  <div className="info_line">
-                    <div className="f_14">
-                      By{" "}
-                      <strong>
-                        <a href="creative_en.php" target="_blank">
-                        {content.quoteWithText.artistName}
-                        </a>
-                      </strong>
+                  {content.quoteWithText.artistName && (
+                    <div className="info_line">
+                      <div className="f_14">
+                        {`${t("by")} `}{" "}
+                        <strong>
+                          <Link href={`/creatives`}>
+                            <a target="_blank">
+                              {content.quoteWithText.artistName}
+                            </a>
+                          </Link>
+                        </strong>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
 
               <div className="text_side">
-                <div className="f_80 alt">
-                  {content.quoteWithText_title}
-                </div>
-                <div className="f_20 less_opacity" dangerouslySetInnerHTML={{__html: content.description}}/>
-                  
+                <div className="f_80 alt">{content.quoteWithText_title}</div>
+                <div
+                  className="f_20 less_opacity"
+                  dangerouslySetInnerHTML={{ __html: content.description }}
+                />
               </div>
             </div>
           </div>

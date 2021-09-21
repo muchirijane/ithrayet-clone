@@ -2521,6 +2521,8 @@ body:not(.progress) .view_shape_set {
 .three_col {
 	padding: 0 50px;
 	position: relative;
+	flex-grow: 1;
+    flex-basis: 0;
 }
 
 .centered_text {

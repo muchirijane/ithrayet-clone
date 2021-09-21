@@ -40,18 +40,20 @@ const QuoteWithImage = (props) => {
                       </LargeQuote>
                     )}
                   </strong>
-                  <div className="info_line">
-                    <div className="f_14">
-                      {`${t("by")} `}
-                      <strong>
-                        <Link href={`/creatives`}>
-                          <a target="_blank">
-                            {`${content.quoteWithImage_quote.artistName}`}
-                          </a>
-                        </Link>
-                      </strong>
+                  {content.quoteWithImage_quote.artistName && (
+                    <div className="info_line">
+                      <div className="f_14">
+                        {`${t("by")} `}{" "}
+                        <strong>
+                          <Link href={`/creatives`}>
+                            <a target="_blank">
+                              {`${content.quoteWithImage_quote.artistName}`}
+                            </a>
+                          </Link>
+                        </strong>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
 

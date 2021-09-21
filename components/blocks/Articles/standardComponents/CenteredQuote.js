@@ -1,7 +1,9 @@
+import useTranslation from "next-translate/useTranslation";
 import Link from "next/link";
 
 const CenteredQuote = (props) => {
   const { content } = props;
+  const { t } = useTranslation("common");
   return (
     <section>
       <div className="custom_content">
@@ -43,18 +45,21 @@ const CenteredQuote = (props) => {
                   ></path>
                 </svg>
               </strong>
-              <div className="info_line">
-                <div className="f_14">
-                  By{" "}
-                  <strong>
-                    <Link href="/creatives">
-                      <a target="_blank">
-                        {`${content.centeredQuote.artistName}`}
-                      </a>
-                    </Link>
-                  </strong>
+
+              {content.centeredQuote.artistName && (
+                <div className="info_line">
+                  <div className="f_14">
+                    {`${t("by")} `}{" "}
+                    <strong>
+                      <Link href="/creatives">
+                        <a target="_blank">
+                          {`${content.centeredQuote.artistName}`}
+                        </a>
+                      </Link>
+                    </strong>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
