@@ -41,6 +41,7 @@ const Gallery = (props) => {
       window.dispatchEvent(new Event("resize"));
     }, 1000);
   }, [galleries]);
+
   return (
     <Layout isInner seo={SEO && SEO}>
       {galleries && (
