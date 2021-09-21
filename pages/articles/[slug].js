@@ -12,7 +12,9 @@ import _ from "lodash";
 import { ArticleBlocksKeyReplace } from "../../helpers/arrayHelper";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
-
+import { GET_RELATED_EDTION_ARTICLES } from "../../graphql/editions";
+import { CMSPath } from "../../helpers/imageCMSPath";
+import Link from "next/link";
 // export const getStaticPaths = async ({ locales }) => {
 //   const { data } = await client.query({
 //     query: GET_ARTICLES_SLUGS,
@@ -101,24 +103,38 @@ export const getServerSideProps = async ({
       },
     });
 
+    const { data: relatedArticles } = await client.query({
+      query: GET_RELATED_EDTION_ARTICLES,
+      variables: {
+        limit: 3,
+        locale: locale,
+        where: {
+          edition: {
+            id_eq: article.edition.id,
+          },
+          id_ne: article.id,
+        },
+      },
+    });
+
     return {
       props: {
         article: article,
         nextArticle: nextArticle.data.articles.length
           ? nextArticle.data.articles[0]
           : null,
+        relatedArticles: relatedArticles && relatedArticles.articles,
       },
-    
     };
   }
 };
 
 const Article = (props) => {
   const { t } = useTranslation("common");
-  const { article, nextArticle } = props;
+  const { article, nextArticle, relatedArticles } = props;
   const router = useRouter();
   const { locale } = router;
-  
+
   return (
     <Layout isInner seo={article && article.seo}>
       {article && (
@@ -150,10 +166,65 @@ const Article = (props) => {
               publishedDate={article.publishDate}
               symbol={article.edition.symbol}
             />
-            {article.ArticleBlocks.length && (
+            {article.ArticleBlocks.length > 0 && (
               <ArticleDynamicComponents articleBlocks={article.ArticleBlocks} />
             )}
-            {nextArticle ? (
+            {relatedArticles?.length > 0 && (
+              <section>
+                <div className="custom_content">
+                  <div className="content_a">
+                    <div className="content_b">
+                      <div className="side_head custom_head center">
+                        <strong className="f_80 uppercase">{`${t(
+                          "related_articles"
+                        )}`}</strong>
+                        <div className="info_line">
+                          <div className="f_20 centered_text">
+                            {`${t("related_qoute")}`}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="section_sides three_cols flex">
+                        {relatedArticles &&
+                          relatedArticles.map((val, key) => (
+                            <div
+                              className="three_col"
+                              data-scroll
+                              data-scroll-direction="vertical"
+                              data-scroll-speed="1"
+                              key={`related_article-${key}`}
+                            >
+                              <Link
+                                href={`/articles/${val.slug}`}
+                                locale={locale}
+                              >
+                                <a className="_link _curTL1" data-title="Read">
+                                  <img
+                                    className="load_img"
+                                    data-src={`${CMSPath}${val.cover.url}`}
+                                    width="100%"
+                                    height="auto"
+                                    alt={`${val.cover.alternativeText}`}
+                                  />
+                                  <div className="info_line">
+                                    <div className="f_16 centered_text">
+                                      {val.quote}
+                                    </div>
+                                  </div>
+                                  <div className="col_title centered_text">
+                                    <div className="f_80 alt ">{val.title}</div>
+                                  </div>
+                                </a>
+                              </Link>
+                            </div>
+                          ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            )}
+            {nextArticle && (
               <section>
                 <div className="section_content">
                   <div className="line_shape jr_shape_set">
@@ -190,7 +261,7 @@ const Article = (props) => {
                   </div>
                 </div>
               </section>
-            ) : null}
+            )}
           </div>
         </div>
       )}

@@ -17,7 +17,7 @@ export const getStaticProps = async ({ locale }) => {
   if (data) {
     return {
       props: {
-        articles: data.articles.length && ChunkArray(data.articles, 12),
+        galleries: data.galleries.length && ChunkArray(data.galleries, 12),
         SEO: data.listGallery.seo,
       },
       revalidate: 60,
@@ -25,7 +25,7 @@ export const getStaticProps = async ({ locale }) => {
   }
 };
 const Gallery = (props) => {
-  const { articles, SEO } = props;
+  const { galleries, SEO } = props;
   // const [triggerResize, callResize] = useState(false);
 
   // useEffect(() => {
@@ -40,39 +40,38 @@ const Gallery = (props) => {
     setTimeout(() => {
       window.dispatchEvent(new Event("resize"));
     }, 1000);
-  }, [articles]);
+  }, [galleries]);
   return (
     <Layout isInner seo={SEO && SEO}>
-      {articles && (
+      {galleries && (
         <div id="sections">
           <section>
             <div className="gallery_set">
-              {articles.map((chunk, chunk_key) => {
+              {galleries.map((chunk, chunk_key) => {
                 return (
                   <div className="gallery_group" key={`g_pop-${chunk_key}`}>
                     <div className="gallery_items flex">
-                      {chunk.map((article, key) => (
-                        <Link
-                          href={`/articles/${article.slug}`}
+                      {chunk.map((gallery, key) => (
+                        <div
+                          className="gallery_block _curTL1"
+                          data-title="+"
                           key={`g_item-${chunk_key}-${key}`}
                         >
-                          <a className="gallery_block _curTL1" data-title="+">
-                            <div className="gallery_img">
-                              <img
-                                className="load_img"
-                                data-src={`${CMSPath}${article.cover.url}`}
-                                width="100%"
-                                height="auto"
-                                alt={article.cover.alternativeText}
-                              />
+                          <div className="gallery_img">
+                            <img
+                              className="load_img"
+                              data-src={`${CMSPath}${gallery.media.url}`}
+                              width="100%"
+                              height="auto"
+                              alt={gallery.media.alternativeText}
+                            />
+                          </div>
+                          <div className="gallery_title">
+                            <div className="f_40 alt uppercase">
+                              {gallery.title}
                             </div>
-                            <div className="gallery_title">
-                              <div className="f_40 alt uppercase">
-                                {article.title}
-                              </div>
-                            </div>
-                          </a>
-                        </Link>
+                          </div>
+                        </div>
                       ))}
                     </div>
                   </div>

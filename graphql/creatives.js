@@ -112,3 +112,16 @@ export const GET_NEXT_CREATIVE = gql`
     }
   }
 `;
+
+export const GET_RELATED_ARTICLES = gql`
+  query ($where: JSON, $limit: Int, $locale: String!) {
+    articles(where: $where, limit: $limit, locale: $locale) {
+      title
+      quote
+      cover {
+        url
+        alternativeText
+      }
+    }
+  }
+`;

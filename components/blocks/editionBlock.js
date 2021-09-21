@@ -9,7 +9,7 @@ const EditionBlock = ({ featuredEdition, dataUrl }) => {
   const { t } = useTranslation("common");
   const { locale } = useRouter();
   const { type, featuredTitle } = featuredEdition[0];
- 
+
   return (
     <section id="editions" style={{ visibility: "hidden" }} data-url={dataUrl}>
       <div className="content_set">
@@ -28,7 +28,7 @@ const EditionBlock = ({ featuredEdition, dataUrl }) => {
               dangerouslySetInnerHTML={{ __html: StripPTags(featuredTitle) }}
             />
 
-            <span>{`${getTypeValue(type.value, t)} #${type.number}`}</span>
+            {/* <span>{`${getTypeValue(type.value, t)} #${type.number}`}</span> */}
           </h1>
           <div className="ed_image _curTL1 _link">
             <div className="full_bg prx">
@@ -58,6 +58,8 @@ const EditionBlock = ({ featuredEdition, dataUrl }) => {
                 title={edition.title}
                 date={edition.publishedDate}
                 cover={`${CMSPath}${edition.cover.url}`}
+                svg={`${CMSPath}${edition.symbol.symbol.url}`}
+                featuredTitle={edition.featuredTitle}
                 img1={
                   edition.featuredImageLeft &&
                   `${CMSPath}${edition.featuredImageLeft.url}`

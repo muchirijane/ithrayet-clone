@@ -128,3 +128,17 @@ export const GET_EDITION_DATA = gql`
     }
   }
 `;
+
+export const GET_RELATED_EDTION_ARTICLES = gql`
+  query ($where: JSON, $limit: Int, $locale: String!) {
+    articles(where: $where, limit: $limit, locale: $locale) {
+      slug
+      title
+      quote
+      cover {
+        url
+        alternativeText
+      }
+    }
+  }
+`;

@@ -29,12 +29,17 @@ export const GET_HOMEPAGE_DATA = gql`
       sort: "publishedDate:desc"
     ) {
       title
+      symbol {
+        symbol {
+          url
+        }
+      }
       featuredTitle
-      featuredImageLeft{
+      featuredImageLeft {
         url
         alternativeText
       }
-      featuredImageRight{
+      featuredImageRight {
         url
         alternativeText
       }
@@ -44,7 +49,7 @@ export const GET_HOMEPAGE_DATA = gql`
       }
       slug
       publishedDate
-      cover{
+      cover {
         url
         alternativeText
       }

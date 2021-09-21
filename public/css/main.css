@@ -475,9 +475,6 @@ article img {
 	z-index: 99;
 }
 
-.section_head h1 span:last-child {
-	font-size: 2vw;
-}
 
 .section_label {
 	margin-top: 2vw;
@@ -1271,9 +1268,6 @@ body:not(.progress) .jn_circle_content {
 	}
 	.section_content {
 		padding-top: 15vw;
-	}
-	.section_head h1 span:last-child {
-		font-size: 3vw;
 	}
 	.view_btn {
 		bottom: 35px;

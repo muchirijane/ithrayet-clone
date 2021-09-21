@@ -272,6 +272,83 @@ const Creative = (props) => {
               </div>
             </section>
 
+            <section>
+              <div className="custom_content">
+                <div className="content_a">
+                  <div className="content_b">
+                    <div className="side_head custom_head center">
+                      <strong className="f_80 uppercase">ARTICLES</strong>
+                      <div className="info_line">
+                        <div className="f_20 centered_text">Don’t be so hard on yourself, you just don’t belong here.</div>
+                      </div>
+                    </div>
+                    <div className="section_sides three_cols flex">
+                      <div
+                        className="three_col _link"
+                        data-scroll
+                        data-scroll-direction="vertical"
+                        data-scroll-speed="1"
+                      >
+                        <img
+                          className="load_img"
+                          data-src={`${CMSPath}${creative.images[1].image.url}`}
+                          width="100%"
+                          height="auto"
+                          alt={`${creative.images[1].image.alternativeText}`}
+                        />
+                        <div className="info_line">
+                          <div className="f_16 centered_text">TEST CAP</div>
+                        </div>
+                        <div className="col_title centered_text">
+                          <div className="f_80 alt ">TEST</div>
+                        </div>
+                      </div>
+                      <div
+                        className="three_col"
+                        data-scroll
+                        data-scroll-direction="vertical"
+                        data-scroll-speed="1"
+                      >
+                        <img
+                          className="load_img"
+                          data-src={`${CMSPath}${creative.images[1].image.url}`}
+                          width="100%"
+                          height="auto"
+                          alt={`${creative.images[1].image.alternativeText}`}
+                        />
+                        <div className="info_line">
+                          <div className="f_16 centered_text">TEST CAP</div>
+                        </div>
+                        <div className="col_title centered_text">
+                          <div className="f_80 alt ">TEST</div>
+                        </div>
+                      </div>
+                      <div
+                        className="three_col"
+                        data-scroll
+                        data-scroll-direction="vertical"
+                        data-scroll-speed="1"
+                      >
+                        <img
+                          className="load_img"
+                          data-src={`${CMSPath}${creative.images[1].image.url}`}
+                          width="100%"
+                          height="auto"
+                          alt={`${creative.images[1].image.alternativeText}`}
+                        />
+                        <div className="info_line">
+                          <div className="f_16 centered_text">TEST CAP</div>
+                        </div>
+                        <div className="col_title centered_text">
+                          <div className="f_80 alt ">TEST</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
             {nextCreative ? (
               <section>
                 <div className="section_content">

@@ -64,14 +64,18 @@ const QuoteWithImage = (props) => {
                   alt={`${content.quoteWithImage_image.image.alternativeText}`}
                 />
                 <div className="info_line">
-                  <div className="info_shape">
-                    <SVGComp
-                      url_path={`${content.quoteWithImage_image.symbol.symbol.url}`}
-                    />
-                  </div>
+                  {content.quoteWithImage_image.symbol && (
+                    <div className="info_shape">
+                      <SVGComp
+                        url_path={`${content.quoteWithImage_image.symbol.symbol.url}`}
+                      />
+                    </div>
+                  )}
 
                   <div className="f_14">
-                    {locale === 'en' ? content.quoteWithImage_image.image.caption : content.quoteWithImage_image.image.arabic_caption}{" "}
+                    {locale === "en"
+                      ? content.quoteWithImage_image.image.caption
+                      : content.quoteWithImage_image.image.arabic_caption}{" "}
                     {`${
                       content.quoteWithImage_image.image.selectedArtist
                         ? t("artwork_by")

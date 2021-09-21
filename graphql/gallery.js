@@ -2,13 +2,13 @@ import { gql } from "@apollo/client";
 
 export const GET_GALLERY_DATA = gql`
   query ($locale: String!) {
-    articles(locale: $locale) {
+    galleries(locale: $locale) {
       title
-      slug
-      cover {
+      media {
         url
         alternativeText
       }
+      externalVideoLink
     }
     listGallery(locale: $locale) {
       seo {

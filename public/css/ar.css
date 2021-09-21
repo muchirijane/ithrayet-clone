@@ -108,9 +108,6 @@ body {
 .circle_set:not(.lower):not(.static) {
 	margin-right: 21vw;
 }
-.section_head h1 span:last-child {
-	margin-right: -2vw;
-}
 .loader_select {
 	margin-right: -0.5vw;
 }

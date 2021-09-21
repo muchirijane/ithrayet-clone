@@ -6,6 +6,7 @@ import { IMAGES_WITH_TITLE } from "./fragments/ImagesWithTitle";
 export const GET_ARTICLE_DATA = gql`
   query ($slug: String!, $locale: String!) {
     articles(where: { slug_eq: $slug }, locale: $locale) {
+      id
       seo {
         ...SEO
       }
@@ -35,6 +36,7 @@ export const GET_ARTICLE_DATA = gql`
       description
 
       edition {
+        id
         slug
         symbol {
           symbol {

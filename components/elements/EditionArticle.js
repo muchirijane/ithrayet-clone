@@ -9,11 +9,7 @@ const EditonArticle = (props) => {
     <section data-scroll data-scroll-id={id} className="tab_section">
       <div className="section_content">
         <div className="content_a">
-          <Link
-            href={`/articles/${article.slug}`}
-            locale={locale}
-            data-title="Read"
-          >
+          <Link href={`/articles/${article.slug}`} locale={locale}>
             <a
               className="section_sides edition_sides flex _link _curTL1"
               data-title="Read"

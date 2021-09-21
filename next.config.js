@@ -18,7 +18,7 @@ const devOptions = {
     IMAGE_CMS_URL: "https://ithraeyat-server.1020dev.com",
     NEXT_PUBLIC_API_URL: "https://ithraeyat-server.1020dev.com",
     API_SECRET_VALUE: "ithraeyat",
-    API_SECRET_KEY: "Nan8ESEn",
+    API_SECRET_KEY: "Nan8ESEn", 
   },
   domains: ["localhost", "ithraeyat-server.1020dev.com"],
 };

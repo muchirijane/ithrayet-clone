@@ -477,7 +477,7 @@ preloadPictures = function(pictureUrls, callback) {
 	
 		img.src = src;
 	
-		img.onerror = function () {console.log('Imgages Loading Error')};
+		img.onerror = function () {console.log('Images Loading Error')};
 
 
 	} (new Image(), pictureUrls[i]));
@@ -817,8 +817,8 @@ function homeFunction(){
 	// Section 2
 	var lastX = 0,
 		lastY = 0,
-		svgShape = '<svg width="82" height="82" viewBox="0 0 82 82" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M52.5129 53.415L66.0009 51.0987C66.473 51.0174 66.7903 50.5654 66.7097 50.0934C66.6291 49.6215 66.1776 49.3049 65.7055 49.3862L52.7233 51.6144L54.6541 30.6013C54.6541 30.5474 54.6542 30.4934 54.6542 30.4395C54.7014 30.4462 54.7418 30.4731 54.7958 30.4731L64.5999 31.0457C64.8426 31.059 65.0787 30.9711 65.2541 30.7957C65.4296 30.6202 65.5242 30.3909 65.5176 30.1414L65.1275 19.8584C65.1143 19.3999 64.737 19.036 64.2852 19.0296L54.1707 18.7945C53.9279 18.7946 53.6918 18.896 53.5299 19.0714C53.3612 19.2536 53.2733 19.4897 53.2866 19.7324L53.9872 29.678C53.9872 29.678 53.9939 29.6847 53.9872 29.6915C53.913 29.6713 53.8254 29.6646 53.7445 29.6647L31.7475 30.841L32.1352 17.287C32.1491 16.815 31.7718 16.4107 31.293 16.3908C30.8143 16.3709 30.4161 16.7556 30.4023 17.2276L30.0144 30.903L16.3391 31.3043C15.8603 31.3249 15.4824 31.7163 15.4955 32.2018C15.5086 32.6738 15.9062 33.0579 16.3917 33.044L29.9457 32.6563L28.8104 53.925L19.2893 53.7028C19.0398 53.6963 18.8104 53.7908 18.6417 53.973C18.473 54.1552 18.3852 54.3913 18.3985 54.634L19.099 64.5796C19.1124 64.7954 19.2066 64.9841 19.3549 65.1324C19.5031 65.2806 19.6986 65.3681 19.9144 65.3815L29.7185 65.954C29.9612 65.9673 30.1973 65.8795 30.3727 65.704C30.5482 65.5286 30.6428 65.2993 30.6362 65.0498L30.2725 55.522L50.7258 53.6388L48.4976 66.621C48.4163 67.0931 48.7397 67.5379 49.2049 67.6252C49.6768 67.7058 50.1289 67.3885 50.2101 66.9164L52.5129 53.415ZM55.0797 20.5537L63.4275 20.7498L63.7516 29.2661L55.6602 28.8002L55.0797 20.5537ZM28.8634 64.1543L20.772 63.6883L20.1915 55.4554L28.5394 55.6514L28.8634 64.1543ZM30.5503 53.7483L31.6787 32.5808L52.8463 31.4523L50.9699 51.8719L30.5503 53.7483Z" fill="#DD8981"/> <path d="M45.4991 37.008L35.3846 36.7729C35.1351 36.7663 34.9057 36.8609 34.737 37.0431C34.5683 37.2253 34.4805 37.4613 34.4938 37.7041L35.1944 47.6497C35.2077 47.8655 35.3019 48.0542 35.4502 48.2024C35.5984 48.3507 35.7939 48.4382 36.0097 48.4515L45.8138 49.0241C46.0565 49.0374 46.2926 48.9495 46.468 48.7741C46.6435 48.5986 46.7381 48.3693 46.7315 48.1198L46.3414 37.8368C46.3282 37.3783 45.9576 37.0212 45.4991 37.008ZM36.8741 46.7651L36.2936 38.5321L44.6414 38.7282L44.9655 47.2445L36.8741 46.7651Z" fill="#DD8981"/> <path d="M22.3616 57.3558C22.1998 57.356 22.0447 57.4168 21.9299 57.5315C21.8152 57.6462 21.7612 57.8081 21.7745 57.9699L22.0414 61.7998C22.048 61.9414 22.1153 62.0762 22.2097 62.1706C22.304 62.2649 22.4388 62.3322 22.5804 62.3389L26.3497 62.5586C26.5115 62.5719 26.6734 62.5044 26.7881 62.3897C26.9028 62.2749 26.9636 62.1198 26.9637 61.958L26.8116 57.9998C26.8051 57.6964 26.549 57.4539 26.2456 57.4473L22.3616 57.3558ZM25.6783 58.5941L25.7841 61.3722L23.1544 61.2258L22.9676 58.5422L25.6783 58.5941Z" fill="#DD8981"/> <path d="M38.6991 40.493C38.6182 40.4931 38.5372 40.5201 38.4832 40.5876C38.4225 40.6483 38.3955 40.7292 38.4022 40.8034L38.669 44.6333C38.6757 44.7075 38.7094 44.7681 38.7565 44.8153C38.8037 44.8625 38.8711 44.8894 38.9453 44.8961L42.7145 45.1158C42.7954 45.1157 42.8764 45.0887 42.9304 45.0347C42.9911 44.974 43.0249 44.8998 43.0182 44.8121L42.8661 40.854C42.8594 40.6989 42.7382 40.5776 42.5898 40.5777L38.6991 40.493ZM42.3062 41.1444L42.4318 44.5091L39.2289 44.3294L38.9953 41.0727L42.3062 41.1444Z" fill="#DD8981"/> <path d="M61.4947 27.4277C61.6565 27.4411 61.8184 27.3735 61.9331 27.2588C62.0478 27.1441 62.1087 26.9889 62.1088 26.8271L61.9566 22.869C61.9501 22.5656 61.6941 22.323 61.3906 22.3165L57.4999 22.2317C57.3381 22.2318 57.1829 22.2927 57.0682 22.4074C56.9535 22.5221 56.8994 22.684 56.9128 22.8458L57.1797 26.6757C57.1863 26.8173 57.2536 26.9521 57.348 27.0464C57.4423 27.1408 57.5771 27.2081 57.7187 27.2147L61.4947 27.4277ZM58.2927 26.0882L58.0992 23.3978L60.8099 23.4632L60.9157 26.2413L58.2927 26.0882Z" fill="#DD8981"/> </svg>',
-		container = document.getElementById('drawings'),
+		
+ 		container = document.getElementById('drawings'),
 		editionsHover = false,
 		canDraw = true,
 		isDrawing = false,
@@ -831,6 +831,7 @@ function homeFunction(){
 		cardFaceFront = $('.cardFace.front'),
 		cardFaceBack = $('.cardFace.back'),
 		totalCards = cardSelector.length -1,
+		svgShape = cardSelector.eq(0).attr('data-shape'),
 		prevActiveCard = totalCards,
 		activeCard = -1,
 		nextActiveCard = 1,
@@ -838,6 +839,7 @@ function homeFunction(){
 		nextCardSelector,
 		prevCardSelector,
 		split1,
+		split2,
 		dirVal;
 
 	gsap.set('.cardWrapper', {perspective:800});
@@ -879,6 +881,7 @@ function homeFunction(){
 		prevCardSelector = $('.cards span').eq(prevActiveCard)
 
 		var getTitle = cardSelector.attr('data-title'),
+			getBigTitle = cardSelector.attr('data-big-title'),
 			getDate = cardSelector.attr('data-date'),
 			getURL = cardSelector.attr('data-url'),
 			THIS_getCover = cardSelector.attr('data-cover'),
@@ -887,10 +890,9 @@ function homeFunction(){
 			getSub1 = cardSelector.attr('data-img1'),
 			getSub2 = cardSelector.attr('data-img2');
 
+		svgShape = cardSelector.attr('data-shape');
 		cardFaceBack.html('<img crossorigin="anonymous" src="'+THIS_getCover+'" alt="'+getTitle+'">')
-
 		$('.ed_sub_image').eq(0).html('<img crossorigin="anonymous" src="'+getSub1+'" alt="'+getTitle+'">')
-
 		$('.ed_sub_image').eq(1).html('<img crossorigin="anonymous" src="'+getSub2+'" alt="'+getTitle+'">')
 
 		if(cardTL) {cardTL.kill()}
@@ -906,7 +908,7 @@ function homeFunction(){
 		} else {
 
 			split1 = new SplitText($('._fill_card'), {type:"words", wordsClass:"SplitClass"});
-
+			split2 = new SplitText($('.section_head span'), {type:"words", wordsClass:"SplitClass"});
 			cardTL
 
 			.set('.ed_sub_images', {autoAlpha:0}, 0)
@@ -922,7 +924,12 @@ function homeFunction(){
 				TweenMax.staggerFrom(split1.words, 0.5, { y: 20 * dirVal, autoAlpha: 0, ease:Power3.easeOut }, 0.08 * dirVal)
 
 			})
-
+			.staggerTo(split2.words, 0.5, { y: -20 * dirVal, autoAlpha: 0, ease:Power3.easeIn }, 0.08 * dirVal, 0)
+			.call(function(){
+				$('.section_head span').html(getBigTitle)
+				split2 = new SplitText($('.section_head span'), {type:"words", wordsClass:"SplitClass"});
+				TweenMax.staggerFrom(split2.words, 0.5, { y: 20 * dirVal, autoAlpha: 0, ease:Power3.easeOut }, 0.08 * dirVal)
+			})
 			.fromTo('.card', 1, {rotationY:0}, {rotationY:-180 * dirVal, ease:Back.easeInOut}, 0)
 
 			.to('.card', 0.5, {scale:1.3, rotationX:10 * (dirVal*-1), ease:Power3.easeIn}, 0)

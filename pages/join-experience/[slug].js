@@ -10,7 +10,9 @@ import Link from "next/link";
 import { fetchAPI } from "../../helpers/api";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
-
+import { ArticleBlocksKeyReplace } from "../../helpers/arrayHelper";
+import ArticleDynamicComponents from "../../components/blocks/Articles/ArticleDynamicComponents";
+import _ from "lodash";
 // export const getStaticPaths = async ({ locales }) => {
 //   const { data } = await client.query({
 //     query: GET_EXPERIENCE_SLUGS,
@@ -50,6 +52,12 @@ export const getServerSideProps = async ({
   if (preview) {
     let result = await fetchAPI(`/preview-drafts/${previewData.preview_id}`);
     data_results = result.json;
+    data_results.ArticleBlocks.map((block) => {
+      block.__component = `Component${_.upperFirst(
+        _.camelCase(block.__component)
+      )}`;
+    });
+    data_results = ArticleBlocksKeyReplace(data_results);
   } else {
     const { data } = await client.query({
       query: GET_EXPERIENCE_DATA,
@@ -190,7 +198,7 @@ const Experience = (props) => {
                           alt={project.showcase.images[0].image.alternativeText}
                         />
 
-                        {ArtistLink(project.showcase.images[0],t,locale)}
+                        {ArtistLink(project.showcase.images[0], t, locale)}
                       </div>
 
                       <div
@@ -234,7 +242,7 @@ const Experience = (props) => {
                           alt={project.showcase.images[1].alternativeText}
                         />
 
-                        {ArtistLink(project.showcase.images[1],t,locale)}
+                        {ArtistLink(project.showcase.images[1], t, locale)}
                       </div>
 
                       <div className="side_img">
@@ -245,7 +253,7 @@ const Experience = (props) => {
                           height="auto"
                           alt={project.showcase.images[2].alternativeText}
                         />
-                        {ArtistLink(project.showcase.images[2],t,locale)}
+                        {ArtistLink(project.showcase.images[2], t, locale)}
                       </div>
 
                       <div className="side_img">
@@ -256,7 +264,7 @@ const Experience = (props) => {
                           height="auto"
                           alt={project.showcase.images[3].image.alternativeText}
                         />
-                        {ArtistLink(project.showcase.images[3],t,locale)}
+                        {ArtistLink(project.showcase.images[3], t, locale)}
                       </div>
                     </div>
                   </div>
@@ -276,7 +284,7 @@ const Experience = (props) => {
                           height="auto"
                           alt={project.bottomImages[0].image.alternativeText}
                         />
-                        {ArtistLink(project.bottomImages[0],t,locale)}
+                        {ArtistLink(project.bottomImages[0], t, locale)}
                       </div>
                     </div>
 
@@ -294,13 +302,19 @@ const Experience = (props) => {
                           height="auto"
                           alt={project.bottomImages[1].image.alternativeText}
                         />
-                        {ArtistLink(project.bottomImages[1],t,locale)}
+                        {ArtistLink(project.bottomImages[1], t, locale)}
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+              {project.ArticleBlocks.length > 0 && (
+                <ArticleDynamicComponents
+                  articleBlocks={project.ArticleBlocks}
+                />
+              )}
             </section>
+
             {nextProject ? (
               <section>
                 <div className="section_content">
@@ -346,9 +360,9 @@ const Experience = (props) => {
 
 export default Experience;
 
-const ArtistLink = (data,t,locale) => (
+const ArtistLink = (data, t, locale) => (
   <div className="f_14">
-    {locale === 'en' ? data.image.caption : data.image.arabic_caption}{" "}
+    {locale === "en" ? data.image.caption : data.image.arabic_caption}{" "}
     {`${data.image.selectedArtist ? t("artwork_by") : ""} `}
     {data.image.selectedArtist && (
       <strong>
