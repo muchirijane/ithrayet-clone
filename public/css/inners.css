@@ -3669,3 +3669,6 @@ video {
 	left: -5px;
 }
 
+.big-quote_contatiner{
+	z-index: 1;
+}

@@ -553,3 +553,20 @@ h1,
 .text-big {
   font-size: 70px;
 }
+
+.big-quote {
+  position: fixed;
+  max-width: 380px;
+  right: -30%;
+  z-index: 20;
+}
+
+@media (max-width: 768px) {
+  .big-quote {
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    right: auto;
+    z-index: 20;
+  }
+}

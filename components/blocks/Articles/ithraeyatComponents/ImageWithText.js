@@ -13,12 +13,21 @@ const ImageWithText = (props) => {
         <div className="content_a">
           <div className="section_sides inner_sides flex">
             <div className="inner_side">
+             
               <div
-                className="side_img"
+                className="side_img big-quote_contatiner"
                 data-scroll
                 data-scroll-direction="vertical"
                 data-scroll-speed="1"
               >
+                 <div
+                className="text_side big-quote"
+                data-scroll
+                data-scroll-direction="vertical"
+                data-scroll-speed="2"
+              >
+                <div className="f_80 alt">{content.coverImage.title}</div>
+              </div>
                 <img
                   className="load_img"
                   data-src={`${CMSPath}${content.coverImage.image.url}`}
@@ -28,7 +37,9 @@ const ImageWithText = (props) => {
                 />
                 <div className="f_14">
                   <p>
-                    {locale ==='en' ? content.coverImage.image.caption : content.coverImage.image.arabic_caption}{" "}
+                    {locale === "en"
+                      ? content.coverImage.image.caption
+                      : content.coverImage.image.arabic_caption}{" "}
                     {`${
                       content.coverImage.image.selectedArtist
                         ? t("artwork_by")
@@ -90,7 +101,10 @@ const ImageWithText = (props) => {
                 />
                 <div className="f_14">
                   <p>
-                    {locale === 'en' ? content.parallaxImageWT_images[0].image.caption : content.parallaxImageWT_images[0].image.arabic_caption}{" "}
+                    {locale === "en"
+                      ? content.parallaxImageWT_images[0].image.caption
+                      : content.parallaxImageWT_images[0].image
+                          .arabic_caption}{" "}
                     {`${
                       content.parallaxImageWT_images[0].image.selectedArtist
                         ? t("artwork_by")
@@ -135,8 +149,11 @@ const ImageWithText = (props) => {
                   alt={content.parallaxImageWT_images[1].image.alternativeText}
                 />
                 <div className="f_14">
-                <p>
-                    {locale === 'en' ? content.parallaxImageWT_images[1].image.caption : content.parallaxImageWT_images[1].image.arabic_caption}{" "}
+                  <p>
+                    {locale === "en"
+                      ? content.parallaxImageWT_images[1].image.caption
+                      : content.parallaxImageWT_images[1].image
+                          .arabic_caption}{" "}
                     {`${
                       content.parallaxImageWT_images[1].image.selectedArtist
                         ? t("artwork_by")
