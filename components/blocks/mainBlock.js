@@ -5,24 +5,25 @@ import { format } from "date-fns";
 import { useRouter } from "next/router";
 import { ChunkArray } from "../../helpers/arrayHelper";
 
+const getEditonsBlock = (val, key, id) => {
+  const { locale } = useRouter();
+  return (
+    <Elements.EditionHomepage
+      key={key}
+      id={id}
+      imgUrl={`${CMSPath}${val.cover.url}`}
+      title={val.title}
+      subTitle={`${format(new Date(val.publishDate), "MMMM yyyy")}`}
+      hrefUrl={`${locale === "ar" ? "/ar" : ""}/articles/${val.slug}`}
+    />
+  );
+};
 const MainBlock = ({ editions, sectionData, dataUrl }) => {
   const { t } = useTranslation("mainblock");
   const { title, quote } = sectionData;
-  const { locale } = useRouter();
+
   let articleChunk = ChunkArray(editions[0]?.articles, 5);
- 
-  const getEditonsBlock = (val, key, id) => {
-    return (
-      <Elements.EditionHomepage
-        key={key}
-        id={id}
-        imgUrl={`${CMSPath}${val.cover.url}`}
-        title={val.title}
-        subTitle={`${format(new Date(val.publishDate), "MMMM yyyy")}`}
-        hrefUrl={`${locale === "ar" ? "/ar" : ""}/articles/${val.slug}`}
-      />
-    );
-  };
+
   return (
     <section id="main" style={{ visibility: "hidden" }} data-url={dataUrl}>
       <div className="main_heading flex full_bg">

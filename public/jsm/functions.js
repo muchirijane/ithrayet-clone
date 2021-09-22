@@ -751,6 +751,13 @@ function homeFunction(){
 		dom: document.getElementById('container')
 	});
 
+	$('article').click(function(e){
+		if(!isMobile) {
+			let getURL = $(this).attr('data-url');
+			window.location.href = getURL;
+		}
+	})
+
 	$('article').mouseenter(function(e){
 
 		var $this = $(this);
@@ -775,7 +782,12 @@ function homeFunction(){
 
 					var getTitle = $this.attr('data-title'),
 						getSubTitle = $this.attr('data-sub'),
+						getURL;
+					if(!isMobile) {
+						getURL = $('#main').attr('data-url');
+					} else {
 						getURL = $this.attr('data-url');
+					}
 
 					$('.view_btn').attr('href', getURL)
 					animCircle.attr('data-url', getURL)
