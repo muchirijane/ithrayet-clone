@@ -13,7 +13,6 @@
     "date-fns": "^2.22.1",
     "extract-svg-path": "^2.1.0",
     "graphql": "^15.3.0",
-    "jsdom": "^17.0.0",
     "next": "^11.0.1",
     "next-translate": "^1.0.6",
     "react": "^17.0.2",

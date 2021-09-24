@@ -14,7 +14,6 @@ import AnimatedArrow from "../components/UIKit/animatedArrow";
 import NewsLetterBlock from "../components/blocks/newsletterBlock";
 import { GET_SYMBOLS_URLS } from "../graphql/symbols";
 import { CMSPath } from "../helpers/imageCMSPath";
-import jsdom from "jsdom";
 
 const Home = (props) => {
   const {
@@ -106,9 +105,9 @@ export const getStaticProps = async ({ locale }) => {
   //     const response = await fetch(url);
   //     var svgText = await response.text();
   //     var dom = new jsdom.JSDOM(svgText, { includeNodeLocations: true });
-   
+
   //     console.log(dom.window.document.querySelectorAll(".svg-fill"));
-   
+
   //   });
   // }
   if (data) {
