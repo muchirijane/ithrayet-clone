@@ -33,7 +33,6 @@ var page = $("body").attr("id"),
   isDragging = false,
   isPageLoaded = false,
   threeINT;
- 
 
 $.fn.isInViewport = function () {
   var elementTop = $(this).offset().top;
@@ -55,7 +54,6 @@ jQuery.cachedScript = function (url, options) {
 };
 
 $(window).on("load", function () {
- 
   $.ready.then(function () {
     console.log("TEST LOAD INNER");
     $(".input_set input,.input_set textarea")
@@ -87,7 +85,7 @@ $(window).on("load", function () {
       })
       .trigger("blur");
     isPageLoaded = true;
- 
+
     if (
       /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge|maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(
         navigator.userAgent
@@ -1384,8 +1382,7 @@ function globalFunc() {
           { drawSVG: "0%" },
           { drawSVG: "100%", ease: Power3.easeInOut },
           0
-        )
-        .staggerFrom(
+        ).staggerFrom(
           circSplit.words,
           1,
           { y: 20, autoAlpha: 0, ease: Power3.easeInOut },
@@ -1576,6 +1573,32 @@ function globalFunc() {
       },
     });
 
+    var popupItems = $.map(
+      galleryCarousel.find(".gallery_img a"),
+      function (link) {
+        return {
+          src: link.href,
+          type: $(link).attr("data-popup-type") || "image",
+        };
+      }
+    );
+
+    galleryCarousel.on("click", ".gallery_img a", function (event) {
+      event.preventDefault();
+      clickedIndex = parseInt($(this).attr("data-cell-index"));
+      $.magnificPopup.open({
+        items: popupItems,
+        gallery: {
+          enabled: false,
+        },
+        callbacks: {
+          open: function () {
+            $.magnificPopup.instance.goTo(clickedIndex);
+          },
+        },
+      });
+    });
+
     galleryCarousel.on("settle.flickity", function (event, index) {
       isDragging = false;
     });
@@ -1720,8 +1743,8 @@ function globalFunc() {
 
   var modeTL = new TimelineMax({ paused: true }),
     curMode = "dark";
-  const curSavedMode = localStorage.getItem("in_mode")
-  curMode = curSavedMode ? curSavedMode : 'dark';
+  const curSavedMode = localStorage.getItem("in_mode");
+  curMode = curSavedMode ? curSavedMode : "dark";
   modeTL
     .set(".modes_helpers", { autoAlpha: 1 }, 0)
 
@@ -1797,9 +1820,9 @@ function globalFunc() {
       modeTL.reverse();
     }
   });
-  if(curSavedMode){
-		modeTL.play()
-	}
+  if (curSavedMode) {
+    modeTL.play();
+  }
   $(".in_mode").click(function (e) {
     if (!$(this).hasClass("active")) {
       $(".in_mode").removeClass("active");
@@ -1901,7 +1924,7 @@ function globalFunc() {
     }
   }
 
-  $(document).on("click", "a, ._link", function (e) {
+  $(document).on("click", "a:not(.exclude_link), ._link", function (e) {
     if (!isDragging) {
       var href = $(this).attr("href"),
         target = $(this).attr("target");
