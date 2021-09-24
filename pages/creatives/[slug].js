@@ -130,7 +130,10 @@ const Creative = (props) => {
                       <div className="tags flex">
                         {creative.tags &&
                           creative.tags.map((tag, key) => (
-                            <Link href="#" key={`creative_tag-link${key}`}>
+                            <Link
+                              href={`/search?search_term=${tag.name}`}
+                              key={`creative_tag-link${key}`}
+                            >
                               <a style={{ color: tag.color }}>{tag.name}</a>
                             </Link>
                           ))}
@@ -279,7 +282,10 @@ const Creative = (props) => {
                     <div className="side_head custom_head center">
                       <strong className="f_80 uppercase">ARTICLES</strong>
                       <div className="info_line">
-                        <div className="f_20 centered_text">Don’t be so hard on yourself, you just don’t belong here.</div>
+                        <div className="f_20 centered_text">
+                          Don’t be so hard on yourself, you just don’t belong
+                          here.
+                        </div>
                       </div>
                     </div>
                     <div className="section_sides three_cols flex">

@@ -98,9 +98,19 @@ export const GET_SYMBOL_DATA = gql`
     newsLetterForm(locale: $locale) {
       title
       description
-      thankYou{
+      thankYou {
         title
         description
+      }
+    }
+  }
+`;
+
+export const GET_SYMBOLS_URLS = gql`
+  query ($limit: Int!, $locale: String!) {
+    symbols(locale: $locale, limit: $limit) {
+      symbol {
+        url
       }
     }
   }

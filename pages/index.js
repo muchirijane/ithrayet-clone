@@ -12,9 +12,13 @@ import AnimatedCircle from "../components/UIKit/animatedCircle";
 import MobileViewButton from "../components/UIKit/mobileViewButton";
 import AnimatedArrow from "../components/UIKit/animatedArrow";
 import NewsLetterBlock from "../components/blocks/newsletterBlock";
+import { GET_SYMBOLS_URLS } from "../graphql/symbols";
+import { CMSPath } from "../helpers/imageCMSPath";
+import jsdom from "jsdom";
 
 const Home = (props) => {
   const {
+    symbolData,
     loaderImages,
     editions,
     featuredEdition,
@@ -68,7 +72,9 @@ const Home = (props) => {
         <AnimatedArrow direction={"next"} />
 
         <MobileViewButton />
-        {loaderImages && <SiteLoader loaderImages={loaderImages} />}
+        {loaderImages && (
+          <SiteLoader symbolData={symbolData} loaderImages={loaderImages} />
+        )}
       </Layout>
     )
   );
@@ -80,13 +86,35 @@ export const getStaticProps = async ({ locale }) => {
     variables: {
       locale: locale,
       editionLimit: 1,
-      articleLimit: 8
+      articleLimit: 8,
     },
   });
 
+  const { data: symbolData } = await client.query({
+    query: GET_SYMBOLS_URLS,
+    variables: {
+      locale: locale,
+      limit: 12,
+    },
+  });
+  // const symbolGroups = [];
+
+  // if (symbolData.symbols) {
+  //   const symbols = symbolData.symbols;
+  //   await symbols.forEach(async (el) => {
+  //     const url = `${CMSPath}${el.symbol.url}`;
+  //     const response = await fetch(url);
+  //     var svgText = await response.text();
+  //     var dom = new jsdom.JSDOM(svgText, { includeNodeLocations: true });
+   
+  //     console.log(dom.window.document.querySelectorAll(".svg-fill"));
+   
+  //   });
+  // }
   if (data) {
     return {
       props: {
+        symbolData: symbolData.symbols,
         loaderImages: data.loaderImage,
         editions: data.editions,
         artists: data.artists,

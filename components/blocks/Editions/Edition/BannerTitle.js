@@ -1,5 +1,6 @@
 import { getTypeValue } from "../../../../helpers/api";
 import useTranslation from "next-translate/useTranslation";
+import Link from "next/link";
 
 const BannerTitle = (props) => {
   const { t } = useTranslation("common");
@@ -12,13 +13,11 @@ const BannerTitle = (props) => {
           <div className="tags flex">
             {tags.map((tag, key) => {
               return (
-                <a
-                  key={`edition_tag-${key}`}
-                  href="#"
-                  style={{ color: tag.color }}
-                >
-                  {tag.name}
-                </a>
+                <Link href={`/search?search_term=${tag.name}`}>
+                  <a key={`edition_tag-${key}`} style={{ color: tag.color }}>
+                    {tag.name}
+                  </a>
+                </Link>
               );
             })}
           </div>

@@ -26,7 +26,7 @@ const ImageWithText = (props) => {
                 data-scroll-direction="vertical"
                 data-scroll-speed="2"
               >
-                <div className="f_80 alt">{content.coverImage.title}</div>
+                <div className="f_40 uppercase">{content.coverImage.title}</div>
               </div>
                 <img
                   className="load_img"

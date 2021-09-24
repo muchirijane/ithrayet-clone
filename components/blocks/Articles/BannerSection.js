@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 
 const BannerSection = (props) => {
   const { t } = useTranslation("common");
-  const {locale} = useRouter();
+  const { locale } = useRouter();
   const {
     tags,
     title,
@@ -27,13 +27,11 @@ const BannerSection = (props) => {
             <div className="tags flex">
               {tags &&
                 tags.map((tag, key) => (
-                  <a
-                    key={`article_tag-${key}`}
-                    href="#"
-                    style={{ color: tag.color }}
-                  >
-                    {tag.name}
-                  </a>
+                  <Link href={`/search?search_term=${tag.name}`}>
+                    <a key={`article_tag-${key}`} style={{ color: tag.color }}>
+                      {tag.name}
+                    </a>
+                  </Link>
                 ))}
             </div>
           </div>
@@ -105,7 +103,7 @@ const BannerSection = (props) => {
         {cover.caption && (
           <div className="info_line">
             <div className="f_14">
-              {locale === 'en' ? cover.caption : cover.arabic_caption}
+              {locale === "en" ? cover.caption : cover.arabic_caption}
               {`${t("artwork_by")} `}
 
               <strong>

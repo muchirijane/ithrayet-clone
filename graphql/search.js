@@ -30,8 +30,15 @@ export const SEARCH_RESULTS = gql`
       }
       slug
     }
-    editions(where: { title_contains: $search_term }, locale: $locale)
-      @include(if: $withEditions) {
+    editions(
+      where: {
+        _or: [
+          { title_contains: $search_term }
+          { tags: { name_contains: $search_term } }
+        ]
+      }
+      locale: $locale
+    ) @include(if: $withEditions) {
       title
       cover {
         url
@@ -43,8 +50,15 @@ export const SEARCH_RESULTS = gql`
       }
       slug
     }
-    artists(where: { firstName_contains: $search_term }, locale: $locale)
-      @include(if: $withCreatives) {
+    artists(
+      where: {
+        _or: [
+          { firstName_contains: $search_term }
+          { tags: { name_contains: $search_term } }
+        ]
+      }
+      locale: $locale
+    ) @include(if: $withCreatives) {
       firstName
       lastName
       profileImage {
