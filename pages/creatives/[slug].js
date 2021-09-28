@@ -275,7 +275,7 @@ const Creative = (props) => {
               </div>
             </section>
 
-            <section>
+            {/* <section>
               <div className="custom_content">
                 <div className="content_a">
                   <div className="content_b">
@@ -353,7 +353,7 @@ const Creative = (props) => {
                   </div>
                 </div>
               </div>
-            </section>
+            </section> */}
 
             {nextCreative ? (
               <section>
