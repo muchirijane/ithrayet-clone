@@ -1,10 +1,6 @@
 import Layout from "../../components/Layout";
 import client from "../../lib/apollo";
-import {
-  GET_ARTICLES_SLUGS,
-  GET_ARTICLE_DATA,
-  GET_NEXT_ARTICLE,
-} from "../../graphql";
+import { GET_ARTICLE_DATA, GET_NEXT_ARTICLE } from "../../graphql";
 import BannerSection from "../../components/blocks/Articles/BannerSection";
 import ArticleDynamicComponents from "../../components/blocks/Articles/ArticleDynamicComponents";
 import { fetchAPI } from "../../helpers/api";
@@ -15,6 +11,7 @@ import { useRouter } from "next/router";
 import { GET_RELATED_EDTION_ARTICLES } from "../../graphql/editions";
 import { CMSPath } from "../../helpers/imageCMSPath";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 // export const getStaticPaths = async ({ locales }) => {
 //   const { data } = await client.query({
 //     query: GET_ARTICLES_SLUGS,
@@ -135,11 +132,56 @@ const Article = (props) => {
   const { article, nextArticle, relatedArticles } = props;
   const router = useRouter();
   const { locale } = router;
+  const listInnerRef = useRef();
 
+  const [counter, setCounter] = useState(5);
+  useEffect(() => {
+    if (listInnerRef && listInnerRef.current != null) {
+      var elem = listInnerRef.current;
+      const mutationObserver = new MutationObserver(function (
+        mutationsList,
+        observer
+      ) {
+        mutationsList.forEach((mutation) => {
+          if (
+            mutation.target?.className &&
+            mutation.target?.className == "is-inview"
+          ) {
+            let count = 5;
+
+            window.setInterval(function () {
+              count -= 1;
+              if (!(count < 0)) {
+                setCounter(count);
+              }
+            }, 1000);
+          } else {
+            window.clearInterval();
+          }
+        });
+      });
+
+      mutationObserver.observe(elem, { attributes: true });
+    }
+  }, [listInnerRef.current]);
+
+  useEffect(() => {
+    if (counter === 0) {
+      location.href = `${locale === "ar" ? "/ar" : ""}/articles/${
+        nextArticle.slug
+      }`;
+    }
+  }, [counter]);
   return (
     <Layout isInner seo={article && article.seo}>
       {article && (
-        <div id="fixed-bar" className="fixed-bar" className="background-color" data-color={article.color} data-tcolor={article.colorText}>
+        <div
+          id="fixed-bar"
+          className="fixed-bar"
+          className="background-color"
+          data-color={article.color}
+          data-tcolor={article.colorText}
+        >
           <div
             className="page_bar fixed_item forced-full-width"
             data-scroll
@@ -226,7 +268,7 @@ const Article = (props) => {
               </section>
             )}
             {nextArticle && (
-              <section>
+              <section ref={listInnerRef} data-scroll data-scroll-repeat>
                 <div className="section_content">
                   <div className="line_shape jr_shape_set">
                     <svg
@@ -253,9 +295,11 @@ const Article = (props) => {
                       data-scroll-speed="1"
                     >
                       <div className="section_head">
-                        <div className="f_30 less_opacity">{`${t(
-                          "up_next"
-                        )}`}</div>
+                        <div className="f_30 less_opacity">
+                          {`${t("up_next")} `}
+                          <span>{counter}</span>
+                        </div>
+
                         <h1>{nextArticle.title}</h1>
                       </div>
                     </div>

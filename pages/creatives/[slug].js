@@ -99,6 +99,7 @@ const Creative = (props) => {
   const { creative, nextCreative } = props;
   const router = useRouter();
   const { locale } = router;
+
   return (
     <Layout isInner seo={creative && creative.seo}>
       {creative && (
