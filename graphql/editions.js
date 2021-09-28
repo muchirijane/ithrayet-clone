@@ -19,6 +19,7 @@ export const GET_EDITIONS_DATA = gql`
       id
       title
       color
+      colorText
       type {
         value
         number
@@ -89,6 +90,7 @@ export const GET_EDITION_DATA = gql`
       id
       title
       color
+      colorText
       type {
         value
         number

@@ -12,6 +12,8 @@ export const GET_ARTICLE_DATA = gql`
       }
       slug
       title
+      color
+      colorText
       tags {
         name
         color

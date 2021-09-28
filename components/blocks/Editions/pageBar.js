@@ -34,6 +34,7 @@ const PageBar = (props) => {
                 edition.slug
               }`}
               bgColor={edition.color}
+              textColor={edition.colorText}
             />
           );
         })}

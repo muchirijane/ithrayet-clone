@@ -120,6 +120,7 @@ export const getServerSideProps = async ({
     return {
       props: {
         article: article,
+        pageType: "article",
         nextArticle: nextArticle.data.articles.length
           ? nextArticle.data.articles[0]
           : null,
@@ -138,7 +139,7 @@ const Article = (props) => {
   return (
     <Layout isInner seo={article && article.seo}>
       {article && (
-        <div id="fixed-bar" className="fixed-bar">
+        <div id="fixed-bar" className="fixed-bar" className="background-color" data-color={article.color} data-tcolor={article.colorText}>
           <div
             className="page_bar fixed_item forced-full-width"
             data-scroll

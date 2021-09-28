@@ -96,24 +96,11 @@ export const getStaticProps = async ({ locale }) => {
       limit: 12,
     },
   });
-  // const symbolGroups = [];
 
-  // if (symbolData.symbols) {
-  //   const symbols = symbolData.symbols;
-  //   await symbols.forEach(async (el) => {
-  //     const url = `${CMSPath}${el.symbol.url}`;
-  //     const response = await fetch(url);
-  //     var svgText = await response.text();
-  //     var dom = new jsdom.JSDOM(svgText, { includeNodeLocations: true });
-
-  //     console.log(dom.window.document.querySelectorAll(".svg-fill"));
-
-  //   });
-  // }
   if (data) {
     return {
       props: {
-        symbolData: symbolData.symbols,
+        symbolData: symbolData && symbolData.symbols,
         loaderImages: data.loaderImage,
         editions: data.editions,
         artists: data.artists,

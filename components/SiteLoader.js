@@ -1,10 +1,22 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import useTranslation from "next-translate/useTranslation";
 import { CMSPath } from "../helpers/imageCMSPath";
 
 const SiteLoader = ({ loaderImages, symbolData }) => {
   const { t } = useTranslation("common");
+  useEffect(async () => {
+    const symbolGroups = [];
 
+    if (symbolData.symbols) {
+      // const symbols = symbolData.symbols;
+      // symbols.forEach(async (el) => {
+      //   const url = `${CMSPath}${el.symbol.url}`;
+      //   const response = await fetch(url);
+      //   console.log(response);
+      //   var svgText = await response.text();
+      // });
+    }
+  }, [symbolData]);
   const { images } = loaderImages;
 
   return (
