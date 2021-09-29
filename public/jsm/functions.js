@@ -1,4 +1,8 @@
 var audioPrefMute = localStorage.getItem("audio_pref");
+var musicAccept = localStorage.getItem("music_accept");
+if (musicAccept) {
+  $(".music_tip").css({ display: "none" });
+}
 var page = $("body").attr("id"),
   pageLang = $("html").attr("lang"),
   animCircle = $(".animated_circle"),
@@ -19,7 +23,7 @@ var page = $("body").attr("id"),
   audio,
   isAudio = false,
   isMuted = audioPrefMute ? true : false,
-  isMusicAccepted = false,
+  isMusicAccepted = musicAccept ? true : false,
   isMenu = false,
   isFired = false,
   menuScroll = false,
@@ -121,7 +125,7 @@ $(window).on("load", function () {
         $(".equalizer").addClass("muted");
 
         music();
-    
+
         window.onblur = function () {
           if (foucsTO) {
             clearTimeout(foucsTO);
@@ -242,191 +246,193 @@ $(window).on("load", function () {
 
               t.css({ "background-image": "url(" + s + ")" });
             });
+
+            if (isMusicAccepted && totalScripts == 2) {
+              runLoader();
+            }
           });
         });
 
         $("body").click(function () {
           if (!isMusicAccepted && totalScripts == 2) {
             isMusicAccepted = true;
-
-            $(".equalizer").removeClass("muted");
-
-            audio.play();
-
-            isMuted = false;
-
-            isAudio = true;
-
-            var loaderImgsTL = new TimelineMax({ repeat: -1 }),
-              loaderVal = { count: 0 },
-              shapesTL = new TimelineMax({ paused: true, repeat: -1 }),
-              totalIMGs = $(".loader_bg").length - 1,
-              activeIMG = 0;
-
-            loaderTL = new TimelineMax();
-
-            loaderImgsTL
-              .call(function () {
-                activeIMG != totalIMGs
-                  ? (activeIMG = activeIMG + 1)
-                  : (activeIMG = 0);
-
-                $(".loader_bg").removeClass("active");
-
-                $(".loader_bg").eq(activeIMG).addClass("active");
-
-                loaderVal = { count: 0 };
-              })
-
-              .to(loaderVal.count, 2, { val: 1 });
-
-            shapesTL.to(".loader_shapes", 5, {
-              rotate: 360,
-              ease: Power0.easeNone,
-            });
-
-            loaderTL
-              .to(
-                ".music_tip",
-                0.5,
-                { autoAlpha: 0, scale: 0.9, ease: Power3.easeIn },
-                0
-              )
-
-              .to(".equalizer", 0.5, { autoAlpha: 1, ease: Power3.easeOut }, 0)
-
-              .call(function () {
-                $(".music_tip").remove();
-
-                shapesTL.play();
-              })
-
-              .to(
-                ".loader_wrap",
-                0.5,
-                { autoAlpha: 1, ease: Power3.easeOut },
-                0
-              )
-
-              .staggerFrom(
-                "._ele",
-                1,
-                { scale: 1.2, autoAlpha: 0, ease: Back.easeOut },
-                0.1,
-                0.5
-              )
-
-              .call(function () {
-                preloadPictures(siteIMGS, function (e, i) {
-                  loadingIntrvl = setInterval(function () {
-                    if (LoadingPerc == 1) {
-                      clearInterval(loadingIntrvl);
-
-                      shapesTL.pause();
-
-                      loaderImgsTL.pause();
-
-                      var theArray = [
-                        31, 58, 88, 121, 148, 178, 208, 238, 273, 300, 331, 0,
-                      ];
-                      var shapesArray = [8, 7, 6, 5, 4, 3, 2, 1, 0, 11, 10, 9];
-
-                      var goal = calculateAngle(
-                        document.querySelector(".loader_shapes")
-                      );
-                      var closest = null;
-
-                      TweenMax.to(".loader_select", 1, {
-                        scaleY: 1,
-                        ease: Power3.easeOut,
-                      });
-
-                      loaderTL
-                        .to(".loader_shapes", 1, {
-                          rotate: getVal(theArray, goal),
-                          ease: Power3.easeOut,
-                        })
-
-                        .call(function () {
-                          appendImgs();
-
-                          isFired = true;
-
-                          homeFunction();
-
-                          TweenMax.to(".ld_tube, .ld_perc", 1, {
-                            autoAlpha: 0,
-                            ease: Power3.easeOut,
-                          });
-                        })
-
-                        .staggerTo(
-                          "._ele",
-                          1,
-                          { scale: 0.8, autoAlpha: 0, ease: Back.easeInOut },
-                          0.2
-                        )
-
-                        .call(function () {
-                          $(".loader").remove();
-
-                          var fireTL = new TimelineMax();
-
-                          splitA = new SplitText(".main_heading h3", {
-                            type: "lines",
-                            wordsClass: "SplitClass",
-                          });
-                          splitB = new SplitText(".main_heading p", {
-                            type: "lines",
-                            wordsClass: "SplitClass",
-                          });
-
-                          $("#main").addClass("active");
-
-                          fireTL
-                            .staggerFromTo(
-                              [splitB.lines, splitA.lines],
-                              1,
-                              { y: 120, autoAlpha: 0 },
-                              { y: 0, autoAlpha: 1, ease: Power3.easeOut },
-                              0.1,
-                              0
-                            )
-
-                            .staggerFrom(
-                              "article",
-                              1,
-                              {
-                                y: function (index, target) {
-                                  return height + target.offsetTop + 200;
-                                },
-                                ease: Power3.easeOut,
-                              },
-                              0.05,
-                              0.5
-                            )
-
-                            .call(function () {
-                              $("#main").addClass("ready progress");
-
-                              $("article").removeAttr("style");
-
-                              startAnimation = true;
-                            });
-                        });
-
-                      $(
-                        "#shape-" +
-                          shapesArray[theArray.indexOf(getVal(theArray, goal))]
-                      ).addClass("active");
-                    }
-                  }, 10);
-                });
-              });
+            localStorage.setItem("music_accept", true);
+            runLoader();
           }
         });
       }
     }, 50);
+    function runLoader() {
+      $(".equalizer").removeClass("muted");
+
+      audio.play();
+
+      isMuted = false;
+
+      isAudio = true;
+
+      var loaderImgsTL = new TimelineMax({ repeat: -1 }),
+        loaderVal = { count: 0 },
+        shapesTL = new TimelineMax({ paused: true, repeat: -1 }),
+        totalIMGs = $(".loader_bg").length - 1,
+        activeIMG = 0;
+
+      loaderTL = new TimelineMax();
+
+      loaderImgsTL
+        .call(function () {
+          activeIMG != totalIMGs
+            ? (activeIMG = activeIMG + 1)
+            : (activeIMG = 0);
+
+          $(".loader_bg").removeClass("active");
+
+          $(".loader_bg").eq(activeIMG).addClass("active");
+
+          loaderVal = { count: 0 };
+        })
+
+        .to(loaderVal.count, 2, { val: 1 });
+
+      shapesTL.to(".loader_shapes", 5, {
+        rotate: 360,
+        ease: Power0.easeNone,
+      });
+
+      loaderTL
+        .to(
+          ".music_tip",
+          0.5,
+          { autoAlpha: 0, scale: 0.9, ease: Power3.easeIn },
+          0
+        )
+
+        .to(".equalizer", 0.5, { autoAlpha: 1, ease: Power3.easeOut }, 0)
+
+        .call(function () {
+          $(".music_tip").remove();
+
+          shapesTL.play();
+        })
+
+        .to(".loader_wrap", 0.5, { autoAlpha: 1, ease: Power3.easeOut }, 0)
+
+        .staggerFrom(
+          "._ele",
+          1,
+          { scale: 1.2, autoAlpha: 0, ease: Back.easeOut },
+          0.1,
+          0.5
+        )
+
+        .call(function () {
+          preloadPictures(siteIMGS, function (e, i) {
+            loadingIntrvl = setInterval(function () {
+              if (LoadingPerc == 1) {
+                clearInterval(loadingIntrvl);
+
+                shapesTL.pause();
+
+                loaderImgsTL.pause();
+
+                var theArray = [
+                  31, 58, 88, 121, 148, 178, 208, 238, 273, 300, 331, 0,
+                ];
+                var shapesArray = [8, 7, 6, 5, 4, 3, 2, 1, 0, 11, 10, 9];
+
+                var goal = calculateAngle(
+                  document.querySelector(".loader_shapes")
+                );
+                var closest = null;
+
+                TweenMax.to(".loader_select", 1, {
+                  scaleY: 1,
+                  ease: Power3.easeOut,
+                });
+
+                loaderTL
+                  .to(".loader_shapes", 1, {
+                    rotate: getVal(theArray, goal),
+                    ease: Power3.easeOut,
+                  })
+
+                  .call(function () {
+                    appendImgs();
+
+                    isFired = true;
+
+                    homeFunction();
+
+                    TweenMax.to(".ld_tube, .ld_perc", 1, {
+                      autoAlpha: 0,
+                      ease: Power3.easeOut,
+                    });
+                  })
+
+                  .staggerTo(
+                    "._ele",
+                    1,
+                    { scale: 0.8, autoAlpha: 0, ease: Back.easeInOut },
+                    0.2
+                  )
+
+                  .call(function () {
+                    $(".loader").remove();
+
+                    var fireTL = new TimelineMax();
+
+                    splitA = new SplitText(".main_heading h3", {
+                      type: "lines",
+                      wordsClass: "SplitClass",
+                    });
+                    splitB = new SplitText(".main_heading p", {
+                      type: "lines",
+                      wordsClass: "SplitClass",
+                    });
+
+                    $("#main").addClass("active");
+
+                    fireTL
+                      .staggerFromTo(
+                        [splitB.lines, splitA.lines],
+                        1,
+                        { y: 120, autoAlpha: 0 },
+                        { y: 0, autoAlpha: 1, ease: Power3.easeOut },
+                        0.1,
+                        0
+                      )
+
+                      .staggerFrom(
+                        "article",
+                        1,
+                        {
+                          y: function (index, target) {
+                            return height + target.offsetTop + 200;
+                          },
+                          ease: Power3.easeOut,
+                        },
+                        0.05,
+                        0.5
+                      )
+
+                      .call(function () {
+                        $("#main").addClass("ready progress");
+
+                        $("article").removeAttr("style");
+
+                        startAnimation = true;
+                      });
+                  });
+
+                $(
+                  "#shape-" +
+                    shapesArray[theArray.indexOf(getVal(theArray, goal))]
+                ).addClass("active");
+              }
+            }, 10);
+          });
+        });
+    }
   });
 });
 
