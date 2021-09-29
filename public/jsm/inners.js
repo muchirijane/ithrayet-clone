@@ -1,3 +1,6 @@
+var audioPrefMute = localStorage.getItem("audio_pref");
+var firstIntr = localStorage.getItem("first_int");
+console.log(audioPrefMute);
 var page = $("body").attr("id"),
   pageLang = $("html").attr("lang"),
   scrollVal = 0,
@@ -16,9 +19,9 @@ var page = $("body").attr("id"),
   curTL2,
   cursor,
   audio,
-  isAudio = false,
-  isMuted = true,
-  firstInteract = false,
+  isAudio = audioPrefMute ? false : true,
+  isMuted = audioPrefMute ? true : false,
+  firstInteract = firstIntr ? true : false,
   curX,
   curY,
   circle = $(".circle_set"),
@@ -120,6 +123,7 @@ $(window).on("load", function () {
 
       if (isAudio && !isMuted) {
         audio.pause();
+        $(".equalizer").addClass("muted");
       }
     };
 
@@ -137,8 +141,18 @@ $(window).on("load", function () {
 
       if (isAudio && !isMuted) {
         audio.play();
+        $(".equalizer").removeClass("muted");
       }
     };
+
+    window.setTimeout(function () {
+      console.log(isAudio);
+      if (audioPrefMute === null && isAudio) {
+        audio.play();
+        window.clearTimeout();
+        $(".equalizer").removeClass("muted");
+      }
+    }, 1000);
 
     $("body").addClass("progress");
 
@@ -301,18 +315,21 @@ function music() {
       audio.pause();
 
       isMuted = true;
+      localStorage.setItem("audio_pref", true);
     } else {
       $(this).removeClass("muted");
 
       audio.play();
 
       isMuted = false;
+      localStorage.removeItem("audio_pref");
     }
   });
 
   $("body").on("click", function () {
     if (!firstInteract) {
       firstInteract = true;
+      localStorage.setItem("first_int", true);
       $(".equalizer").removeClass("muted");
       audio.play();
       isMuted = false;
