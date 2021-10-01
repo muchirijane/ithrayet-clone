@@ -1,6 +1,7 @@
 var audioPrefMute = localStorage.getItem("audio_pref");
 var firstIntr = localStorage.getItem("first_int");
-console.log(audioPrefMute);
+var showLoader = localStorage.getItem("show_loader");
+
 var page = $("body").attr("id"),
   pageLang = $("html").attr("lang"),
   scrollVal = 0,
@@ -157,8 +158,12 @@ $(window).on("load", function () {
     $("body").addClass("progress");
 
     $(".equalizer").addClass("muted");
-
-    $("#loader_logo").fadeIn().addClass("animated");
+    if (showLoader == null) {
+      $("#loader_logo").fadeIn().addClass("animated");
+    } else {
+      $("#loader_logo").addClass("animated");
+      $("#loader_logo").hide();
+    }
 
     siteIntrvl = setInterval(function () {
       if (isPageLoaded) {
@@ -341,10 +346,11 @@ function music() {
 function fire() {
   loaderTL = new TimelineMax();
 
-  $("#loader_logo").removeClass("animated");
+  if (showLoader == null) {
+    $("#loader_logo").removeClass("animated");
+  } 
 
   music();
-
   loaderTL
 
     .to(".site_loader", 1, { autoAlpha: 0, ease: Power3.easeIn }, 0.5)
