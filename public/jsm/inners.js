@@ -160,6 +160,7 @@ $(window).on("load", function () {
     $(".equalizer").addClass("muted");
     if (showLoader == null) {
       $("#loader_logo").fadeIn().addClass("animated");
+      localStorage.setItem('show_loader',true)
     } else {
       $("#loader_logo").addClass("animated");
       $("#loader_logo").hide();
