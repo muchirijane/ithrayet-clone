@@ -386,6 +386,14 @@ strong {
 
 .tabs_bar .tab_content {
 	position: relative;
+ 
+	width: 100%;
+}
+.tabs_bar .tab_content span{
+	text-overflow: ellipsis;
+	overflow: hidden;
+	width: 100%;
+	text-align: center;
 }
 
 .tabs_sides {
