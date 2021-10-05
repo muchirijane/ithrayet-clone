@@ -10,10 +10,7 @@ const CenterTextSection = (props) => {
     <div className="section_sides exp_sides flex">
       {content.map((card, key) => {
         return (
-          <Link
-            href={`/join-experience/${card.slug}`}
-            key={`exp-text-${key}`}
-          >
+          <Link href={`/join-experience/${card.slug}`} key={`exp-text-${key}`}>
             <a
               className="exp_set _curTL1"
               data-title="View"
@@ -34,9 +31,7 @@ const CenterTextSection = (props) => {
                 <span className="f_40 alt flex">
                   <span>{card.title}</span>
                   <span className="f_16 norm">
-                    /{" "}
-                    {card.date &&
-                      format(new Date(card.date), "yyyy")}
+                    / {card.date && format(new Date(card.date), "yyyy")}
                   </span>
                 </span>
                 <span className="f_16">{card.quote}</span>
@@ -45,13 +40,14 @@ const CenterTextSection = (props) => {
           </Link>
         );
       })}
-
-      <div className="row_middle flex">
-        <strong
-          className="f_40 uppercase"
-          dangerouslySetInnerHTML={{ __html: StripPTags(centerText) }}
-        />
-      </div>
+      {centerText && (
+        <div className="row_middle flex">
+          <strong
+            className="f_40 uppercase"
+            dangerouslySetInnerHTML={{ __html: StripPTags(centerText) }}
+          />
+        </div>
+      )}
     </div>
   );
 };

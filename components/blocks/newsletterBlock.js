@@ -35,7 +35,7 @@ const NewsLetterBlock = ({ sectionData }) => {
     if (data) {
       setThankYou(true);
       formRef.current.reset();
-      $('input, textarea').blur();
+      $("input, textarea").blur();
     }
   }, [data]);
 
@@ -62,19 +62,27 @@ const NewsLetterBlock = ({ sectionData }) => {
             title={"ALL DONE, You subscribed to our Newsletter"}
             description={`Thank you for subscribing.`}
             onClose={setThankYou}
-            display = {isThankYou}
+            display={isThankYou}
           />
-          <h3
-            className="_inOut"
-            dangerouslySetInnerHTML={{ __html: StripPTags(title) }}
+          {title && (
+            <h3
+              className="_inOut"
+              dangerouslySetInnerHTML={{ __html: StripPTags(title) }}
+              style={{ display: isThankYou ? "none" : "block" }}
+            />
+          )}
+          {description && (
+            <h6
+              className="_inOut"
+              dangerouslySetInnerHTML={{ __html: StripPTags(description) }}
+              style={{ display: isThankYou ? "none" : "block" }}
+            />
+          )}
+
+          <div
+            className="form_set"
             style={{ display: isThankYou ? "none" : "block" }}
-          />
-          <h6
-            className="_inOut"
-            dangerouslySetInnerHTML={{ __html: StripPTags(description) }}
-            style={{ display: isThankYou ? "none" : "block" }}
-          />
-          <div className="form_set" style={{ display: isThankYou ? "none" : "block" }}>
+          >
             <form onSubmit={handleSubmit(onSubmit)} ref={formRef}>
               <div className="input_set buildup">
                 <input

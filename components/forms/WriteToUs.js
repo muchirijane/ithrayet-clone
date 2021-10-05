@@ -37,7 +37,7 @@ const WriteToUsForm = (props) => {
     if (data) {
       setThankYou(true);
       formRef.current.reset();
-      $('input, textarea').blur();
+      $("input, textarea").blur();
     }
   }, [data]);
 
@@ -82,20 +82,29 @@ const WriteToUsForm = (props) => {
             onClose={setThankYou}
             display={{ display: isThankYou ? "flex" : "none" }}
           />
-          <div className="hero_text flex" style={{ display: isThankYou ? "none" : "flex" }}>
-            <strong
-              className="f_80 uppercase"
-              dangerouslySetInnerHTML={{
-                __html: StripPTags(sectionData.title),
-              }}
-            />
-
-            <div
-              className="f_20 less_opacity"
-              dangerouslySetInnerHTML={{ __html: sectionData.description }}
-            />
+          <div
+            className="hero_text flex"
+            style={{ display: isThankYou ? "none" : "flex" }}
+          >
+            {sectionData?.title && (
+              <strong
+                className="f_80 uppercase"
+                dangerouslySetInnerHTML={{
+                  __html: StripPTags(sectionData.title),
+                }}
+              />
+            )}
+            {sectionData?.description && (
+              <div
+                className="f_20 less_opacity"
+                dangerouslySetInnerHTML={{ __html: sectionData.description }}
+              />
+            )}
           </div>
-          <div className="form_set inner_form" style={{ display: isThankYou ? "none" : "block" }}>
+          <div
+            className="form_set inner_form"
+            style={{ display: isThankYou ? "none" : "block" }}
+          >
             <form onSubmit={handleSubmit(onSubmit)} ref={formRef}>
               <div className="input_set">
                 <input

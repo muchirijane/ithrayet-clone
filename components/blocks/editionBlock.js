@@ -23,13 +23,16 @@ const EditionBlock = ({ featuredEdition, dataUrl }) => {
 
       <div className="section_content flex full_bg">
         <div className="section_head">
-          <h1>
-            <span
-              dangerouslySetInnerHTML={{ __html: StripPTags(featuredTitle) }}
-            />
+          {featuredTitle && (
+            <h1>
+              <span
+                dangerouslySetInnerHTML={{ __html: StripPTags(featuredTitle) }}
+              />
 
-            {/* <span>{`${getTypeValue(type.value, t)} #${type.number}`}</span> */}
-          </h1>
+              {/* <span>{`${getTypeValue(type.value, t)} #${type.number}`}</span> */}
+            </h1>
+          )}
+
           <div className="ed_image _curTL1 _link">
             <div className="full_bg prx">
               <div className="cardWrapper full_bg">

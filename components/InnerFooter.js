@@ -39,7 +39,7 @@ const InnerFooter = (props) => {
     if (data) {
       setThankYou(true);
       formRef.current.reset();
-      $('input, textarea').blur();
+      $("input, textarea").blur();
     }
   }, [data]);
 
@@ -73,19 +73,22 @@ const InnerFooter = (props) => {
             className="hero_text flex"
             style={{ display: isThankYou ? "none" : "flex" }}
           >
-            <div
-              className="f_80 alt _ele"
-              dangerouslySetInnerHTML={{
-                __html: StripPTags(sectionData.title),
-              }}
-            />
-
-            <div
-              className="f_20 less_opacity _ele"
-              dangerouslySetInnerHTML={{
-                __html: StripPTags(sectionData.description),
-              }}
-            />
+            {sectionData?.title && (
+              <div
+                className="f_80 alt _ele"
+                dangerouslySetInnerHTML={{
+                  __html: StripPTags(sectionData.title),
+                }}
+              />
+            )}
+            {sectionData?.description && (
+              <div
+                className="f_20 less_opacity _ele"
+                dangerouslySetInnerHTML={{
+                  __html: StripPTags(sectionData.description),
+                }}
+              />
+            )}
 
             <div className="form_set">
               <form onSubmit={handleSubmit(onSubmit)} ref={formRef}>

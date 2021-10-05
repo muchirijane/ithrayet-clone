@@ -63,7 +63,7 @@ const JoinExperience = (props) => {
   const { t } = useTranslation("common");
 
   const { joinExperience, news_letter, projects, collaborateWithUs } = props;
- 
+
   return (
     joinExperience && (
       <Layout
@@ -160,12 +160,14 @@ const JoinExperience = (props) => {
                 <div className="section_content">
                   <div className="content_a">
                     <div className="hero_text flex has_shape">
-                      <strong
-                        className="f_80 uppercase"
-                        dangerouslySetInnerHTML={{
-                          __html: StripPTags(collaborateWithUs.title),
-                        }}
-                      />
+                      {collaborateWithUs?.title && (
+                        <strong
+                          className="f_80 uppercase"
+                          dangerouslySetInnerHTML={{
+                            __html: StripPTags(collaborateWithUs.title),
+                          }}
+                        />
+                      )}
 
                       <div
                         className="f_20 less_opacity"
