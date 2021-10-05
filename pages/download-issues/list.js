@@ -22,7 +22,7 @@ export const getStaticProps = async ({ locale }) => {
         news_letter: data.newsLetterForm,
         SEO: data.downloadIssue.seo,
       },
-      revalidate: 60,
+      revalidate: 25,
     };
   }
 };

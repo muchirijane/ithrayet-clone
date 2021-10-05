@@ -116,7 +116,7 @@ export const getStaticProps = async ({ locale }) => {
         SEO: data.homepage && data.homepage.seo,
         pageType: "home",
       },
-      revalidate: 60,
+      revalidate: 25,
     };
   }
 };

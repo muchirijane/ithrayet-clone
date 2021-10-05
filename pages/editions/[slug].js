@@ -82,7 +82,7 @@ export const getServerSideProps = async ({
         isExclusive: exclusive ? true : null,
         relatedArticles: relatedArticles && relatedArticles.articles,
       },
-      // revalidate: 60,
+      //      revalidate: 25,
     };
   }
 };
@@ -91,7 +91,7 @@ const Edition = (props) => {
   const { edition, isFeatured, isExclusive, relatedArticles } = props;
   const { locale } = useRouter();
   const { t } = useTranslation("common");
- 
+
   return (
     <Layout isInner seo={edition && edition.seo}>
       {edition && (
@@ -112,7 +112,11 @@ const Edition = (props) => {
               exclusive={isExclusive}
             />
           </div>
-          <section className="background-color" data-color={edition.color} data-tcolor={edition.colorText}>
+          <section
+            className="background-color"
+            data-color={edition.color}
+            data-tcolor={edition.colorText}
+          >
             <div className="custom_content">
               <div className="content_a">
                 <div className="content_b">

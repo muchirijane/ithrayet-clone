@@ -20,7 +20,7 @@ export const getStaticProps = async ({ locale }) => {
         galleries: data.galleries.length && ChunkArray(data.galleries, 12),
         SEO: data.listGallery.seo,
       },
-      revalidate: 60,
+      revalidate: 25,
     };
   }
 };

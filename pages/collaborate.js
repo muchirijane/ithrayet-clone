@@ -21,7 +21,7 @@ export const getStaticProps = async ({ locale }) => {
         collaborateWithUs: data.collaborateWithUs,
  
       },
-      revalidate: 60,
+      revalidate: 25,
     };
   }
 };

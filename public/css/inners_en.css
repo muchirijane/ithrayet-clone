@@ -570,3 +570,8 @@ h1,
     z-index: 20;
   }
 }
+
+
+.span{
+	display: inline;
+}

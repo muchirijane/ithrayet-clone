@@ -19,7 +19,7 @@ export const getStaticProps = async ({ locale }) => {
         symbols: data.symbols,
         SEO: data.listSymbol.seo,
       },
-      revalidate: 60,
+      revalidate: 25,
     };
   }
 };

@@ -21,6 +21,8 @@ export const GET_ARTICLE_DATA = gql`
       author {
         firstName
         lastName
+        slug
+        
       }
       timeToRead
       isFeatured

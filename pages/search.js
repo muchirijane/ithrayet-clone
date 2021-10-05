@@ -23,7 +23,7 @@ export const getStaticProps = async ({ locale }) => {
       props: {
         searchProps: data.search,
       },
-      revalidate: 60,
+      revalidate: 25,
     };
   }
 };

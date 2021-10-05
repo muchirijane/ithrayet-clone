@@ -1448,3 +1448,7 @@ body:not(.progress) .jn_circle_content {
 		visibility: hidden;
 	}
 }
+
+.span{
+	display: inline;
+}

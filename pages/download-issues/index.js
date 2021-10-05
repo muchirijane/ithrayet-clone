@@ -18,7 +18,7 @@ export const getStaticProps = async ({ locale }) => {
         editions: data.editions.length && data.editions,
         SEO: data.downloadIssue.seo,
       },
-      revalidate: 60,
+      revalidate: 25,
     };
   }
 };

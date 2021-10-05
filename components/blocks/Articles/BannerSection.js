@@ -14,6 +14,7 @@ const BannerSection = (props) => {
     cover,
     quote,
     author,
+    authorSlug,
     timeToRead,
     publishedDate,
     symbol,
@@ -132,7 +133,7 @@ const BannerSection = (props) => {
         <div className="content_b">
           <div className="outline_bar flex">
             <div className="f_20">
-              {t("by")} {`${author}`}
+              {t("by")} <Link href={`/creatives/${authorSlug}`} locale={locale}><a className="_link span">{author}</a></Link>
             </div>
             <div className="f_20">{`${format(
               new Date(publishedDate),

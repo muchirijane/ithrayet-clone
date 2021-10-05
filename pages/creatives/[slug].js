@@ -8,6 +8,7 @@ import SVGComp from "../../components/SVGComp";
 import { fetchAPI } from "../../helpers/api";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
+import { GET_RELATED_EDTION_ARTICLES } from "../../graphql/editions";
 // export const getStaticPaths = async ({ locales }) => {
 //   const { data } = await client.query({
 //     query: GET_CREATIVES_SLUGS,
@@ -67,6 +68,19 @@ export const getServerSideProps = async ({
     const artist = preview
       ? data_results
       : data_results.artists.length && data_results.artists[0];
+    const { data: relatedArticles } = await client.query({
+      query: GET_RELATED_EDTION_ARTICLES,
+      variables: {
+        limit: 3,
+        locale: locale,
+        where: {
+          author: {
+            id_eq: artist.id,
+          }
+        },
+      },
+    });
+
     const nextCreative = await client.query({
       query: GET_NEXT_CREATIVE,
       variables: {
@@ -87,6 +101,7 @@ export const getServerSideProps = async ({
     return {
       props: {
         creative: artist,
+        relatedArticles: relatedArticles && relatedArticles.articles,
         nextCreative:
           nextCreative.data.artists.length && nextCreative.data.artists[0],
       },
@@ -96,7 +111,7 @@ export const getServerSideProps = async ({
 
 const Creative = (props) => {
   const { t } = useTranslation("common");
-  const { creative, nextCreative } = props;
+  const { creative, nextCreative, relatedArticles } = props;
   const router = useRouter();
   const { locale } = router;
 
@@ -276,85 +291,59 @@ const Creative = (props) => {
               </div>
             </section>
 
-            {/* <section>
+            <section>
               <div className="custom_content">
                 <div className="content_a">
                   <div className="content_b">
                     <div className="side_head custom_head center">
-                      <strong className="f_80 uppercase">ARTICLES</strong>
+                      <strong className="f_80 uppercase">{`${t(
+                        "related_articles"
+                      )}`}</strong>
                       <div className="info_line">
                         <div className="f_20 centered_text">
-                          Don’t be so hard on yourself, you just don’t belong
-                          here.
+                          {`${t("related_qoute")}`}
                         </div>
                       </div>
                     </div>
                     <div className="section_sides three_cols flex">
-                      <div
-                        className="three_col _link"
-                        data-scroll
-                        data-scroll-direction="vertical"
-                        data-scroll-speed="1"
-                      >
-                        <img
-                          className="load_img"
-                          data-src={`${CMSPath}${creative.images[1].image.url}`}
-                          width="100%"
-                          height="auto"
-                          alt={`${creative.images[1].image.alternativeText}`}
-                        />
-                        <div className="info_line">
-                          <div className="f_16 centered_text">TEST CAP</div>
-                        </div>
-                        <div className="col_title centered_text">
-                          <div className="f_80 alt ">TEST</div>
-                        </div>
-                      </div>
-                      <div
-                        className="three_col"
-                        data-scroll
-                        data-scroll-direction="vertical"
-                        data-scroll-speed="1"
-                      >
-                        <img
-                          className="load_img"
-                          data-src={`${CMSPath}${creative.images[1].image.url}`}
-                          width="100%"
-                          height="auto"
-                          alt={`${creative.images[1].image.alternativeText}`}
-                        />
-                        <div className="info_line">
-                          <div className="f_16 centered_text">TEST CAP</div>
-                        </div>
-                        <div className="col_title centered_text">
-                          <div className="f_80 alt ">TEST</div>
-                        </div>
-                      </div>
-                      <div
-                        className="three_col"
-                        data-scroll
-                        data-scroll-direction="vertical"
-                        data-scroll-speed="1"
-                      >
-                        <img
-                          className="load_img"
-                          data-src={`${CMSPath}${creative.images[1].image.url}`}
-                          width="100%"
-                          height="auto"
-                          alt={`${creative.images[1].image.alternativeText}`}
-                        />
-                        <div className="info_line">
-                          <div className="f_16 centered_text">TEST CAP</div>
-                        </div>
-                        <div className="col_title centered_text">
-                          <div className="f_80 alt ">TEST</div>
-                        </div>
-                      </div>
+                      {relatedArticles &&
+                        relatedArticles.map((val, key) => (
+                          <div
+                            className="three_col"
+                            data-scroll
+                            data-scroll-direction="vertical"
+                            data-scroll-speed="1"
+                            key={`related_article-${key}`}
+                          >
+                            <Link
+                              href={`/articles/${val.slug}`}
+                              locale={locale}
+                            >
+                              <a className="_link _curTL1" data-title="Read">
+                                <img
+                                  className="load_img"
+                                  data-src={`${CMSPath}${val.cover.url}`}
+                                  width="100%"
+                                  height="auto"
+                                  alt={`${val.cover.alternativeText}`}
+                                />
+                                <div className="info_line">
+                                  <div className="f_16 centered_text">
+                                    {val.quote}
+                                  </div>
+                                </div>
+                                <div className="col_title centered_text">
+                                  <div className="f_80 alt ">{val.title}</div>
+                                </div>
+                              </a>
+                            </Link>
+                          </div>
+                        ))}
                     </div>
                   </div>
                 </div>
               </div>
-            </section> */}
+            </section>
 
             {nextCreative ? (
               <section>

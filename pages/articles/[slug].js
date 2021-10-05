@@ -205,6 +205,7 @@ const Article = (props) => {
               cover={article.cover}
               quote={article.quote}
               author={`${article.author.firstName} ${article.author.lastName}`}
+              authorSlug={article.author.slug}
               timeToRead={article.timeToRead}
               publishedDate={article.publishDate}
               symbol={article.edition.symbol}

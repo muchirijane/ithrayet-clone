@@ -1,4 +1,5 @@
 import useTranslation from "next-translate/useTranslation";
+import Link from "next/link";
 
 const QuoteWithText = (props) => {
   const { content } = props;

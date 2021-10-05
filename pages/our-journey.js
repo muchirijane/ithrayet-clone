@@ -22,7 +22,7 @@ export const getStaticProps = async ({ locale }) => {
         news_letter: data.newsLetterForm,
         write_to_us: data.writeToUsForm,
       },
-      revalidate: 60,
+      revalidate: 25,
     };
   }
 };
