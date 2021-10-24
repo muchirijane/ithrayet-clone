@@ -28,7 +28,7 @@ const BannerSection = (props) => {
             <div className="tags flex">
               {tags &&
                 tags.map((tag, key) => (
-                  <Link href={`/search?search_term=${tag.name}`}>
+                  <Link href={`/stories?catID=${tag.name}`}>
                     <a key={`article_tag-${key}`} style={{ color: tag.color }}>
                       {tag.name}
                     </a>
@@ -133,7 +133,10 @@ const BannerSection = (props) => {
         <div className="content_b">
           <div className="outline_bar flex">
             <div className="f_20">
-              {t("by")} <Link href={`/creatives/${authorSlug}`} locale={locale}><a className="_link span">{author}</a></Link>
+              {t("by")}{" "}
+              <Link href={`/creatives/${authorSlug}`} locale={locale}>
+                <a className="_link span">{author}</a>
+              </Link>
             </div>
             <div className="f_20">{`${format(
               new Date(publishedDate),

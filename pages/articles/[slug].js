@@ -192,7 +192,14 @@ const Article = (props) => {
               <div className="tab flex scrollTO" data-href="sections">
                 <i className="full_bg page_progress"></i>
                 <div className="tab_content">
-                  <span className="f_40 alt">{`${article.title}`}</span>
+                  <span
+                    className="f_40 alt"
+                    style={{
+                      color: article.colorText
+                        ? article.colorText
+                        : article.color,
+                    }}
+                  >{`${article.title}`}</span>
                 </div>
               </div>
             </div>
@@ -213,7 +220,7 @@ const Article = (props) => {
             {article.ArticleBlocks.length > 0 && (
               <ArticleDynamicComponents articleBlocks={article.ArticleBlocks} />
             )}
-            {relatedArticles?.length > 0 && (
+            {relatedArticles.length ? (
               <section>
                 <div className="custom_content">
                   <div className="content_a">
@@ -267,7 +274,7 @@ const Article = (props) => {
                   </div>
                 </div>
               </section>
-            )}
+            ) : null}
             {nextArticle && (
               <section ref={listInnerRef} data-scroll data-scroll-repeat>
                 <div className="section_content">

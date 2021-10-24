@@ -76,7 +76,7 @@ export const getServerSideProps = async ({
         where: {
           author: {
             id_eq: artist.id,
-          }
+          },
         },
       },
     });
@@ -98,6 +98,7 @@ export const getServerSideProps = async ({
         },
       },
     });
+
     return {
       props: {
         creative: artist,
@@ -147,7 +148,7 @@ const Creative = (props) => {
                         {creative.tags &&
                           creative.tags.map((tag, key) => (
                             <Link
-                              href={`/search?search_term=${tag.name}`}
+                              href={`/creatives?catID=${tag.name}`}
                               key={`creative_tag-link${key}`}
                             >
                               <a style={{ color: tag.color }}>{tag.name}</a>
@@ -291,59 +292,61 @@ const Creative = (props) => {
               </div>
             </section>
 
-            <section>
-              <div className="custom_content">
-                <div className="content_a">
-                  <div className="content_b">
-                    <div className="side_head custom_head center">
-                      <strong className="f_80 uppercase">{`${t(
-                        "related_articles"
-                      )}`}</strong>
-                      <div className="info_line">
-                        <div className="f_20 centered_text">
-                          {`${t("related_qoute")}`}
+            {relatedArticles.length ? (
+              <section>
+                <div className="custom_content">
+                  <div className="content_a">
+                    <div className="content_b">
+                      <div className="side_head custom_head center">
+                        <strong className="f_80 uppercase">{`${t(
+                          "related_articles"
+                        )}`}</strong>
+                        <div className="info_line">
+                          <div className="f_20 centered_text">
+                            {`${t("related_qoute")}`}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div className="section_sides three_cols flex">
-                      {relatedArticles &&
-                        relatedArticles.map((val, key) => (
-                          <div
-                            className="three_col"
-                            data-scroll
-                            data-scroll-direction="vertical"
-                            data-scroll-speed="1"
-                            key={`related_article-${key}`}
-                          >
-                            <Link
-                              href={`/articles/${val.slug}`}
-                              locale={locale}
+                      <div className="section_sides three_cols flex">
+                        {relatedArticles &&
+                          relatedArticles.map((val, key) => (
+                            <div
+                              className="three_col"
+                              data-scroll
+                              data-scroll-direction="vertical"
+                              data-scroll-speed="1"
+                              key={`related_article-${key}`}
                             >
-                              <a className="_link _curTL1" data-title="Read">
-                                <img
-                                  className="load_img"
-                                  data-src={`${CMSPath}${val.cover.url}`}
-                                  width="100%"
-                                  height="auto"
-                                  alt={`${val.cover.alternativeText}`}
-                                />
-                                <div className="info_line">
-                                  <div className="f_16 centered_text">
-                                    {val.quote}
+                              <Link
+                                href={`/articles/${val.slug}`}
+                                locale={locale}
+                              >
+                                <a className="_link _curTL1" data-title="Read">
+                                  <img
+                                    className="load_img"
+                                    data-src={`${CMSPath}${val.cover.url}`}
+                                    width="100%"
+                                    height="auto"
+                                    alt={`${val.cover.alternativeText}`}
+                                  />
+                                  <div className="info_line">
+                                    <div className="f_16 centered_text">
+                                      {val.quote}
+                                    </div>
                                   </div>
-                                </div>
-                                <div className="col_title centered_text">
-                                  <div className="f_80 alt ">{val.title}</div>
-                                </div>
-                              </a>
-                            </Link>
-                          </div>
-                        ))}
+                                  <div className="col_title centered_text">
+                                    <div className="f_80 alt ">{val.title}</div>
+                                  </div>
+                                </a>
+                              </Link>
+                            </div>
+                          ))}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </section>
+              </section>
+            ) : null}
 
             {nextCreative ? (
               <section>

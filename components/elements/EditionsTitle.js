@@ -1,8 +1,9 @@
 const EditionsTitle = (props) => {
-  const { id, tags, tagColors, type, title, pageURL, bgColor, textColor } = props;
+  const { id, tags, tagColors, type, title, pageURL, bgColor, textColor } =
+    props;
   const tagURL = tags
     .split(",")
-    .map((el) => `/search?search_term=${el.trim()}`)
+    .map((el) => `/editions?catID=${el.trim()}`)
     .toString();
   return (
     <div

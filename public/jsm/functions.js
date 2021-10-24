@@ -149,6 +149,8 @@ $(window).on("load", function () {
 
           if (isAudio && !isMuted) {
             audio.play();
+          } else {
+            audio.pause();
           }
         };
 
@@ -263,11 +265,12 @@ $(window).on("load", function () {
       }
     }, 50);
     function runLoader() {
-      $(".equalizer").removeClass("muted");
+      if (!isMuted) {
+        audio.play();
+        $(".equalizer").removeClass("muted");
+      }
 
-      audio.play();
-
-      isMuted = false;
+      // isMuted = false;
 
       isAudio = true;
 

@@ -1,4 +1,4 @@
-export const GET_FILTER_AUTHORS = `filter_authors : authors(locale: $locale)  {
+export const GET_FILTER_AUTHORS = `filter_authors : artists(locale: $locale)  {
   firstName
   lastName
 }

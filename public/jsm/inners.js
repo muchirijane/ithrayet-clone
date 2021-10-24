@@ -160,7 +160,7 @@ $(window).on("load", function () {
     $(".equalizer").addClass("muted");
     if (showLoader == null) {
       $("#loader_logo").fadeIn().addClass("animated");
-      localStorage.setItem('show_loader',true)
+      localStorage.setItem("show_loader", true);
     } else {
       $("#loader_logo").addClass("animated");
       $("#loader_logo").hide();
@@ -349,7 +349,7 @@ function fire() {
 
   if (showLoader == null) {
     $("#loader_logo").removeClass("animated");
-  } 
+  }
 
   music();
   loaderTL
@@ -2947,7 +2947,7 @@ function animateCard() {
     y: yPos,
     ease: Power3.easeOut,
     delay: function (index, target) {
-      return -target.id * 0.02;
+      return -target.id * 0.001;
     },
   });
 }

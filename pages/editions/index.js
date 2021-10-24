@@ -49,18 +49,28 @@ export const getServerSideProps = async ({ locale, query }) => {
     }
   }
 
+  // console.log("asdasd", {
+  //   variables: {
+  //     ...dates,
+  //     locale: locale,
+  //     authFirstName: (writer && writer != "" && writer.split(",")[0]) || "",
+  //     authLastName: (writer && writer != "" && writer.split(",")[1]) || "",
+  //     tags: catJson ? catJson : {},
+  //     alphabets: alphabetJson ? alphabetJson : {},
+  //   },
+  // });
   const { data } = await client.query({
     query: GET_EDITIONS_DATA,
     variables: {
       ...dates,
       locale: locale,
-      authFirstName: writer && writer != "" && writer.split(",")[0],
-      authLastName: writer && writer != "" && writer.split(",")[1],
-      tags: catJson && catJson,
-      alphabets: alphabetJson && alphabetJson,
+      authFirstName: (writer && writer != "" && writer.split(",")[0]) || "",
+      authLastName: (writer && writer != "" && writer.split(",")[1]) || "",
+      tags: catJson ? catJson : {},
+      alphabets: alphabetJson ? alphabetJson : {},
     },
   });
-
+  console.log(data);
   if (data) {
     return {
       props: {
@@ -71,6 +81,8 @@ export const getServerSideProps = async ({ locale, query }) => {
         filter_tags: data.filter_tags,
       },
     };
+  } else {
+    return {};
   }
 };
 
@@ -91,7 +103,7 @@ const Editions = (props) => {
       }}
     >
       <div className="page_head_set">
-        <h1>{t('pages.title_editions')}</h1>
+        <h1>{t("pages.title_editions")}</h1>
       </div>
 
       <div className="page_bar">

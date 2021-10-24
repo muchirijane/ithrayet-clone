@@ -20,6 +20,7 @@ export const GET_CREATIVES_DATA = gql`
         alternativeText
       }
       slug
+      id
     }
     listCreative(locale: $locale) {
       seo {
@@ -56,7 +57,7 @@ export const GET_CREATIVE_DATA = gql`
         url
       }
       quote
-
+      id
       profileImage {
         url
         alternativeText
