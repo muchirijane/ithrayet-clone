@@ -59,7 +59,6 @@ jQuery.cachedScript = function (url, options) {
 
 $(window).on("load", function () {
   $.ready.then(function () {
-    console.log("TEST LOAD INNER");
     $(".input_set input,.input_set textarea")
       .not('[type="checkbox"], [type="radio"]')
       .on({
@@ -122,6 +121,10 @@ $(window).on("load", function () {
         isFocus = false;
       }, 250);
 
+      if (scroll && scroll.stop) {
+        scroll.stop();
+      }
+
       if (isAudio && !isMuted) {
         audio.pause();
         $(".equalizer").addClass("muted");
@@ -138,6 +141,10 @@ $(window).on("load", function () {
       if (Sketch && !isRender) {
         isRender = true;
         Sketch.render();
+      }
+
+      if (scroll && scroll.start) {
+        scroll.start();
       }
 
       if (isAudio && !isMuted) {
@@ -3081,7 +3088,6 @@ function webGL() {
 
 						void main() {
 							vec4 color = texture2D(uTexture,vUv);
-
 							color.rgb -= clamp(-vVertexPosition.z, 0.0, 1.0);
 
 							color.rgb += clamp(vVertexPosition.z, 0.0, 1.0);
@@ -3133,7 +3139,6 @@ function webGL() {
           this.imageStore.forEach((o) => {
             o.img.crossOrigin = "anonymous";
             let bounds = o.img.getBoundingClientRect();
-
             o.mesh.scale.set(bounds.width, bounds.height, 1);
             o.mesh.position.y =
               val * 2 + (-bounds.top + this.height / 2 - bounds.height / 2);

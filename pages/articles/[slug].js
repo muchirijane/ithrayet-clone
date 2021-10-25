@@ -172,6 +172,7 @@ const Article = (props) => {
       }`;
     }
   }, [counter]);
+  console.log(article);
   return (
     <Layout isInner seo={article && article.seo}>
       {article && (
@@ -187,6 +188,9 @@ const Article = (props) => {
             data-scroll
             data-scroll-sticky
             data-scroll-target="#fixed-bar"
+            style={{
+              backgroundColor: article.color ? `${article.color}CC` : "none",
+            }}
           >
             <div className="tabs_bar">
               <div className="tab flex scrollTO" data-href="sections">
@@ -209,7 +213,11 @@ const Article = (props) => {
             <BannerSection
               tags={article.tags}
               title={article.title}
-              cover={article.cover}
+              cover={
+                article.cover_alternative
+                  ? article.cover_alternative
+                  : article.cover
+              }
               quote={article.quote}
               author={`${article.author.firstName} ${article.author.lastName}`}
               authorSlug={article.author.slug}

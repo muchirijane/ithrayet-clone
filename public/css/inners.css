@@ -2538,7 +2538,7 @@ body:not(.progress) .view_shape_set {
   width: 82.98vw;
   position: relative;
   margin: 0 auto;
-  margin-top: -15vw;
+  /* margin-top: -15vw; */
 }
 
 .cover_image.standerd {

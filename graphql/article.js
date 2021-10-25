@@ -22,12 +22,18 @@ export const GET_ARTICLE_DATA = gql`
         firstName
         lastName
         slug
-        
       }
       timeToRead
       isFeatured
       isExclusive
       cover {
+        url
+        alternativeText
+        caption
+        arabic_caption
+        selectedArtist
+      }
+      cover_alternative {
         url
         alternativeText
         caption
