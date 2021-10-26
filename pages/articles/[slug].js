@@ -135,6 +135,7 @@ const Article = (props) => {
   const listInnerRef = useRef();
 
   const [counter, setCounter] = useState(5);
+  let interval = null;
   useEffect(() => {
     if (listInnerRef && listInnerRef.current != null) {
       var elem = listInnerRef.current;
@@ -149,20 +150,24 @@ const Article = (props) => {
           ) {
             let count = 5;
 
-            window.setInterval(function () {
+            interval = setInterval(function () {
               count -= 1;
               if (!(count < 0)) {
                 setCounter(count);
               }
             }, 1000);
           } else {
-            window.clearInterval();
+            setCounter(5);
+            clearInterval(interval);
           }
         });
       });
 
       mutationObserver.observe(elem, { attributes: true });
     }
+    return () => {
+      clearInterval(interval);
+    };
   }, [listInnerRef.current]);
 
   useEffect(() => {
@@ -172,9 +177,9 @@ const Article = (props) => {
       }`;
     }
   }, [counter]);
-  console.log(article);
+
   return (
-    <Layout isInner seo={article && article.seo}>
+    <Layout isInner seo={article && article.seo} hasColorMode={true}>
       {article && (
         <div
           id="fixed-bar"
@@ -195,15 +200,15 @@ const Article = (props) => {
             <div className="tabs_bar">
               <div className="tab flex scrollTO" data-href="sections">
                 <i className="full_bg page_progress"></i>
-                <div className="tab_content">
-                  <span
-                    className="f_40 alt"
-                    style={{
-                      color: article.colorText
-                        ? article.colorText
-                        : article.color,
-                    }}
-                  >{`${article.title}`}</span>
+                <div
+                  className="tab_content"
+                  style={{
+                    color: article.colorText
+                      ? article.colorText
+                      : article.color,
+                  }}
+                >
+                  <span className="f_40 alt">{`${article.title}`}</span>
                 </div>
               </div>
             </div>

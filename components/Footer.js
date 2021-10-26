@@ -3,7 +3,7 @@ import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/dist/client/router";
 
-const Footer = ({ locale }) => {
+const Footer = ({ locale, hasColorMode }) => {
   const { t } = useTranslation("common");
   const router = useRouter();
   return (
@@ -16,6 +16,9 @@ const Footer = ({ locale }) => {
           <Link href={router.pathname} locale="en">
             <a className={`_curTL2 ${locale === "en" && "active"}`}>EN</a>
           </Link>
+          {hasColorMode ? (
+            <a className="_curTL2 reset_mode active">RESET</a>
+          ) : null}
         </div>
 
         <div className="social flex zero-font">

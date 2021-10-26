@@ -1,8 +1,8 @@
 const Modes = ({ locale }) => {
   if (locale === "en") {
-    return <EnMode/>;
+    return <EnMode />;
   } else {
-    return <ArMode/>;
+    return <ArMode />;
   }
 };
 
@@ -13,10 +13,10 @@ const EnMode = () => {
     <>
       <div
         className="mode_set no-select buildup _mainElement _curTL2"
-        style={{visibility: 'hidden'}}
+        style={{ visibility: "hidden" }}
       >
         <div className="mode_toggle">
-          <span data-title1="Light" data-title2="Dark">
+          <span data-title1="Light" data-title2="Dark" data-title3="Color">
             <i>Light</i> Mode
           </span>
           <svg
@@ -84,10 +84,10 @@ const ArMode = () => {
     <>
       <div
         className="mode_set no-select buildup _mainElement _curTL2"
-        style={{visibility: 'hidden'}}
+        style={{ visibility: "hidden" }}
       >
         <div className="mode_toggle">
-          <span data-title1="النهاري" data-title2="الليلي">
+          <span data-title1="النهاري" data-title2="الليلي" data-title3="Color">
             <i>النهاري</i> الوضع
           </span>
           <svg

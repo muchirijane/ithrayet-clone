@@ -96,7 +96,12 @@ const Edition = (props) => {
     <Layout isInner seo={edition && edition.seo}>
       {edition && (
         <>
-          <div id="fixed-bar" className="fixed-bar">
+          <div
+            id="fixed-bar"
+            className="fixed-bar"
+            data-color={edition.color}
+            data-tcolor={edition.colorText}
+          >
             <PageBarArticle articles={edition.articles} />
 
             <BannerTitle

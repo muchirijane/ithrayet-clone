@@ -3767,3 +3767,8 @@ video {
 .big-quote_contatiner {
   z-index: 1;
 }
+
+main,
+section {
+  transition: 300ms all;
+}

@@ -21,6 +21,7 @@ const Layout = ({
   IncludeNoSelect,
   isDownloadUI,
   seo,
+  hasColorMode,
 }) => {
   const { locale, reload } = useRouter();
   const [visibleLayout, setVisible] = useState(false);
@@ -36,7 +37,9 @@ const Layout = ({
   return (
     <div
       id="site"
-      className={IncludeNoSelect && "no-select"}
+      className={`${IncludeNoSelect ? "no-select" : ""} ${
+        hasColorMode ? "has-color-mode" : ""
+      }`}
       style={{ opacity: visibleLayout ? 1 : 0 }}
     >
       <SEO seo={seo} />
@@ -64,7 +67,7 @@ const Layout = ({
 
       <Modes locale={locale} />
 
-      <Footer locale={locale} />
+      <Footer locale={locale} hasColorMode={hasColorMode} />
 
       {!isInner && <Equalizer />}
       <script src="/jsm/jquery-3.5.1.min.js"></script>

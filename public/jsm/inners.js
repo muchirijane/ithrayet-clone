@@ -36,6 +36,7 @@ var page = $("body").attr("id"),
   ThreeLoaded = false,
   isDragging = false,
   isPageLoaded = false,
+  hasColorMode = $("#site").hasClass("has-color-mode"),
   threeINT;
 
 $.fn.isInViewport = function () {
@@ -361,7 +362,7 @@ function fire() {
   music();
   loaderTL
 
-    .to(".site_loader", 1, { autoAlpha: 0, ease: Power3.easeIn }, 0.5)
+    .to(".site_loader", 0.3, { autoAlpha: 0, ease: Power3.easeIn }, 0.2)
 
     .to("#site", 1, { autoAlpha: 1, ease: Power3.easeInOut })
 
@@ -401,7 +402,7 @@ function fire() {
         x: pageLang == "en" ? 100 : -100,
         autoAlpha: 0,
         ease: Power3.easeOut,
-        delay: 2,
+        delay: 0.8,
       },
       0.05,
       function () {
@@ -1796,7 +1797,7 @@ function globalFunc() {
 
   var modeTL = new TimelineMax({ paused: true }),
     curMode = "dark";
-  const curSavedMode = localStorage.getItem("in_mode");
+  const curSavedMode = hasColorMode ? "color" : localStorage.getItem("in_mode");
   curMode = curSavedMode ? curSavedMode : "dark";
   modeTL
     .set(".modes_helpers", { autoAlpha: 1 }, 0)
@@ -1859,9 +1860,31 @@ function globalFunc() {
       { scaleY: 0, ease: Power3.easeOut, transformOrigin: "0 0" },
       0.8
     );
+  var $el = $("#fixed-bar");
+  var color = $el.data("color");
+  var textColor = $el.data("tcolor");
+
+  if (hasColorMode) {
+    $(".svg-fill").css("fill", textColor);
+  }
+  $(".reset_mode").click(function (e) {
+    e.stopPropagation();
+
+    $el.find(".page_bar").css("background-color", `${color}CC`);
+    $el.find(".tab_content").css("color", textColor);
+
+    $("main, main section").css("color", textColor);
+    $("main").css("background-color", color);
+
+    $("#site").removeClass("light dark");
+    $(".svg-fill").css("fill", textColor);
+  });
 
   $(".mode_set").click(function (e) {
     e.stopPropagation();
+
+    $(".svg-fill").css("fill", "");
+
     $("main, main section").attr("style", function (i, style) {
       return (
         style &&
@@ -1876,6 +1899,17 @@ function globalFunc() {
         style.replace(/color[^;]+;?/g, "")
       );
     });
+
+    $el
+      .find(".page_bar")
+      .css(
+        "background-color",
+        `${curMode == "dark" ? "#000000" : "#ffffff"}CC`
+      );
+    $el
+      .find(".tab_content")
+      .css("color", curMode == "dark" ? "#ffffff" : "#000000");
+
     if (curMode == "dark") {
       curMode = "light";
       localStorage.setItem("in_mode", curMode);
