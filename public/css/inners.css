@@ -1765,6 +1765,11 @@ body:not(.progress) .table_row {
   z-index: 499;
 }
 
+.jr_row_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .jr_row_image.has_margin {
   margin-top: 10vw;
 }
@@ -3771,4 +3776,26 @@ video {
 main,
 section {
   transition: 300ms all;
+}
+
+.reset_mode {
+  position: fixed;
+  top: 200px;
+  transform: translateY(-50%);
+  z-index: 4999;
+  mix-blend-mode: exclusion;
+  color: #fff;
+  left: -20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-origin: center;
+  transform: rotate(-90deg);
+  padding: 0;
+  opacity: 0;
+  transition: 300ms all;
+}
+
+.reset_mode.active {
+  opacity: 1;
 }

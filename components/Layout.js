@@ -67,6 +67,8 @@ const Layout = ({
 
       <Modes locale={locale} />
 
+      {hasColorMode ? <a className=" reset_mode ">Reset to Default</a> : null}
+
       <Footer locale={locale} hasColorMode={hasColorMode} />
 
       {!isInner && <Equalizer />}

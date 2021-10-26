@@ -49,6 +49,7 @@ export const getServerSideProps = async ({ locale, query }) => {
       alphabets: alphabetJson && alphabetJson,
     },
   });
+  console.log(data);
 
   if (data) {
     return {

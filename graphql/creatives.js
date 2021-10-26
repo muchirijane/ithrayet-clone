@@ -7,6 +7,14 @@ export const GET_CREATIVES_DATA = gql`
       _and: [
         {_or:$alphabets}
         {_or:$tags}
+      ],
+      _or: [
+        {
+          ithraeyat_team_member: false,
+        },
+        {
+          ithraeyat_team_member_null: true,
+        }
       ]
     }) {
       firstName

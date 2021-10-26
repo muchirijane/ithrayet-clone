@@ -5,7 +5,7 @@
 
   "loader_musicwarn_text": "This Website contains music<br /> click anywhere to enable media playback",
 
-  "more_about_ithraeyat": "More About <br />Ithraeyat",
+  "more_about_ithraeyat": "Explore our <br />Ithraeyat",
   "all_projects": "All Projects",
   "all_editions": "All Editions",
   "all_creatives": "All Creatives",
@@ -26,9 +26,9 @@
     "projects": "Projects"
   },
   "homepage": {
-    "join_exp": "Join The experience",
-    "our_story": "Our Story",
-    "creatives": "Creatives",
+    "join_exp": "Join The Experience",
+    "our_story": "Our Journey",
+    "creatives": "Our Creatives",
     "editions": "Editions"
   },
 
@@ -92,7 +92,7 @@
   "explore_text": "Hold here to <br />Explore Editions",
   "search_bar": {
     "filter": "Filter",
-    "placeholder": "Are you looking for something?"
+    "placeholder": "What are you looking for?"
   },
   "filters": "Filters",
   "by_writer": "By Writer",

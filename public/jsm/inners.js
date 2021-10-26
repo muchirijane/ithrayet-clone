@@ -1869,7 +1869,7 @@ function globalFunc() {
   }
   $(".reset_mode").click(function (e) {
     e.stopPropagation();
-
+    $(this).removeClass("active");
     $el.find(".page_bar").css("background-color", `${color}CC`);
     $el.find(".tab_content").css("color", textColor);
 
@@ -1879,6 +1879,18 @@ function globalFunc() {
     $("#site").removeClass("light dark");
     $(".svg-fill").css("fill", textColor);
   });
+
+  if ($el && !hasColorMode) {
+    $el
+      .find(".page_bar")
+      .css(
+        "background-color",
+        `${curMode == "dark" ? "#000000" : "#ffffff"}CC`
+      );
+    $el
+      .find(".tab_content")
+      .css("color", curMode == "dark" ? "#ffffff" : "#000000");
+  }
 
   $(".mode_set").click(function (e) {
     e.stopPropagation();
@@ -1900,7 +1912,11 @@ function globalFunc() {
       );
     });
 
-    if (hasColorMode) {
+    if ($(".reset_mode").length) {
+      $(".reset_mode").addClass("active");
+    }
+
+    if ($el) {
       $el
         .find(".page_bar")
         .css(

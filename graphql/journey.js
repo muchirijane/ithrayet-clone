@@ -75,5 +75,19 @@ export const GET_JOURNEY_DATA = gql`
         description
       }
     }
+    artists(locale: $locale, where: { ithraeyat_team_member: true }) {
+      firstName
+      lastName
+      signature {
+        url
+      }
+
+      profileImage {
+        url
+        alternativeText
+      }
+      slug
+      id
+    }
   }
 `;

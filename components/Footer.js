@@ -16,9 +16,6 @@ const Footer = ({ locale, hasColorMode }) => {
           <Link href={router.pathname} locale="en">
             <a className={`_curTL2 ${locale === "en" && "active"}`}>EN</a>
           </Link>
-          {hasColorMode ? (
-            <a className="_curTL2 reset_mode active">RESET</a>
-          ) : null}
         </div>
 
         <div className="social flex zero-font">
