@@ -392,12 +392,13 @@ $(window).on("load", function () {
                       type: "lines",
                       wordsClass: "SplitClass",
                     });
-
                     $("#main").addClass("active");
-
+                    console.log(splitB, splitA);
                     fireTL
                       .staggerFromTo(
-                        [splitB.lines, splitA.lines],
+                        splitB.lines.length
+                          ? [splitB.lines, splitA.lines]
+                          : splitA.lines,
                         1,
                         { y: 120, autoAlpha: 0 },
                         { y: 0, autoAlpha: 1, ease: Power3.easeOut },

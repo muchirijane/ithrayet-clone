@@ -27,7 +27,7 @@ const MainBlock = ({ editions, sectionData, dataUrl }) => {
   return (
     <section id="main" style={{ visibility: "hidden" }} data-url={dataUrl}>
       <div className="main_heading flex full_bg">
-        <p>{title}</p>
+        {title ? <p>{title}</p> : null}
         <h3 dangerouslySetInnerHTML={{ __html: quote }} />
       </div>
 
