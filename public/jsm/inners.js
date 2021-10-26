@@ -1900,16 +1900,17 @@ function globalFunc() {
       );
     });
 
-    $el
-      .find(".page_bar")
-      .css(
-        "background-color",
-        `${curMode == "dark" ? "#000000" : "#ffffff"}CC`
-      );
-    $el
-      .find(".tab_content")
-      .css("color", curMode == "dark" ? "#ffffff" : "#000000");
-
+    if (hasColorMode) {
+      $el
+        .find(".page_bar")
+        .css(
+          "background-color",
+          `${curMode == "dark" ? "#000000" : "#ffffff"}CC`
+        );
+      $el
+        .find(".tab_content")
+        .css("color", curMode == "dark" ? "#ffffff" : "#000000");
+    }
     if (curMode == "dark") {
       curMode = "light";
       localStorage.setItem("in_mode", curMode);
