@@ -90,10 +90,10 @@ export const getServerSideProps = async ({
           },
           _or: [
             {
-              published_at_lt: article && article.published_at,
+              publishDate_lt: article && article.publishDate,
             },
             {
-              published_at_gt: article && article.published_at,
+              publishDate_gt: article && article.publishDate,
             },
           ],
         },
