@@ -3,11 +3,13 @@ import Link from "next/link";
 import SVGComp from "../../../SVGComp";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
+import CommonImageBlock from "@/components/elements/CommonImageBlock";
 
 const ImageStyle = (props) => {
   const { t } = useTranslation("common");
   const { locale } = useRouter();
   const { content } = props;
+  // console.log(content);
   return (
     <section>
       <div className="custom_content">
@@ -23,7 +25,9 @@ const ImageStyle = (props) => {
                     data-scroll-direction="vertical"
                     data-scroll-speed="1"
                   >
-                    <img
+                    <CommonImageBlock image={image} locale={locale} />
+
+                    {/* <img
                       className="load_img"
                       data-src={`${CMSPath}${image.image.url}`}
                       width="100%"
@@ -32,7 +36,11 @@ const ImageStyle = (props) => {
                     />
                     <div className="info_line">
                       <div className="f_14">
-                        {`${locale === 'en' ? image.image.caption : image.image.arabic_caption}`}{" "}
+                        {`${
+                          locale === "en"
+                            ? image.image.caption
+                            : image.image.arabic_caption
+                        }`}{" "}
                         {`${
                           image.image.selectedArtist ? t("artwork_by") : ""
                         } `}
@@ -69,7 +77,7 @@ const ImageStyle = (props) => {
                       <div className="col_shape">
                         <SVGComp src={`${image.symbol.symbol.url}`} />
                       </div>
-                    )}
+                    )} */}
                   </div>
                 ))}
             </div>

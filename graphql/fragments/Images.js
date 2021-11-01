@@ -7,6 +7,8 @@ fragment Images on ComponentSiteGeneralLinkedImages {
       arabic_caption
       selectedArtist
     }
+    show_caption
+    caption_override
     symbol {
       symbol {
         url

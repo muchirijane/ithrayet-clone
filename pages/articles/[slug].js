@@ -45,6 +45,7 @@ export const getServerSideProps = async ({
   previewData,
   locale,
 }) => {
+  // console.log(params);
   const slug = params.slug;
 
   let data_results;
@@ -64,6 +65,7 @@ export const getServerSideProps = async ({
         slug: slug,
         locale: locale,
       },
+      fetchPolicy: "no-cache",
     });
 
     data_results = data;
@@ -74,6 +76,7 @@ export const getServerSideProps = async ({
     };
   }
 
+  console.log(data_results);
   if (data_results) {
     const article = preview
       ? data_results
@@ -85,9 +88,13 @@ export const getServerSideProps = async ({
         limit: 1,
         locale: locale,
         where: {
-          edition: {
-            slug: article && article.edition.slug,
-          },
+          ...(article.edition
+            ? {
+                edition: {
+                  slug: article && article.edition.slug,
+                },
+              }
+            : {}),
           _or: [
             {
               publishDate_lt: article && article.publishDate,
@@ -99,20 +106,23 @@ export const getServerSideProps = async ({
         },
       },
     });
-
-    const { data: relatedArticles } = await client.query({
-      query: GET_RELATED_EDTION_ARTICLES,
-      variables: {
-        limit: 3,
-        locale: locale,
-        where: {
-          edition: {
-            id_eq: article.edition.id,
+    let relatedArticles = null;
+    if (article.edition) {
+      const related = await client.query({
+        query: GET_RELATED_EDTION_ARTICLES,
+        variables: {
+          limit: 3,
+          locale: locale,
+          where: {
+            edition: {
+              id_eq: article.edition.id,
+            },
+            id_ne: article.id,
           },
-          id_ne: article.id,
         },
-      },
-    });
+      });
+      relatedArticles = related.relatedArticles;
+    }
 
     return {
       props: {
@@ -121,7 +131,7 @@ export const getServerSideProps = async ({
         nextArticle: nextArticle.data.articles.length
           ? nextArticle.data.articles[0]
           : null,
-        relatedArticles: relatedArticles && relatedArticles.articles,
+        relatedArticles: relatedArticles ? relatedArticles.articles : [],
       },
     };
   }
@@ -136,39 +146,39 @@ const Article = (props) => {
 
   const [counter, setCounter] = useState(5);
   let interval = null;
-  useEffect(() => {
-    if (listInnerRef && listInnerRef.current != null) {
-      var elem = listInnerRef.current;
-      const mutationObserver = new MutationObserver(function (
-        mutationsList,
-        observer
-      ) {
-        mutationsList.forEach((mutation) => {
-          if (
-            mutation.target?.className &&
-            mutation.target?.className == "is-inview"
-          ) {
-            let count = 5;
+  // useEffect(() => {
+  //   if (listInnerRef && listInnerRef.current != null) {
+  //     var elem = listInnerRef.current;
+  //     const mutationObserver = new MutationObserver(function (
+  //       mutationsList,
+  //       observer
+  //     ) {
+  //       mutationsList.forEach((mutation) => {
+  //         if (
+  //           mutation.target?.className &&
+  //           mutation.target?.className == "is-inview"
+  //         ) {
+  //           let count = 5;
 
-            interval = setInterval(function () {
-              count -= 1;
-              if (!(count < 0)) {
-                setCounter(count);
-              }
-            }, 1000);
-          } else {
-            setCounter(5);
-            clearInterval(interval);
-          }
-        });
-      });
+  //           interval = setInterval(function () {
+  //             count -= 1;
+  //             if (!(count < 0)) {
+  //               setCounter(count);
+  //             }
+  //           }, 1000);
+  //         } else {
+  //           setCounter(5);
+  //           clearInterval(interval);
+  //         }
+  //       });
+  //     });
 
-      mutationObserver.observe(elem, { attributes: true });
-    }
-    return () => {
-      clearInterval(interval);
-    };
-  }, [listInnerRef.current]);
+  //     mutationObserver.observe(elem, { attributes: true });
+  //   }
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // }, [listInnerRef.current]);
 
   useEffect(() => {
     if (counter === 0) {
@@ -177,7 +187,7 @@ const Article = (props) => {
       }`;
     }
   }, [counter]);
-
+  console.log(article, "article");
   return (
     <Layout isInner seo={article && article.seo} hasColorMode={true}>
       {article && (
@@ -224,11 +234,15 @@ const Article = (props) => {
                   : article.cover
               }
               quote={article.quote}
-              author={`${article.author.firstName} ${article.author.lastName}`}
-              authorSlug={article.author.slug}
+              author={
+                article.author
+                  ? `${article.author.firstName} ${article.author.lastName}`
+                  : null
+              }
+              authorSlug={article.author ? article.author.slug : null}
               timeToRead={article.timeToRead}
               publishedDate={article.publishDate}
-              symbol={article.edition.symbol}
+              symbol={article.edition ? article.edition.symbol : null}
             />
             {article.ArticleBlocks.length > 0 && (
               <ArticleDynamicComponents articleBlocks={article.ArticleBlocks} />
@@ -316,10 +330,10 @@ const Article = (props) => {
                       data-scroll-speed="1"
                     >
                       <div className="section_head">
-                        <div className="f_30 less_opacity">
+                        {/* <div className="f_30 less_opacity">
                           {`${t("up_next")} `}
                           <span>{counter}</span>
-                        </div>
+                        </div> */}
 
                         <h1>{nextArticle.title}</h1>
                       </div>

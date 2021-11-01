@@ -16,26 +16,28 @@ const HoverImage = (props) => {
 
             <div className="table_set has_cards">
               {content.creativesList &&
-                content.creativesList.map((creator, key) => (
-                  <Link
-                    href={`/creatives/${creator.image.selectedArtist.slug}`}
-                    key={`creator-link-${key}`}
-                  >
-                    <a
-                      className="table_row flex"
-                      data-img={`${CMSPath}${creator.image.url}`}
+                content.creativesList.map((creator, key) =>
+                  creator.image.selectedArtist ? (
+                    <Link
+                      href={`/creatives/${creator.image.selectedArtist.slug}`}
+                      key={`creator-link-${key}`}
                     >
-                      <div className="table_col flex">
-                        <strong className="f_40 uppercase">
-                          {creator.title}
-                        </strong>
-                      </div>
-                      <div className="table_col flex">
-                        <strong className="f_20 uppercase">Read More</strong>
-                      </div>
-                    </a>
-                  </Link>
-                ))}
+                      <a
+                        className="table_row flex"
+                        data-img={`${CMSPath}${creator.image.url}`}
+                      >
+                        <div className="table_col flex">
+                          <strong className="f_40 uppercase">
+                            {creator.title}
+                          </strong>
+                        </div>
+                        <div className="table_col flex">
+                          <strong className="f_20 uppercase">Read More</strong>
+                        </div>
+                      </a>
+                    </Link>
+                  ) : null
+                )}
             </div>
           </div>
         </div>

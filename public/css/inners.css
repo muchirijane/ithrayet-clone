@@ -488,7 +488,7 @@ strong {
 }
 
 .tabs_bar:not(.multiple) .tab_content {
-  padding: 40px 20px;
+  padding: 20px;
 }
 
 .tabs_bar:not(.multiple) .tab_content.tabs_sides {
@@ -2575,7 +2575,7 @@ body:not(.progress) .view_shape_set {
 }
 
 .info_line {
-  padding-top: 30px;
+  padding-top: 20px;
   position: relative;
   display: flex;
 }
@@ -2584,7 +2584,7 @@ body:not(.progress) .view_shape_set {
   flex-direction: column !important;
 }
 
-.info_line p {
+.info_line:not(.image__gallery) p {
   margin-top: 20px;
 }
 

@@ -66,7 +66,7 @@ const QuoteWithText = dynamic(() =>
 
 const ArticleDynamicComponents = (props) => {
   const { articleBlocks } = props;
-
+  console.log(articleBlocks, "articleBlocks");
   return articleBlocks.map((block, key) => {
     switch (block.__typename) {
       case StandardArticleComponents.INTRODUCTION_SECTION:

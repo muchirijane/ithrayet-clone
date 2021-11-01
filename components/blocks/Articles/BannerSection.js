@@ -19,7 +19,7 @@ const BannerSection = (props) => {
     publishedDate,
     symbol,
   } = props;
-
+  console.log(timeToRead);
   return (
     <section>
       <div className="content_a">
@@ -57,13 +57,15 @@ const BannerSection = (props) => {
             <h1>{title}</h1>
           </div>
           <div className="cover_image standerd">
-            <img
-              className="preloadIMG"
-              data-img={`${CMSPath}${cover.url}`}
-              width="100%"
-              height="auto"
-              alt={cover.alternativeText}
-            />
+            {cover ? (
+              <img
+                className="preloadIMG"
+                data-img={`${CMSPath}${cover.url}`}
+                width="100%"
+                height="auto"
+                alt={cover.alternativeText}
+              />
+            ) : null}
           </div>
         </div>
 
@@ -101,7 +103,7 @@ const BannerSection = (props) => {
             ></canvas>
           </div>
         )}
-        {cover.caption && (
+        {cover && cover.caption && (
           <div className="info_line">
             <div className="f_14">
               {locale === "en" ? cover.caption : cover.arabic_caption}
@@ -133,10 +135,14 @@ const BannerSection = (props) => {
         <div className="content_b">
           <div className="outline_bar flex">
             <div className="f_20">
-              {t("by")}{" "}
-              <Link href={`/creatives/${authorSlug}`} locale={locale}>
-                <a className="_link span">{author}</a>
-              </Link>
+              {author ? (
+                <>
+                  {t("by")}{" "}
+                  <Link href={`/creatives/${authorSlug}`} locale={locale}>
+                    <a className="_link span">{author}</a>
+                  </Link>
+                </>
+              ) : null}
             </div>
             <div className="f_20">{`${format(
               new Date(publishedDate),

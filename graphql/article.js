@@ -175,7 +175,7 @@ export const GET_ARTICLE_DATA = gql`
           }
           title
           description
-
+          sectionTitle
           coverImage {
             ...ImagesWithTitle
           }
