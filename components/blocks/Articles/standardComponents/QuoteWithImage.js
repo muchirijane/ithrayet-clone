@@ -5,6 +5,8 @@ import SmallQuote from "./quoteSvg/smallQuote";
 import SVGComp from "../../../SVGComp";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
+import CommonImageBlock from "@/components/elements/CommonImageBlock";
+
 const QuoteWithImage = (props) => {
   const { t } = useTranslation("common");
   const { content } = props;
@@ -45,11 +47,11 @@ const QuoteWithImage = (props) => {
                       <div className="f_14">
                         {`${t("by")} `}{" "}
                         <strong>
-                          <Link href={`/creatives`}>
-                            <a target="_blank">
-                              {`${content.quoteWithImage_quote.artistName}`}
-                            </a>
-                          </Link>
+                          {/* <Link href={`/creatives`}>
+                            <a target="_blank"> */}
+                          {`${content.quoteWithImage_quote.artistName}`}
+                          {/* </a>
+                          </Link> */}
                         </strong>
                       </div>
                     </div>
@@ -58,57 +60,10 @@ const QuoteWithImage = (props) => {
               </div>
 
               <div className="text_side">
-                <img
-                  className="load_img"
-                  data-src={`${CMSPath}${content.quoteWithImage_image.image.url}`}
-                  width="100%"
-                  height="auto"
-                  alt={`${content.quoteWithImage_image.image.alternativeText}`}
+                <CommonImageBlock
+                  image={content.quoteWithImage_image}
+                  locale={locale}
                 />
-                <div className="info_line">
-                  {content.quoteWithImage_image.symbol && (
-                    <div className="info_shape">
-                      <SVGComp
-                        url_path={`${content.quoteWithImage_image.symbol.symbol.url}`}
-                      />
-                    </div>
-                  )}
-
-                  <div className="f_14">
-                    {locale === "en"
-                      ? content.quoteWithImage_image.image.caption
-                      : content.quoteWithImage_image.image.arabic_caption}{" "}
-                    {`${
-                      content.quoteWithImage_image.image.selectedArtist
-                        ? t("artwork_by")
-                        : ""
-                    } `}
-                    {content.quoteWithImage_image.image.selectedArtist && (
-                      <strong>
-                        {locale === "ar" ? (
-                          content.quoteWithImage_image.image.selectedArtist
-                            .localizations.length > 0 ? (
-                            <Link
-                              href={`/creatives/${content.quoteWithImage_image.image.selectedArtist.localizations[0].slug}`}
-                            >
-                              <a target="_blank">
-                                {`${content.quoteWithImage_image.image.selectedArtist.localizations[0].firstName} ${content.quoteWithImage_image.image.selectedArtist.localizations[0].lastName}`}
-                              </a>
-                            </Link>
-                          ) : null
-                        ) : (
-                          <Link
-                            href={`/creatives/${content.quoteWithImage_image.image.selectedArtist.slug}`}
-                          >
-                            <a target="_blank">
-                              {`${content.quoteWithImage_image.image.selectedArtist.firstName} ${content.quoteWithImage_image.image.selectedArtist.lastName}`}
-                            </a>
-                          </Link>
-                        )}
-                      </strong>
-                    )}
-                  </div>
-                </div>
               </div>
             </div>
           </div>

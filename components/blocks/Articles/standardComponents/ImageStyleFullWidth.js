@@ -2,6 +2,8 @@ import { CMSPath } from "../../../../helpers/imageCMSPath";
 import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
+import CommonImageBlock from "@/components/elements/CommonImageBlock";
+
 const ImageStyleFullWidth = (props) => {
   const { t } = useTranslation("common");
   const { content } = props;
@@ -23,48 +25,10 @@ const ImageStyleFullWidth = (props) => {
                 data-scroll-direction="vertical"
                 data-scroll-speed="2"
               >
-                <img
-                  className="load_img"
-                  data-src={`${CMSPath}${content.imageFullWidth_image[0].image.url}`}
-                  width="100%"
-                  height="auto"
-                  alt={`${content.imageFullWidth_image[0].image.alternativeText}`}
+                <CommonImageBlock
+                  image={content.imageFullWidth_image[0]}
+                  locale={locale}
                 />
-
-                <div className="info_line">
-                  <div className="f_14">
-                    {locale === 'en' ? content.imageFullWidth_image[0].image.caption : content.imageFullWidth_image[0].image.arabic_caption}{" "}
-                    {`${
-                      content.imageFullWidth_image[0].image.selectedArtist
-                        ? t("artwork_by")
-                        : ""
-                    } `}
-                    {content.imageFullWidth_image[0].image.selectedArtist && (
-                      <strong>
-                        {locale === "ar" ? (
-                          content.imageFullWidth_image[0].image.selectedArtist
-                            .localizations.length > 0 ? (
-                            <Link
-                              href={`/creatives/${content.imageFullWidth_image[0].image.selectedArtist.localizations[0].slug}`}
-                            >
-                              <a target="_blank">
-                                {`${content.imageFullWidth_image[0].image.selectedArtist.localizations[0].firstName} ${content.imageFullWidth_image[0].image.selectedArtist.localizations[0].lastName}`}
-                              </a>
-                            </Link>
-                          ) : null
-                        ) : (
-                          <Link
-                            href={`/creatives/${content.imageFullWidth_image[0].image.selectedArtist.slug}`}
-                          >
-                            <a target="_blank">
-                              {`${content.imageFullWidth_image[0].image.selectedArtist.firstName} ${content.imageFullWidth_image[0].image.selectedArtist.lastName}`}
-                            </a>
-                          </Link>
-                        )}
-                      </strong>
-                    )}
-                  </div>
-                </div>
               </div>
 
               <div
@@ -73,47 +37,10 @@ const ImageStyleFullWidth = (props) => {
                 data-scroll-direction="vertical"
                 data-scroll-speed="3"
               >
-                <img
-                  className="load_img"
-                  data-src={`${CMSPath}${content.imageFullWidth_image[1].image.url}`}
-                  width="100%"
-                  height="auto"
-                  alt="Article Name"
+                <CommonImageBlock
+                  image={content.imageFullWidth_image[1]}
+                  locale={locale}
                 />
-                <div className="info_line">
-                  <div className="f_14">
-                    {locale === 'en' ? content.imageFullWidth_image[1].image.caption : content.imageFullWidth_image[1].image.arabic_caption}{" "}
-                    {`${
-                      content.imageFullWidth_image[1].image.selectedArtist
-                        ? t("artwork_by")
-                        : ""
-                    } `}
-                    {content.imageFullWidth_image[1].image.selectedArtist && (
-                      <strong>
-                        {locale === "ar" ? (
-                          content.imageFullWidth_image[1].image.selectedArtist
-                            .localizations.length > 0 ? (
-                            <Link
-                              href={`/creatives/${content.imageFullWidth_image[1].image.selectedArtist.localizations[0].slug}`}
-                            >
-                              <a target="_blank">
-                                {`${content.imageFullWidth_image[1].image.selectedArtist.localizations[0].firstName} ${content.imageFullWidth_image[1].image.selectedArtist.localizations[0].lastName}`}
-                              </a>
-                            </Link>
-                          ) : null
-                        ) : (
-                          <Link
-                            href={`/creatives/${content.imageFullWidth_image[1].image.selectedArtist.slug}`}
-                          >
-                            <a target="_blank">
-                              {`${content.imageFullWidth_image[1].image.selectedArtist.firstName} ${content.imageFullWidth_image[1].image.selectedArtist.lastName}`}
-                            </a>
-                          </Link>
-                        )}
-                      </strong>
-                    )}
-                  </div>
-                </div>
               </div>
             </div>
           </div>

@@ -52,11 +52,11 @@ const QuoteWithText = (props) => {
                       <div className="f_14">
                         {`${t("by")} `}{" "}
                         <strong>
-                          <Link href={`/creatives`}>
-                            <a target="_blank">
-                              {content.quoteWithText.artistName}
-                            </a>
-                          </Link>
+                          {/* <Link href={`/creatives`}> */}
+                          {/* <a target="_blank"> */}
+                          {content.quoteWithText.artistName}
+                          {/* </a> */}
+                          {/* </Link> */}
                         </strong>
                       </div>
                     </div>

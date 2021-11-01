@@ -2,6 +2,7 @@ import Link from "next/link";
 import { CMSPath } from "../../../../helpers/imageCMSPath";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
+import CommonImageBlock from "@/components/elements/CommonImageBlock";
 
 const FullWidthImage = (props) => {
   const { t } = useTranslation("common");
@@ -11,48 +12,10 @@ const FullWidthImage = (props) => {
     <section>
       <div className="custom_content">
         <div className="media_set full">
-          <img
-            className="load_img"
-            data-src={`${CMSPath}${content.fullWidthImage_image.image.url}`}
-            width="100%"
-            height="auto"
-            alt={content.fullWidthImage_image.image.alternativeText}
+          <CommonImageBlock
+            image={content.fullWidthImage_image}
+            locale={locale}
           />
-
-          <div className="info_line">
-            <div className="f_14">
-              {locale  === 'en' ? content.fullWidthImage_image.image.caption : content.fullWidthImage_image.image.arabic_caption}{" "}
-              {`${
-                content.fullWidthImage_image.image.selectedArtist
-                  ? t("artwork_by")
-                  : ""
-              } `}
-              {content.fullWidthImage_image.image.selectedArtist && (
-                <strong>
-                  {locale === "ar" ? (
-                    content.fullWidthImage_image.image.selectedArtist
-                      .localizations.length > 0 ? (
-                      <Link
-                        href={`/creatives/${content.fullWidthImage_image.image.selectedArtist.localizations[0].slug}`}
-                      >
-                        <a target="_blank">
-                          {`${content.fullWidthImage_image.image.selectedArtist.localizations[0].firstName} ${content.fullWidthImage_image.image.selectedArtist.localizations[0].lastName}`}
-                        </a>
-                      </Link>
-                    ) : null
-                  ) : (
-                    <Link
-                      href={`/creatives/${content.fullWidthImage_image.image.selectedArtist.slug}`}
-                    >
-                      <a target="_blank">
-                        {`${content.fullWidthImage_image.image.selectedArtist.firstName} ${content.fullWidthImage_image.image.selectedArtist.lastName}`}
-                      </a>
-                    </Link>
-                  )}
-                </strong>
-              )}
-            </div>
-          </div>
         </div>
 
         <div className="content_a">

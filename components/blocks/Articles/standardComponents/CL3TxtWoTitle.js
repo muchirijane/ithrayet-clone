@@ -10,7 +10,7 @@ const CL3TxtWoTitle = (props) => {
                 <div
                   className="f_20 less_opacity"
                   dangerouslySetInnerHTML={{
-                    __html: content.cl3TWoT_content[0].description,
+                    __html: content.cl3TWoT_content[0].content,
                   }}
                 />
               </div>
@@ -19,7 +19,7 @@ const CL3TxtWoTitle = (props) => {
                 <div
                   className="f_20 less_opacity"
                   dangerouslySetInnerHTML={{
-                    __html: content.cl3TWoT_content[1].description,
+                    __html: content.cl3TWoT_content[1].content,
                   }}
                 />
               </div>
@@ -27,7 +27,7 @@ const CL3TxtWoTitle = (props) => {
                 <div
                   className="f_20 less_opacity"
                   dangerouslySetInnerHTML={{
-                    __html: content.cl3TWoT_content[2].description,
+                    __html: content.cl3TWoT_content[2].content,
                   }}
                 />
               </div>

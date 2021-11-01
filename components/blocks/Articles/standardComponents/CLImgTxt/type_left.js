@@ -2,6 +2,8 @@ import { CMSPath } from "../../../../../helpers/imageCMSPath";
 import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
+import CommonImageBlock from "@/components/elements/CommonImageBlock";
+
 const TypeLeft = (props) => {
   const { t } = useTranslation("common");
   const { title, description, image, isCentered } = props;
@@ -16,7 +18,12 @@ const TypeLeft = (props) => {
                 className="text_side"
                 style={isCentered ? { textAlign: "center" } : {}}
               >
-                <div className="f_80 alt"  style={isCentered ? { textAlign: "center" } : {}}>{title}</div>
+                <div
+                  className="f_80 alt"
+                  style={isCentered ? { textAlign: "center" } : {}}
+                >
+                  {title}
+                </div>
                 <div
                   className="f_20 less_opacity"
                   dangerouslySetInnerHTML={{ __html: description }}
@@ -29,43 +36,7 @@ const TypeLeft = (props) => {
                 data-scroll-direction="vertical"
                 data-scroll-speed="2"
               >
-                <img
-                  className="load_img"
-                  data-src={`${CMSPath}${image.image.url}`}
-                  width="100%"
-                  height="auto"
-                  alt={`${image.image.alternativeText}`}
-                />
-                <div className="info_line">
-                  <div className="f_14">
-                    {locale === 'en' ? image.image.caption : image.image.arabic_caption}{" "}
-                    {`${image.image.selectedArtist ? t("artwork_by") : ""} `}
-                    {image.image.selectedArtist && (
-                      <strong>
-                        {locale === "ar" ? (
-                          image.image.selectedArtist.localizations.length >
-                          0 ? (
-                            <Link
-                              href={`/creatives/${image.image.selectedArtist.localizations[0].slug}`}
-                            >
-                              <a target="_blank">
-                                {`${image.image.selectedArtist.localizations[0].firstName} ${image.image.selectedArtist.localizations[0].lastName}`}
-                              </a>
-                            </Link>
-                          ) : null
-                        ) : (
-                          <Link
-                            href={`/creatives/${image.image.selectedArtist.slug}`}
-                          >
-                            <a target="_blank">
-                              {`${image.image.selectedArtist.firstName} ${image.image.selectedArtist.lastName}`}
-                            </a>
-                          </Link>
-                        )}
-                      </strong>
-                    )}
-                  </div>
-                </div>
+                <CommonImageBlock image={image} locale={locale} />
               </div>
             </div>
           </div>

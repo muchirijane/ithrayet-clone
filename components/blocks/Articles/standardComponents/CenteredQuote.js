@@ -50,13 +50,7 @@ const CenteredQuote = (props) => {
                 <div className="info_line">
                   <div className="f_14">
                     {`${t("by")} `}{" "}
-                    <strong>
-                      <Link href="/creatives">
-                        <a target="_blank">
-                          {`${content.centeredQuote.artistName}`}
-                        </a>
-                      </Link>
-                    </strong>
+                    <strong>{`${content.centeredQuote.artistName}`}</strong>
                   </div>
                 </div>
               )}

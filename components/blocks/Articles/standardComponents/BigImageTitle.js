@@ -2,6 +2,7 @@ import { CMSPath } from "../../../../helpers/imageCMSPath";
 import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
+import CommonImageBlock from "@/components/elements/CommonImageBlock";
 
 const BigImageTitle = (props) => {
   const { t } = useTranslation("common");
@@ -18,48 +19,10 @@ const BigImageTitle = (props) => {
             </div>
 
             <div className="media_set">
-              <img
-                className="load_img"
-                data-src={`${CMSPath}${content.bigImageWT_image.image.url}`}
-                width="100%"
-                height="auto"
-                alt={content.bigImageWT_image.image.alternativeText}
+              <CommonImageBlock
+                image={content.bigImageWT_image}
+                locale={locale}
               />
-
-              <div className="info_line">
-                <div className="f_14">
-                  {locale === 'en' ? content.bigImageWT_image.image.caption : content.bigImageWT_image.image.arabic_caption}{" "}
-                  {`${
-                    content.bigImageWT_image.image.selectedArtist
-                      ? t("artwork_by")
-                      : ""
-                  } `}
-                  {content.bigImageWT_image.image.selectedArtist && (
-                    <strong>
-                      {locale === "ar" ? (
-                        content.bigImageWT_image.image.selectedArtist
-                          .localizations.length > 0 ? (
-                          <Link
-                            href={`/creatives/${content.bigImageWT_image.image.selectedArtist.localizations[0].slug}`}
-                          >
-                            <a target="_blank">
-                              {`${content.bigImageWT_image.image.selectedArtist.localizations[0].firstName} ${content.bigImageWT_image.image.selectedArtist.localizations[0].lastName}`}
-                            </a>
-                          </Link>
-                        ) : null
-                      ) : (
-                        <Link
-                          href={`/creatives/${content.bigImageWT_image.image.selectedArtist.slug}`}
-                        >
-                          <a target="_blank">
-                            {`${content.bigImageWT_image.image.selectedArtist.firstName} ${content.bigImageWT_image.image.selectedArtist.lastName}`}
-                          </a>
-                        </Link>
-                      )}
-                    </strong>
-                  )}
-                </div>
-              </div>
             </div>
           </div>
         </div>
