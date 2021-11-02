@@ -76,7 +76,6 @@ export const getServerSideProps = async ({
     };
   }
 
-  console.log(data_results);
   if (data_results) {
     const article = preview
       ? data_results
@@ -106,7 +105,8 @@ export const getServerSideProps = async ({
         },
       },
     });
-    let relatedArticles = null;
+    let relatedArticles = [];
+    console.log(article.edition);
     if (article.edition) {
       const related = await client.query({
         query: GET_RELATED_EDTION_ARTICLES,
@@ -121,8 +121,10 @@ export const getServerSideProps = async ({
           },
         },
       });
-      relatedArticles = related.relatedArticles;
+
+      relatedArticles = related.data.articles;
     }
+    console.log(relatedArticles, "relatedArticles");
 
     return {
       props: {
@@ -131,7 +133,7 @@ export const getServerSideProps = async ({
         nextArticle: nextArticle.data.articles.length
           ? nextArticle.data.articles[0]
           : null,
-        relatedArticles: relatedArticles ? relatedArticles.articles : [],
+        relatedArticles,
       },
     };
   }

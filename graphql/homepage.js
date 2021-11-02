@@ -54,7 +54,15 @@ export const GET_HOMEPAGE_DATA = gql`
         alternativeText
       }
     }
-    artists(locale: $locale) {
+    artists(
+      locale: $locale
+      where: {
+        _or: [
+          { ithraeyat_team_member: false }
+          { ithraeyat_team_member_null: true }
+        ]
+      }
+    ) {
       firstName
       lastName
       slug
