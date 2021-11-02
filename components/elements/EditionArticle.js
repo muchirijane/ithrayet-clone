@@ -28,8 +28,10 @@ const EditonArticle = (props) => {
               </div>
               <div className="section_side text_side">
                 <div className="article_title">
-                  <div className="f_16">{article.quote}</div>
-                  <div className="f_80 alt">{article.description}</div>
+                  <div className="f_16" style={{ margin: "0 0 15px" }}>
+                    {article.quote}
+                  </div>
+                  <div className="f_40 alt">{article.description}</div>
                 </div>
               </div>
             </a>

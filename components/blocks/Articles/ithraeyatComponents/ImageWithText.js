@@ -26,7 +26,7 @@ const ImageWithText = (props) => {
                   data-scroll-direction="vertical"
                   data-scroll-speed="2"
                 >
-                  <div className="f_40 uppercase">{content.sectionTitle}</div>
+                  <div className="f_80 uppercase">{content.sectionTitle}</div>
                 </div>
 
                 <CommonImageBlock

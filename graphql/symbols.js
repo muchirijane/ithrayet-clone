@@ -72,6 +72,7 @@ export const GET_SYMBOL_DATA = gql`
           url
         }
       }
+      movingTextTitle
       Title
       ideaTitle
       slug

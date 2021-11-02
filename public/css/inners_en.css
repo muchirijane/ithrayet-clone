@@ -74,8 +74,8 @@ h1,
 
 h1,
 .search_input input {
-  font-size: 18.75vw;
-  line-height: 15vw;
+  font-size: 10vw;
+  line-height: 10vw;
 }
 .tilt_cols .three_col:nth-child(2),
 .tilt_cols.reversed .three_col:last-child {
@@ -571,7 +571,6 @@ h1,
   }
 }
 
-
-.span{
-	display: inline;
+.span {
+  display: inline;
 }

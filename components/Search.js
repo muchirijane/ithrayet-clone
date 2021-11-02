@@ -6,7 +6,7 @@ import useTranslation from "next-translate/useTranslation";
 const SearchComponent = () => {
   const [search_term, onSearch] = useState();
   const { t } = useTranslation("common");
-
+  const router = useRouter();
   return (
     <div className="search_wrap full_bg flex">
       <div
@@ -23,10 +23,16 @@ const SearchComponent = () => {
         <input
           type="text"
           name="query"
-          placeholder={t('type_something')}
+          placeholder={t("type_something")}
           onChange={(e) => {
             onSearch(e.target.value);
           }}
+          onKeyPress={(event) => {
+            if (event.key === "Enter") {
+              router.push(`/search?search_term=${search_term}`);
+            }
+          }}
+          // onEnter={() => }
         />
       </div>
       <div className="inner_circle_set mg _el" data-dist="6">

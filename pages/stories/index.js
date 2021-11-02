@@ -226,6 +226,7 @@ const Stories = (props) => {
                     {stories &&
                       stories.map((story) => {
                         return story.articles.map((article, key) => {
+                          console.log(article);
                           return (
                             <Link
                               href={`/articles/${article.slug}`}
@@ -250,7 +251,9 @@ const Stories = (props) => {
                                   </div>
                                   <div className="story_details">
                                     <span className="f_40 alt">
-                                      {article.description}
+                                      {article.title
+                                        ? article.title
+                                        : article.description}
                                     </span>
                                     <div className="tags flex">
                                       {article.tags &&

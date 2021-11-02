@@ -10,7 +10,7 @@ const CenteredQuote = (props) => {
         <div className="content_a">
           <div className="centered_quote flex">
             <div className="quote_set">
-              <strong className="f_80 uppercase">
+              <strong className="f_40 uppercase">
                 <svg
                   width="96"
                   height="81"

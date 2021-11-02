@@ -55,6 +55,7 @@ export const getServerSideProps = async ({
         slug: slug,
         locale: locale,
       },
+      fetchPolicy: "no-cache",
     });
     data_results = data;
   }
@@ -115,7 +116,7 @@ const Creative = (props) => {
   const { creative, nextCreative, relatedArticles } = props;
   const router = useRouter();
   const { locale } = router;
-
+  console.log(relatedArticles);
   return (
     <Layout isInner seo={creative && creative.seo}>
       {creative && (
@@ -166,42 +167,46 @@ const Creative = (props) => {
                 <div className="content_a">
                   <div className="section_sides text_sides flex">
                     <div className="text_side">
-                      <div className="audio_circle" data-id="read1">
-                        <div className="crv_cont full_bg mg" data-dist="7">
-                          <div className="crv_text full_bg flex">
-                            <svg
-                              width="32"
-                              height="26"
-                              viewBox="0 0 32 26"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <g className="svg-fill">
-                                <path d="M14.0077 0.0595673C13.7453 -0.0554 13.4357 -0.00109864 13.2262 0.197826L5.78831 7.22248H0.722236C0.323032 7.22248 0 7.54551 0 7.94465V18.0556C0 18.4548 0.323032 18.7778 0.722236 18.7778H5.78831L13.2263 25.8025C13.3631 25.9323 13.5415 26 13.7221 26C13.8187 26 13.9161 25.981 14.0077 25.9408C14.2729 25.8272 14.4443 25.5663 14.4443 25.2778V0.722559C14.4442 0.434057 14.2729 0.173113 14.0077 0.0595673ZM12.9998 23.602L6.57115 17.5309C6.43715 17.4039 6.25942 17.3334 6.07533 17.3334H1.4444V8.66681H6.07533C6.25942 8.66681 6.43715 8.59626 6.57115 8.46931L12.9998 2.39832V23.602Z"></path>
-                                <path d="M25.1911 0.137696C24.8652 -0.0971817 24.4145 -0.0237868 24.1825 0.298501C23.9484 0.621533 24.0203 1.07294 24.3433 1.30707C28.094 4.02383 30.3326 8.39523 30.3326 13C30.3326 17.6048 28.094 21.9762 24.3433 24.693C24.0203 24.9271 23.9484 25.3785 24.1825 25.7015C24.3235 25.8962 24.5443 25.9999 24.7679 25.9999C24.9146 25.9999 25.0627 25.9554 25.1911 25.8623C29.3149 22.8748 31.7771 18.0661 31.7771 13C31.777 7.93394 29.3149 3.12529 25.1911 0.137696Z"></path>
-                                <path d="M21.2611 4.44262C20.9261 4.23103 20.4782 4.33191 20.2652 4.66971C20.053 5.00682 20.1545 5.45261 20.4923 5.66555C23.0363 7.26656 24.5554 10.008 24.5554 12.9984C24.5554 15.9888 23.0362 18.7302 20.4923 20.3313C20.1545 20.5443 20.0529 20.99 20.2652 21.3271C20.4027 21.5457 20.6376 21.665 20.8774 21.665C21.0087 21.665 21.1419 21.629 21.2611 21.5543C24.2282 19.6867 25.9999 16.4889 25.9999 12.9985C25.9999 9.50802 24.2282 6.31026 21.2611 4.44262Z"></path>
-                                <path d="M18.4683 9.53384C18.1481 9.29477 17.696 9.36248 17.4576 9.68124C17.2192 10.0014 17.2855 10.4543 17.605 10.6919C18.3512 11.2477 18.7786 12.0891 18.7786 13.0018C18.7786 13.9144 18.3511 14.7558 17.605 15.3116C17.2855 15.5492 17.2192 16.0021 17.4576 16.3223C17.5994 16.5127 17.8166 16.6129 18.0374 16.6129C18.1869 16.6129 18.3385 16.5663 18.4683 16.4697C19.5834 15.6396 20.2231 14.375 20.2231 13.0018C20.2231 11.6285 19.5833 10.364 18.4683 9.53384Z"></path>
-                              </g>
-                            </svg>
-                          </div>
-                          <div className="crv_stroke">
-                            <span className="spinner full_bg"></span>
+                      {creative.audioBio ? (
+                        <div className="audio_circle" data-id="read1">
+                          <div className="crv_cont full_bg mg" data-dist="7">
+                            <div className="crv_text full_bg flex">
+                              <svg
+                                width="32"
+                                height="26"
+                                viewBox="0 0 32 26"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <g className="svg-fill">
+                                  <path d="M14.0077 0.0595673C13.7453 -0.0554 13.4357 -0.00109864 13.2262 0.197826L5.78831 7.22248H0.722236C0.323032 7.22248 0 7.54551 0 7.94465V18.0556C0 18.4548 0.323032 18.7778 0.722236 18.7778H5.78831L13.2263 25.8025C13.3631 25.9323 13.5415 26 13.7221 26C13.8187 26 13.9161 25.981 14.0077 25.9408C14.2729 25.8272 14.4443 25.5663 14.4443 25.2778V0.722559C14.4442 0.434057 14.2729 0.173113 14.0077 0.0595673ZM12.9998 23.602L6.57115 17.5309C6.43715 17.4039 6.25942 17.3334 6.07533 17.3334H1.4444V8.66681H6.07533C6.25942 8.66681 6.43715 8.59626 6.57115 8.46931L12.9998 2.39832V23.602Z"></path>
+                                  <path d="M25.1911 0.137696C24.8652 -0.0971817 24.4145 -0.0237868 24.1825 0.298501C23.9484 0.621533 24.0203 1.07294 24.3433 1.30707C28.094 4.02383 30.3326 8.39523 30.3326 13C30.3326 17.6048 28.094 21.9762 24.3433 24.693C24.0203 24.9271 23.9484 25.3785 24.1825 25.7015C24.3235 25.8962 24.5443 25.9999 24.7679 25.9999C24.9146 25.9999 25.0627 25.9554 25.1911 25.8623C29.3149 22.8748 31.7771 18.0661 31.7771 13C31.777 7.93394 29.3149 3.12529 25.1911 0.137696Z"></path>
+                                  <path d="M21.2611 4.44262C20.9261 4.23103 20.4782 4.33191 20.2652 4.66971C20.053 5.00682 20.1545 5.45261 20.4923 5.66555C23.0363 7.26656 24.5554 10.008 24.5554 12.9984C24.5554 15.9888 23.0362 18.7302 20.4923 20.3313C20.1545 20.5443 20.0529 20.99 20.2652 21.3271C20.4027 21.5457 20.6376 21.665 20.8774 21.665C21.0087 21.665 21.1419 21.629 21.2611 21.5543C24.2282 19.6867 25.9999 16.4889 25.9999 12.9985C25.9999 9.50802 24.2282 6.31026 21.2611 4.44262Z"></path>
+                                  <path d="M18.4683 9.53384C18.1481 9.29477 17.696 9.36248 17.4576 9.68124C17.2192 10.0014 17.2855 10.4543 17.605 10.6919C18.3512 11.2477 18.7786 12.0891 18.7786 13.0018C18.7786 13.9144 18.3511 14.7558 17.605 15.3116C17.2855 15.5492 17.2192 16.0021 17.4576 16.3223C17.5994 16.5127 17.8166 16.6129 18.0374 16.6129C18.1869 16.6129 18.3385 16.5663 18.4683 16.4697C19.5834 15.6396 20.2231 14.375 20.2231 13.0018C20.2231 11.6285 19.5833 10.364 18.4683 9.53384Z"></path>
+                                </g>
+                              </svg>
+                            </div>
+                            <div className="crv_stroke">
+                              <span className="spinner full_bg"></span>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div className="f_20 read1">
-                        <div
-                          className="less_opacity"
-                          dangerouslySetInnerHTML={{
-                            __html: creative.audioBio.description,
-                          }}
-                        ></div>
-                        <div className="side_img">
-                          <strong className="f_80 uppercase">
-                            {creative.audioBio.title}
-                          </strong>
+                      ) : null}
+                      {creative.audioBio ? (
+                        <div className="f_20 read1">
+                          <div
+                            className="less_opacity"
+                            dangerouslySetInnerHTML={{
+                              __html: creative.audioBio.description,
+                            }}
+                          ></div>
+                          <div className="side_img">
+                            <strong className="f_80 uppercase">
+                              {creative.audioBio.title}
+                            </strong>
+                          </div>
                         </div>
-                      </div>
+                      ) : null}
                     </div>
 
                     <div className="inner_side">
@@ -213,9 +218,13 @@ const Creative = (props) => {
                           height="auto"
                           alt={creative.profileImage.alternativeText}
                         />
-                        <div className="symbol floating">
-                          <SVGComp url_path={`${creative.symbol.symbol.url}`} />
-                        </div>
+                        {creative.symbol ? (
+                          <div className="symbol floating">
+                            <SVGComp
+                              url_path={`${creative.symbol.symbol.url}`}
+                            />
+                          </div>
+                        ) : null}
                       </div>
                     </div>
                   </div>
@@ -226,14 +235,18 @@ const Creative = (props) => {
                 <div className="content_a">
                   <div className="section_sides text_sides flex">
                     <div className="text_side">
-                      <div className="sign">
-                        <SVGComp url_path={`${creative.signature.url}`} />
-                      </div>
+                      {creative.signature ? (
+                        <div className="sign">
+                          <SVGComp url_path={`${creative.signature.url}`} />
+                        </div>
+                      ) : null}
 
                       <div className="side_img">
-                        <strong className="f_80 uppercase">
-                          {creative.statement}
-                        </strong>
+                        {creative.statement ? (
+                          <strong className="f_80 uppercase">
+                            {creative.statement}
+                          </strong>
+                        ) : null}
                         <div className="text_circle small">
                           <svg
                             width="207"
@@ -253,39 +266,66 @@ const Creative = (props) => {
                         </div>
                       </div>
 
-                      <div className="jr_row_image rounded has_margin double">
-                        <img
-                          className="load_img"
-                          data-src={`${CMSPath}${creative.images[0].image.url}`}
-                          width="100%"
-                          height="auto"
-                          alt={creative.images[0].image.alternativeText}
-                        />
-                      </div>
+                      {(relatedArticles && relatedArticles[0]) ||
+                      (creative.images && creative.images[0]) ? (
+                        <div className="jr_row_image rounded has_margin double">
+                          <img
+                            className="load_img"
+                            data-src={`${CMSPath}${
+                              relatedArticles && relatedArticles[0]
+                                ? relatedArticles[0].cover.url
+                                : creative.images[0].image.url
+                            }`}
+                            width="100%"
+                            height="auto"
+                            alt={
+                              relatedArticles && relatedArticles[0]
+                                ? relatedArticles[0].cover.alternativeText
+                                : creative.images[0].image.alternativeText
+                            }
+                          />
+                        </div>
+                      ) : null}
 
                       <div className="symbol floating">
                         <SVGComp url_path={`${creative.symbol.symbol.url}`} />
                       </div>
                     </div>
-
                     <div className="text_side">
-                      <div className="f_80 alt">{creative.content.title}</div>
-                      <div
-                        className="f_20 less_opacity"
-                        dangerouslySetInnerHTML={{
-                          __html: creative.content.description,
-                        }}
-                      />
+                      {creative.content ? (
+                        <>
+                          <div className="f_80 alt">
+                            {creative.content.title}
+                          </div>
+                          <div
+                            className="f_20 less_opacity"
+                            dangerouslySetInnerHTML={{
+                              __html: creative.content.description,
+                            }}
+                          />
+                        </>
+                      ) : null}
 
-                      <div className="jr_row_image rounded has_margin">
-                        <img
-                          className="load_img"
-                          data-src={`${CMSPath}${creative.images[1].image.url}`}
-                          width="100%"
-                          height="auto"
-                          alt={creative.images[1].image.alternativeText}
-                        />
-                      </div>
+                      {(relatedArticles && relatedArticles[1]) ||
+                      (creative.images && creative.images[1]) ? (
+                        <div className="jr_row_image rounded has_margin">
+                          <img
+                            className="load_img"
+                            data-src={`${CMSPath}${
+                              relatedArticles && relatedArticles[1]
+                                ? relatedArticles[1].cover.url
+                                : creative.images[1].image.url
+                            }`}
+                            width="100%"
+                            height="auto"
+                            alt={
+                              relatedArticles && relatedArticles[0]
+                                ? relatedArticles[0].cover.alternativeText
+                                : creative.images[0].image.alternativeText
+                            }
+                          />
+                        </div>
+                      ) : null}
                     </div>
                   </div>
                 </div>
@@ -351,15 +391,34 @@ const Creative = (props) => {
             {nextCreative ? (
               <section>
                 <div className="section_content">
-                  <div className="jr_row_image rounded floating">
-                    <img
+                  {(relatedArticles && relatedArticles[2]) ||
+                  (creative.images && creative.images[2]) ? (
+                    <div className="jr_row_image rounded floating">
+                      {/* <img
                       className="load_img"
                       data-src={`${CMSPath}${creative.images[2].image.url}`}
                       width="100%"
                       height="auto"
                       alt={creative.images[2].image.alternativeText}
-                    />
-                  </div>
+                    /> */}
+
+                      <img
+                        className="load_img"
+                        data-src={`${CMSPath}${
+                          relatedArticles && relatedArticles[2]
+                            ? relatedArticles[2].cover.url
+                            : creative.images[2].image.url
+                        }`}
+                        width="100%"
+                        height="auto"
+                        alt={
+                          relatedArticles && relatedArticles[2]
+                            ? relatedArticles[2].cover.alternativeText
+                            : creative.images[2].image.alternativeText
+                        }
+                      />
+                    </div>
+                  ) : null}
 
                   <div className="line_shape jr_shape_set">
                     <svg

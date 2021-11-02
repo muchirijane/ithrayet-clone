@@ -258,11 +258,11 @@ const Article = (props) => {
                         <strong className="f_80 uppercase">{`${t(
                           "related_articles"
                         )}`}</strong>
-                        <div className="info_line">
+                        {/* <div className="info_line">
                           <div className="f_20 centered_text">
                             {`${t("related_qoute")}`}
                           </div>
-                        </div>
+                        </div> */}
                       </div>
                       <div className="section_sides three_cols flex">
                         {relatedArticles &&
@@ -292,7 +292,13 @@ const Article = (props) => {
                                     </div>
                                   </div>
                                   <div className="col_title centered_text">
-                                    <div className="f_40 alt ">{val.title}</div>
+                                    <div
+                                      className={`${
+                                        locale === "en" ? "f_40" : "f_20"
+                                      } alt `}
+                                    >
+                                      {val.title}
+                                    </div>
                                   </div>
                                 </a>
                               </Link>
@@ -304,7 +310,7 @@ const Article = (props) => {
                 </div>
               </section>
             ) : null}
-            {nextArticle && (
+            {false && nextArticle && (
               <section ref={listInnerRef} data-scroll data-scroll-repeat>
                 <div className="section_content">
                   <div className="line_shape jr_shape_set">

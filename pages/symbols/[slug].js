@@ -51,6 +51,7 @@ export const getServerSideProps = async ({
         slug: slug,
         locale: locale,
       },
+      fetchPolicy: "no-cache",
     });
     data_results = data;
   }
@@ -115,8 +116,8 @@ const SymbolPage = (props) => {
                 data-scroll-direction="horizontal"
                 data-scroll-speed="2"
               >
-                <h1>{symbol && symbol.ideaTitle}</h1>
-                <h1>{symbol && symbol.ideaTitle}</h1>
+                <h1>{symbol && symbol.movingTextTitle}</h1>
+                <h1>{symbol && symbol.movingTextTitle}</h1>
               </div>
             </div>
           </div>

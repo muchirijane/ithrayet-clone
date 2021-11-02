@@ -60,7 +60,7 @@ h1,
 .alt,
 .search_input input,
 .inner_search_input input {
-  font-family: "Scheherazade", serif;
+  /* font-family: "Scheherazade", serif; */
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -568,4 +568,16 @@ h1 {
     left: auto;
     z-index: 20;
   }
+}
+
+/* arabic override */
+
+[lang="ar"] .section_head h1 {
+  font-size: 9vw;
+  line-height: 10vw;
+}
+
+[lang="ar"] .tabs_bar .tab_content span {
+  font-size: 25px;
+  line-height: 25px;
 }

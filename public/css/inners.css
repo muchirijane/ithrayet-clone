@@ -665,6 +665,7 @@ body:not(.progress) .sub-menu ul li a {
   background: #fff;
   padding: 10px;
   display: block;
+  width: 100%;
 }
 
 .story_img {
@@ -688,7 +689,7 @@ body:not(.progress) .sub-menu ul li a {
 }
 
 .story_details .f_40 {
-  max-width: 70%;
+  max-width: 90%;
   display: block;
 }
 
@@ -699,6 +700,11 @@ body:not(.progress) .sub-menu ul li a {
 .story_details .tags {
   justify-content: flex-start;
   margin: 30px 0;
+  flex-wrap: wrap;
+}
+
+.story_details .tags span {
+  margin: 0 5px 10px;
 }
 
 /* Side Filters */
@@ -984,7 +990,7 @@ body:not(.progress) .sub-menu ul li a {
 }
 
 .section_head h1 {
-  padding: 2vw;
+  padding: 1vw 2vw 2vw;
 }
 
 .content_a .section_head h1 {
@@ -2614,7 +2620,7 @@ body:not(.progress) .view_shape_set {
 }
 
 .custom_content {
-  padding: 90px 0;
+  padding: 40px 0;
 }
 
 .three_col {
@@ -2641,7 +2647,8 @@ body:not(.progress) .view_shape_set {
 }
 
 .centered_quote .quote_set {
-  max-width: 770px;
+  width: 1024px;
+  max-width: 90%;
 }
 
 .quote_set svg,
@@ -3652,7 +3659,7 @@ video {
     margin-top: 60px;
   }
   .custom_content {
-    padding: 60px 0;
+    padding: 30px 0;
   }
   .info_shape {
     width: 100px;
