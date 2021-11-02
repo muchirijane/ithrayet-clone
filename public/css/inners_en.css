@@ -557,8 +557,11 @@ h1,
 .big-quote {
   position: fixed;
   max-width: 350px;
-  right: -30%;
+  /* right: -30%; */
   z-index: 20;
+  position: fixed;
+  max-width: 640px;
+  right: -50%;
 }
 
 @media (max-width: 960px) {
