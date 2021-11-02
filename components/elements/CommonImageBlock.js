@@ -2,6 +2,7 @@ import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
 
 import { CMSPath } from "@/helpers/imageCMSPath";
+import SVGComp from "@/components/SVGComp";
 
 const CommonImageBlock = ({ locale, image }) => {
   const { t } = useTranslation("common");
