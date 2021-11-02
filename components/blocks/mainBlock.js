@@ -23,7 +23,7 @@ const MainBlock = ({ editions, sectionData, dataUrl }) => {
   const { title, quote } = sectionData;
 
   let articleChunk = ChunkArray(editions[0]?.articles, 5);
-
+  // console.log(articleChunk, "articleChunk");
   return (
     <section id="main" style={{ visibility: "hidden" }} data-url={dataUrl}>
       <div className="main_heading flex full_bg">

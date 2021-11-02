@@ -383,7 +383,6 @@ $(window).on("load", function () {
                     $(".loader").remove();
 
                     var fireTL = new TimelineMax();
-
                     splitA = new SplitText(".main_heading h3", {
                       type: "lines",
                       wordsClass: "SplitClass",
