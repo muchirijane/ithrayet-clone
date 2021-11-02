@@ -292,7 +292,7 @@ const Article = (props) => {
                                     </div>
                                   </div>
                                   <div className="col_title centered_text">
-                                    <div className="f_80 alt ">{val.title}</div>
+                                    <div className="f_40 alt ">{val.title}</div>
                                   </div>
                                 </a>
                               </Link>
