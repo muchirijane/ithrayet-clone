@@ -5,7 +5,7 @@ import { CMSPath } from "@/helpers/imageCMSPath";
 
 const CommonImageBlock = ({ locale, image }) => {
   const { t } = useTranslation("common");
-  return (
+  return image ? (
     <>
       <img
         className="load_img"
@@ -69,7 +69,7 @@ const CommonImageBlock = ({ locale, image }) => {
         </div>
       )}
     </>
-  );
+  ) : null;
 };
 
 export default CommonImageBlock;

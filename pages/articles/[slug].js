@@ -187,7 +187,7 @@ const Article = (props) => {
       }`;
     }
   }, [counter]);
-  console.log(article, "article");
+
   return (
     <Layout isInner seo={article && article.seo} hasColorMode={true}>
       {article && (
