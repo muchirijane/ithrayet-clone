@@ -84,6 +84,7 @@ export const getServerSideProps = async ({ locale, query }) => {
   if (data) {
     return {
       props: {
+        locale,
         stories: data.stories,
         storiedCount: data.countStories,
         SEO: data.listStory.seo,
@@ -107,6 +108,7 @@ const Stories = (props) => {
     isOnlineExclusive,
     storyName,
     allStoriesName,
+    locale,
   } = props;
   const isAll = storyName === null;
 
@@ -157,13 +159,15 @@ const Stories = (props) => {
                   </Link>
                 ) : (
                   <Link href={`/stories?online_exclusive=true`}>
-                    <a className="inline_link _up">{t("online_exclusive")}</a>
+                    <a className="inline_link _up">
+                      {t("online_exclusive")} {`  (${storiedCount.length})`}
+                    </a>
                   </Link>
-                )}
+                )}{" "}
               </span>
-              {!isOnlineExclusive && (
-                <span className="f_lable">{`(${storiedCount.length})`}</span>
-              )}
+              {/* {!isOnlineExclusive && (
+                <span className="f_lable"></span>
+              )} */}
             </div>
           </div>
         </div>
@@ -250,7 +254,11 @@ const Stories = (props) => {
                                     ></i>
                                   </div>
                                   <div className="story_details">
-                                    <span className="f_40 alt">
+                                    <span
+                                      className={`${
+                                        locale === "en" ? "f_40" : "f_30"
+                                      } alt`}
+                                    >
                                       {article.title
                                         ? article.title
                                         : article.description}

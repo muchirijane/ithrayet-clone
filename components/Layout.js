@@ -51,7 +51,7 @@ const Layout = ({
           <div data-scroll-container>
             <div data-scroll-section>
               <Header locale={locale} />
-              <Equalizer />
+              {/* <Equalizer /> */}
               {children}
             </div>
           </div>
@@ -70,8 +70,8 @@ const Layout = ({
       {hasColorMode ? <a className=" reset_mode ">Reset to Default</a> : null}
 
       <Footer locale={locale} hasColorMode={hasColorMode} />
-
-      {!isInner && <Equalizer />}
+      <Equalizer />
+      {/* {!isInner && <Equalizer />} */}
       <script src="/jsm/jquery-3.5.1.min.js"></script>
       {isInner ? (
         <>

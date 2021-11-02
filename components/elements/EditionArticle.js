@@ -31,7 +31,9 @@ const EditonArticle = (props) => {
                   <div className="f_16" style={{ margin: "0 0 15px" }}>
                     {article.quote}
                   </div>
-                  <div className="f_40 alt">{article.description}</div>
+                  <div className={`${locale === "en" ? "f_80" : "f_40"} alt`}>
+                    {article.title ? article.title : article.description}
+                  </div>
                 </div>
               </div>
             </a>

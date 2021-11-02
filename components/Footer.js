@@ -6,6 +6,7 @@ import { useRouter } from "next/dist/client/router";
 const Footer = ({ locale, hasColorMode }) => {
   const { t } = useTranslation("common");
   const router = useRouter();
+  console.log(router);
   return (
     <footer style={{ visibility: "hidden" }} className="_show">
       <div className="footer_set flex">

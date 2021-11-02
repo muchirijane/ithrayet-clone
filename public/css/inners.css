@@ -215,7 +215,9 @@ main,
 
 /* Main */
 .equalizer {
-  left: 110px;
+  /* left: 110px; */
+  bottom: 43px;
+  right: 135px;
 }
 
 .section_content {
@@ -332,7 +334,17 @@ strong {
 }
 
 .mode_set {
-  top: 200px;
+  right: 150px;
+  /* right: auto; */
+  transform: none;
+  width: auto;
+  bottom: 13px;
+  height: auto;
+  left: auto;
+  top: auto;
+}
+.mode_set .mode_toggle {
+  transform: none;
 }
 
 .equalizer {
