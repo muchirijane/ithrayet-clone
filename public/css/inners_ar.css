@@ -582,9 +582,18 @@ h1 {
   line-height: 40px;
 }
 
+[lang="ar"] .tabs_bar.multiple .tab .tab_content .f_16,
+.tabs_bar.multiple .tab .tab_content .alt {
+  font-size: 15px;
+  line-height: 50px;
+}
 .equalizer {
   /* left: 110px; */
   bottom: 43px;
   left: 135px;
   right: auto;
+}
+
+[lang="ar"] .f_40 {
+  line-height: 1.8;
 }

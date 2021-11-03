@@ -7,8 +7,8 @@
 
   "more_about_ithraeyat": "المزيد عن <br /> إثرائيات",
   "all_projects": "جميعالمشاريع",
-  "all_editions": "جميعالإصدارات",
-  "all_creatives": "جميعالمعدات",
+  "all_editions": "جميع الإصدرات",
+  "all_creatives": "جميع الفنانون",
   "join_now": "نضمالان",
   "all": "الجميع",
   "artwork_by": "العملالفني",
@@ -89,7 +89,9 @@
     "featured": "متميز",
     "exclusive": "حصرية"
   },
-  "explore_text": "امسك هنا إلى <br /> استكشاف الإصدارات",
+
+  "explore_text": "استمر بالضغط <br /> لإستكشاف الإصدرات",
+  "explore_text_single": "استمر بالضغط <br /> لإستكشاف الإصدرات",
   "search_bar": {
     "filter": "منقي",
     "placeholder": "هل تبحث عن شئ؟"

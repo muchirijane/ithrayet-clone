@@ -18,16 +18,18 @@ const EditonArticle = (props) => {
               data-title={t("read")}
             >
               <div className="section_side img_side">
-                <img
-                  className="preloadIMG"
-                  data-img={`${CMSPath}${article.cover.url}`}
-                  width="100%"
-                  height="auto"
-                  alt={article.title}
-                  data-scroll
-                  data-scroll-direction="vertical"
-                  data-scroll-speed="2"
-                />
+                {article.cover && article.cover.url ? (
+                  <img
+                    className="preloadIMG"
+                    data-img={`${CMSPath}${article.cover.url}`}
+                    width="100%"
+                    height="auto"
+                    alt={article.title}
+                    data-scroll
+                    data-scroll-direction="vertical"
+                    data-scroll-speed="2"
+                  />
+                ) : null}
               </div>
               <div className="section_side text_side">
                 <div className="article_title">

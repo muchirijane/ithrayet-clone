@@ -90,6 +90,7 @@
     "exclusive": "Exclusive"
   },
   "explore_text": "Hold here to <br />Explore Editions",
+  "explore_text_single": "Hold here to <br />Explore Edition",
   "search_bar": {
     "filter": "Filter",
     "placeholder": "What are you looking for?"

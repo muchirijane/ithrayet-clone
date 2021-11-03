@@ -144,10 +144,26 @@ const BannerSection = (props) => {
                 </>
               ) : null}
             </div>
-            <div className="f_20">{`${format(
-              new Date(publishedDate),
-              "MMMM do, yyyy"
-            )} · ${Math.floor(timeToRead / 60)} ${t("minutes_read")}`}</div>
+            <div
+              className="f_20"
+              style={{
+                direction: "ltr",
+              }}
+            >
+              <span>
+                {`${format(new Date(publishedDate), "MMMM do, yyyy")}`}
+              </span>
+              <span>{" · "}</span>
+              <div
+                style={{
+                  direction: locale === "en" ? "ltr" : "rtl",
+                  display: "inline-block",
+                }}
+              >
+                {Math.floor(timeToRead / 60)} <span> </span>
+                {t("minutes_read")}
+              </div>
+            </div>
           </div>
         </div>
       </div>

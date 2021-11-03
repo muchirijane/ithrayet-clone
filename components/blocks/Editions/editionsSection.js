@@ -21,7 +21,7 @@ const EditionsSection = (props) => {
           >
             {edition.articles.map((article, index) => {
               if (index < 5) {
-                return (
+                return article.cover && article.cover.url ? (
                   <img
                     className="preloadIMG"
                     data-img={`${CMSPath}${article.cover.url}`}
@@ -36,7 +36,7 @@ const EditionsSection = (props) => {
                         : dataScrollSpeeds.odd[index]
                     }
                   />
-                );
+                ) : null;
               } else {
                 return null;
               }
@@ -76,7 +76,7 @@ const EditionsSection = (props) => {
                 </div>
                 <span
                   className="f_14 uppercase"
-                  dangerouslySetInnerHTML={{ __html: t("explore_text") }}
+                  dangerouslySetInnerHTML={{ __html: t("explore_text_single") }}
                 />
               </div>
             </div>
