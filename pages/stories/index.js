@@ -244,15 +244,17 @@ const Stories = (props) => {
                                 data-title="View"
                               >
                                 <div className="story_box">
-                                  <div className="story_img">
-                                    <i
-                                      className="full_bg load_bg"
-                                      data-src={`${CMSPath}${article.cover.url}`}
-                                      data-scroll
-                                      data-scroll-direction="vertical"
-                                      data-scroll-speed="-1"
-                                    ></i>
-                                  </div>
+                                  {article.cover && article.cover.url ? (
+                                    <div className="story_img">
+                                      <i
+                                        className="full_bg load_bg"
+                                        data-src={`${CMSPath}${article.cover.url}`}
+                                        data-scroll
+                                        data-scroll-direction="vertical"
+                                        data-scroll-speed="-1"
+                                      ></i>
+                                    </div>
+                                  ) : null}
                                   <div className="story_details">
                                     <span
                                       className={`${

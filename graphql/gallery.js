@@ -9,7 +9,11 @@ export const GET_GALLERY_DATA = gql`
         alternativeText
       }
       externalVideoLink
+      page_link
+      external_link
+      link_type
     }
+
     listGallery(locale: $locale) {
       seo {
         metaTitle

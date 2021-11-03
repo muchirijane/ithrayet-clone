@@ -6,15 +6,15 @@ import { useRouter } from "next/dist/client/router";
 const Footer = ({ locale, hasColorMode }) => {
   const { t } = useTranslation("common");
   const router = useRouter();
-  console.log(router);
+  // console.log(router);
   return (
     <footer style={{ visibility: "hidden" }} className="_show">
       <div className="footer_set flex">
         <div className="lang flex">
-          <Link href={router.pathname} locale="ar">
+          <Link href={"/"} locale="ar">
             <a className={`_curTL2 ${locale === "ar" && "active"}`}>AR</a>
           </Link>
-          <Link href={router.pathname} locale="en">
+          <Link href={"/"} locale="en">
             <a className={`_curTL2 ${locale === "en" && "active"}`}>EN</a>
           </Link>
         </div>
