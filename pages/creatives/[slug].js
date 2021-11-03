@@ -361,7 +361,10 @@ const Creative = (props) => {
                                 href={`/articles/${val.slug}`}
                                 locale={locale}
                               >
-                                <a className="_link _curTL1" data-title="Read">
+                                <a
+                                  className="_link _curTL1"
+                                  data-title={t("read")}
+                                >
                                   <img
                                     className="load_img"
                                     data-src={`${CMSPath}${val.cover.url}`}

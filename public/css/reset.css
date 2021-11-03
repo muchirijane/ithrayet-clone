@@ -502,7 +502,8 @@ html[lang="en"] .mode_set {
 }
 
 html[lang="ar"] .mode_set {
-  /* left: -25px; */
+  left: 160px;
+  right: auto;
 }
 
 .mode_toggle {

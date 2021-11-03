@@ -1,9 +1,12 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { CMSPath } from "../../helpers/imageCMSPath";
+import useTranslation from "next-translate/useTranslation";
+
 const EditonArticle = (props) => {
   const { article, id } = props;
   const { locale } = useRouter();
+  const { t } = useTranslation("common");
 
   return (
     <section data-scroll data-scroll-id={id} className="tab_section">
@@ -12,7 +15,7 @@ const EditonArticle = (props) => {
           <Link href={`/articles/${article.slug}`} locale={locale}>
             <a
               className="section_sides edition_sides flex _link _curTL1"
-              data-title="Read"
+              data-title={t("read")}
             >
               <div className="section_side img_side">
                 <img
