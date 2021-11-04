@@ -160,7 +160,13 @@ const Edition = (props) => {
                                 </div>
                               </div>
                               <div className="col_title centered_text">
-                                <div className="f_80 alt ">{val.title}</div>
+                                <div
+                                  className={`${
+                                    locale === "en" ? "f_60" : "f_20"
+                                  } alt`}
+                                >
+                                  {val.title}
+                                </div>
                               </div>
                             </a>
                           </Link>

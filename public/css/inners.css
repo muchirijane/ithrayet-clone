@@ -270,6 +270,11 @@ strong {
   line-height: 90px;
 }
 
+.f_60 {
+  font-size: 60px;
+  line-height: 60px;
+}
+
 .f_80.responsive {
   font-size: 5.55vw;
   line-height: 5.55vw;
@@ -509,7 +514,8 @@ strong {
 }
 
 .tabs_bar.multiple .tab_content {
-  padding: 45px 20px 25px 20px;
+  /* padding: 45px 20px 25px 20px; */
+  padding: 20px;
   opacity: 0.3;
   position: relative;
 }
@@ -572,7 +578,7 @@ body:not(.progress) .result_set.has_svg svg {
 }
 
 .tabs_bar.multiple .tab .tab_content .alt {
-  transform: translateY(-10px);
+  /* transform: translateY(-10px); */
 }
 
 .tabs_bar.multiple .tab .tab_content .f_16 {
@@ -585,7 +591,7 @@ body:not(.progress) .result_set.has_svg svg {
 
 .tabs_bar.multiple .tab.active .tab_content .f_16,
 .tabs_bar.multiple .tab.active .tab_content .alt {
-  transform: translateY(0);
+  /* transform: translateY(0); */
   opacity: 1;
 }
 
@@ -2736,7 +2742,7 @@ body:not(.progress) .view_shape_set {
   transform-origin: center bottom;
 }
 #scratch svg {
-  max-width: 150px;
+  max-width: 100px;
 }
 
 .canvas {

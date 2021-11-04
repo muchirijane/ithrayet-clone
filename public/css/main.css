@@ -548,14 +548,29 @@ section p {
 }
 
 .ed_image {
-  width: 19.4vw;
+  /* width: 19.4vw;
   height: 27.792vw;
   position: absolute;
   z-index: 499;
-  /* bottom: 3.2vw; */
+  bottom: 3.2vw;
   bottom: 0;
   left: 50%;
+  transform: translateX(-50%); */
+  width: 19.4vw;
+  height: 27.792vw;
+  position: relative;
+  z-index: 499;
+  /* bottom: 3.2
+vw
+; */
+  bottom: -50%;
+  left: 50%;
   transform: translateX(-50%);
+  top: 0;
+  left: 50%;
+  /* width: 100%; */
+  bottom: 0;
+  /* right: 0;
 }
 
 .ed_image > img {
@@ -1485,4 +1500,17 @@ body:not(.progress) .jn_circle_content {
   align-items: center;
   justify-content: center;
   padding: 20px 40px;
+}
+
+#editions .section_head h1 {
+  position: absolute;
+  top: 50%;
+  transform: TRANSLATEY(-50%);
+}
+
+#editions .section_head {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

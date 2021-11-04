@@ -1,8 +1,8 @@
-1;
+import useTranslation from "next-translate/useTranslation";
 
 const PageBarArticle = (props) => {
   const { articles } = props;
-
+  const { t } = useTranslation("common");
   return (
     <div
       className="page_bar fixed_item forced-full-width"
@@ -20,7 +20,9 @@ const PageBarArticle = (props) => {
             >
               <i className="full_bg"></i>
               <div className="tab_content">
-                <span className="f_16">{`Article #${key + 1}`}</span>
+                {/* <span className="f_16">{`${t("article_tab")} #${
+                  key + 1
+                }`}</span> */}
                 <span className="f_40 alt">{article.title}</span>
               </div>
             </div>

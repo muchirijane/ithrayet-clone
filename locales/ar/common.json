@@ -27,7 +27,7 @@
   },
   "homepage": {
     "join_exp": "انضم الي التجربة",
-    "our_story": "قصتنا",
+    "our_story": "رحلتنا",
     "creatives": "المبدعين",
     "editions": "إصدارات"
   },
@@ -91,7 +91,7 @@
   },
 
   "explore_text": "استمر بالضغط <br /> لإستكشاف الإصدرات",
-  "explore_text_single": "استمر بالضغط <br /> لإستكشاف الإصدرات",
+  "explore_text_single": "استمر بالضغط <br /> لإستكشاف الإصدار",
   "search_bar": {
     "filter": "منقي",
     "placeholder": "هل تبحث عن شئ؟"
@@ -126,5 +126,8 @@
   },
   "related_articles": "مقالات ذات صلة",
   "related_qoute": "Don’t be so hard on yourself, you just don’t belong here.",
-  "read": "اقرأ"
+  "read": "اقرأ",
+  "article_tab": "المقال",
+  "share": "شارك",
+  "resetDefault": "Reset to default"
 }

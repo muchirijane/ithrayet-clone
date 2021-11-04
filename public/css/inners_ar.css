@@ -597,3 +597,11 @@ h1 {
 [lang="ar"] .f_40 {
   line-height: 1.8;
 }
+
+.circle_set .f_14 {
+  line-height: 20px;
+}
+
+.tabs_bar.multiple .tab .tab_content span {
+  text-align: right;
+}

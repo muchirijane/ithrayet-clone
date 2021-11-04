@@ -125,5 +125,8 @@
   },
   "related_articles": "RELATED ARTICLES",
   "related_qoute": "Don’t be so hard on yourself, you just don’t belong here.",
-  "read": "Read"
+  "read": "Read",
+  "article_tab": "Article",
+  "share": "Share",
+  "resetDefault": "Reset to default"
 }

@@ -293,9 +293,11 @@ const Creative = (props) => {
                         </div>
                       ) : null}
 
-                      <div className="symbol floating">
-                        <SVGComp url_path={`${creative.symbol.symbol.url}`} />
-                      </div>
+                      {creative.symbol ? (
+                        <div className="symbol floating">
+                          <SVGComp url_path={`${creative.symbol.symbol.url}`} />
+                        </div>
+                      ) : null}
                     </div>
                     <div className="text_side">
                       {creative.content ? (
@@ -396,7 +398,7 @@ const Creative = (props) => {
                                   <div className="col_title centered_text">
                                     <div
                                       className={`${
-                                        locale === "en" ? "f_80" : "f_20"
+                                        locale === "en" ? "f_60" : "f_20"
                                       } alt `}
                                     >
                                       {val.title}
@@ -451,7 +453,7 @@ const Creative = (props) => {
                     </div>
                   ) : null}
 
-                  <div className="line_shape jr_shape_set">
+                  {/* <div className="line_shape jr_shape_set">
                     <svg
                       viewBox="0 0 1440 409"
                       fill="none"
@@ -463,7 +465,7 @@ const Creative = (props) => {
                         strokeOpacity="0.5"
                       ></path>
                     </svg>
-                  </div>
+                  </div> */}
 
                   <div className="content_a">
                     <div

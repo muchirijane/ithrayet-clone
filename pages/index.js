@@ -95,6 +95,7 @@ export const getStaticProps = async ({ locale }) => {
       locale: locale,
       limit: 12,
     },
+    fetchPolicy: "no-cache",
   });
 
   if (data) {

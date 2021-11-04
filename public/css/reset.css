@@ -1778,3 +1778,7 @@ img.mfp-img {
     padding-right: 6px;
   }
 }
+
+#fixed-bar .flickity-viewport {
+  height: 80px !important;
+}

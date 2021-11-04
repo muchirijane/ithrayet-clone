@@ -298,7 +298,7 @@ const Article = (props) => {
                                   <div className="col_title centered_text">
                                     <div
                                       className={`${
-                                        locale === "en" ? "f_40" : "f_20"
+                                        locale === "en" ? "f_60" : "f_20"
                                       } alt `}
                                     >
                                       {val.title}
