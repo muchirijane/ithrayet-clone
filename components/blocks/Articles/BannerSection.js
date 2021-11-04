@@ -18,6 +18,7 @@ const BannerSection = (props) => {
     timeToRead,
     publishedDate,
     symbol,
+    article: { cover_caption_override, show_cover_caption },
   } = props;
   console.log(timeToRead);
   return (
@@ -103,34 +104,48 @@ const BannerSection = (props) => {
             ></canvas>
           </div>
         )}
-        {cover && cover.caption && (
-          <div className="info_line">
-            <div className="f_14">
-              {locale === "en" ? cover.caption : cover.arabic_caption}
-              {`${t("artwork_by")} `}
-
-              <strong>
-                {locale === "ar" ? (
-                  cover.selectedArtist.localizations.length > 0 ? (
-                    <Link
-                      href={`/creatives/${cover.selectedArtist.localizations[0].slug}`}
-                    >
-                      <a target="_blank">
-                        {`${cover.selectedArtist.localizations[0].firstName} ${cover.selectedArtist.localizations[0].lastName}`}
-                      </a>
-                    </Link>
-                  ) : null
-                ) : (
-                  <Link href={`/creatives/${cover.selectedArtist.slug}`}>
-                    <a target="_blank">
-                      {`${cover.selectedArtist.firstName} ${cover.selectedArtist.lastName}`}
-                    </a>
-                  </Link>
-                )}
-              </strong>
+        {show_cover_caption ? (
+          cover_caption_override ? (
+            <div className="info_line">
+              <div
+                className="f_14"
+                dangerouslySetInnerHTML={{
+                  __html: cover_caption_override,
+                }}
+              ></div>
             </div>
-          </div>
-        )}
+          ) : (
+            cover &&
+            cover.caption && (
+              <div className="info_line">
+                <div className="f_14">
+                  {locale === "en" ? cover.caption : cover.arabic_caption}
+                  {`${t("artwork_by")} `}
+
+                  <strong>
+                    {locale === "ar" ? (
+                      cover.selectedArtist.localizations.length > 0 ? (
+                        <Link
+                          href={`/creatives/${cover.selectedArtist.localizations[0].slug}`}
+                        >
+                          <a target="_blank">
+                            {`${cover.selectedArtist.localizations[0].firstName} ${cover.selectedArtist.localizations[0].lastName}`}
+                          </a>
+                        </Link>
+                      ) : null
+                    ) : (
+                      <Link href={`/creatives/${cover.selectedArtist.slug}`}>
+                        <a target="_blank">
+                          {`${cover.selectedArtist.firstName} ${cover.selectedArtist.lastName}`}
+                        </a>
+                      </Link>
+                    )}
+                  </strong>
+                </div>
+              </div>
+            )
+          )
+        ) : null}
 
         <div className="content_b">
           <div className="outline_bar flex">

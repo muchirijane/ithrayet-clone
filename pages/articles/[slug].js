@@ -228,6 +228,7 @@ const Article = (props) => {
 
           <div id="sections">
             <BannerSection
+              article={article}
               tags={article.tags}
               title={article.title}
               cover={

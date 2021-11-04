@@ -40,6 +40,8 @@ export const GET_ARTICLE_DATA = gql`
         arabic_caption
         selectedArtist
       }
+      show_cover_caption
+      cover_caption_override
       publishDate
       published_at
       quote

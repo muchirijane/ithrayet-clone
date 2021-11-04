@@ -1,9 +1,10 @@
 import useTranslation from "next-translate/useTranslation";
 import Link from "next/link";
-
+import { useRouter } from "next/router";
 const QuoteWithText = (props) => {
   const { content } = props;
   const { t } = useTranslation("common");
+  const { locale } = useRouter();
   return (
     <section>
       <div className="custom_content">
@@ -12,7 +13,9 @@ const QuoteWithText = (props) => {
             <div className="section_sides inner_sides flex">
               <div className="text_side">
                 <div className="quote_set">
-                  <strong className="f_80 uppercase">
+                  <strong
+                    className={`${locale === "en" ? "f_80" : "f_40"} uppercase`}
+                  >
                     <svg
                       width="96"
                       height="81"
