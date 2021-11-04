@@ -266,21 +266,27 @@ const Creative = (props) => {
                         </div>
                       </div>
 
-                      {(relatedArticles && relatedArticles[0]) ||
+                      {(relatedArticles &&
+                        relatedArticles[0] &&
+                        relatedArticles[0].cover) ||
                       (creative.images && creative.images[0]) ? (
                         <div className="jr_row_image rounded has_margin double">
                           <img
                             className="load_img"
                             data-src={`${CMSPath}${
                               relatedArticles && relatedArticles[0]
-                                ? relatedArticles[0].cover.url
+                                ? relatedArticles[0].cover
+                                  ? relatedArticles[0].cover.url
+                                  : ""
                                 : creative.images[0].image.url
                             }`}
                             width="100%"
                             height="auto"
                             alt={
                               relatedArticles && relatedArticles[0]
-                                ? relatedArticles[0].cover.alternativeText
+                                ? relatedArticles[0].cover
+                                  ? relatedArticles[0].cover.alternativeText
+                                  : ""
                                 : creative.images[0].image.alternativeText
                             }
                           />
@@ -306,22 +312,30 @@ const Creative = (props) => {
                         </>
                       ) : null}
 
-                      {(relatedArticles && relatedArticles[1]) ||
+                      {(relatedArticles &&
+                        relatedArticles[1] &&
+                        relatedArticles[1].cover) ||
                       (creative.images && creative.images[1]) ? (
                         <div className="jr_row_image rounded has_margin">
                           <img
                             className="load_img"
                             data-src={`${CMSPath}${
                               relatedArticles && relatedArticles[1]
-                                ? relatedArticles[1].cover.url
-                                : creative.images[1].image.url
+                                ? relatedArticles[1].cover
+                                  ? relatedArticles[1].cover.url
+                                  : "null"
+                                : creative.images[1]
+                                ? creative.images[1].image.url
+                                : null
                             }`}
                             width="100%"
                             height="auto"
                             alt={
-                              relatedArticles && relatedArticles[0]
-                                ? relatedArticles[0].cover.alternativeText
-                                : creative.images[0].image.alternativeText
+                              relatedArticles && relatedArticles[1]
+                                ? relatedArticles[1].cover
+                                  ? relatedArticles[1].cover.alternativeText
+                                  : null
+                                : creative.images[1].image.alternativeText
                             }
                           />
                         </div>
@@ -365,13 +379,15 @@ const Creative = (props) => {
                                   className="_link _curTL1"
                                   data-title={t("read")}
                                 >
-                                  <img
-                                    className="load_img"
-                                    data-src={`${CMSPath}${val.cover.url}`}
-                                    width="100%"
-                                    height="auto"
-                                    alt={`${val.cover.alternativeText}`}
-                                  />
+                                  {val.cover ? (
+                                    <img
+                                      className="load_img"
+                                      data-src={`${CMSPath}${val.cover.url}`}
+                                      width="100%"
+                                      height="auto"
+                                      alt={`${val.cover.alternativeText}`}
+                                    />
+                                  ) : null}
                                   <div className="info_line">
                                     <div className="f_16 centered_text">
                                       {val.quote}
@@ -400,7 +416,9 @@ const Creative = (props) => {
             {nextCreative ? (
               <section>
                 <div className="section_content">
-                  {(relatedArticles && relatedArticles[2]) ||
+                  {(relatedArticles &&
+                    relatedArticles[2] &&
+                    relatedArticles[2].cover) ||
                   (creative.images && creative.images[2]) ? (
                     <div className="jr_row_image rounded floating">
                       {/* <img
@@ -415,14 +433,18 @@ const Creative = (props) => {
                         className="load_img"
                         data-src={`${CMSPath}${
                           relatedArticles && relatedArticles[2]
-                            ? relatedArticles[2].cover.url
+                            ? relatedArticles[2].cover
+                              ? relatedArticles[2].cover.url
+                              : null
                             : creative.images[2].image.url
                         }`}
                         width="100%"
                         height="auto"
                         alt={
                           relatedArticles && relatedArticles[2]
-                            ? relatedArticles[2].cover.alternativeText
+                            ? relatedArticles[2].cover
+                              ? relatedArticles[2].cover.alternativeText
+                              : null
                             : creative.images[2].image.alternativeText
                         }
                       />
