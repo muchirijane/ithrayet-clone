@@ -34,7 +34,7 @@ const ContactUs = (props) => {
     <Layout isInner seo={contactData && contactData.seo}>
       {contactData && (
         <div className="page_head_set">
-          <h1>{t('pages.title_contact_us')}</h1>
+          <h1>{t("pages.title_contact_us")}</h1>
           <div className="content_a">
             <strong className="f_20 uppercase">{contactData.title}</strong>
             <div className="f_20">

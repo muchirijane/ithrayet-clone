@@ -7,11 +7,12 @@ import useTranslation from "next-translate/useTranslation";
 
 export const SEO = ({ article, seo, hasColorMode }) => {
   const { t } = useTranslation("common");
-  const meta_image = seo.metaImage
-    ? seo.metaImage.url
-    : hasColorMode
-    ? article?.cover?.url
-    : "";
+  const meta_image =
+    seo && seo.metaImage
+      ? seo.metaImage.url
+      : hasColorMode
+      ? article?.cover?.url
+      : "";
   console.log(meta_image);
   return (
     <Head>
@@ -48,7 +49,7 @@ export const SEO = ({ article, seo, hasColorMode }) => {
               />
             </>
           )}
-          {seo.metaDescription && (
+          {seo && seo.metaDescription && (
             <>
               <meta property="og:description" content={seo.metaDescription} />
               <meta name="twitter:description" content={seo.metaDescription} />
@@ -64,7 +65,7 @@ export const SEO = ({ article, seo, hasColorMode }) => {
               <meta name="twitter:image" content={`${CMSPath}${meta_image}`} />
             </>
           )}
-          <title>{`${seo.metaTitle}`}</title>
+          <title>{`${seo && seo.metaTitle}`}</title>
         </>
       )}
     </Head>
