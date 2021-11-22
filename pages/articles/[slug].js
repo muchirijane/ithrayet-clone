@@ -144,6 +144,7 @@ const Article = (props) => {
   const { article, nextArticle, relatedArticles } = props;
   const router = useRouter();
   const { locale } = router;
+  console.log(article, "article");
   const listInnerRef = useRef();
 
   const [counter, setCounter] = useState(5);
@@ -191,7 +192,14 @@ const Article = (props) => {
   }, [counter]);
 
   return (
-    <Layout isInner seo={article && article.seo} hasColorMode={true}>
+    <Layout
+      isInner
+      article={article}
+      seo={article && article.seo}
+      hasColorMode={true}
+      shareColor={article.highlightColorbackground}
+      shareColorText={article.highlightColorText}
+    >
       {article && (
         <div
           id="fixed-bar"

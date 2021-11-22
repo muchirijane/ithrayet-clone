@@ -1631,19 +1631,21 @@ function globalFunc() {
       galleryCarousel.find(".gallery_img a"),
       function (link) {
         return {
-          src: link.href,
-          type: $(link).attr("data-popup-type") || "image",
+          src: `<div class="gallery-popup--image"><img src="${link.href}"/><a href="${link.dataset.article}" target="_blank">Visit</a></div>`,
+          type: "inline",
+          // type: $(link).attr("data-popup-type") || "image",
         };
       }
     );
 
     galleryCarousel.on("click", ".gallery_img a", function (event) {
       event.preventDefault();
+      event.stopPropagation();
       clickedIndex = parseInt($(this).attr("data-cell-index"));
       $.magnificPopup.open({
         items: popupItems,
         gallery: {
-          enabled: false,
+          enabled: true,
         },
         callbacks: {
           open: function () {
@@ -1658,6 +1660,7 @@ function globalFunc() {
     });
 
     galleryCarousel.on("dragStart.flickity", function (event, pointer) {
+      event.stopPropagation();
       isDragging = true;
     });
 
@@ -2183,9 +2186,10 @@ function globalFunc() {
 
     $(document).on("click", ".letters span", function (e) {
       let $this = $(this),
-        input = $("input[name=alphabet]"),
+        $parent = $this.closest(".filter_block"),
+        input = $(`input[name=${$parent.attr("id")}]`),
         val = $this.text();
-
+      console.log($parent);
       if (!$this.hasClass("active")) {
         $this.addClass("active");
 
@@ -2211,11 +2215,37 @@ function globalFunc() {
       }
     });
 
-    $(document).on("click", ".option", function (e) {
+    $(document).on("click", ".option.single", function (e) {
       let $this = $(this),
         id = $this.closest(".filter_block").attr("id"),
         input = $("input[name=" + id + "]"),
         val = $this.find(".option_side:first-child").attr("data-id");
+      // console.log(isSingle);
+
+      $this.siblings().removeClass("active");
+      $this.addClass("active");
+
+      input.val(val);
+
+      let optionsWrap = $this.closest(".filter_block"),
+        countWrap = optionsWrap.find(".filter_count"),
+        totalSelected = optionsWrap.find(".option.active").length;
+
+      countWrap.html(totalSelected);
+
+      if (totalSelected > 0) {
+        TweenMax.to(countWrap, 0.5, { autoAlpha: 1, ease: Power3.easeOut });
+      } else {
+        TweenMax.to(countWrap, 0.5, { autoAlpha: 0, ease: Power3.easeOut });
+      }
+    });
+
+    $(document).on("click", ".option:not(.single)", function (e) {
+      let $this = $(this),
+        id = $this.closest(".filter_block").attr("id"),
+        input = $("input[name=" + id + "]"),
+        val = $this.find(".option_side:first-child").attr("data-id"),
+        isSingle = $this.hasClass("single");
 
       if (!$this.hasClass("active")) {
         $this.addClass("active");
@@ -2227,6 +2257,11 @@ function globalFunc() {
         id == "writer"
           ? writerArr.splice($.inArray(val, writerArr), 1)
           : catArr.splice($.inArray(val, catArr), 1);
+      }
+
+      if (isSingle) {
+        $this.siblings().removeClass("active");
+        $this.addClass("active");
       }
 
       input.val(id == "writer" ? writerArr : catArr);
@@ -3241,3 +3276,48 @@ function webGL() {
 
   Sketch.init({ dom: document.getElementById("container") });
 }
+
+$(document).ready(function () {
+  var open = false;
+  $(".share_circ").on("click", function () {
+    if (open === false) {
+      // $(this).animate(
+      //   {
+      //     height: "+=10px",
+      //     width: "+=10px",
+      //   },
+      //   300
+      // );
+
+      $(".outer-icons").addClass("active");
+      // $(".icon").fadeOut();
+      // $(this).html("<i class = 'icon fa fa-times' style='display: none'> </i>");
+      // $(".icon").fadeIn();
+
+      open = true;
+    } else {
+      // $(this).animate(
+      //   {
+      //     height: "-=10px",
+      //     width: "-=10px",
+      //   },
+      //   200
+      // );
+
+      // $(".outer-icons").animate(
+      //   {
+      //     opacity: 0,
+      //   },
+      //   300
+      // );
+
+      $(".outer-icons").removeClass("active");
+
+      $(".icon").fadeOut();
+      // $(this).html("<i class = 'icon fa fa-bars' style='display: none'> </i>");
+      $(".icon").fadeIn();
+
+      open = false;
+    }
+  });
+});

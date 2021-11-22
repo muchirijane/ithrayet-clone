@@ -5,9 +5,14 @@ import Head from "next/head";
 import { CMSPath } from "../helpers/imageCMSPath";
 import useTranslation from "next-translate/useTranslation";
 
-export const SEO = ({ seo }) => {
+export const SEO = ({ article, seo, hasColorMode }) => {
   const { t } = useTranslation("common");
-
+  const meta_image = seo.metaImage
+    ? seo.metaImage.url
+    : hasColorMode
+    ? article?.cover?.url
+    : "";
+  console.log(meta_image);
   return (
     <Head>
       <meta charSet="utf-8" />
@@ -51,18 +56,12 @@ export const SEO = ({ seo }) => {
             </>
           )}
 
-          {seo.metaImage && (
+          {meta_image && (
             <>
-              <meta
-                property="og:image"
-                content={`${CMSPath}${seo.metaImage}`}
-              />
-              <meta property="og:image:width" content={seo.metaImage.width} />
-              <meta property="og:image:height" content={seo.metaImage.height} />
-              <meta
-                name="twitter:image"
-                content={`${CMSPath}${seo.metaImage}`}
-              />
+              <meta property="og:image" content={`${CMSPath}${meta_image}`} />
+              {/* <meta property="og:image:width" content={meta_image.width} />
+              <meta property="og:image:height" content={meta_image.height} /> */}
+              <meta name="twitter:image" content={`${CMSPath}${meta_image}`} />
             </>
           )}
           <title>{`${seo.metaTitle}`}</title>

@@ -7,7 +7,8 @@ import { padLeadingZeros } from "../../helpers/arrayHelper";
 import SearchBar from "../../components/elements/SearchBar";
 
 export const getServerSideProps = async ({ locale, query }) => {
-  const { alphabet, catID } = query;
+  const { alphabet, alphabetLastName, catID } = query;
+  const sortBy = query.sortBy ? query.sortBy : null;
   let catJson;
 
   if (catID && catID != "") {
@@ -41,12 +42,31 @@ export const getServerSideProps = async ({ locale, query }) => {
       });
     }
   }
+
+  let alphabetLastNameJson;
+  if (alphabetLastName && alphabetLastName != "") {
+    alphabetLastNameJson = [];
+    let alphabetLastNameSplitArray = alphabetLastName.split(",");
+    if (alphabetLastNameSplitArray.length > 0) {
+      alphabetLastNameSplitArray.map((val) => {
+        alphabetLastNameJson.push({
+          lastName_containss: val,
+        });
+      });
+    } else {
+      alphabetLastNameJson.push({
+        lastName_containss: val,
+      });
+    }
+  }
   const { data } = await client.query({
     query: GET_CREATIVES_DATA,
     variables: {
       locale: locale,
       tags: catJson && catJson,
       alphabets: alphabetJson && alphabetJson,
+      alphabetLastNameJson: alphabetLastNameJson && alphabetLastNameJson,
+      sort: sortBy ? sortBy : "firstName:ASC",
     },
   });
   console.log(data);
@@ -57,6 +77,7 @@ export const getServerSideProps = async ({ locale, query }) => {
         creatives: data.artists,
         SEO: data.listCreative.seo,
         filter_tags: data.filter_tags,
+        sortBy,
       },
     };
   }
@@ -73,6 +94,25 @@ const Creatives = (props) => {
       filterData={{
         filter_tags: filter_tags,
         alphabet: true,
+        alphabetLastName: true,
+        sorting: [
+          {
+            name: "First Name (Ascending)",
+            val: "firstName:ASC",
+          },
+          {
+            name: "First Name (Descending)",
+            val: "firstName:DESC",
+          },
+          {
+            name: "Last Name (Ascending)",
+            val: "lastName:ASC",
+          },
+          {
+            name: "Last Name (Descending)",
+            val: "lastName:DESC",
+          },
+        ],
       }}
     >
       <div id="fixed-bar" className="fixed-bar">
@@ -100,10 +140,15 @@ const Creatives = (props) => {
                           className="table_row flex"
                           data-img={`${CMSPath}${creative.profileImage.url}`}
                         >
-                          <div className="table_col flex">
-                            <span className="f_120 alt">{`${creative.firstName} ${creative.lastName}`}</span>
+                          <div className="table_col flex creative-listing-mobile-image">
+                            <span className="f_120 alt">
+                              {props.sortBy &&
+                              props.sortBy.indexOf("lastName") >= 0
+                                ? `${creative.lastName}, ${creative.firstName} `
+                                : `${creative.firstName} ${creative.lastName}`}
+                            </span>
                           </div>
-                          <div className="table_col flex">
+                          <div className="table_col flex ">
                             <span className="f_120 alt">{`${padLeadingZeros(
                               key + 1,
                               2

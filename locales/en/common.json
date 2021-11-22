@@ -98,6 +98,7 @@
   "filters": "Filters",
   "by_writer": "By Writer",
   "by_alphabet": "By Alphabet",
+  "by_alphabet_ln": "By Alphabet (Last Name)",
   "by_cat": "By Category",
   "by_date": "By Date",
   "done": "Done",
@@ -128,5 +129,6 @@
   "read": "Read",
   "article_tab": "Article",
   "share": "Share",
-  "resetDefault": "Reset to default"
+  "resetDefault": "Reset colors",
+  "sort_by": "Sort By"
 }

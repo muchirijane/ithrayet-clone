@@ -2,8 +2,8 @@ import { gql } from "@apollo/client";
 import { GET_FILTER_TAGS } from "./filters";
 
 export const GET_CREATIVES_DATA = gql`
-  query ($locale: String!,$tags: [JSON],$alphabets: [JSON]) {
-    artists(locale: $locale, where :{
+  query ($locale: String!,$tags: [JSON],$alphabets: [JSON], $sort: String!) {
+    artists(locale: $locale,sort:$sort, where :{
       _and: [
         {_or:$alphabets}
         {_or:$tags}

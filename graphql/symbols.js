@@ -20,6 +20,7 @@ export const GET_SYMBOLS_DATA = gql`
         title
         description
       }
+      ideaTitle
       Inspiration {
         title
         description

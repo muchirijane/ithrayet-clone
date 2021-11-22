@@ -99,6 +99,7 @@
   "filters": "مرشحات",
   "by_writer": "بواسطة كاتب",
   "by_alphabet": "بواسطة الأبجدية",
+  "by_alphabet_ln": "بواسطة الأبجدية (Last Name)",
   "by_cat": "بالتصنيف",
   "by_date": "حسب التاريخ",
   "done": "منجز",
@@ -129,5 +130,6 @@
   "read": "اقرأ",
   "article_tab": "المقال",
   "share": "شارك",
-  "resetDefault": "Reset to default"
+  "resetDefault": "إعادة تعيين الألوان",
+  "sort_by": "ترتيب حسب"
 }

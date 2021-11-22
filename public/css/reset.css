@@ -1380,8 +1380,8 @@ body:not(.progress) .crv_stroke .spinner {
   position: fixed;
   outline: none !important;
   -webkit-backface-visibility: hidden;
+  z-index: 99999;
 }
-
 .mfp-container {
   text-align: center;
   position: absolute;
@@ -1781,4 +1781,107 @@ img.mfp-img {
 
 #fixed-bar .flickity-viewport {
   height: 80px !important;
+}
+
+.creative-listing-mobile-image .col_image {
+  flex: 100px 0 0;
+  height: 120px;
+}
+@media all and (max-width: 640px) {
+  .creative-listing-mobile-image .f_120 {
+    font-size: 40px;
+  }
+  .hide-mobile {
+    display: none;
+  }
+  .table_row .table_col:first-child {
+    width: 100%;
+    align-items: center;
+    max-width: 100%;
+  }
+}
+
+.outer-icons {
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  opacity: 1;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.outer-icons i {
+  color: white;
+  border-radius: 50%;
+  font-size: 30px;
+  line-height: 50px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  vertical-align: middle;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  left: 0;
+  top: 0;
+  bottom: 0;
+  transition: 500ms all;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.outer-icons.active .one {
+  top: -110px !important;
+  bottom: auto;
+}
+
+.outer-icons.active .two {
+  left: -90px !important;
+  top: -60px !important;
+  bottom: auto;
+}
+
+.outer-icons.active .three {
+  left: -90px !important;
+  bottom: -90px !important;
+  top: auto;
+}
+
+.outer-icons.active .four {
+  bottom: -150px;
+  top: auto;
+  left: 0;
+}
+
+.gallery-popup--image {
+  display: flex;
+  max-width: 90%;
+  margin: auto;
+  flex-direction: column;
+}
+.gallery-popup--image img {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+}
+.gallery-popup--image a {
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 70px;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0.1px;
+  color: #ffffff;
+  padding: 8px 20px;
+  display: inline-block;
+  width: 200px;
+  margin: 15px auto;
+  cursor: pointer;
 }

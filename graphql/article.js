@@ -14,6 +14,8 @@ export const GET_ARTICLE_DATA = gql`
       title
       color
       colorText
+      highlightColorbackground
+      highlightColorText
       tags {
         name
         color

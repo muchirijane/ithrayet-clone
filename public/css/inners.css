@@ -2572,12 +2572,13 @@ body:not(.progress) .view_shape_set {
 
 .cover_image.standerd {
   width: 43.8vw;
+  transform: translateY(-120px);
 }
 
 .share {
   position: fixed;
   z-index: 199;
-  bottom: 110px;
+  bottom: 150px;
   width: 90px;
   height: 90px;
   z-index: 999;
