@@ -2426,7 +2426,7 @@ body:not(.progress) .view_shape_set {
   perspective: 7;
   -webkit-perspective: 7;
   visibility: hidden;
-  overflow: hidden;
+  /* overflow: hidden; */
   height: 259px;
 }
 
@@ -2544,6 +2544,18 @@ body:not(.progress) .view_shape_set {
   position: relative;
   will-change: transform;
   transform-origin: 50% 50%;
+}
+
+.gallery_img,
+.gallery_img a {
+  width: 100%;
+  height: 100%;
+}
+
+.gallery_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Article */

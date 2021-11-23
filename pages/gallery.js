@@ -194,12 +194,13 @@ const Gallery = (props) => {
       <div id="sections">
         {listOfImages.length
           ? listOfImages.map((edition) => {
+              let counterKey = 0;
+
               return (
                 <section>
                   {/* <h2>{edition.title}</h2> */}
                   <div className="gallery_set">
                     {edition.images.map((chunk, chunk_key) => {
-                      let counterKey = 0;
                       return (
                         <div
                           className="gallery_group"

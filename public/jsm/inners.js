@@ -1273,7 +1273,7 @@ function globalFunc() {
         audio = new Audio(audioUrl);
       }
 
-      console.log(audio);
+      // console.log(audio);
 
       if (!$this.hasClass("read")) {
         $this.addClass("read");
@@ -1648,10 +1648,13 @@ function globalFunc() {
         return {
           src: `<div class="gallery-popup--image"><img src="${link.href}"/><a href="${link.dataset.article}" target="_blank">Visit</a></div>`,
           type: "inline",
+          // src: link.href,
           // type: $(link).attr("data-popup-type") || "image",
         };
       }
     );
+
+    console.log(popupItems);
 
     galleryCarousel.on("click", ".gallery_img a", function (event) {
       event.preventDefault();
@@ -1664,6 +1667,7 @@ function globalFunc() {
         },
         callbacks: {
           open: function () {
+            console.log($.magnificPopup.instance);
             $.magnificPopup.instance.goTo(clickedIndex);
           },
         },
@@ -1885,6 +1889,7 @@ function globalFunc() {
   if (hasColorMode) {
     $(".svg-fill").css("fill", textColor);
   }
+
   $(".reset_mode").click(function (e) {
     e.stopPropagation();
     $(this).removeClass("active");
