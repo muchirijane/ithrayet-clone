@@ -5,7 +5,7 @@ const SocialSharing = ({ shareColorText, shareColor, t }) => {
     <div class="share">
       <div class="outer-icons">
         <i
-          style={{ background: shareColorText ? shareColorText : "white" }}
+          style={{ background: shareColorText ? shareColorText : "#dd8981" }}
           class="one "
         >
           <a
@@ -34,7 +34,7 @@ const SocialSharing = ({ shareColorText, shareColor, t }) => {
           </a>
         </i>
         <i
-          style={{ background: shareColorText ? shareColorText : "white" }}
+          style={{ background: shareColorText ? shareColorText : "#dd8981" }}
           class="two "
         >
           <a
@@ -61,7 +61,7 @@ const SocialSharing = ({ shareColorText, shareColor, t }) => {
           </a>
         </i>
         <i
-          style={{ background: shareColorText ? shareColorText : "white" }}
+          style={{ background: shareColorText ? shareColorText : "#dd8981" }}
           class="three "
         >
           <a
@@ -88,7 +88,7 @@ const SocialSharing = ({ shareColorText, shareColor, t }) => {
           </a>
         </i>
         <i
-          style={{ background: shareColorText ? shareColorText : "white" }}
+          style={{ background: shareColorText ? shareColorText : "#dd8981" }}
           class="four "
         >
           <a
