@@ -1264,29 +1264,44 @@ function globalFunc() {
   if ($(".audio_circle").length != 0) {
     $(".audio_circle").on("click", function () {
       let $this = $(this),
-        selector = $(this).attr("data-id");
+        selector = $(this).attr("data-id"),
+        type = $this.attr("data-type"),
+        audioUrl = $this.attr("data-audio"),
+        audio = null,
+        isRead = type === "read";
+      if (!isRead) {
+        audio = new Audio(audioUrl);
+      }
+
+      console.log(audio);
 
       if (!$this.hasClass("read")) {
         $this.addClass("read");
-
-        responsiveVoice.speak(
-          document.getElementsByClassName(selector)[0].textContent,
-          pageLang == "en" ? "UK English Male" : "Arabic Male",
-          {
-            onstart: function () {
-              $this.add("." + selector).addClass("playing");
-            },
-            onend: function () {
-              $this.add("." + selector).removeClass("read playing");
-            },
-          }
-        );
+        if (isRead) {
+          responsiveVoice.speak(
+            document.getElementsByClassName(selector)[0].textContent,
+            pageLang == "en" ? "UK English Male" : "Arabic Male",
+            {
+              onstart: function () {
+                $this.add("." + selector).addClass("playing");
+              },
+              onend: function () {
+                $this.add("." + selector).removeClass("read playing");
+              },
+            }
+          );
+        } else {
+          audio.play();
+        }
       } else {
         $(".audio_circle")
           .add("." + selector)
           .removeClass("read playing");
-
-        responsiveVoice.cancel();
+        if (isRead) {
+          responsiveVoice.cancel();
+        } else {
+          audio.pause();
+        }
       }
     });
   }

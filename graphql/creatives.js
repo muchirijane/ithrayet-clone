@@ -84,8 +84,10 @@ export const GET_CREATIVE_DATA = gql`
       slug
       audioBio {
         description
-
         title
+        audio_file {
+          url
+        }
       }
       tags {
         name

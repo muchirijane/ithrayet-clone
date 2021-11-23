@@ -2426,6 +2426,8 @@ body:not(.progress) .view_shape_set {
   perspective: 7;
   -webkit-perspective: 7;
   visibility: hidden;
+  overflow: hidden;
+  height: 259px;
 }
 
 .gallery_items {
@@ -2437,39 +2439,46 @@ body:not(.progress) .view_shape_set {
 .gallery_block:nth-child(1) {
   margin-top: 50px;
   flex: 219px 0 0;
+  height: 259px;
 }
 
 .gallery_block:nth-child(3) {
   margin-top: 400px;
   flex: 230px 0 0;
+  height: 180px;
 }
 
 .gallery_block:nth-child(2) {
   margin-bottom: -360px;
   flex: 219px 0 0;
   align-self: flex-end;
+  height: 259px;
 }
 
 .gallery_block:nth-child(4) {
   top: 140px;
   flex: 219px 0 0;
   align-self: flex-end;
+  height: 259px;
 }
 
 .gallery_block:nth-child(5) {
   margin-top: 90px;
   flex: 250px 0 0;
+  height: 275px;
 }
 
 .gallery_block:nth-child(6) {
   margin-top: 60px;
   flex: 219px 0 0;
+  height: 173px;
 }
 
 .gallery_block:nth-child(7) {
   margin-top: 320px;
   flex: 219px 0 0;
   align-self: center;
+  height: 259px;
 }
 
 .gallery_block:nth-child(8) {
@@ -2482,12 +2491,14 @@ body:not(.progress) .view_shape_set {
   top: 360px;
   flex: 219px 0 0;
   align-self: flex-end;
+  height: 309px;
 }
 
 .gallery_block:nth-child(10) {
   top: 20px;
   flex: 219px 0 0;
   align-self: flex-start;
+  height: 288px;
 }
 
 .gallery_block:nth-child(11) {

@@ -116,7 +116,7 @@ const Creative = (props) => {
   const { creative, nextCreative, relatedArticles } = props;
   const router = useRouter();
   const { locale } = router;
-  console.log(relatedArticles);
+  console.log(creative.audioBio);
   return (
     <Layout isInner seo={creative && creative.seo}>
       {creative && (
@@ -168,7 +168,14 @@ const Creative = (props) => {
                   <div className="section_sides text_sides flex">
                     <div className="text_side">
                       {creative.audioBio ? (
-                        <div className="audio_circle" data-id="read1">
+                        <div
+                          className="audio_circle"
+                          data-id="read1"
+                          data-type={
+                            creative?.audioBio?.audio_file ? "audio" : "read"
+                          }
+                          data-audio={`${CMSPath}${creative.audioBio.audio_file.url}`}
+                        >
                           <div className="crv_cont full_bg mg" data-dist="7">
                             <div className="crv_text full_bg flex">
                               <svg
