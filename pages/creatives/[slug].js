@@ -175,7 +175,7 @@ const Creative = (props) => {
                           data-type={
                             creative?.audioBio?.audio_file ? "audio" : "read"
                           }
-                          data-audio={`${CMSPath}${creative.audioBio.audio_file.url}`}
+                          data-audio={`${CMSPath}${creative?.audioBio?.audio_file?.url}`}
                         >
                           <div className="crv_cont full_bg mg" data-dist="7">
                             <div className="crv_text full_bg flex">
@@ -277,7 +277,9 @@ const Creative = (props) => {
                       {(relatedArticles &&
                         relatedArticles[0] &&
                         relatedArticles[0].cover) ||
-                      (creative.images && creative.images[0]) ? (
+                      (creative.images &&
+                        creative.images[0] &&
+                        creative.images[0].image) ? (
                         <div className="jr_row_image rounded has_margin double">
                           <img
                             className="load_img"
@@ -286,7 +288,9 @@ const Creative = (props) => {
                                 ? relatedArticles[0].cover
                                   ? relatedArticles[0].cover.url
                                   : ""
-                                : creative.images[0].image.url
+                                : creative.images[0]
+                                ? creative.images[0].image.url
+                                : null
                             }`}
                             width="100%"
                             height="auto"
@@ -295,7 +299,7 @@ const Creative = (props) => {
                                 ? relatedArticles[0].cover
                                   ? relatedArticles[0].cover.alternativeText
                                   : ""
-                                : creative.images[0].image.alternativeText
+                                : creative?.images[0]?.image.alternativeText
                             }
                           />
                         </div>
@@ -333,7 +337,7 @@ const Creative = (props) => {
                               relatedArticles && relatedArticles[1]
                                 ? relatedArticles[1].cover
                                   ? relatedArticles[1].cover.url
-                                  : "null"
+                                  : null
                                 : creative.images[1]
                                 ? creative.images[1].image.url
                                 : null

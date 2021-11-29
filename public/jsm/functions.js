@@ -971,7 +971,10 @@ function homeFunction() {
 
   function getCard(val, type) {
     nextCardReady = false;
-
+    $(".ed_image").removeClass("active");
+    setTimeout(() => {
+      $(".ed_image").addClass("active");
+    }, 1000);
     if (val == "next") {
       dirVal = 1;
 
@@ -996,6 +999,9 @@ function homeFunction() {
 
     $(".cards span").removeClass("active").eq(activeCard).addClass("active");
 
+    // if (isMobile) {
+
+    // }
     cardSelector = $(".cards span.active");
     nextCardSelector = $(".cards span").eq(nextActiveCard);
     prevCardSelector = $(".cards span").eq(prevActiveCard);
@@ -1512,7 +1518,7 @@ function homeFunction() {
     sectionTL = new TimelineMax();
 
     sectionElements("out", o);
-
+    console.log(o, n);
     if (o == 0) {
       canAnimate = false;
 
@@ -1730,6 +1736,11 @@ function homeFunction() {
 
           enableScroll();
         });
+
+      $(".ed_image").removeClass("active");
+      setTimeout(() => {
+        $(".ed_image").addClass("active");
+      }, 1000);
     } else if (n == 2) {
       var circlesSelector = $(".circles_group.active").find(".crv_circle");
 

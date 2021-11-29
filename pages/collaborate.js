@@ -4,6 +4,7 @@ import Layout from "../components/Layout";
 import { GET_COLLABORATE_DATA } from "../graphql";
 import { CMSPath } from "../helpers/imageCMSPath";
 import client from "../lib/apollo";
+import useIsTouchDevice from "@/helpers/isTouchDevice";
 
 export const getStaticProps = async ({ locale }) => {
   const { data } = await client.query({
@@ -12,14 +13,13 @@ export const getStaticProps = async ({ locale }) => {
       locale: locale,
     },
   });
- 
+
   if (data) {
     return {
       props: {
         collaborator: data.collaborator,
         news_letter: data.newsLetterForm,
         collaborateWithUs: data.collaborateWithUs,
- 
       },
       revalidate: 25,
     };
@@ -195,7 +195,11 @@ const Collaborate = (props) => {
               <div className="section_content">
                 <div className="content_a">
                   <div className="hero_text flex">
-                    <strong className="f_80 uppercase">
+                    <strong
+                      className={`${
+                        useIsTouchDevice() ? "f_40" : "f_80"
+                      } uppercase`}
+                    >
                       {collaborator.collaboratorsBlock.title}
                     </strong>
                     <div className="f_20 less_opacity">

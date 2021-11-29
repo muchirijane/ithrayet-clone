@@ -1,6 +1,7 @@
 import { Fragment, useEffect } from "react";
 import useTranslation from "next-translate/useTranslation";
 import { CMSPath } from "../helpers/imageCMSPath";
+import useIsTouchDevice from "@/helpers/isTouchDevice";
 
 const SiteLoader = ({ loaderImages, symbolData }) => {
   const { t } = useTranslation("common");
@@ -28,7 +29,15 @@ const SiteLoader = ({ loaderImages, symbolData }) => {
             visibility: "hidden",
           }}
         >
-          <p dangerouslySetInnerHTML={{ __html: t("loader_musicwarn_text") }} />
+          <p
+            dangerouslySetInnerHTML={{
+              __html: t(
+                useIsTouchDevice()
+                  ? "loader_musicwarn_text_mobile"
+                  : "loader_musicwarn_text"
+              ),
+            }}
+          />
         </div>
         <div
           className="loader_wrap full_bg flex"

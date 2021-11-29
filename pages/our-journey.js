@@ -7,6 +7,7 @@ import { ChunkArray } from "../helpers/arrayHelper";
 
 import { CMSPath } from "../helpers/imageCMSPath";
 import client from "../lib/apollo";
+import useIsTouchDevice from "@/helpers/isTouchDevice";
 
 export const getStaticProps = async ({ locale }) => {
   const { data } = await client.query({
@@ -36,7 +37,7 @@ export const getStaticProps = async ({ locale }) => {
 };
 const OurJourney = (props) => {
   const { journey, news_letter, write_to_us, artists } = props;
-  console.log(artists);
+  // console.log(artists);
   return (
     <Layout isInner seo={journey && journey.seo}>
       {journey && (
@@ -64,19 +65,46 @@ const OurJourney = (props) => {
                     return (
                       team && (
                         <div className="team_group" key={`team_group-${key}`}>
-                          {/* <div className="team_text">
-                          <div className="f_14 less_opacity">{team.title}</div>
-                          <div className="f_20 uppercase">{team.quote}</div>
-                        </div> */}
-
                           <div className="team_members flex">
-                            {team.map((artist) => {
-                              return (
+                            {team.map((artist, index) => {
+                              return useIsTouchDevice() ? (
+                                <a className="crv_circle" data-index={index}>
+                                  <div
+                                    className="crv_cont full_bg mg"
+                                    data-dist="7"
+                                  >
+                                    <div className="crv_stroke">
+                                      <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 202 202"
+                                      >
+                                        <path
+                                          className="stroke-an svg-stroke"
+                                          fill="none"
+                                          strokeWidth="1"
+                                          d="M91,3.4C149.3-4.5,203.9,49.1,199.9,107c-3.4,49.3-42.6,87.9-90.9,93.7C35.1,209.6-17.1,128.5,9.5,63 C23.3,28.7,55.4,8.3,91,3.4"
+                                        ></path>
+                                      </svg>
+                                    </div>
+                                    <div className="crv_img">
+                                      <i
+                                        className="load_bg"
+                                        data-src={`${CMSPath}${artist.profileImage.url}`}
+                                      ></i>
+                                    </div>
+                                    <div className="crv_name">
+                                      <div className="f_40 alt uppercase">
+                                        {artist.firstName} {artist.lastName}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </a>
+                              ) : (
                                 <Link
                                   href={`/creatives/${artist.slug}`}
                                   key={`team_item-${artist.id}`}
                                 >
-                                  <a className="crv_circle">
+                                  <a className="crv_circle" data-index={index}>
                                     <div
                                       className="crv_cont full_bg mg"
                                       data-dist="7"

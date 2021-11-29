@@ -75,7 +75,7 @@ export const GET_JOURNEY_DATA = gql`
         description
       }
     }
-    artists(locale: $locale, where: { ithraeyat_team_member: true }) {
+    artists(locale: $locale, where: { type: "writer" }) {
       firstName
       lastName
       signature {

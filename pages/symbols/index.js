@@ -27,6 +27,7 @@ export const getStaticProps = async ({ locale }) => {
 const Symbols = (props) => {
   const { t } = useTranslation("common");
   const { symbols, SEO } = props;
+
   return (
     <Layout isInner seo={SEO && SEO}>
       <div className="page_head_set">
@@ -45,6 +46,8 @@ const Symbols = (props) => {
                       key={`symbol-${key}`}
                     >
                       <a className="result_set has_svg">
+                        {console.log(symbol)}
+
                         <div className="result_img">
                           <SVGComp url_path={`${symbol.symbol.url}`} />
                         </div>

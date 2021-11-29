@@ -1353,6 +1353,7 @@ body:not(.progress) .table_row {
   position: absolute;
   transform: scale(0.5);
   top: -250px;
+  z-index: -1 !important;
 }
 
 .side_img .text_circle {
@@ -2254,7 +2255,9 @@ body:not(.progress) .row_logo {
 .has_svg .result_img {
   min-height: 200px;
 }
-
+.has_svg .result_img svg {
+  min-height: 120px;
+}
 .result_title .f_16 {
   display: block;
 }
@@ -3208,7 +3211,7 @@ video {
   }
   .centered_text {
     max-width: 100%;
-    text-align: inherit;
+    /* text-align: inherit; */
   }
   .info_shape {
     margin-top: -70px;
@@ -3468,6 +3471,12 @@ video {
 }
 
 @media (max-width: 500px) {
+  .team_members {
+    padding-top: 100px;
+  }
+  .letters_shape {
+    width: 90%;
+  }
   .f_80 {
     font-size: 53px;
     line-height: 60px;
@@ -3517,7 +3526,7 @@ video {
     margin: 15px 5px;
   }
   .f_lable {
-    font-size: 18px;
+    font-size: 15px;
   }
   .bar_input input {
     min-width: 150px;
@@ -3750,6 +3759,7 @@ video {
   .share {
     width: 70px;
     height: 70px;
+    bottom: 50px;
   }
   .share svg {
     max-width: 25%;

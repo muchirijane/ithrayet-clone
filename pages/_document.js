@@ -165,7 +165,6 @@ class MyDocument extends Document {
 			  }`,
             }}
           ></script>
-        
         </body>
       </Html>
     );

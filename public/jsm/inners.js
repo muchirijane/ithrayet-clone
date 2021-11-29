@@ -125,7 +125,9 @@ $(window).on("load", function () {
       if (scroll && scroll.stop) {
         scroll.stop();
       }
-
+      if (isMobile) {
+        return;
+      }
       if (isAudio && !isMuted) {
         audio.pause();
         $(".equalizer").addClass("muted");
@@ -148,6 +150,10 @@ $(window).on("load", function () {
         scroll.start();
       }
 
+      if (isMobile) {
+        return;
+      }
+
       if (isAudio && !isMuted) {
         audio.play();
         $(".equalizer").removeClass("muted");
@@ -156,6 +162,9 @@ $(window).on("load", function () {
 
     window.setTimeout(function () {
       console.log(isAudio);
+      if (isMobile) {
+        return;
+      }
       if (audioPrefMute === null && isAudio) {
         audio.play();
         window.clearTimeout();
@@ -318,6 +327,9 @@ $(window).on("load", function () {
 });
 
 function music() {
+  if (isMobile) {
+    return;
+  }
   audio = new Audio("/music/main.mp3");
   audio.loop = true;
   audio.volume = 0.4;
