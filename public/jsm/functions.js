@@ -135,7 +135,7 @@ $(window).on("load", function () {
             isFocus = false;
           }, 250);
 
-          if (isAudio && !isMuted) {
+          if (isAudio && !isMuted && !isMobile) {
             audio.pause();
           }
         };
@@ -146,7 +146,9 @@ $(window).on("load", function () {
           }
 
           isFocus = true;
-
+          if (isMobile) {
+            return;
+          }
           if (isAudio && !isMuted) {
             audio.play();
           } else {
@@ -265,7 +267,7 @@ $(window).on("load", function () {
       }
     }, 50);
     function runLoader() {
-      if (!isMuted) {
+      if (!isMuted && !isMobile) {
         audio.play();
         $(".equalizer").removeClass("muted");
       }
@@ -440,6 +442,9 @@ $(window).on("load", function () {
 });
 
 function music() {
+  if (isMobile) {
+    return;
+  }
   audio = new Audio("/music/main.mp3");
   audio.loop = true;
   audio.volume = 0.4;
@@ -2118,7 +2123,8 @@ function resizeCars() {
   if (width <= 800) {
     var title = $("#join .section_title"),
       posTop = title.offset().top + title.innerHeight(),
-      createH = $(".side-content").position().top - posTop;
+      createH = 250;
+    //  $(".side-content").position().top - posTop;
 
     TweenMax.set(".adjustable", { y: posTop, height: createH });
 
@@ -2180,7 +2186,10 @@ function setCircle(type) {
       }
     }
 
-    animCircle.css({ width: circleW, height: circleH });
+    animCircle.css({
+      width: circleW,
+      height: circleH,
+    });
 
     if (activeArrowNext.length != 0) {
       arrowNextX = activeArrowNext.offset().left;

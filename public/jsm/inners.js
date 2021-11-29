@@ -1667,7 +1667,6 @@ function globalFunc() {
         },
         callbacks: {
           open: function () {
-            console.log($.magnificPopup.instance);
             $.magnificPopup.instance.goTo(clickedIndex);
           },
         },

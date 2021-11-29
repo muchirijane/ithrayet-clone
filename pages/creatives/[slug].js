@@ -113,6 +113,7 @@ export const getServerSideProps = async ({
 
 const Creative = (props) => {
   const { t } = useTranslation("common");
+  console.log(props);
   const { creative, nextCreative, relatedArticles } = props;
   const router = useRouter();
   const { locale } = router;

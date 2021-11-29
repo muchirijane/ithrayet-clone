@@ -1303,6 +1303,9 @@ body:not(.progress) .crv_stroke .spinner {
   .main-logo {
     width: 100px;
   }
+  .main-logo svg {
+    height: 54px;
+  }
 }
 @media (max-height: 760px) {
   nav a {
@@ -1779,6 +1782,18 @@ img.mfp-img {
   }
 }
 
+@media all and (max-width: 640px) {
+  .loader_img {
+    transform: scale(0.8) !important;
+  }
+  .equalizer {
+    display: none;
+  }
+  .circle_mag strong {
+    font-size: 12px;
+  }
+}
+
 #fixed-bar .flickity-viewport {
   height: 80px !important;
 }
@@ -1798,6 +1813,9 @@ img.mfp-img {
     width: 100%;
     align-items: center;
     max-width: 100%;
+  }
+  #editions .section_head {
+    margin: 0;
   }
 }
 

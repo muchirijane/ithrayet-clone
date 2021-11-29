@@ -19,7 +19,7 @@ const getEditonsBlock = (val, key, id) => {
   );
 };
 const MainBlock = ({ editions, sectionData, dataUrl }) => {
-  const { t } = useTranslation("mainblock");
+  const { t } = useTranslation("common");
   const { title, quote } = sectionData;
 
   let articleChunk = ChunkArray(editions[0]?.articles, 5);
@@ -57,7 +57,7 @@ const MainBlock = ({ editions, sectionData, dataUrl }) => {
 
       <div
         className="circle_set no-select buildup"
-        dangerouslySetInnerHTML={{ __html: t("explore_text") }}
+        dangerouslySetInnerHTML={{ __html: t("explore_text_single") }}
       />
     </section>
   );

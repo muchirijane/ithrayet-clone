@@ -16,6 +16,7 @@ import { GET_SYMBOLS_URLS } from "../graphql/symbols";
 import { CMSPath } from "../helpers/imageCMSPath";
 
 const Home = (props) => {
+  // console.log(props.isMobileView, "props.isMobileView");
   const {
     symbolData,
     loaderImages,

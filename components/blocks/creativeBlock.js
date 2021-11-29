@@ -2,11 +2,11 @@ import Elements from "../elements";
 import useTranslation from "next-translate/useTranslation";
 import { ChunkArray } from "../../helpers/arrayHelper";
 import { CMSPath } from "../../helpers/imageCMSPath";
-
+import useIsTouchDevice from "@/helpers/isTouchDevice";
 const CreativeBlock = ({ artists, sectionData, dataUrl }) => {
   const { t } = useTranslation("common");
   const { title, quote } = sectionData;
-  const chunkArtists = ChunkArray(artists, 8);
+  const chunkArtists = ChunkArray(artists, useIsTouchDevice() ? 4 : 8);
 
   return (
     <section id="creatives" style={{ visibility: "hidden" }} data-url={dataUrl}>

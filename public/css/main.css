@@ -1266,7 +1266,7 @@ body:not(.progress) .jn_circle_content {
     font-size: 12vw;
   }
   h4 {
-    font-size: 30px;
+    font-size: 20px;
   }
   h6 {
     font-size: 16px;
@@ -1371,7 +1371,7 @@ body:not(.progress) .jn_circle_content {
   }
   .side-content {
     position: absolute;
-    bottom: 140px;
+    bottom: 50px;
     left: 25px;
     right: 25px;
   }
@@ -1417,11 +1417,41 @@ body:not(.progress) .jn_circle_content {
 }
 
 @media (max-width: 500px) {
+  #home section {
+    padding: 80px 0;
+  }
+  .content_set {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .crv_circle:nth-child(1) {
+    top: -100px;
+    left: 20%;
+  }
+  .crv_circle:nth-child(2) {
+    top: -90px;
+    left: 150px;
+  }
+  .crv_circle:nth-child(3) {
+    left: -60px;
+    bottom: -100px;
+    top: auto;
+  }
+  .crv_circle:nth-child(4) {
+    top: 90px;
+    left: 0;
+  }
+  .circles_group {
+    /* position: relative; */
+  }
   .crv_circles {
     transform: translate(0, -50%) scale3d(1, 1, 1) !important;
   }
   .crv_circle {
     padding: 15px;
+    width: 20%;
+    height: 20%;
+    margin: 0;
   }
   .crv_circles {
     transform: translate(0, -50%) scale3d(1.23, 1.23, 1.23) !important;
@@ -1463,7 +1493,7 @@ body:not(.progress) .jn_circle_content {
 
 @media (max-height: 700px) {
   .form_set {
-    margin: 50px auto;
+    margin: 20px auto;
   }
   .sub_footer {
     padding-top: 0;
