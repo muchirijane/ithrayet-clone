@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Elements from "../elements";
 import useTranslation from "next-translate/useTranslation";
 import { ChunkArray } from "../../helpers/arrayHelper";
@@ -14,9 +15,9 @@ const CreativeBlock = ({ artists, sectionData, dataUrl }) => {
       <div className="content_set">
         <div className="section_title flex">
           <h4 className="_inOut">{t("homepage.creatives")}</h4>
-          <a href={`${dataUrl}`} className="mobile_only _inOut">
+          <Link href={`${dataUrl}`} className="mobile_only _inOut">
             {t("all_creatives")}
-          </a>
+          </Link>
         </div>
       </div>
 

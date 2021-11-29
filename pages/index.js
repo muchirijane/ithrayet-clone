@@ -35,7 +35,7 @@ const Home = (props) => {
           <MainBlock
             editions={editions}
             sectionData={sections.main_section}
-            dataUrl={`/editions`}
+            dataUrl={`/editions/${editions[0].slug}`}
           />
         )}
         {featuredEdition && (

@@ -13,6 +13,7 @@ export const GET_HOMEPAGE_DATA = gql`
       sort: "publishedDate:desc"
       limit: $editionLimit
     ) {
+      slug
       articles(limit: $articleLimit) {
         title
         cover {

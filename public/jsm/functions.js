@@ -1233,6 +1233,9 @@ function homeFunction() {
 
   $(".crv_circle")
     .on("mousemove touchstart", function () {
+      if (isMobile) {
+        return;
+      }
       var getName = $(this).attr("data-name"),
         getURL = $(this).attr("data-url"),
         index = $(this).attr("data-index");
@@ -1682,7 +1685,7 @@ function homeFunction() {
     elementsTL = new TimelineMax();
 
     $("section").removeClass("active").eq(activeSection).addClass("active");
-
+    $(".view_btn").attr("href", $("section.active").attr("data-url"));
     sectionElements("in", n);
 
     indicator();

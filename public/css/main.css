@@ -1371,7 +1371,8 @@ body:not(.progress) .jn_circle_content {
   }
   .side-content {
     position: absolute;
-    bottom: 50px;
+    bottom: auto;
+    top: 320px;
     left: 25px;
     right: 25px;
   }

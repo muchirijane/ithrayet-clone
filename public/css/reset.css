@@ -1817,6 +1817,9 @@ img.mfp-img {
   #editions .section_head {
     margin: 0;
   }
+  .sub_footer a {
+    padding: 5px 12px;
+  }
 }
 
 .outer-icons {

@@ -21,7 +21,7 @@ const getEditonsBlock = (val, key, id) => {
 const MainBlock = ({ editions, sectionData, dataUrl }) => {
   const { t } = useTranslation("common");
   const { title, quote } = sectionData;
-
+  // console.log(editions);
   let articleChunk = ChunkArray(editions[0]?.articles, 5);
   // console.log(articleChunk, "articleChunk");
   return (

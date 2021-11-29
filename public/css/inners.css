@@ -3471,6 +3471,9 @@ video {
 }
 
 @media (max-width: 500px) {
+  .cr_name {
+    display: none;
+  }
   .team_members {
     padding-top: 100px;
   }
