@@ -974,7 +974,7 @@ function homeFunction() {
     $(".ed_image").removeClass("active");
     setTimeout(() => {
       $(".ed_image").addClass("active");
-    }, 1000);
+    }, 1500);
     if (val == "next") {
       dirVal = 1;
 
@@ -1743,7 +1743,7 @@ function homeFunction() {
       $(".ed_image").removeClass("active");
       setTimeout(() => {
         $(".ed_image").addClass("active");
-      }, 1000);
+      }, 1500);
     } else if (n == 2) {
       var circlesSelector = $(".circles_group.active").find(".crv_circle");
 
