@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import Layout from "../../components/Layout";
 import client from "../../lib/apollo";
 import { GET_ARTICLE_DATA, GET_NEXT_ARTICLE } from "../../graphql";
@@ -11,7 +12,7 @@ import { useRouter } from "next/router";
 import { GET_RELATED_EDTION_ARTICLES } from "../../graphql/editions";
 import { CMSPath } from "../../helpers/imageCMSPath";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+
 // export const getStaticPaths = async ({ locales }) => {
 //   const { data } = await client.query({
 //     query: GET_ARTICLES_SLUGS,

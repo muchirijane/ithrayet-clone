@@ -1372,7 +1372,7 @@ body:not(.progress) .jn_circle_content {
   .side-content {
     position: absolute;
     bottom: auto;
-    top: 320px;
+    top: 310px;
     left: 25px;
     right: 25px;
   }
@@ -1419,7 +1419,7 @@ body:not(.progress) .jn_circle_content {
 
 @media (max-width: 500px) {
   #home section {
-    padding: 80px 0;
+    padding: 100px 0 50px;
   }
   .content_set {
     padding-top: 0;

@@ -1795,7 +1795,7 @@ img.mfp-img {
 }
 
 #fixed-bar .flickity-viewport {
-  height: 80px !important;
+  /* height: 80px !important; */
 }
 
 .creative-listing-mobile-image .col_image {

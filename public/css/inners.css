@@ -453,7 +453,7 @@ strong {
 /* Tabs */
 .tabs_bar {
   color: #fff;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .tabs_bar .tab {
@@ -583,6 +583,8 @@ body:not(.progress) .result_set.has_svg svg {
 
 .tabs_bar.multiple .tab .tab_content .f_16 {
   transform: translateY(-20px);
+  left: 0;
+  right: 0;
 }
 
 .tabs_bar.multiple .tab .tab_content .f_16 {
