@@ -69,8 +69,9 @@ export const getServerSideProps = async ({ locale, query }) => {
       tags: catJson ? catJson : {},
       alphabets: alphabetJson ? alphabetJson : {},
     },
+    fetchPolicy: "no-cache",
   });
-  console.log(data);
+  // console.log(data.editions);
   if (data) {
     return {
       props: {

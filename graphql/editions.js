@@ -1,5 +1,6 @@
 import { gql } from "@apollo/client";
 import { GET_FILTER_AUTHORS, GET_FILTER_TAGS } from "./filters";
+
 export const GET_EDITIONS_DATA = gql`
   query ($locale: String!, $authFirstName:String, $authLastName: String, $tags: [JSON], $dateFrom: String, $dateTo: String, $alphabets: [JSON]  ) {
     editions(locale: $locale,  

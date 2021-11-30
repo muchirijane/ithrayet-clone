@@ -697,10 +697,11 @@ body:not(.progress) .sub-menu ul li a {
 }
 
 .story_img i {
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   left: -2px;
   right: -2px;
+  background-repeat: no-repeat;
 }
 
 .story_details {
@@ -3537,7 +3538,7 @@ video {
     min-width: 150px;
   }
   .tabs_bar:not(.multiple) .tab_content {
-    padding: 30px;
+    padding: 20px;
   }
   .tags a,
   .tags span {
