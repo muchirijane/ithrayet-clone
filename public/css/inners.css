@@ -314,7 +314,7 @@ strong {
 }
 
 .f_14 {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 16px;
 }
 
@@ -325,10 +325,11 @@ strong {
 
 .f_14 a {
   display: inline-block;
+  font-size: 14px;
 }
 
 .f_20 p:not(:first-child) {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .less_opacity {
@@ -1494,7 +1495,7 @@ body:not(.progress) .table_row {
 }
 
 .inner_sides .inner_side:last-child {
-  margin-top: 80px;
+  margin-top: 50px;
 }
 
 /* Inner Footer */
@@ -3107,7 +3108,7 @@ video {
     padding-bottom: 5vw;
   }
   .section_content {
-    margin: 110px 0;
+    margin: 50px 0 30px;
   }
   section:last-of-type .section_content {
     padding-bottom: 110px;
@@ -3141,7 +3142,7 @@ video {
     margin-bottom: 20px;
   }
   .side_img:not(:first-child) {
-    margin-top: 80px;
+    margin-top: 50px;
   }
   .custom_content .text_side .side_head {
     width: 100%;
@@ -3557,7 +3558,7 @@ video {
     padding: 4vw;
   }
   .section_content {
-    margin: 80px 0;
+    margin: 40px 0;
   }
   section:last-of-type .section_content {
     padding-bottom: 80px;
@@ -3785,6 +3786,7 @@ video {
   .mstones_content {
     padding-top: 22vw;
   }
+  
 }
 
 @media (max-width: 400px) {
