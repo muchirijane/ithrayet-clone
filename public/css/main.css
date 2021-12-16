@@ -1548,3 +1548,7 @@ body:not(.progress) .jn_circle_content {
   align-items: center;
   justify-content: center;
 }
+
+#editions#site.light{
+  color: #000 !important;
+}

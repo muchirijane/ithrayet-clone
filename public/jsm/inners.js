@@ -1028,11 +1028,12 @@ function changeTitle(id) {
 
 if (page == "edition" || page == "article") {
   dataBg = $(".background-color");
+ 
 
   if (dataBg.length) {
     const dataColor = dataBg.attr("data-color");
     const dataColorText = dataBg.attr("data-tcolor");
-    console.log(dataColor);
+    console.log(dataColor, dataColorText);
     if (dataColor && dataColorText) {
       $("main").css({ backgroundColor: dataColor, color: dataColorText });
       $("main section").css({ color: dataColorText });
@@ -1045,7 +1046,7 @@ if (page == "edition" || page == "article") {
 }
 
 function changeEdition(id) {
-  if (page == "editions") {
+  if (page == "edition") {
     var split, headSplit;
 
     let head = $(".section_head"),
@@ -1069,7 +1070,7 @@ function changeEdition(id) {
         color: dataColorText,
       });
     } else {
-      TweenMax.to("main", 0.5, { backgroundColor: "transparent" });
+      TweenMax.to("main", 0.5, { backgroundColor: "transparent", color: "transparent" });
     }
     if (getTags) {
       tags.push(getTags.split(","));

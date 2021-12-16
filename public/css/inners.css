@@ -2062,7 +2062,7 @@ body:not(.progress) .table_row {
 
 .text_side .f_80,
 .three_col .f_80 {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .three_images {
@@ -2996,6 +2996,8 @@ video {
     width: 28%;
     padding: 0;
   }
+  
+  
 }
 
 @media (max-width: 1200px) {
@@ -3063,6 +3065,9 @@ video {
     top: auto;
     bottom: -50px;
   }
+  /* .light ._curTL2{
+    color: black;
+  } */
 }
 
 @media (min-width: 1101px) {
