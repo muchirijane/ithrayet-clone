@@ -63,6 +63,10 @@ strong,
   font-style: normal;
 }
 
+strong{
+  font-size: 14px;
+}
+
 h1,
 .alt,
 .search_input input,

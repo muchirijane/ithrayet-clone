@@ -2934,7 +2934,7 @@ video {
   width: 160px;
   height: 160px;
   position: relative;
-  margin-bottom: 80px;
+  margin-bottom: 60px;
 }
 
 .audio_circle .crv_stroke {
@@ -3140,6 +3140,7 @@ video {
   }
   .text_side:first-child {
     margin-bottom: 20px;
+    margin-top: 40px;
   }
   .side_img:not(:first-child) {
     margin-top: 50px;
@@ -3786,6 +3787,11 @@ video {
   .mstones_content {
     padding-top: 22vw;
   }
+
+  .quote_set svg,
+.quote_set span {
+  font-size: 30px
+}
   
 }
 
