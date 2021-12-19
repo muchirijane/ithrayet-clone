@@ -2436,6 +2436,7 @@ body:not(.progress) .view_shape_set {
   visibility: hidden;
   /* overflow: hidden; */
   height: 259px;
+  opacity: 1 !important;
 }
 
 .gallery_items {
@@ -3140,7 +3141,7 @@ video {
   }
   .text_side:first-child {
     margin-bottom: 20px;
-    margin-top: 40px;
+    margin-top: 20px;
   }
   .side_img:not(:first-child) {
     margin-top: 50px;
