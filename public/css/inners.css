@@ -3863,12 +3863,12 @@ section {
 
 .reset_mode {
   position: fixed;
-  top: 520px;
+  top: 590px;
   transform: translateY(-50%);
   z-index: 4999;
   mix-blend-mode: exclusion;
   color: #fff;
-  left: 300px;
+  left: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
