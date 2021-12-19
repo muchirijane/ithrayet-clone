@@ -2705,7 +2705,7 @@ function globalFunc() {
     if (!$(this).hasClass("active")) {
       $(".in_mode").removeClass("active");
 
-      $(this).addClass("active");
+       $(this).addClass("active");
 
       let getMode = $(this).attr("data-id");
 

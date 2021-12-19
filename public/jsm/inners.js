@@ -1046,7 +1046,7 @@ if (page == "edition" || page == "article") {
 }
 
 function changeEdition(id) {
-  if (page == "edition") {
+  if (page == "editions") {
     var split, headSplit;
 
     let head = $(".section_head"),
@@ -1386,7 +1386,7 @@ function globalFunc() {
         isHoldEnd = true;
 
         isHolding = false;
-
+        alert(url);
         openLink(url);
       });
 
@@ -1866,7 +1866,7 @@ function globalFunc() {
     .set(".modes_helpers .a", { scaleY: 0, transformOrigin: "0 0" }, 0.8)
 
     .call(function () {
-      if (curMode == "light") {
+      if (curMode === "light") {
         TweenMax.set("#site", { className: "light" });
 
         $(".mode_toggle span i").text(
@@ -1955,8 +1955,8 @@ function globalFunc() {
       $el
         .find(".page_bar")
         .css(
-          "background-color",curMode == "dark" ? "#000": "#fff"
-          // `${curMode == "dark" ? "#000" : "#fff"}CC`
+          // "background-color",curMode == "dark" ? "#000": "#fff"
+          `${curMode == "dark" ? "#000" : "#fff"}CC`
         );
       $el
         .find(".tab_content")
@@ -1972,9 +1972,9 @@ function globalFunc() {
       modeTL.reverse();
     }
   });
-  if (curSavedMode) {
-    modeTL.play();
-  }
+  // if (curSavedMode) {
+  //   modeTL.play();
+  // }
   $(".in_mode").on("click",function (e) {
     if (!$(this).hasClass("active")) {
       $(".in_mode").removeClass("active");
