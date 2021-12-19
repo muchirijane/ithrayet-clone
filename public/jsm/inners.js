@@ -1992,6 +1992,8 @@ function globalFunc() {
         localStorage.setItem("in_mode", curMode);
         modeTL.reverse();
       }
+    }else{
+      $(this).removeClass("active");
     }
   });
 
