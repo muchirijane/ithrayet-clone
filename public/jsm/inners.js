@@ -1955,19 +1955,19 @@ function globalFunc() {
       $el
         .find(".page_bar")
         .css(
-          "background-color",
-          `${curMode == "dark" ? "#000000" : "#ffffff"}CC`
+          "background-color",curMode == "dark" ? "#000": "#fff"
+          // `${curMode == "dark" ? "#000" : "#fff"}CC`
         );
       $el
         .find(".tab_content")
-        .css("color", curMode == "dark" ? "#ffffff" : "#000000");
+        .css("color", curMode == "light" ? "#fff" : "#000");
     }
     if (curMode == "dark") {
-      curMode = "light";
+      curMode = "dark";
       localStorage.setItem("in_mode", curMode);
       modeTL.play();
     } else {
-      curMode = "dark";
+      curMode = "light";
       localStorage.setItem("in_mode", curMode);
       modeTL.reverse();
     }
@@ -1975,7 +1975,7 @@ function globalFunc() {
   if (curSavedMode) {
     modeTL.play();
   }
-  $(".in_mode").click(function (e) {
+  $(".in_mode").on("click",function (e) {
     if (!$(this).hasClass("active")) {
       $(".in_mode").removeClass("active");
 
