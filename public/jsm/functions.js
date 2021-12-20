@@ -2644,7 +2644,7 @@ function globalFunc() {
   var modeTL = new TimelineMax({ paused: true });
 
   const curSavedMode = localStorage.getItem("in_mode");
-  curMode = curSavedMode ? curSavedMode : "dark";
+  curMode = curSavedMode ? curSavedMode : "dark"; 
 
   modeTL
     .set(".modes_helpers", { autoAlpha: 1 }, 0)
@@ -2713,32 +2713,34 @@ function globalFunc() {
   if (curSavedMode) {
     modeTL.play();
   }
-  $(".mode_set").click(function (e) {
+  $(".mode_set").on("click",function (e) {
     e.stopPropagation();
 
     canScroll = false;
 
-    if (curMode == "dark") {
-      curMode = "light";
-      localStorage.setItem("in_mode", curMode);
+  
 
-      modeTL.play();
-    } else {
+    if (curMode == "dark") {
       curMode = "dark";
       localStorage.setItem("in_mode", curMode);
+      modeTL.play();
+    } else {
+      curMode = "light";
+      localStorage.setItem("in_mode", curMode);
       modeTL.reverse();
+      console.log(curMode)
     }
   });
 
-  $(".in_mode").click(function (e) {
+  $(".in_mode").on("click",function (e) {
     if (!$(this).hasClass("active")) {
       $(".in_mode").removeClass("active");
 
-      $(this).addClass("active");
+       $(this).addClass("active");
 
       let getMode = $(this).attr("data-id");
 
-      if (getMode == "light") {
+      if (getMode === "light") {
         curMode = "light";
         localStorage.setItem("in_mode", curMode);
 

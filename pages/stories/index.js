@@ -244,7 +244,9 @@ const Stories = (props) => {
                                 data-title="View"
                               >
                                 <div className="story_box">
+                                  
                                   {article.cover && article.cover.url ? (
+                                    
                                     <div className="story_img">
                                       <i
                                         className="full_bg load_bg"

@@ -1028,11 +1028,12 @@ function changeTitle(id) {
 
 if (page == "edition" || page == "article") {
   dataBg = $(".background-color");
+ 
 
   if (dataBg.length) {
     const dataColor = dataBg.attr("data-color");
     const dataColorText = dataBg.attr("data-tcolor");
-    console.log(dataColor);
+    console.log(dataColor, dataColorText);
     if (dataColor && dataColorText) {
       $("main").css({ backgroundColor: dataColor, color: dataColorText });
       $("main section").css({ color: dataColorText });
@@ -1069,7 +1070,7 @@ function changeEdition(id) {
         color: dataColorText,
       });
     } else {
-      TweenMax.to("main", 0.5, { backgroundColor: "transparent" });
+      TweenMax.to("main", 0.5, { backgroundColor: "transparent", color: "transparent" });
     }
     if (getTags) {
       tags.push(getTags.split(","));
@@ -1385,7 +1386,7 @@ function globalFunc() {
         isHoldEnd = true;
 
         isHolding = false;
-
+        alert(url);
         openLink(url);
       });
 
@@ -1865,7 +1866,7 @@ function globalFunc() {
     .set(".modes_helpers .a", { scaleY: 0, transformOrigin: "0 0" }, 0.8)
 
     .call(function () {
-      if (curMode == "light") {
+      if (curMode === "light") {
         TweenMax.set("#site", { className: "light" });
 
         $(".mode_toggle span i").text(
@@ -1954,27 +1955,27 @@ function globalFunc() {
       $el
         .find(".page_bar")
         .css(
-          "background-color",
-          `${curMode == "dark" ? "#000000" : "#ffffff"}CC`
+          // "background-color",curMode == "dark" ? "#000": "#fff"
+          `${curMode == "dark" ? "#000" : "#fff"}CC`
         );
       $el
         .find(".tab_content")
-        .css("color", curMode == "dark" ? "#ffffff" : "#000000");
+        .css("color", curMode == "light" ? "#fff" : "#000");
     }
     if (curMode == "dark") {
-      curMode = "light";
+      curMode = "dark";
       localStorage.setItem("in_mode", curMode);
       modeTL.play();
     } else {
-      curMode = "dark";
+      curMode = "light";
       localStorage.setItem("in_mode", curMode);
       modeTL.reverse();
     }
   });
-  if (curSavedMode) {
-    modeTL.play();
-  }
-  $(".in_mode").click(function (e) {
+  // if (curSavedMode) {
+  //   modeTL.play();
+  // }
+  $(".in_mode").on("click",function (e) {
     if (!$(this).hasClass("active")) {
       $(".in_mode").removeClass("active");
 
@@ -1991,6 +1992,8 @@ function globalFunc() {
         localStorage.setItem("in_mode", curMode);
         modeTL.reverse();
       }
+    }else{
+      $(this).removeClass("active");
     }
   });
 

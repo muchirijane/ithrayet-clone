@@ -90,6 +90,7 @@ export const getServerSideProps = async ({ locale, query }) => {
 const Editions = (props) => {
   const { t } = useTranslation("common");
   const { editions, SEO, filter_authors, filter_tags } = props;
+  console.log(editions)
 
   return (
     <Layout

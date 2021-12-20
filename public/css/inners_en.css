@@ -63,6 +63,10 @@ strong,
   font-style: normal;
 }
 
+strong{
+  font-size: 14px;
+}
+
 h1,
 .alt,
 .search_input input,
@@ -441,13 +445,15 @@ h1,
   }
   .overlapping_sides .inner_side:first-child {
     left: 0;
-    padding-right: 20px;
+    padding-right: 30px;
+    padding-top: 40px;
   }
   .overlapping_sides .inner_side:first-child .f_14 {
     padding-right: 0;
   }
   .overlapping_sides .inner_side:last-child {
-    padding-left: 20px;
+    padding-left: 0;
+    padding-top: 40px;
   }
   .jr_row_image.has_margin.double {
     left: 0;
@@ -513,6 +519,10 @@ h1,
 }
 
 @media (max-width: 500px) {
+  .overlapping_sides .inner_side:last-child {
+    padding-left: 0;
+    padding-top: 0;
+  }
   h1,
   .search_input input {
     font-size: 23vw;
