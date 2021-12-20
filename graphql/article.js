@@ -16,6 +16,7 @@ export const GET_ARTICLE_DATA = gql`
       colorText
       highlightColorbackground
       highlightColorText
+      overrideEditionColor
       tags {
         name
         color
@@ -51,6 +52,8 @@ export const GET_ARTICLE_DATA = gql`
 
       edition {
         id
+        color
+        colorText
         slug
         symbol {
           symbol {

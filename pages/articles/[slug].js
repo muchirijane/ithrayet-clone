@@ -107,7 +107,7 @@ export const getServerSideProps = async ({
       },
     });
     let relatedArticles = [];
-    console.log(article.edition);
+
     if (article.edition) {
       const related = await client.query({
         query: GET_RELATED_EDTION_ARTICLES,
@@ -206,8 +206,14 @@ const Article = (props) => {
           id="fixed-bar"
           className="fixed-bar"
           className="background-color"
-          data-color={article.color}
-          data-tcolor={article.colorText}
+          data-color={
+            article.overrideEditionColor ? article.color : article.edition.color
+          }
+          data-tcolor={
+            article.overrideEditionColor
+              ? article.colorText
+              : article.edition?.colorText
+          }
         >
           <div
             className="page_bar fixed_item forced-full-width"
@@ -215,7 +221,13 @@ const Article = (props) => {
             data-scroll-sticky
             data-scroll-target="#fixed-bar"
             style={{
-              backgroundColor: article.color ? `${article.color}CC` : "none",
+              backgroundColor: article.overrideEditionColor
+                ? article.color
+                  ? `${article.color}CC`
+                  : "none"
+                : article.edition?.color
+                ? `${article.edition.color}CC`
+                : "none",
             }}
           >
             <div className="tabs_bar">
@@ -224,9 +236,11 @@ const Article = (props) => {
                 <div
                   className="tab_content"
                   style={{
-                    color: article.colorText
+                    color: article.overrideEditionColor
                       ? article.colorText
-                      : article.color,
+                        ? article.colorText
+                        : article.color
+                      : article.edition?.colorText,
                   }}
                 >
                   <span className="f_40 alt">{`${article.title}`}</span>
