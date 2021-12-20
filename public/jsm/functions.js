@@ -384,6 +384,10 @@ $(window).on("load", function () {
                   .call(function () {
                     $(".loader").remove();
 
+                    if (isMobile) {
+                      TweenMax.to(["._mainElement"], 1, { autoAlpha: 1 });
+                    }
+
                     var fireTL = new TimelineMax();
                     splitA = new SplitText(".main_heading h3", {
                       type: "lines",
@@ -839,9 +843,36 @@ function homeFunction() {
     }
   }
 
-  new Sketch({
-    dom: document.getElementById("container"),
-  });
+  if (!isMobile) {
+    new Sketch({
+      dom: document.getElementById("container"),
+    });
+  } else {
+    canScroll = true;
+    canAnimate = true;
+
+    $(".main_wrap").append('<div class="main_wrap_animated"></div>');
+    $(".main_wrap").prepend(
+      '<div class="main_wrap_animated" style="width:0;"></div>'
+    );
+
+    var juCarousel = $(".main_wrap").flickity({
+      prevNextButtons: false,
+      accessibility: true,
+      pageDots: false,
+      freeScroll: true,
+    });
+
+    juCarousel.flickity("select", 1);
+
+    juCarousel.on("settle.flickity", function (event, index) {
+      isDragging = false;
+    });
+
+    juCarousel.on("dragStart.flickity", function (event, pointer) {
+      isDragging = true;
+    });
+  }
 
   $("article").click(function (e) {
     if (!isMobile) {
@@ -1463,13 +1494,13 @@ function homeFunction() {
     });
   } else {
     $(window).on("touchstart", function (e) {
-      if (canScroll) {
+      if (canScroll && !isDragging) {
         ts = e.originalEvent.touches[0].clientY;
       }
     });
 
     $(window).on("touchend", function (e) {
-      if (canScroll) {
+      if (canScroll && !isDragging) {
         var te = e.originalEvent.changedTouches[0].clientY;
 
         if (ts > te + 25) {
