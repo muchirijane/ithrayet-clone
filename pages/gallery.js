@@ -26,14 +26,19 @@ export const getStaticProps = async ({ locale }) => {
           if (block.image) {
             if (block.image.length) {
               block.image.map((img) => {
-                img.link = article.slug;
-                img.articleTitle = article.title;
-                obj.images = [...obj.images, img];
+                if (img?.image?.selectedImageType?.id === 1) {
+                  img.link = article.slug;
+                  img.articleTitle = article.title;
+                  obj.images = [...obj.images, img];
+                }
               });
             } else {
-              block.image.link = article.slug;
-              block.image.articleTitle = article.title;
-              obj.images = [...obj.images, block.image];
+              // console.log(block.image, "image");
+              if (block?.image?.image?.selectedImageType?.id === 1) {
+                block.image.link = article.slug;
+                block.image.articleTitle = article.title;
+                obj.images = [...obj.images, block.image];
+              }
             }
           }
         });
