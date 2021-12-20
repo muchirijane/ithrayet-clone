@@ -384,8 +384,8 @@ $(window).on("load", function () {
                   .call(function () {
                     $(".loader").remove();
 
-                    if(isMobile) {
-                      TweenMax.to([".toggle", '.search-btn'], 1, { autoAlpha: 1 });
+                    if (isMobile) {
+                      TweenMax.to(["._mainElement"], 1, { autoAlpha: 1 });
                     }
 
                     var fireTL = new TimelineMax();
@@ -843,42 +843,36 @@ function homeFunction() {
     }
   }
 
-	if(!isMobile) {
+  if (!isMobile) {
+    new Sketch({
+      dom: document.getElementById("container"),
+    });
+  } else {
+    canScroll = true;
+    canAnimate = true;
 
-		new Sketch({
-			dom: document.getElementById('container')
-		});
+    $(".main_wrap").append('<div class="main_wrap_animated"></div>');
+    $(".main_wrap").prepend(
+      '<div class="main_wrap_animated" style="width:0;"></div>'
+    );
 
-	} else {
+    var juCarousel = $(".main_wrap").flickity({
+      prevNextButtons: false,
+      accessibility: true,
+      pageDots: false,
+      freeScroll: true,
+    });
 
-		canScroll = true
-		canAnimate = true
+    juCarousel.flickity("select", 1);
 
-		$('.main_wrap').append('<div class="main_wrap_animated"></div>')
-		$('.main_wrap').prepend('<div class="main_wrap_animated" style="width:0;"></div>')
+    juCarousel.on("settle.flickity", function (event, index) {
+      isDragging = false;
+    });
 
-		var juCarousel = $('.main_wrap').flickity({
-			prevNextButtons: false,
-			accessibility: true,
-			pageDots: false,
-			freeScroll: true,
-		});
-
-		juCarousel.flickity( 'select', 1 );
-
-		juCarousel.on( 'settle.flickity', function( event, index ) {
-
-			isDragging = false;
-
-		});
-
-		juCarousel.on( 'dragStart.flickity', function( event, pointer ) {
-
-			isDragging = true;
-
-		});
-
-	}
+    juCarousel.on("dragStart.flickity", function (event, pointer) {
+      isDragging = true;
+    });
+  }
 
   $("article").click(function (e) {
     if (!isMobile) {
