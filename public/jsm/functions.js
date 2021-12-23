@@ -878,9 +878,25 @@ function homeFunction() {
   }
 
   $("article").click(function (e) {
+    let getURL = $(this).attr("data-url");
+
     if (!isMobile) {
-      let getURL = $(this).attr("data-url");
       window.location.href = getURL;
+    } else {
+      $(".animated_circle strong").html("HOLD HERE TO<br/>EXPLORE ARTICLE");
+      var splt = new SplitText(".animated_circle strong", {
+        type: "lines",
+        wordsClass: "SplitClass",
+      });
+
+      TweenMax.staggerFrom(
+        [splt.lines],
+        1,
+        { y: 25, autoAlpha: 0, ease: Power3.easeOut },
+        0.1,
+        function () {}
+      );
+      animCircle.attr("data-url", getURL);
     }
   });
 
