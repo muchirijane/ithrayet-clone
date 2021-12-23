@@ -175,7 +175,9 @@ $(window).on("load", function () {
 
           $.cachedScript("/jsm/vendor.js").done(function (script, textStatus) {
             totalScripts += 1;
-
+            if (isMobile) {
+              isSiteReady = true;
+            }
             gsap.config({
               nullTargetWarn: false,
             });
@@ -850,6 +852,7 @@ function homeFunction() {
   } else {
     canScroll = true;
     canAnimate = true;
+    TweenMax.to([animCircle], 1, { autoAlpha: 1 }, 5000);
 
     $(".main_wrap").append('<div class="main_wrap_animated"></div>');
     $(".main_wrap").prepend(
@@ -1264,6 +1267,7 @@ function homeFunction() {
 
   $(".crv_circle")
     .on("mousemove touchstart", function () {
+      console.log("touchstart circle");
       if (isMobile) {
         return;
       }
@@ -1493,23 +1497,20 @@ function homeFunction() {
       }
     });
   } else {
+    // console.log("bahaasamir.me");
     $(window).on("touchstart", function (e) {
       if (canScroll && !isDragging) {
         ts = e.originalEvent.touches[0].clientY;
       }
     });
-
     $(window).on("touchend", function (e) {
       if (canScroll && !isDragging) {
         var te = e.originalEvent.changedTouches[0].clientY;
-
         if (ts > te + 25) {
           canScroll = false;
-
           getSection("next");
         } else if (ts < te - 25) {
           canScroll = false;
-
           getSection("prev");
         }
       }
@@ -1572,6 +1573,9 @@ function homeFunction() {
           newSection(n, o);
         });
 
+      if (isMobile) {
+        isSiteReady = true;
+      }
       setCircle("animation");
     } else if (o == 1) {
       sectionTL
@@ -2059,6 +2063,7 @@ function homeFunction() {
   });
 
   $(window).on("mousemove", function (e) {
+    console.log("mousemove anim");
     var x = e.clientX;
     var y = e.clientY;
 
@@ -2066,17 +2071,20 @@ function homeFunction() {
       let speedX;
 
       if (activeSection == 0 && canAnimate) {
-        width <= 640 ? (speedX = width * 4) : (speedX = width / 2);
+        if (!isMobile) {
+          width <= 640 ? (speedX = width * 4) : (speedX = width / 2);
 
-        let mW = (((width / 2 - event.pageX) * speedX) / width).toFixed(3) - 50;
-        let mH =
-          (((height / 2 - event.pageY) * height) / height).toFixed(3) - 50;
+          let mW =
+            (((width / 2 - event.pageX) * speedX) / width).toFixed(3) - 50;
+          let mH =
+            (((height / 2 - event.pageY) * height) / height).toFixed(3) - 50;
 
-        TweenMax.to(".main_wrap_animated", 3, {
-          x: mW,
-          y: mH,
-          ease: Power3.easeOut,
-        });
+          TweenMax.to(".main_wrap_animated", 3, {
+            x: mW,
+            y: mH,
+            ease: Power3.easeOut,
+          });
+        }
       } else if (
         (activeSection == 3 || activeSection == 1) &&
         !isMobile &&
@@ -2205,6 +2213,7 @@ function setCircle(type) {
     arrowPrevX,
     arrowNextX,
     arrowY;
+  // console.log(activeSection, circleW, circleH, type);
 
   if (isSiteReady) {
     if (activeSection != 0 && activeSection != 3 && activeSection != 5) {
@@ -2644,7 +2653,7 @@ function globalFunc() {
   var modeTL = new TimelineMax({ paused: true });
 
   const curSavedMode = localStorage.getItem("in_mode");
-  curMode = curSavedMode ? curSavedMode : "dark"; 
+  curMode = curSavedMode ? curSavedMode : "dark";
 
   modeTL
     .set(".modes_helpers", { autoAlpha: 1 }, 0)
@@ -2713,12 +2722,10 @@ function globalFunc() {
   if (curSavedMode) {
     modeTL.play();
   }
-  $(".mode_set").on("click",function (e) {
+  $(".mode_set").on("click", function (e) {
     e.stopPropagation();
 
     canScroll = false;
-
-  
 
     if (curMode == "dark") {
       curMode = "dark";
@@ -2728,15 +2735,15 @@ function globalFunc() {
       curMode = "light";
       localStorage.setItem("in_mode", curMode);
       modeTL.reverse();
-      console.log(curMode)
+      console.log(curMode);
     }
   });
 
-  $(".in_mode").on("click",function (e) {
+  $(".in_mode").on("click", function (e) {
     if (!$(this).hasClass("active")) {
       $(".in_mode").removeClass("active");
 
-       $(this).addClass("active");
+      $(this).addClass("active");
 
       let getMode = $(this).attr("data-id");
 
@@ -2869,6 +2876,7 @@ function globalFunc() {
 
   animCircle
     .on("mousedown touchstart", function () {
+      console.log("touchstart anim");
       isHolding = true;
 
       canScroll = false;

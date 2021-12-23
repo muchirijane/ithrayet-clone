@@ -250,7 +250,7 @@ body:not(.progress) .progress .main_heading h3 {
   left: 0 !important;
   right: 0 !important;
   top: 0 !important;
-  transform: translate(0) !important;
+  transform: translate(0) scale3d(0.6, 0.6, 1) !important;
 }
 
 .isMobile .main_wrap_animated:nth-child(1),
