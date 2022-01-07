@@ -869,8 +869,7 @@ function homeFunction() {
       prevNextButtons: false,
       accessibility: true,
       pageDots: false,
-      freeScroll: false,
-      draggable: true,
+      freeScroll: true,
     });
 
     juCarousel.flickity("select", 1);
@@ -1521,19 +1520,37 @@ function homeFunction() {
     });
   } else {
     // console.log("bahaasamir.me");
+    let startX = 0;
+    let startY = 0;
     $(window).on("touchstart", function (e) {
       if (canScroll && !isDragging) {
+        var touchobj = e.changedTouches[0];
+        startX = touchobj.pageX;
+        startY = touchobj.pageY;
+
         ts = e.originalEvent.touches[0].clientY;
       }
     });
     $(window).on("touchend", function (e) {
       if (canScroll && !isDragging) {
+        var touchobj = e.changedTouches[0];
+        // console.log(touchobj);
+        const distX = touchobj.pageX - startX; // get horizontal dist traveled by finger while in contact with surface
+        const distY = touchobj.pageY - startY; // get vertical dist traveled by finger while in contact with surface
+        console.log(distY);
         var te = e.originalEvent.changedTouches[0].clientY;
-        console.log(ts, te);
-        if (ts > te + 25) {
+        // console.log(ts, te);
+        // if (ts > te + 40) {
+        //   canScroll = false;
+        //   getSection("next");
+        // } else if (ts < te - 40) {
+        //   canScroll = false;
+        //   getSection("prev");
+        // }
+        if (distY < -100) {
           canScroll = false;
           getSection("next");
-        } else if (ts < te - 25) {
+        } else if (distY > 100) {
           canScroll = false;
           getSection("prev");
         }
