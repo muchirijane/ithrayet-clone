@@ -868,7 +868,8 @@ function homeFunction() {
       prevNextButtons: false,
       accessibility: true,
       pageDots: false,
-      freeScroll: true,
+      freeScroll: false,
+      draggable: true,
     });
 
     juCarousel.flickity("select", 1);
@@ -1527,6 +1528,7 @@ function homeFunction() {
     $(window).on("touchend", function (e) {
       if (canScroll && !isDragging) {
         var te = e.originalEvent.changedTouches[0].clientY;
+        console.log(ts, te);
         if (ts > te + 25) {
           canScroll = false;
           getSection("next");
