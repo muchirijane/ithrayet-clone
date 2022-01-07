@@ -251,6 +251,7 @@ body:not(.progress) .progress .main_heading h3 {
   right: 0 !important;
   top: 0 !important;
   transform: translate(0) scale3d(0.6, 0.6, 1) !important;
+  z-index: -1;
 }
 
 .isMobile .main_wrap_animated:nth-child(1),
@@ -1574,6 +1575,6 @@ body:not(.progress) .jn_circle_content {
   justify-content: center;
 }
 
-#editions#site.light{
+#editions#site.light {
   color: #000 !important;
 }
