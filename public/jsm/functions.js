@@ -864,6 +864,7 @@ function homeFunction() {
       '<div class="main_wrap_animated" style="width:0;"></div>'
     );
 
+    isDragging = false;
     var juCarousel = $(".main_wrap").flickity({
       prevNextButtons: false,
       accessibility: true,
@@ -874,13 +875,13 @@ function homeFunction() {
 
     juCarousel.flickity("select", 1);
 
-    juCarousel.on("settle.flickity", function (event, index) {
-      isDragging = false;
-    });
+    // juCarousel.on("settle.flickity", function (event, index) {
+    //   isDragging = false;
+    // });
 
-    juCarousel.on("dragStart.flickity", function (event, pointer) {
-      isDragging = true;
-    });
+    // juCarousel.on("dragStart.flickity", function (event, pointer) {
+    //   isDragging = true;
+    // });
   }
 
   $("article").click(function (e) {
