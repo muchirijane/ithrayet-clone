@@ -88,6 +88,7 @@ export const getStaticProps = async ({ locale }) => {
       editionLimit: 1,
       articleLimit: 8,
     },
+    fetchPolicy: "no-cache",
   });
 
   const { data: symbolData } = await client.query({

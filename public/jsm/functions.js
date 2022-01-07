@@ -270,7 +270,7 @@ $(window).on("load", function () {
     }, 50);
     function runLoader() {
       if (!isMuted && !isMobile) {
-        audio.play();
+        // audio.play();
         $(".equalizer").removeClass("muted");
       }
 
@@ -333,9 +333,12 @@ $(window).on("load", function () {
         )
 
         .call(function () {
+          console.log(siteIMGS, "siteIMGS");
           preloadPictures(siteIMGS, function (e, i) {
+            // console.log(loadingIntrvl, LoadingPerc);
+            // LoadingPerc = 1;
             loadingIntrvl = setInterval(function () {
-              if (LoadingPerc == 1) {
+              if (LoadingPerc === 1) {
                 clearInterval(loadingIntrvl);
 
                 shapesTL.pause();
@@ -364,6 +367,7 @@ $(window).on("load", function () {
                   })
 
                   .call(function () {
+                    // alert(isFired);
                     appendImgs();
 
                     isFired = true;
@@ -497,6 +501,7 @@ jQuery.cachedScript = function (url, options) {
 };
 
 preloadPictures = function (pictureUrls, callback) {
+  // console.log(pictureUrls, "pictureUrls");
   var i,
     j,
     loaded = 0;
@@ -510,7 +515,7 @@ preloadPictures = function (pictureUrls, callback) {
         } else {
           if (!isFired) {
             LoadingPerc = (loaded + 1) / pictureUrls.length;
-
+            // console.log(LoadingPerc);
             TweenMax.to(cont, 0.3, {
               val: LoadingPerc * 100,
               roundProps: "val",

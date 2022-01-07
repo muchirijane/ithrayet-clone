@@ -19,6 +19,7 @@ export const GET_HOMEPAGE_DATA = gql`
         cover {
           url
           alternativeText
+          formats
         }
         publishDate
         slug
@@ -39,10 +40,12 @@ export const GET_HOMEPAGE_DATA = gql`
       featuredImageLeft {
         url
         alternativeText
+        formats
       }
       featuredImageRight {
         url
         alternativeText
+        formats
       }
       type {
         value
@@ -53,6 +56,7 @@ export const GET_HOMEPAGE_DATA = gql`
       cover {
         url
         alternativeText
+        formats
       }
     }
     artists(

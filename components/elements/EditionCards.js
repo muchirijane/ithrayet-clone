@@ -14,11 +14,18 @@ const EditionCards = ({
 }) => {
   const [svgString, setSvgString] = useState("");
   useEffect(() => {
-    fetch(svg)
-      .then((response) => response.text())
-      .then((str) => {
-        setSvgString(str);
-      });
+    // if (svg) {
+    //   console.log(svg, "svg");
+    //   try {
+    //     fetch(svg)
+    //       .then((response) => response.text())
+    //       .then((str) => {
+    //         setSvgString(str);
+    //       });
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // }
   }, []);
   return (
     <>

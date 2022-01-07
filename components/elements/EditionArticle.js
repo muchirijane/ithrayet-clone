@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { CMSPath } from "../../helpers/imageCMSPath";
 import useTranslation from "next-translate/useTranslation";
+import { getImageLink } from "@/helpers/utils";
 
 const EditonArticle = (props) => {
   const { article, id } = props;
@@ -21,7 +22,7 @@ const EditonArticle = (props) => {
                 {article.cover && article.cover.url ? (
                   <img
                     className="preloadIMG"
-                    data-img={`${CMSPath}${article.cover.url}`}
+                    data-img={`${CMSPath}${getImageLink(article.cover)}`}
                     width="100%"
                     height="auto"
                     alt={article.title}

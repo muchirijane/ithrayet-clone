@@ -60,16 +60,28 @@ const EditionBlock = ({ featuredEdition, dataUrl }) => {
                 key={key}
                 title={edition.title}
                 date={edition.publishedDate}
-                cover={`${CMSPath}${edition.cover.url}`}
-                svg={`${CMSPath}${edition.symbol.symbol.url}`}
+                cover={`${CMSPath}${
+                  edition?.cover?.formats?.medium?.url
+                    ? edition.cover.formats.medium.url
+                    : edition?.cover?.url
+                }`}
+                svg={`${CMSPath}${edition?.symbol?.symbol?.url}`}
                 featuredTitle={edition.featuredTitle}
                 img1={
                   edition.featuredImageLeft &&
-                  `${CMSPath}${edition.featuredImageLeft.url}`
+                  `${CMSPath}${
+                    edition.featuredImageLeft?.formats?.medium?.url
+                      ? edition.featuredImageLeft?.formats?.medium?.url
+                      : edition.featuredImageLeft?.url
+                  }`
                 }
                 img2={
                   edition.featuredImageRight &&
-                  `${CMSPath}${edition.featuredImageRight.url}`
+                  `${CMSPath}${
+                    edition.featuredImageRight.formats?.medium?.url
+                      ? edition.featuredImageRight.formats?.medium?.url
+                      : edition.featuredImageRight?.url
+                  }`
                 }
                 slug={`${locale === "ar" ? "/ar" : ""}/editions/${
                   edition.slug

@@ -4,6 +4,7 @@ import { GET_FILTER_AUTHORS, GET_FILTER_TAGS } from "./filters";
 export const GET_EDITIONS_DATA = gql`
   query ($locale: String!, $authFirstName:String, $authLastName: String, $tags: [JSON], $dateFrom: String, $dateTo: String, $alphabets: [JSON]  ) {
     editions(locale: $locale,  
+      sort: "publishedDate:desc",
       where: {
         _and: [
           {_or:$alphabets}
@@ -40,6 +41,7 @@ export const GET_EDITIONS_DATA = gql`
       cover {
         alternativeText
         url
+        formats
       }
       tags {
         name
@@ -49,6 +51,7 @@ export const GET_EDITIONS_DATA = gql`
         title
         cover {
           url
+          formats
         }
         isFeatured
         isExclusive
@@ -111,6 +114,7 @@ export const GET_EDITION_DATA = gql`
       cover {
         alternativeText
         url
+        formats
       }
       tags {
         name
@@ -124,6 +128,7 @@ export const GET_EDITION_DATA = gql`
         cover {
           url
           alternativeText
+          formats
         }
         description
         quote

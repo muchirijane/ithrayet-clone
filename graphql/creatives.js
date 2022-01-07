@@ -26,6 +26,7 @@ export const GET_CREATIVES_DATA = gql`
       profileImage {
         url
         alternativeText
+        formats
       }
       slug
       id

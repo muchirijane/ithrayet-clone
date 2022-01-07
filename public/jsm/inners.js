@@ -1028,7 +1028,6 @@ function changeTitle(id) {
 
 if (page == "edition" || page == "article") {
   dataBg = $(".background-color");
- 
 
   if (dataBg.length) {
     const dataColor = dataBg.attr("data-color");
@@ -1070,7 +1069,10 @@ function changeEdition(id) {
         color: dataColorText,
       });
     } else {
-      TweenMax.to("main", 0.5, { backgroundColor: "transparent", color: "transparent" });
+      TweenMax.to("main", 0.5, {
+        backgroundColor: "transparent",
+        color: "transparent",
+      });
     }
     if (getTags) {
       tags.push(getTags.split(","));
@@ -1386,7 +1388,6 @@ function globalFunc() {
         isHoldEnd = true;
 
         isHolding = false;
-        alert(url);
         openLink(url);
       });
 
@@ -1952,12 +1953,10 @@ function globalFunc() {
     }
 
     if ($el) {
-      $el
-        .find(".page_bar")
-        .css(
-          // "background-color",curMode == "dark" ? "#000": "#fff"
-          `${curMode == "dark" ? "#000" : "#fff"}CC`
-        );
+      $el.find(".page_bar").css(
+        // "background-color",curMode == "dark" ? "#000": "#fff"
+        `${curMode == "dark" ? "#000" : "#fff"}CC`
+      );
       $el
         .find(".tab_content")
         .css("color", curMode == "light" ? "#fff" : "#000");
@@ -1975,7 +1974,7 @@ function globalFunc() {
   // if (curSavedMode) {
   //   modeTL.play();
   // }
-  $(".in_mode").on("click",function (e) {
+  $(".in_mode").on("click", function (e) {
     if (!$(this).hasClass("active")) {
       $(".in_mode").removeClass("active");
 

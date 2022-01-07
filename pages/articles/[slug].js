@@ -60,7 +60,7 @@ export const getServerSideProps = async ({
     });
     data_results = ArticleBlocksKeyReplace(data_results);
   } else {
-    const { data } = await client.query({
+    const { data, loading, error } = await client.query({
       query: GET_ARTICLE_DATA,
       variables: {
         slug: slug,
@@ -68,7 +68,7 @@ export const getServerSideProps = async ({
       },
       fetchPolicy: "no-cache",
     });
-
+    console.log(error, "data");
     data_results = data;
   }
   if (!preview && data_results.articles.length === 0) {

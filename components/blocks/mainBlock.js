@@ -11,7 +11,7 @@ const getEditonsBlock = (val, key, id) => {
     <Elements.EditionHomepage
       key={key}
       id={id}
-      imgUrl={`${CMSPath}${val.cover.url}`}
+      imgUrl={`${CMSPath}${val.cover?.formats?.medium?.url}`}
       title={val.title}
       subTitle={`${format(new Date(val.publishDate), "MMMM yyyy")}`}
       hrefUrl={`${locale === "ar" ? "/ar" : ""}/articles/${val.slug}`}

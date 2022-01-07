@@ -3,24 +3,32 @@ const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
 
 const prodOptions = {
   env: {
-    GRAPHQL_STRAPI_URL: "https://ithraeyat-server.1020dev.com/graphql",
-    IMAGE_CMS_URL: "https://ithraeyat-server.1020dev.com",
-    NEXT_PUBLIC_API_URL: "https://ithraeyat-server.1020dev.com",
+    GRAPHQL_STRAPI_URL: "https://api.ithraeyat.ithra.com/graphql",
+    IMAGE_CMS_URL: "https://api.ithraeyat.ithra.com",
+    NEXT_PUBLIC_API_URL: "https://api.ithraeyat.ithra.com",
     API_SECRET_VALUE: "ithraeyat",
     API_SECRET_KEY: "Nan8ESEn",
   },
-  domains: ["localhost", "ithraeyat-server.1020dev.com"],
+  domains: [
+    "localhost",
+    "ithraeyat-server.1020dev.com",
+    "api.ithraeyat.ithra.com",
+  ],
 };
 
 const devOptions = {
   env: {
-    GRAPHQL_STRAPI_URL: "https://ithraeyat-server.1020dev.com/graphql",
-    IMAGE_CMS_URL: "https://ithraeyat-server.1020dev.com",
-    NEXT_PUBLIC_API_URL: "https://ithraeyat-server.1020dev.com",
+    GRAPHQL_STRAPI_URL: "https://api.ithraeyat.ithra.com/graphql",
+    IMAGE_CMS_URL: "https://api.ithraeyat.ithra.com",
+    NEXT_PUBLIC_API_URL: "https://api.ithraeyat.ithra.com",
     API_SECRET_VALUE: "ithraeyat",
-    API_SECRET_KEY: "Nan8ESEn", 
+    API_SECRET_KEY: "Nan8ESEn",
   },
-  domains: ["localhost", "ithraeyat-server.1020dev.com"],
+  domains: [
+    "localhost",
+    "ithraeyat-server.1020dev.com",
+    "api.ithraeyat.ithra.com",
+  ],
 };
 
 module.exports = (phase, { defaultConfig }) => {

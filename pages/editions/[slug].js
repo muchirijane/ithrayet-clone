@@ -11,6 +11,7 @@ import { GET_RELATED_EDTION_ARTICLES } from "../../graphql/editions";
 import { CMSPath } from "../../helpers/imageCMSPath";
 import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
+import { getImageLink } from "@/helpers/utils";
 
 export const getServerSideProps = async ({
   params,
@@ -149,7 +150,10 @@ const Edition = (props) => {
                             <a className="_link _curTL1" data-title={t("read")}>
                               <img
                                 className="load_img"
-                                data-src={`${CMSPath}${val.cover.url}`}
+                                data-src={`${CMSPath}${getImageLink(
+                                  val.cover,
+                                  "small"
+                                )}`}
                                 width="100%"
                                 height="auto"
                                 alt={`${val.cover.alternativeText}`}

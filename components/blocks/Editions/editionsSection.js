@@ -4,7 +4,7 @@ const EditionsSection = (props) => {
   const { t } = useTranslation("common");
 
   const { editions } = props;
-  console.log(t, editions)
+  console.log(t, editions);
 
   return (
     <div id="sections">
@@ -22,11 +22,10 @@ const EditionsSection = (props) => {
           >
             {edition.articles.map((article, index) => {
               if (index < 5) {
-                return article.cover && article.cover.url ? (
-                  
+                return article.cover?.formats?.small?.url ? (
                   <img
                     className="preloadIMG"
-                    data-img={`${CMSPath}${article.cover.url}`}
+                    data-img={`${CMSPath}${article.cover?.formats?.small?.url}`}
                     width="100%"
                     height="auto"
                     alt={edition.title}
@@ -38,23 +37,15 @@ const EditionsSection = (props) => {
                         : dataScrollSpeeds.odd[index]
                     }
                   />
-          
-                  
-
-                  
                 ) : null;
               } else {
                 return null;
               }
             })}
-
-            
           </section>
         );
       })}
 
-      
-   
       <div className="section_head_vh no-select">
         <div className="section_head_set">
           <div
@@ -93,7 +84,6 @@ const EditionsSection = (props) => {
           </div>
         </div>
       </div>
-      
     </div>
   );
 };

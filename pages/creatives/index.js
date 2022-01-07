@@ -5,6 +5,7 @@ import Link from "next/link";
 import { CMSPath } from "../../helpers/imageCMSPath";
 import { padLeadingZeros } from "../../helpers/arrayHelper";
 import SearchBar from "../../components/elements/SearchBar";
+import { getImageLink } from "@/helpers/utils";
 
 export const getServerSideProps = async ({ locale, query }) => {
   const { alphabet, alphabetLastName, catID } = query;
@@ -138,7 +139,9 @@ const Creatives = (props) => {
                       >
                         <a
                           className="table_row flex"
-                          data-img={`${CMSPath}${creative.profileImage.url}`}
+                          data-img={`${CMSPath}${getImageLink(
+                            creative.profileImage
+                          )}`}
                         >
                           <div className="table_col flex creative-listing-mobile-image">
                             <span className="f_120 alt">
